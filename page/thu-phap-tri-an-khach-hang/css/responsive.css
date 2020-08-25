@@ -1,0 +1,147 @@
+@media screen and (max-device-width: 480px){
+	#site-header{
+		/*height: 210px;*/
+		background-size: 100%;
+		height: 150px; 
+	}
+	#site-content{
+		padding-top: 0px;
+	}
+	
+	#description .welcome h3{
+		font-size: 1em;
+	}
+	
+
+	
+	.row .col-md-6{
+		padding-right: 15px !important;
+	}
+	
+	#site-footer{
+
+		padding-bottom: 10px;
+	}
+	.countdown{
+		display: none;
+	}
+	
+	.section-agree{
+
+    width: 100%;
+    overflow: scroll;
+	}
+	
+	.modal-dialog{
+		width: 100% !important;
+	}
+	
+	.label-registration-large{
+		height: 50px;
+	}
+	
+	#hotline span{
+		margin-top: 15px;
+		display: block;
+	}
+	
+	.welcome h3{
+		line-height: 1.6em;
+	}
+	.louis-list-category{
+		padding-right: 2px;
+	}
+	
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #dfdfdf;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #dfdfdf;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #dfdfdf;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #dfdfdf;
+}
+
+ input::placeholder{
+	 font-family: 'SFU Futura Book';
+	 color: #dfdfdf !important; 
+	 font-size: 0.8em !important;
+	 line-height: 1.65em;
+ }
+ 
+ :placeholder-shown{
+	 color: #dfdfdf;
+ }
+
+	
+	#form_register form{
+		padding: 0px;
+	}
+	
+	h3.title{
+		line-height: 2em;
+	}
+	
+	#description{
+		padding: 20px;
+	}
+	
+	.carousel-control.right{
+		right: 0px !important;
+		display: none;
+	}
+	
+	#care-form h1 span{
+		padding-top: 0px;
+		line-height: 1em;
+		font-size: 0.9em;
+	}
+	
+	#site-footer h3.title span{
+		font-size: 1.3em !important;
+	}
+	
+	.office-box{
+		border: none;
+		padding-bottom: 20px;
+	}
+	.dropdown-menu.open{
+		width: 100%;
+	}
+	.label-registration{
+		font-size: 0.8em;
+	}
+}
+
+@media only screen and (min-width : 1424px) and (max-width : 1523px){
+	#site-header{
+		height: 400px !important;
+	}
+}
+
+@media only screen and (min-width : 1524px) and (max-width : 1623px){
+	#site-header{
+		height: 500px !important;
+	}
+}
+
+@media only screen and (min-width : 1624px) and (max-width : 1723px){
+	#site-header{
+		height: 500px !important;
+	}
+}
+
+@media only screen and (min-width : 1724px) and (max-width : 1823px){
+	#site-header{
+		height: 500px !important;
+	}
+}
+
+@media only screen and (min-width : 1824px) and (max-width : 2524px){
+	#site-header{
+		height: 600px !important;
+	}
+}

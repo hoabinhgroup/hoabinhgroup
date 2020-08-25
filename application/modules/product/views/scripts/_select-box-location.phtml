@@ -1,0 +1,49 @@
+<dt id="location-label">
+<label class="required" for="location">Chọn Điểm đến:</label>
+</dt>
+<dd id="location-element">
+<?php
+	$mdlMenu = new Model_MenuItem();
+        $parentVal = 0;
+        $a = null;
+$options = $this->element->getDecorator('ViewScript')->getOptions();
+$optionArr = array();
+	if(!empty($options)){
+		$optionString = $options['List'];	
+		$parentVal =  $optionString;
+		
+		$optionArr = explode(',', $optionString); 
+		
+	}   
+	
+	
+        /*
+        $parentId = $this->createElement('select', 'parentID');
+        // element options
+        $parentId->setLabel('Chọn danh mục: ');
+        $parentId->setRequired(true);
+*/
+       
+        $select = $mdlMenu->select();
+       // $select->where('parent = ?', 0);
+        $select->where('menu_id = ?', 6);
+        $select->order('position asc');
+        $menus = $mdlMenu->fetchAll($select);
+         /*
+        $parentId->addMultiOption(0, 'None');
+        if($menus->count() > 0) {
+            foreach ($menus as $menu) {
+                $parentId->addMultiOption($menu->id, $menu->name);
+				} 
+			}
+		$parentId->setValue($parentVal);	//set selected
+			
+		$this->addElement($parentId);
+        */
+		$recursive = new Louis_System_Recursive($menus->toArray());
+        $newArr = $recursive->buildArray(0);
+  
+       $attribs = array('style' => 'width:250px', 'multiple' => '');
+        echo $mdlMenu->itemInSelectMultiBox('location[]',$optionArr,$newArr,'Chọn điểm đến',$attribs);
+       ?>
+</dd>

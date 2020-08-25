@@ -1,0 +1,173 @@
+<?php
+class Louis_System_RecursiveSidebar{
+	
+	protected $_sourceArr;
+	public function __construct($sourceArr = null){
+		$this->_sourceArr = $sourceArr;
+	}
+	
+
+	public function buildArray($parents = 0){
+		$resultArr = '';
+		$this->recursiveMenu($this->_sourceArr,$parents, 1,$resultArr);
+		
+		return str_replace('<ul></ul>','',$resultArr);
+	}
+	
+	public function getParentsIdArray($id,$options = null){
+		if($options['type'] == 1){
+			$arrParents[] = $id;
+		}
+		$this->findParents($this->_sourceArr,$id, $arrParents);
+		return $arrParents;
+	}
+	
+
+
+	
+	public function recursiveMenu($sourceArr, $parents = 0,$level = 1, &$newMenu){
+		$paramArray = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+	  if(count($sourceArr) > 0){
+	  $arr_pri = array();	  
+		  
+	 $ns = new Zend_Session_Namespace('info');
+	 if($ns){
+     $a = $ns->getIterator();
+     $group = $a['member']['group_id'];
+     if($group != 1){
+     $pri = $a['acl']['privileges'];	
+	foreach($pri as $key=>$val):	
+	 $exp = explode('-',$val);
+	 unset($exp[0]);
+	 $exp = str_replace('_index','',$exp);
+	$arr_pri[] = join('_',$exp);
+	endforeach;
+	}
+	
+	
+	//Co the tao them cot sidebar url trong quyen han privilege
+	$arr_pri = array_unique($arr_pri);
+
+		  foreach($sourceArr as $key => $value){
+			  if($value['parent'] == $parents){
+				  $value['level'] = $level;
+				  $status = $value['isHome'];
+				  $icon_status = '';	
+				  $title_status = '';
+			$exp = str_replace('/','_',$value['link']);	 
+			
+		}
+			
+		/*	if(($exp == 'menu') || ($exp == 'menuitem_index_menu_8') || ($exp == 'testimonial')){
+				$exp = 'default_index';
+			}
+			
+			if($exp == 'testimonial_create'){
+				$exp = 'default_create';
+			}
+		*/	
+			if(in_array($exp, $arr_pri) || $this->strposa($exp, $arr_pri, 1) || ($group == 1) ){
+				   if($level == 2){
+				$newMenu.= '<li class="navli-drop">';	   
+					   }else{ 
+				$newMenu.= '<li>';
+				}
+				if ($this->isSub($value['id']) == 1){
+				$newMenu.= '<a class="dropdown-toggle" href="/'.  $value['link_folder'] .'/'.  $value['link'] .'">';
+				$newMenu.= '<i class="menu-icon ' . $value['icon']. '"></i>';
+				$newMenu.= '<span class="menu-text">' . $value['name']. '</span>';
+				$newMenu.= '<b class="arrow fa fa-angle-down"></b>';
+				$newMenu.= '</a>';
+				$newMenu.='<b class="arrow"></b>';
+				     }else{
+				$newMenu.= '<a href="/'.  $value['link_folder'] .'/'.  $value['link'] .'">';	
+					  if($level == 2){
+					  
+				$newMenu.= '<i class="menu-icon fa fa-caret-right"></i>';	  
+					  }  else{
+					  
+			    $newMenu.= '<i class="menu-icon ' . $value['icon']. '"></i>';
+				}
+				$newMenu.= '<span class="menu-text">' . $value['name'].  '</span>';
+			
+				$newMenu.= '</a>';
+				$newMenu.='<b class="arrow"></b>';
+			     }
+				
+				  
+				  
+				 $newParents = $value['id'];
+				 unset($sourceArr[$key]);	
+				 if ($this->isSub($newParents) == 1){
+					 $newMenu.='<ul class="submenu">';
+				  $this->recursiveMenu($sourceArr, $newParents, $level + 1, $newMenu);
+				  	$newMenu.='</ul>';
+				  }
+				$newMenu .= '</li>';
+			  }
+		  }
+		  	}
+	  }
+	}
+	/*
+	public function recursiveSubMenu($sourceArr, $parents = 0,$level = 1, &$newMenu){
+	  if(count($sourceArr) > 0){
+				 $newMenu .= '<ul class="icesubMenu icemodules sub_level_'.$level.'" style="width:280px">';
+				 $newMenu .= '<li>';
+				 $newMenu .= '<div class="iceCols" style="float:left;width:280px">';
+				  $newMenu .= '<ul>';
+		  foreach($sourceArr as $key => $value){
+			  if($value['parent'] == $parents){
+				  $value['level'] = $level;
+				 $newMenu .= '<li class="iceMenuLiLevel_'.$level.' '.(($this->isSub($value['id']) == 1)?"parent":"").'"><a class="iceMenuTitle" href="/'. $value['link']  .'"><span class="icemega_title">'. $value['name'] .'</span></a>';
+				 $newParents = $value['id'];
+				 unset($sourceArr[$key]);	
+				 if ($this->isSub($newParents) == 1){	
+				 $this->recursiveSubMenu($sourceArr, $newParents, $level + 1, $newMenu);
+				 }
+				$newMenu .= '</li>';
+			  }
+		  }
+		  $newMenu .= '</ul>';
+		  $newMenu .= '</div>';
+		   $newMenu .= '</li>';
+		  $newMenu .= '</ul>';
+	  }
+	}
+
+	*/
+	public function findParents($sourceArr,$id, &$arrParents){
+			foreach ($sourceArr as $key => $value){		
+				if($value['id'] == $id){
+					if( $value['parent'] >0 ){
+						$arrParents[] = $value['parent'];
+						unset($sourceArr[$key]);
+						$newID = $value['parent'];
+						$this->findParents($sourceArr,$newID, $arrParents);
+					}
+				}
+			}
+		}
+		
+	public function isSub($parent){
+		$db = Zend_Db_Table::getDefaultAdapter();
+		$sql = 'select id from menu_items where parent = '.$parent;
+		$result = $db->fetchRow($sql);
+		if(count($result['id']) > 0){
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	
+	public function strposa($haystack, $needles=array(), $offset=0) {
+        $chr = array();
+        foreach($needles as $needle) {
+                $res = strpos($haystack, $needle, $offset);
+                if ($res !== false) $chr[$needle] = $res;
+        }
+        if(empty($chr)) return false;
+        return min($chr);
+	}
+	
+}

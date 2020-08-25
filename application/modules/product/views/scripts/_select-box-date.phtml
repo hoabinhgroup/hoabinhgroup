@@ -1,0 +1,24 @@
+<dt id="parentID-label">
+<label class="required" for="parentID">Chọn thời gian:</label>
+</dt>
+<?php
+	$date = date('d/m/Y',time());
+	$options = $this->element->getDecorator('ViewScript')->getOptions();
+	if(!empty($options)){
+		$optionString = $options['List'];	
+		$date = date('d/m/Y', $optionString);
+	}   
+	
+	?>
+<dd id="parentID-element">
+<div class="row">
+<div class="col-xs-3 col-sm-3">
+<div class="input-group">
+<input id="id-date-picker-1" class="form-control date-picker" name="date" type="text" data-date-format="dd/mm/yyyy" placeholder="Chọn thời gian" value="<?=$date?>">
+<span class="input-group-addon">
+<i class="fa fa-calendar bigger-110"></i>
+</span>
+</div>
+</div>
+</div>
+</dd>

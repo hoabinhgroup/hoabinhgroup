@@ -1,0 +1,21 @@
+#main{
+	background: url(z1585790283722_03e66e1e5871fafe2789db5995c05b6f.jpg) no-repeat;
+	background-size: 100%;
+	width: 100%;
+	height: 830px;
+}
+
+#registration-form{
+	position: relative;
+	top: 450px;
+}
+
+.form-horizontal label{
+		 color: #fff !important;
+	 }
+
+#submitCali{
+	width: 120px;
+	margin:  0 auto;
+	display: block;
+}

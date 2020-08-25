@@ -1,0 +1,56 @@
+<div id="middlecol" class="span8 sidebar_left">
+	<div class="inside">
+		<div class="item-page">
+		
+				<div class="span12"><ul class="breadcrumb"><li class="active"><span class=""></span></li><li><a href="/">Home</a><span class="divider">/</span></li>
+<?php echo $this->content()->createBreadcrum($this->sID, 'menu_items', 2); ?></ul>
+					<div class="travel-list">
+					
+   <?php
+
+	      echo $this->message;
+	    foreach($this->paginator as $val): 
+	    ?>
+   
+	<div class="travel-item">
+	<?php  $src= ($this->Image()->getFirstImageContent($val['description']) == null )?'/public/images/hotels/'.$val['id'].'/resize_478x256/'.$val['full']:$this->Image()->getFirstImageContent($val['description']); 
+		
+		
+	?>
+	<div class="travel-image"><a title="<?=$val['name']?>" href="/hotel/<?=$val['ident']?>.html"><img src="<?=$src?>" /></a></div>
+	 <div class="travel-info">
+	 <span class="travel-title"><a title="<?=$val['name']?>" href="/hotel/<?=$val['ident']?>.html"><h3 class="mod-title"><?php echo $this->String()->cut_string($val['name'],'34','...'); ?></h2></a>
+	 <span class="hotel-price"><h4><?php echo number_format($val['price']); ?> VND</h4></span>
+	 </span>
+	<span class="travel-star"><h4>
+		<?php for($i=1;$i<=$val['star'];$i++){
+			  ?>
+		<i class="fa fa-star"></i>
+		<?php } ?>
+		</h4></span>
+		
+	 <span class="travel-description"><?php echo $this->String()->cut_string(strip_tags($val['shortDescription']),'230','...'); ?></span>
+	  
+	  
+	  
+	  </div>
+	  
+	</div>
+	<div style="clear:both;"></div>
+	<?php endforeach; ?>
+					
+					
+					<?php echo $this->paginationControl($this->paginator,
+     'Sliding',
+     'pagination-control.phtml'); 
+   
+     ?>
+     </div>
+				</div>
+			
+	
+		</div>
+		
+	</div>
+	
+</div>	

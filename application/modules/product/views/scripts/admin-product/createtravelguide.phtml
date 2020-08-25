@@ -1,0 +1,118 @@
+
+<style>
+.zend_form p{
+	 padding-left: 20px;
+}
+#location-element{
+	margin-left: 20px;
+	width: 500px;
+	}
+#location___chosen{
+	width: 500px;
+	
+}
+#cke_description{
+	margin-left: 20px;
+}
+#cke_others{
+	margin-left: 20px;
+}
+.tags{
+	margin-left: 20px;
+	width: 550px;
+}
+</style>
+<?php
+	/*
+$list = new Zend_Tag_ItemList();	
+$list[] = new Zend_Tag_Item(array('title' => 'Code', 'weight' => 50));
+$list[] = new Zend_Tag_Item(array('title' => 'Zend Framework', 'weight' => 1));
+
+
+    $cloud = new Zend_Tag_Cloud(array(
+           'tags' => array(
+                     array('title' => 'Code', 'weight' => 50,
+                           'params' => array('url' => '/tag/code')),
+                     array('title' => 'Zend Framework', 'weight' => 1,
+                           'params' => array('url' => '/tag/zend-framework')),
+                     array('title' => 'PHP', 'weight' => 5000,
+                           'params' => array('url' => '/tag/php')),
+        )));
+    echo $cloud;
+
+	*/
+
+?>
+  <h2><a href="/admin/product/listtravelguide">Danh mục Travel Guide</a> | Thêm bài mới</h2>
+<br/>
+<?php echo $this->form; ?> 	
+<?php //echo $this->Ckeditor('shortDescription',150,600); ?> 
+ <?php echo $this->Ckeditor('description',250,550); ?> 
+  <?php echo $this->Ckeditor('others',250,550); ?> 
+ 
+
+<script type="text/javascript">
+	//var listTags = '';
+			jQuery(function($) {
+				
+				
+				
+				var tag_input = $('#tags');
+				try{
+					tag_input.tag(
+					  {
+						placeholder:tag_input.attr('placeholder'),
+						//enable typeahead by specifying the source array
+					
+						source: <?=$this->resulttags?>
+		
+						
+					  }
+					)
+			
+					//programmatically add a new
+					var $tag_obj = $('#tags').data('tag');
+					//$tag_obj.add('Programmatically Added');
+				}
+				catch(e) {
+					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+					//$('#form-field-tags').autosize({append: "\n"});
+				}
+				
+				
+			
+					$('.chosen-select').chosen({allow_single_deselect:true,search_contains:true,placeholder_text_multiple:'Chọn địa điểm'}); 
+					//resize the chosen on window resize
+			
+					$(window)
+					.off('resize.chosen')
+					.on('resize.chosen', function() {
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					}).trigger('resize.chosen');
+					//resize chosen on sidebar collapse/expand
+					$(document).on('settings.ace.chosen', function(e, event_name, event_val) {
+						if(event_name != 'sidebar_collapsed') return;
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					});
+			
+			
+					$('#chosen-multiple-style .btn').on('click', function(e){
+						var target = $(this).find('input[type=radio]');
+						var which = parseInt(target.val());
+						if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+						 else $('#form-field-select-4').removeClass('tag-input-style');
+					});
+				
+							
+			});
+		</script>
+
+
+	

@@ -1,0 +1,299 @@
+<style>
+	.blue{
+		display: block !important;
+	}
+	.zend_form{
+		
+	}
+	
+	#is_conveyance_required{
+		margin-left: 20px;
+		
+	}
+	.zend_form select {
+    width: 200px ;
+}
+.chosen-container-single{
+	width: 250px !important;
+}
+#add_menuitem{
+	margin-bottom: 50px;
+}
+</style>
+
+<div class="row">
+	<div id="page_menu">
+		
+	
+	<div class="col-xs-12">
+		<h4 class="lighter">
+
+			Đổi tên thư mục cấp 2:
+    	</h4>
+    	<form action="" id="form_change_name_url" method="post">
+    <select name="parent">
+	    <?php 
+		    if($this->itemParent){
+		    foreach($this->itemParent as $k): ?>
+	    <option value="<?php echo $k->id; ?>"><?php echo $k->name; ?></option>
+	    <?php endforeach; 
+		    }
+	    ?>
+    </select>
+    
+    <input name="link_folder" type="text" />
+    <input id="submit" class="btn btn-info" type="submit" value="Submit" name="submit" style="height: 28px;line-height:8px; margin-top:-4px">
+    	</form>
+
+	</div>
+	<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-sm-6">
+	<div class="dd" id="nestable">									
+	<?php if($this->items != null) { 
+	
+	?>
+<?php
+ $mdlMenuItem = new Model_MenuItem();
+ $menu = $mdlMenuItem->getItemsByMenuAdmin( $this->menu->id);	
+ 
+  $recursive = new Louis_System_RecursiveMenuAdmin($menu->toArray());
+  
+ echo $recursive->buildArrayUl(0);
+ 
+ 
+ }
+		            									
+	?>									
+	</div>	
+	</div>								
+		
+
+			<div class="vspace-16-sm"></div>
+									
+	<div class="col-sm-6">								
+<?php echo $frmMenuItem = new Form_MenuItemAdd(); ?>
+<?php  echo $this->Ckeditor('description',150,450);
+	//echo $frmMenuItem;
+	 ?>
+	</div>
+								</div><!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+		
+	
+		
+<script type="text/javascript">
+
+	function toggle_status(o){
+	
+		//	var objID = $(o).attr('id');
+		var obj = $(o).attr('id').split('_');
+		var id = obj[1];
+		//console.log(id);
+		
+		var data = 'id=' + id;
+		$.ajax({
+	        url: '/admin/menuitem/toggle',
+	        type: "POST",
+            data: data,
+          success: function ( data ) {
+           // alert(data);
+          console.log(data);  // Neu = Yes thì set eye close, nguoc lai
+          if(data === 'Yes'){
+          $(o).attr('title','Bật chức năng hiển thị');
+          $(o).children().removeClass('fa-eye');
+          $(o).children().addClass('fa-eye-slash');
+          }else{
+	      $(o).attr('title','Tắt chức năng hiển thị');  
+	      $(o).children().removeClass('fa-eye-slash');
+          $(o).children().addClass('fa-eye');
+          }
+        }
+           
+        });
+        return false; 
+			}
+			jQuery(function($){
+		
+
+
+				var updateOutput = function(e)
+    {
+        var list   = e.length ? e : $(e.target),
+            output = list.data('output');
+        if (window.JSON) {
+	      var data =  list.nestable('serialize');
+           // console.log(data);//, null, 2));
+            
+            $.ajax({
+	        url: '/admin/menuitem/sort',
+	        type: "POST",
+            data: {dataString: data},
+          success: function ( data ) {
+           // alert(data);
+        }
+           
+        });
+        } else {
+            output.val('JSON browser support required for this demo.');
+        }
+    };
+
+    // activate Nestable for list 1
+    $('#nestable').nestable({
+        group: 1
+    })
+    .on('change', updateOutput);
+
+   
+    // output initial serialised data
+    updateOutput($('#nestable').data('output', $('#nestable-output')));
+
+			
+				$('.dd-handle a').on('mousedown', function(e){
+					e.stopPropagation();
+				});
+				
+				$('[data-rel="tooltip"]').tooltip();
+				
+				
+				
+				
+			
+			});
+		
+	
+			
+	
+	 var add_menuitem = jQuery('#add_menuitem');
+	
+    add_menuitem.submit(function (ev) {
+	    
+	    ev.preventDefault();
+	   /* alert();
+	    return false;
+	    exit();
+	    */
+	    // alert(); return false;
+	   var  parentID = jQuery('#parentID').val();
+	   var  id = jQuery('#id').val();
+	   var  menu_id = jQuery('#menu_id').val();
+      // alert(nameBookingtourForm);
+	 var  name = jQuery('#name').val();
+	 var  page_id = jQuery('#page_id').val();
+	 var  link = jQuery('#link').val();
+	 var  link_folder = jQuery('#link_folder').val();
+	 var  description = jQuery('#description').val();
+	 var  is_conveyance_required = jQuery('#is_conveyance_required').val();
+	
+	    
+        jQuery.ajax({
+            type: add_menuitem.attr('method'),
+            url: add_menuitem.attr('action'),
+            data: add_menuitem.serialize(),
+            beforeSend: function (){
+	            //jQuery('#loading-indicator').show();
+            },
+            success: function (data) {
+                console.log(data);
+				   // return false;
+				var title_status, icon_status;
+				  if(data.isHome === 'Yes'){
+				title_status = "Tắt chức năng hiển thị";  
+				icon_status = 'fa fa fa-eye bigger-130 blue';
+				  } else {
+				title_status = "Bật chức năng hiển thị";
+				icon_status = 'fa fa fa-eye-slash bigger-130 blue';	  
+				  }
+				   
+				    
+				  if(data.parent == 0){
+					 
+					$('#nestable').children('ol').append("<li id='sort_"+data.id+"' class='dd-item item-orange' data-id='"+data.id+"'><div class='dd-handle'>"+data.name+"<div class='pull-right action-buttons'><a href='/admin/menuitem/image/id/"+data.id+"/menu/"+data.menu_id+"'><i class='icon-picture bigger-130 orange'></i></a><a style='cursor:pointer;' id='status_"+data.id+"' onClick='toggle_status(this);' title='"+title_status+"'><i class='"+icon_status+"'></i></a><a class='green' href='/admin/menuitem/update/id/"+data.id+"'><i class='icon-pencil bigger-130'></i></a><a class='red' href='/admin/menuitem/delete/id/"+data.id+"' onclick=\"return confirm('Bạn muốn xóa?');\"><i class='icon-trash bigger-130'></i></a></div></li>");
+  
+				  }   else {      
+					      
+	              $('#sort_'+data.parent).find('ol').append("<li id='sort_"+data.id+"' class='dd-item item-blue2' data-id='"+data.id+"'><div class='dd-handle'>"+data.name+"<div class='pull-right action-buttons'><a href='/admin/menuitem/image/id/"+data.id+"/menu/"+data.menu_id+"'><i class='icon-picture bigger-130 orange'></i></a><a style='cursor:pointer;' id='status_"+data.id+"' onClick='toggle_status(this);' title='"+title_status+"'><i class='"+icon_status+"'></i></a><a class='green' href='/admin/menuitem/update/id/"+data.id+"'><i class='icon-pencil bigger-130'></i></a><a class='red' href='/admin/menuitem/delete/id/"+data.id+"' onclick=\"return confirm('Bạn muốn xóa?');\"><i class='icon-trash bigger-130'></i></a></div></li>");
+              
+              }
+             
+
+//$("#page_menu").load(location.href + " #page_menu");
+ //location.reload(); 
+ 
+              
+            }
+        });
+
+        return false;
+        
+       // }
+    });
+	
+		
+		</script>	
+		
+		<script type="text/javascript">
+	jQuery(function($) {
+				
+								
+				var tag_input = $('#tags');
+				try{
+					tag_input.tag(
+					  {
+						placeholder:tag_input.attr('placeholder'),
+						//enable typeahead by specifying the source array
+					
+						source: ''
+		
+						
+					  }
+					)
+			
+					//programmatically add a new
+					var $tag_obj = $('#tags').data('tag');
+					//$tag_obj.add('Programmatically Added');
+				}
+				catch(e) {
+					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+					//$('#form-field-tags').autosize({append: "\n"});
+				}
+				
+					$('.chosen-select').chosen({allow_single_deselect:true,search_contains:true,placeholder_text_multiple:'Chọn địa điểm'}); 
+					//resize the chosen on window resize
+			
+					$(window)
+					.off('resize.chosen')
+					.on('resize.chosen', function() {
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					}).trigger('resize.chosen');
+					//resize chosen on sidebar collapse/expand
+					$(document).on('settings.ace.chosen', function(e, event_name, event_val) {
+						if(event_name != 'sidebar_collapsed') return;
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					});
+			
+			
+					$('#chosen-multiple-style .btn').on('click', function(e){
+						var target = $(this).find('input[type=radio]');
+						var which = parseInt(target.val());
+						if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+						 else $('#form-field-select-4').removeClass('tag-input-style');
+					});
+					
+					
+						
+			});
+		
+			
+</script>						
+			

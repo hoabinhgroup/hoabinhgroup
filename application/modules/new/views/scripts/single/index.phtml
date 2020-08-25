@@ -1,0 +1,63 @@
+<style>
+  #responsive-video {
+   position: absolute;top:-5px;
+   margin-left: 28px;
+   width:500px;
+   height: 315px;
+}
+		
+		</style>
+		
+		<?php
+			 $bg_style = '';
+	$bg_style.= ($this->link == 've-chung-toi')?"background-image: url('/public/templates/news2017/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;":'';
+	
+	$bg_style.= ($this->link == 'the-manh-cong-ty')?"background-image: url('/public/templates/news2017/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;":'';
+	
+	$bg_style.= ($this->link == 'nang-luc-tai-chinh')?"background-image: url('/public/templates/news2017/default/img/deposito-a-plazo.jpg'); background-repeat: no-repeat; background-position: 0px -171px; background-attachment: fixed;":'';
+	
+	$bg_style.= ($this->link == 'tam-nhin-su-menh')?"background-image: url('/public/templates/news2017/default/img/v-mezhdunarodnyiy-fond-selskohozyaystvennogo-razvitiya-vstupaet-rossiya.jpg'); background-position: 0px -141px;background-attachment: fixed;":'';
+	
+	$bg_style.= ($this->link == 'dau-an-phat-trien')?"background-image: url('/public/templates/news2017/default/img/6048504789_dc0dbcef0e_b.jpg'); background-position: 0px 0px; background-attachment: fixed;":'';
+		
+			 ?>
+ <div class="bg-header-page" style="<?php echo $bg_style; ?>">
+		   <div class="container"> <div class="row">
+			  	 <h1><?php echo $this->name; ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+  <li class="breadcrumb-item"><a href="#">Giới thiệu</a></li>
+  <li class="breadcrumb-item active"><?php echo $this->name; ?></li>
+</ol> 
+		   </div> </div>
+	
+	    </div>
+	    
+	    <div class="container">
+	    <div class="row" id = "news-content">
+	  
+		    
+			   <?php echo $this->description; ?>	
+		    	
+	   
+	    	
+	    	
+	    	    <div class="container hidden-xs">
+	    
+	   <div class="col-md-10 col-md-offset-1" style="margin-top: 20px;">
+		    <div class="col-md-10 col-md-offset-1">
+	    	  <ul id='review_tab' class="nav nav-tabs" role="tablist">
+                   <li role="presentation" <?php echo ($this->link == 've-chung-toi')?' class="active"':''; ?>><a href="/ve-chung-toi">Về chúng tôi</a></li>
+                   <li role="presentation" <?php echo ($this->link == 'tam-nhin-su-menh')?' class="active"':''; ?>><a href="/tam-nhin-su-menh">Giá trị cốt lõi</a></li>
+                    <li role="presentation" <?php echo ($this->link == 'nang-luc-tai-chinh')?' class="active"':''; ?>><a href="/nang-luc-tai-chinh">Năng lực tài chính</a></li>
+                   <li role="presentation" <?php echo ($this->link == 'dau-an-phat-trien')?' class="active"':''; ?>><a href="/dau-an-phat-trien">Những dấu ấn của sự phát triển</a></li>
+                                          <li role="presentation" <?php echo ($this->link == 'doi-ngu-lanh-dao')?' class="active"':''; ?>><a href="/doi-ngu-lanh-dao">Đội ngũ lãnh đạo</a></li>
+                                    </ul>
+                                    
+                                    </div>
+	    	</div>
+	    	</div>
+	    	
+	    	</div>
+	    	</div>
+	    	

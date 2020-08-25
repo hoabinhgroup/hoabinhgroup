@@ -1,0 +1,125 @@
+<link rel="stylesheet" type="text/css" href="<?=TEMPLATE_URL?>/uploadifive/uploadifive.css">
+<script src="/public/js/smartcrop.js" type="text/javascript"></script>
+<script src="<?=TEMPLATE_URL?>/uploadifive/jquery.uploadifive.min.js" type="text/javascript"></script>
+<style>
+#photoUpload{
+
+}
+#photoUpload ul li{
+	list-style-type: none;
+	margin-bottom: 20px;
+}
+#photoUpload ul li img{
+	float: left;
+}
+</style>
+
+
+
+<p>(*) Upload tối đa là 8 ảnh</p>
+	<div id="queue"></div>
+
+		<input id="file_upload" name="file_upload" type="file" multiple="true" onchange="readURL(this);">		
+		
+	<div id="preview"></div>
+	
+	<br/>
+
+
+	
+	
+<?php $timestamp = time();?>
+<script type="text/javascript">
+
+
+$(document).ready(function() { 
+ //alert(33434);
+ $('#file_upload').uploadifive({
+			    'fileType'     : 'image',
+			    'queueSizeLimit' : 8,
+				'multi'			   : true,
+				'auto'             : true,
+				'fileSizeLimit' : 3500,
+				'formData'         : {
+				'timestamp' : '<?php echo $timestamp;?>',
+				'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
+				'productID' : '<?=$this->pid?>',
+				                     },
+				'queueID'          : 'queue',
+				'uploadScript'     : '/admin/',
+				'onError'      : function(errorType) {
+				switch(errorType) {
+				case '404_FILE_NOT_FOUND':
+					alert('Không tìm thấy tệp tin!');
+					break;
+				case 'FORBIDDEN_FILE_TYPE':
+					alert('Chỉ hỗ trợ định dạng ảnh');
+					break;
+				case 'FILE_SIZE_LIMIT_EXCEEDED':
+				alert('Vượt quá dung lượng cho phép');
+				break;
+				case 'QUEUE_LIMIT_EXCEEDED':
+				alert('Xin vui lòng xóa file ảnh hiện tại trước khi chọn lại file khác!');
+				//j('.stdelete').trigger('click');
+				//j('#file_upload').uploadifive('clearQueue').trigger('click');
+				break;
+				default:
+				alert(errorType);
+				alert('Có lỗi, xin thử lại');
+				break;
+				   }
+                } ,
+                'onSelect' : function(file) {
+             
+				
+				} ,
+                 'onCancel'     : function() {
+           // alert('The file ' + file.name + ' was cancelled!');
+                 } ,
+             'onProgress': function(file, e) {
+				 //  console.log(e);
+            
+			
+				 },
+      
+        
+                'onUpload'     : function(filesToUpload) {
+          
+					} ,
+			'onUploadComplete' : function(file, data, response) {
+				
+			
+				}
+			});
+	
+	
+	
+}); 
+
+function deleteItem(o){
+		//alert($(o).attr('data'));
+		var data =  $(o).attr('data');
+		var item = data.split('_')[1];
+		//alert(item);
+		var productID = '<?=$this->pid?>';
+		$('#item_'+item).fadeOut();
+		var dataString = 'itemDel=' + item + '&pID=' + productID;
+		 $.ajax({
+            type: "POST",
+            url: "/admin/product/delitem",
+            data: dataString,
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
+			 
+ 
+            }
+        });
+		
+	 return false;
+	}
+	
+
+  	
+  	
+</script>

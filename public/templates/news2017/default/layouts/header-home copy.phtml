@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+	  	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KMHJ4CL');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+      <meta name="google-site-verification" content="qi8U2LlUcwIWQcOj4Yt3FukaTa8Uh8iLjBwsJNN_Jps" /> 
+    <?php echo $this->headTitle() ?>
+  <?php echo $this->headMeta() ?>  
+  <link rel="shortcut icon" href="/public/images/favicon-1.ico"> 
+   
+  <meta name="robots" content="INDEX,FOLLOW" />
+    <!-- Bootstrap -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="<?=TEMPLATE_URL?>/default/css/style.min.css" rel="stylesheet">
+      <?php echo $this->headLink() ?>
+   <!-- <link href="<?=TEMPLATE_URL?>/default/css/responsive.css" rel="stylesheet">-->
+   <!--<link href="<?=TEMPLATE_URL?>/default/css/animate.css" rel="stylesheet">-->
+    <link href="<?=TEMPLATE_URL?>/default/css/font-awesome.min.css" rel="stylesheet">
+
+   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">-->
+    <!--<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+   <!-- <link href="/public/js/float-social/custom.css" rel="stylesheet"> -->      
+   
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,400i,500,500i,700,700i,900&amp;subset=vietnamese" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--  <script src="/public/js/float-social/dist/lib/modernizr.touch.js"></script>-->
+  <?php 
+	function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}	
+	?>
+	<?php if(isMobile()): ?>
+	
+	<?php else: ?>
+  <!--<script src="http://hoabinh-group.com/public/js/jquery.happy_new_year_v2.js"></script>-->
+    <?php endif; ?>     
+   <!-- <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>-->
+	
+  </head>
+  <body>
+	  <div class="snow"></div>
+	  	  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMHJ4CL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	  <script type="text/javascript" src="//file.autoads.asia/tracking.js"></script>
+ <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=480982688755343";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '196566774518252');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=196566774518252&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+  <?php  $lang = Zend_Registry::get('Zend_Locale');
+  		// echo $locale;
+  			  ?>
+<style type="text/css">
+/*.snowflake {
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
+ @-moz-keyframes 
+spin { 100% {
+-moz-transform: rotate(360deg);
+}
+}
+ @-webkit-keyframes 
+spin { 100% {
+-webkit-transform: rotate(360deg);
+}
+}
+ @keyframes 
+spin { 100% {
+-webkit-transform: rotate(360deg);
+transform:rotate(360deg);
+}
+}*/
+</style>		  
+	<div id="header">
+		
+		<div id="header-top" class="header-home hidden-xs" data-spy="affix" data-offset-top="197">
+	
+		<!-- END Social Icons -->
+	<div class="container">
+		<div class="row">
+		<div class="col-md-10">
+			<?php  echo $this->render('/'.$lang. '/menu.phtml'); ?>
+		
+		</div>
+		<div class="col-md-2">
+			<div class="hotline" style="margin-top: -10px;">					
+                        <span class="pull-right">
+                      
+                       
+                        <a href="/translate/filter/change/vi"> <img alt="VN" height="24" src= '<?=TEMPLATE_URL?>/default/img/Vietnam_flat.png'/>	</a>
+                        <a href="/translate/filter/change/en"><img alt="EN" height="24" src= '<?=TEMPLATE_URL?>/default/img/United-Kingdom_flat.png'/></a>
+                        </span>
+                       	
+                    </div>
+		</div>
+		</div>
+		</div>
+	</div>
+
+<!-- END Top Area --> 
+  
+		
+		<div id="menu">
+		    	<div class="panel-box">
+
+		    <nav class="navbar">
+			    	<div class="hotline">					
+                        <span class="pull-right">
+                        <img alt="hotline Hòa Bình Group" height="24" src= '<?=TEMPLATE_URL?>/default/img/icon hotline.png'/> 
+                        <b><a class="click2call" href="tel:0913311911">+84.913.311.911</a></b>
+                        <a href="/translate/filter/change/vi"> <img alt="VN" height="24" src= '<?=TEMPLATE_URL?>/default/img/Vietnam_flat.png'/>	</a>
+                        <a href="/translate/filter/change/en"><img alt="EN" height="24" src= '<?=TEMPLATE_URL?>/default/img/United-Kingdom_flat.png'/></a>
+                        </span>
+                       	
+                    </div>
+                   
+                 
+  
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    
+    </div>
+    
+
+	
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    
+	    
+	     <div class="logo visible-xs-block">
+		  
+	       <?php if($lang == 'vi'){ ?>
+	        <a title="Home" href="/">
+	       <img width="220" src="/public/images/logo-01.png" />
+	       </a>
+	       	<?php }else{ ?>
+	       	  <a title="Home" href="/en">
+	       	 <img width="220" src="/public/images/logo en-01.png" />
+	       	  </a>
+	       	<?php } ?>
+		   
+
+   </div>
+	    
+      <div id="top_menu_louis">
+     <?php  echo $this->render('/'.$lang. '/menu.phtml'); ?>
+      </div>
+    </div><!-- /.navbar-collapse -->
+  
+</nav>
+	   
+		    	</div> 	 
+	    	</div><!-- #menu-->
+	    	<!-- #slider -->
+			<div id="slider">
+		     <div class="panel-box">
+    <div class="row no-gutter">
+		
+		   
+    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+    <!-- Carousel indicators -->
+    <?php $menuitem = new Model_MenuItem();
+	    $image = new Model_ProductImage();
+	   $menu = $menuitem->get_one_where(array(
+		    'menu_id' => 12,
+		    'id' => 341,
+		    'lang' => 'vi',
+	    ));	    
+		$id_menu = $menu->id;
+		$images = $image->get_details(array(
+			'productId' => $id_menu
+		));
+		$countImages = count($images);
+	     ?>
+    <ol class="carousel-indicators">
+	    		<?php for($order = 0; $order < $countImages; $order++){ ?>
+	    		 <li data-target="#myCarousel" data-slide-to="<?php echo $order;?>"  <?php echo ($order == 0)?' class="active"':''; ?>></li>
+	    		<?php } ?>
+
+       
+         
+            </ol>   
+    <!-- Carousel items -->
+    <?php if($lang == 'vi'): ?>
+    <div class="carousel-inner">
+	    	<?php 
+		    	
+		    	foreach($images as $keyImages=>$valImages): ?>
+	            <div class="item <?php echo ($valImages['isDefault'] == 'Yes')?' active':''; ?>">
+       <a href="<?php echo $valImages['url']; ?>"> <img class="img-responsive lazy" data-src="/public/images/backgrounds/<?php echo $valImages['full']; ?>" alt="<?php echo $valImages['full']; ?>"></a>
+            	 </div>
+             <?php endforeach; ?> 
+        
+                        
+    </div>
+    <?php else: ?>
+  <?php  $menu = $menuitem->get_one_where(array(
+		    'menu_id' => 12,
+		    'id' => 342,
+		    'lang' => 'en',
+	    ));	    
+		$id_menu = $menu->id;
+		$images = $image->get_details(array(
+			'productId' => $id_menu
+		));
+		$countImages = count($images);
+	     ?>
+     <div class="carousel-inner">
+	    
+	          <?php 
+		    	
+		    	foreach($images as $keyImages=>$valImages): ?>
+	            <div class="item <?php echo ($valImages['isDefault'] == 'Yes')?' active':''; ?>">
+       <a href="<?php echo $valImages['url']; ?>"> <img class="img-responsive" src="/public/images/backgrounds/<?php echo $valImages['full']; ?>" alt="<?php echo $valImages['full']; ?>"></a>
+            	 </div>
+             <?php endforeach; ?>     
+              
+    </div>
+    <?php endif; ?>
+
+    <!-- Carousel nav -->
+   <a class="left carousel-control slider-header" href="http://hoabinh-group.com/#myCarousel" data-slide="prev"> <img src="<?=TEMPLATE_URL?>/default/img/btn-l.png" /> </a> <a class="right carousel-control slider-header" href="http://hoabinh-group.com/#myCarousel" data-slide="next"><img src="<?=TEMPLATE_URL?>/default/img/btn-r.png" />  </a> 
+</div>
+		    
+	    
+    </div>
+    </div>	
+		    	
+	    	</div><!-- #slider -->
+			<!-- #end_slider -->
+	</div>
+	    	
+	    	
+    	

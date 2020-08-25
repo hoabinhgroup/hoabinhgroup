@@ -1,0 +1,86 @@
+
+		<div class="col-sm-8 ct-camnang">
+			<ol class="breadcrumb">
+				<li>
+					<a href="/">Trang chủ</a>
+				</li>
+				<li>
+					<a href="/cam-nang">Cẩm nang</a>
+				</li>
+				<li class="active"> <?php echo $this->menu; ?></li>
+			</ol>
+
+			<div class="content">
+				<?php echo $this->message; ?>
+				<h1> <?php echo $this->name; ?></h1>
+				<p><span class="glyphicon glyphicon-calendar"></span> <?php echo date('d/m/Y',$this->date); ?> - <span class="text-muted"><span class="glyphicon glyphicon-pencil"></span> Bởi Admin</span></p>
+				<p> <?php echo $this->description; ?></p>
+				
+				<hr>
+			</div>
+			<div class="content-rela fix-img100">
+				<h3>Bài viết liên quan</h3>
+				<hr>
+				<?php foreach($this->other_products as $key=>$val): 
+					
+					$image = PATH_TOURS . $val['id'] . '/' .$val['full'];
+				?>
+				<div class="col-sm-4">
+					<a href="/cam-nang/<?php echo $val['ident']; ?>.html">
+					<img class="img-rounded" src="<?php echo $image; ?>">
+					</a>
+					<h4><a href="/cam-nang/<?php echo $val['ident']; ?>.html"> <?php echo $val['name']; ?></a></h4>
+					<p><?php echo $val['shortDescription']; ?></p>
+				</div>
+				<?php endforeach; ?>
+			
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tìm bài viết</h3>
+				</div>
+				<div class="panel-body">
+					<form action="" method="POST" role="form">
+						<div class="form-group">
+							<label>Tìm kiếm bài viết</label>
+							<form id="form-user_v1" name="form-user_v1">
+    <div class="typeahead__container">
+        <div class="typeahead__field">
+ 
+            <span class="typeahead__query">
+                <input class="js-typeahead-user_v1" name="user_v1[query]" type="search" placeholder="Tìm bài viết..." autocomplete="off">
+            </span>
+            <span class="typeahead__button">
+                <button type="submit">
+                    <i class="typeahead__search-icon"></i>
+                </button>
+            </span>
+ 
+        </div>
+    </div>
+</form>
+							
+						
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="ds-baiviet fix-img100">
+				<?php echo $this->TravelGuideMenuWidget(); ?>
+			</div>
+
+			<div class="panel panel-default">
+				<?php echo $this->HotelWidget($this->locations); ?>
+			</div>
+
+			<div class="ds-baiviet fix-img100">
+				<?php echo $this->TravelGuideViewestWidget(); ?>
+			</div>
+
+			<div class="ds-baiviet fix-img100">
+				<?php echo $this->TravelGuideNewestWidget(); ?>
+			</div>
+
+		</div>

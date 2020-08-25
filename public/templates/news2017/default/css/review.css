@@ -1,0 +1,386 @@
+/* gioi thieu */
+.youtube-review{
+	width: 500px;
+}
+.review-content{
+	/*width: 1300px; */
+	margin: 0 auto;
+}
+.des-louis{
+	margin-bottom: 20px;
+}
+.big-ava-bg{
+	background: url('../img/bg-doi-ngu-lanh-dao1.png') no-repeat top center;
+	background-size: 100%;
+	height: 333px;
+   /* width: 320px; */
+  /* width: 350px;
+    margin-right: 30px; */
+    width: 353px;
+    margin-right: 33px;
+}
+
+.big-ava-bg a{
+	width: 200px;
+    height: 200px;
+    overflow: hidden;
+    display: block;
+    border-radius: 50%;
+    margin-top: 20px;
+     margin: 20px auto;
+     border: 1.2px dotted #fff;
+}
+
+.big-ava-bg .name{
+	display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.big-ava-bg .title-job{
+	text-align: center;
+	color: #fff;
+}
+
+.medium-ava-bg{
+	background: url('../img/bg-doi-ngu-lanh-dao1.png') no-repeat top center;
+	background-size: 100%;
+	height: 250px;
+    width: 256.7px;
+    margin-right: 33px;
+}
+
+.big-ld{
+	width: 200px;
+    height: auto;
+   
+}
+
+.med-ld{
+	width: 150px;
+    height: auto;
+}
+
+.med-ld-detail{
+	width: 250px;
+    height: auto;
+}
+
+.medium-ava-bg a{
+	width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: block;
+    border-radius: 50%;
+    margin-top: 10px;
+     margin: 10px auto;
+     border: 1.2px dotted #fff;
+	}
+	
+.pic a{
+	width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: block;
+    border-radius: 50%;
+     margin: 28px;
+     border: 1.2px dotted #fff;
+}
+	
+.medium-ava-bg > .name{
+	display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.medium-ava-bg > .title-job{
+	text-align: center;
+	color: #fff;
+}
+
+#review_tab{
+	margin-bottom: 20px;
+}
+
+.slickWindow .top{
+	background: url('../img/bg-doi-ngu-lanh-dao2.png') no-repeat top center;
+	background-size: cover;
+	width: 100%;
+	height: 205px;
+	color: #fff;
+	
+}
+
+.right{
+	text-align: center;
+}
+
+.right .name{
+	font-size: 30px;
+    font-weight: 800;
+    display: inline-block;
+    width: 100%;
+    line-height: 1.5em;
+	
+}
+.right .desc{
+	color: #fff;
+	font-size: 21px !important;
+	
+}
+.right span{
+	color: #fff;
+}
+.popup-content{
+	padding: 10px 20px !important;
+}
+
+.button-review{
+	color: #140B43;
+	padding: 6px;
+	border: 1px solid #140B43;
+	margin-right: 10px;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.heading-text{
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+
+.heading-text-l{
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+
+}
+
+.heading-text-left{
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    margin: 20px 0px;
+}
+
+.heading-text-center{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.icon, .text {
+    display:inline;
+}
+
+.heading-text .text{
+    margin-left: 10px;
+    font-size: 21px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    padding: 20px 0px;
+}
+
+.heading-text-left .text{
+    font-size: 21px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    padding: 20px;
+}
+
+.heading-text-l .text{
+    font-size: 21px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    padding: 20px;
+    color: #05235F;
+}
+
+.heading-text-center .text{
+	margin-left: 10px;
+    font-size: 21px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    padding: 20px 0px;
+}
+
+.review-content p{
+	text-align: justify;
+}
+
+.core-a{
+	margin-left: -64px;
+}
+
+.core-b{
+	position: relative; left: 50%; margin-left: -521px; margin-top: 10px; margin-bottom: 20px;
+}
+
+.core-c{
+position: absolute; left: 50%; margin-left: -182px; margin-bottom: 20px; margin-top: -317px;	
+}
+
+.core-d{
+	position: absolute; left: 50%; margin-left: 159px; margin-top: -417px;
+}
+
+.core-e{
+	position: absolute; left: 50%; margin-left: 159px; margin-top: -217px;
+}
+
+#core-value-main{
+	width: 1280px;margin: 0 auto;
+}
+
+.tab-review{
+	/*width: 1280px;
+	margin: 0 auto; */
+}
+
+/* end gioi thieu */
+
+#bg-tabs-detail{
+	background: #072966 url('../img/bg-hbg 800-01.png') no-repeat top center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    padding: 0px 20px;
+    width: 100%;
+    height: 140px;
+    margin-bottom: 20px;
+}
+
+.des-louis{
+	text-align: center;
+}
+
+#activity_tab{
+	 /*   width: 696px !important; */
+    margin: -49px auto;
+    border: 2px solid #fff;
+    margin-bottom: 30px;
+}
+
+.title-louis-activity{
+	font-size: 2.4em;
+	padding: 20px 30px 30px 30px;
+}
+
+.nav-tabs>li{
+	text-align: center;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+	border-width: auto !important;
+}
+
+.nav-tabs > li:first-child.active > a{
+	border-radius: 10px 0px 0px 10px;
+}
+
+.button-line{
+	width: 350px;
+    height: 68px;
+    background: #02265c;
+    color: #fff;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+
+.button-line img{
+	float: left;
+}
+
+.button-line p{
+	color: #fff;
+	margin-top: 10px;
+	font-size: 13px;
+	padding-left: 10px;
+}
+
+.fa-long-arrow-right{
+	
+    position: relative;
+    top: -24px;
+    text-align: center;
+    width: 36px;
+}
+
+.fa-long-arrow-left{
+	
+    position: relative;
+    top: -24px;
+    text-align: center;
+    width: 36px;
+}
+
+.fa-long-arrow-down{
+	 position: relative;
+    text-align: center;
+    width: 36px;
+    height: 50px;
+    top: 9px;
+    
+}
+
+.right{
+	right: -300px;
+}
+
+.left{
+	left: -300px;
+}
+
+.big{
+	font-size: 1.8em !important;
+}
+
+.content-line-button{
+	width: 1280px;
+	margin: 0 auto;
+	padding-left: 116px;
+}
+
+
+#louis-panel-contact{
+	      margin-left: 50px;
+    position: absolute;
+    top: 316px;
+    left: 50%;
+}
+
+#louis-panel-contact .panel-heading{
+	background: #052251 !important;
+	color: #fff !important;
+	text-transform: uppercase !important;
+	text-align: center !important;
+	border-top: 4px solid #f0af09 !important;
+}
+#louis-panel-contact .panel{
+	border: none;
+	border-radius: 0px;
+}
+.submit-contact{
+	background: #242150;
+    color: #fff;
+    border: none;
+    float: right;
+    margin-right: 16px;
+    margin-top: 20px;
+    }

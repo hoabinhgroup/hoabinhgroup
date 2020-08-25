@@ -1,0 +1,171 @@
+ <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/1481098142Unibentuyendung.jpg'); background-position: 0px -41px; background-attachment: fixed;">
+		    <div class="container">
+			    <div class="row">
+		 <h1>Danh sách tin tuyển dụng</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+  <li class="breadcrumb-item active">Tuyển dụng</li>
+</ol>	
+			</div>
+			</div>
+	    </div>
+	<div class="container">
+	    <div class="row" id = "join-content">	    
+		    <div class="join-description col-md-8">
+			    
+			    <?php foreach($this->result as $key=>$val): ?>
+			    <div class="item-join">
+				  <div class="panel-title">
+					 <img src="<?=TEMPLATE_URL?>/default/img/icons/hot-red.png"/> <?php echo $val['title']; ?>
+				  </div>
+				  <div class="row">
+					  <div class="col-md-10">
+					  <div class="container-fluid">
+					  	<div class="panel-body">
+					  		<div class="col-md-12">
+					  
+				<p><i class="fa fa-user" aria-hidden="true"></i> <b>Số lượng</b>: <?php echo $val['people']; ?> &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-clock-o" aria-hidden="true"></i> <b>Hạn tuyển dụng</b>: <?php echo date('d/m/Y',$val['expired']); ?></p>
+				<p><i class="fa fa-map-marker" aria-hidden="true"></i> <b>Địa điểm làm việc</b>: <?php 
+					//echo $val['location'];
+				$location = new Model_Location();
+				echo $location->getNameFromListId($val['location']);
+					 ?></p>
+				<p><i class="fa fa-home" aria-hidden="true"></i> <b>Công ty</b>: <?php 
+				$company = new Model_Company();
+				echo $company->get_one($val['company'])->title;	
+				 ?></p>
+				<p><i class="fa fa-newspaper-o" aria-hidden="true"></i> <b>Nhóm ngành nghề</b>: 	<?php 		$group = new Model_Group();
+					echo $group->get_one($val['work_group'])->title; ?></p>
+					  
+					  		</div>
+					  	</div>
+					  </div>
+				  		</div>
+					  <div class="col-md-2">
+					  	<div class="button-join">XEM CHI TIẾT</div>
+					  </div>
+					</div>
+				</div> <!--.item-join-->
+			    <?php endforeach; ?>
+			
+	
+ 
+		    <nav aria-label="Page navigation" class="pull-right">
+  <ul class="pagination">
+   <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Trang sau</a></li>
+  </ul>
+</nav>
+	
+	 
+		    </div>
+		      <div class="news-col-right col-md-4">
+				<div class="row">
+			       <div class="col-xs-12 col-md-12">
+			     <div id="join-filter" class="panel panel-default">
+    <div class="panel-heading">Tìm kiếm tin tuyển dụng</div>
+    <div class="panel-body">
+	   <div class="form-group">
+  <input type="text" class="form-control" id="usr" placeholder="Nhập từ khóa">
+  	</div>
+  	
+  	<div class="form-group">
+  <select class="form-control" id="sel1">
+	  <option>Chọn nhóm ngành nghề</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+</div>
+
+	<div class="form-group">
+  <select class="form-control" id="sel1">
+	  <option>Chọn địa điểm làm việc</option>
+    <option>Hà Nội</option>
+    <option>Đà Nẵng</option>
+    <option>TP. HCM</option>
+  </select>
+</div>
+
+
+<div class="form-group">
+  <select class="form-control" id="sel1">
+	  <option>Chọn Công ty</option>
+    <option>Hòa Bình Group</option>
+    <option>Vietnamevents</option>
+  </select>
+</div>
+	<input type="submit" value="Tìm kiếm" class="button-join-submit" />
+	<input type="submit" value="chọn lại" class="button-join-submit" />
+
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			      </div>
+			    <div class="row">  
+			       <div class="col-sm-12 col-md-12">
+			   
+			     <div id="ul-tags" class="panel panel-default">
+				      <div class="panel-body">
+		<div class="form-group">			      
+    <input type="submit" value="HỎI ĐÁP FAQ" class="button-join-ask form-control" />
+		</div>
+		
+	<input type="submit" value="TẢI MẪU ĐƠN ỨNG TUYỂN" class="button-join-ask form-control" />
+	
+				      </div>
+ 
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			         </div>
+			     <div class="row">  
+			       <div class="col-sm-12 col-md-12">
+			     <div id="category-news" class="panel panel-default">
+    <div class="panel-heading">Giới thiệu về Hòa Bình Group</div>
+    <div class="panel-body">
+	     <ul class="list-group">
+	    <div id="owl-video" class="owl-carousel owl-theme">	
+	<div class="item">   
+  <li class="list-group-item louis-list-video">
+   <span id="playtube" href="#"></span>
+	   <img style="width: 100%;" src= "<?=TEMPLATE_URL?>/default/img/demo%20web-11.png"/>
+	   <div style="text-align: justify;padding: 15px;">
+	   Với niềm đam mê cháy bỏng dành cho nghề tổ chức hội nghị, sự kiện, triển lãm và du lịch (M.I.C.E); cùng nỗ lực bền bỉ và sự tận tâm, khát khao được cống hiến, chúng tôi - những chuyên viên của Hòa Bình Group đang nỗ lực từng ngày để đem đến cho Quý khách hàng những dịch vụ tốt nhất với giá trị cao nhất.
+Chất lượng làm nên danh tiếng -  Đó chính là thông điệp mà Hòa Bình Group muốn gửi gắm tới tất cả Quý khách hàng.
+	   </div>
+   <p style="text-align: justify;padding: 15px;font-style: italic">Chất lượng làm nên danh tiếng - Đó chính là thông điệp mà Hòa Bình Group muốn gửi gắm tới tất cả Quý khách hàng</p>
+      </li>
+	</div>
+
+<div class="item">   
+  <li class="list-group-item louis-list-video">
+   <span id="playtube" href="#"></span>
+	   <img style="width: 100%;" src= "<?=TEMPLATE_URL?>/default/img/demo%20web-11.png"/>
+  <div style="text-align: justify;padding: 15px;">
+	   Với niềm đam mê cháy bỏng dành cho nghề tổ chức hội nghị, sự kiện, triển lãm và du lịch (M.I.C.E); cùng nỗ lực bền bỉ và sự tận tâm, khát khao được cống hiến, chúng tôi - những chuyên viên của Hòa Bình Group đang nỗ lực từng ngày để đem đến cho Quý khách hàng những dịch vụ tốt nhất với giá trị cao nhất.
+Chất lượng làm nên danh tiếng -  Đó chính là thông điệp mà Hòa Bình Group muốn gửi gắm tới tất cả Quý khách hàng.
+	   </div>
+   <p style="text-align: justify;padding: 15px;font-style: italic">Chất lượng làm nên danh tiếng - Đó chính là thông điệp mà Hòa Bình Group muốn gửi gắm tới tất cả Quý khách hàng</p>
+      </li>
+	</div>
+
+  		
+	    </div>
+	    </ul>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			     </div> 
+			  
+		    </div>
+	    	
+	     </div>
+    </div><!--.container-->	
+    

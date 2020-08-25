@@ -1,0 +1,189 @@
+<link rel="stylesheet" type="text/css" href="<?=TEMPLATE_URL?>/uploadifive/uploadifive.css">
+
+<script src="<?=TEMPLATE_URL?>/uploadifive/jquery.uploadifive.min.js" type="text/javascript"></script>
+<style>
+#photoUpload{
+
+}
+#photoUpload ul li{
+	list-style-type: none;
+	margin-bottom: 20px;
+}
+#photoUpload ul li img{
+	float: left;
+}
+</style>
+
+<h1> Thêm ảnh đại điện cho <?=$this->name?></h1>
+
+	<div id="queue"></div>
+
+		<input id="file_upload" name="file_upload" type="file" multiple="true">		
+		
+	<div id="preview"></div>	
+	
+	<br/>
+	<?php
+  $db = Zend_Db_Table::getDefaultAdapter();
+  $select = $db->select()
+  			   ->from('productImage',array('full','imageId','isDefault'))
+  			   ->where('productId = ?', $this->pid);
+  		$result = $db->fetchAll($select);	   
+  
+  		$count = count($result);
+  		
+  		?>
+  		<div id="photoUpload">
+	  	   <ul>
+	  	  <?	if ($count > 0){
+		  	  foreach ($result as $key=>$val):  ?>
+	  		
+	  		<li id="item_<?=$val['imageId']?>">
+	  	<div class="row">
+	  	<div class="col-xs-8">
+	  		<img src="/public/images/testimonial/<?=$this->pid?>/<?=$val['full']?>" width= "330px" />
+	  	</div>
+	  	<div class="col-xs-4">	
+	  		 <div class="col-sm-6"><div class="radio"> <label><input type="radio" name="default" class='ace CheckBoxClass' id="radio_<?=$val['imageId']?>" value="no" <?php echo ($val['isDefault'] == 'Yes')?' checked':''; ?>><span class="lbl"> set default </label></div></span></div>
+	  		 
+	  		<div class="col-sm-4" style="margin-top:8px"> | 
+	  		 <span class="stdelete" onclick="deleteItem(this)" data="del_<?=$val['imageId']?>"> &nbsp;Xóa</span>
+	  		 
+	  		</div>
+	  	</div>
+	  		</div>	
+	  		</li>
+	  	<div style="clear:both"></div>	
+	  	<?	endforeach;
+		  	}
+	  	?>
+	  	</ul>
+	  		</div>
+	  		<?
+  		
+?>
+	
+<?php $timestamp = time();?>
+<script type="text/javascript">
+
+$(document).ready(function() { 
+ //alert(33434);
+ $('#file_upload').uploadifive({
+			    'fileType'     : 'image',
+			    'queueSizeLimit' : 8,
+				'multi'			   : true,
+				'auto'             : true,
+				'fileSizeLimit' : 3500,
+				'formData'         : {
+				'timestamp' : '<?php echo $timestamp;?>',
+				'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
+				'productID' : '<?=$this->pid?>',
+				                     },
+				'queueID'          : 'queue',
+				'uploadScript'     : '/admin/testimonial/upload/',
+				'onError'      : function(errorType) {
+				switch(errorType) {
+				case '404_FILE_NOT_FOUND':
+					alert('Không tìm thấy tệp tin!');
+					break;
+				case 'FORBIDDEN_FILE_TYPE':
+					alert('Chỉ hỗ trợ định dạng ảnh');
+					break;
+				case 'FILE_SIZE_LIMIT_EXCEEDED':
+				alert('Vượt quá dung lượng cho phép');
+				break;
+				case 'QUEUE_LIMIT_EXCEEDED':
+				alert('Xin vui lòng xóa file ảnh hiện tại trước khi chọn lại file khác!');
+				//j('.stdelete').trigger('click');
+				//j('#file_upload').uploadifive('clearQueue').trigger('click');
+				break;
+				default:
+				alert(errorType);
+				alert('Có lỗi, xin thử lại');
+				break;
+				   }
+                } ,
+                'onSelect' : function(queue) {
+             
+     
+				} ,
+                 'onCancel'     : function() {
+           // alert('The file ' + file.name + ' was cancelled!');
+                 } ,
+             'onProgress': function(file, e) {
+				 //  console.log(e);
+            
+			
+				 },
+      
+        
+                'onUpload'     : function(filesToUpload) {
+          
+					} ,
+			'onUploadComplete' : function(file, data, response) {
+				
+				console.log(data);
+				var obj = jQuery.parseJSON(data);
+		
+				$('#photoUpload ul').append('<li><div class="row"><div class="col-xs-8"><img src="/public/images/testimonial/<?=$this->pid?>/'+ obj.tenfile +'" width="330px"></div><div class="col-xs-4"><div class="col-sm-6"><div class="radio"><label><input id="radio" class="ace CheckBoxClass" type="radio" checked="" value="no" name="default"><span class="lbl"> set default </span></label></div></div><div class="col-sm-4" style="margin-top:8px"> | <span class="stdelete" data="del" onclick="deleteItem(this)">  Xóa</span></div></div></div></li><div style="clear:both"></div>');
+				}
+			});
+	
+	
+	
+}); 
+
+function deleteItem(o){
+		//alert($(o).attr('data'));
+		var data =  $(o).attr('data');
+		var item = data.split('_')[1];
+		//alert(item);
+		var productID = '<?=$this->pid?>';
+		$('#item_'+item).fadeOut();
+		var dataString = 'itemDel=' + item + '&pID=' + productID;
+		//alert(dataString);
+		 $.ajax({
+            type: "POST",
+            url: "/admin/testimonial/delitem",
+            data: dataString,
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
+			 
+			  
+            },
+            error: function(response){
+	            console.log(response);
+	           // alert();
+            }
+        });
+		
+	 return false;
+	}
+	
+	//$('#radio_')
+	
+	//var input = $('input:radio[name="default"]');
+	$(".CheckBoxClass").change(function(){
+	var var_name = $(this).val(); 
+	var itemId = $(this).attr('id');
+	var new_itemID = itemId.split('_')[1];
+	var productID = '<?=$this->pid?>';
+	//alert(new_itemID);
+  dataString = 'itemDef=' + new_itemID + '&pID=' + productID;
+	$.ajax({
+            type: "POST",
+            url: "/admin/testimonial/default",
+            data: dataString,
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
+			 
+ 
+            }
+        });
+		
+	 return false;
+  
+  	});
+</script>

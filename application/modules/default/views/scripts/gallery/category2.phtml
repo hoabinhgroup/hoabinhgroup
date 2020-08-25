@@ -1,0 +1,60 @@
+  <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;">
+	  <div class="row">
+	  	<div class="container">
+	 <style>
+		.mb-30{
+			margin-bottom: 30px;
+		} 
+    </style>
+		 <h1><?php echo $this->menu->name; ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Giới thiệu</a></li>
+  <li class="breadcrumb-item active"><?php echo $this->breadcrum; ?></li>
+</ol>
+ 		
+	  	</div><!-- .container -->
+	  </div><!-- .row -->
+	    </div>
+	    <div class="row" id = "news-content">
+	       <div class="review-content">
+		   <div id="bg-tabs-detail">
+			                     <div class="gallery">
+                                    <div class="title-louis-gallery center"> <?php echo $this->menu->name; ?></div>
+									<div class="underline"></div>
+									<div class="des-louis">Hòa Bình Group - đem đến giải pháp trong mọi lĩnh vực</div>
+                                    <!-- Tab panes -->
+                                 
+      </div>
+       </div>
+       
+	          <div class="row">
+		          <div id="galleries">
+			           <div class="col-md-8 col-md-offset-2 col-xs-12 col-xs-offset-0">
+				          	 
+			<?php 
+				
+				$stt = 0;
+				foreach($this->menus as $key=>$val): $stt++;
+				?>
+		<div class="mb-30">		
+		<img width="100%" src="/public/images/backgrounds/<?php echo $val['full']; ?>">		
+		</div>
+			<?php endforeach; ?>
+
+			
+
+			
+		  
+				             		           
+		          </div><!-- #galleries-->
+	          </div>                  
+            
+             
+
+                                
+			</div>	
+		  
+	   		    	
+	    	
+	    </div>

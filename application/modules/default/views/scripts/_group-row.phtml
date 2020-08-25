@@ -1,0 +1,170 @@
+<tr>
+	<td class="center">
+			<label>
+			<input type="checkbox" class="ace" />
+		<span class="lbl"></span>
+			</label>
+	</td>
+    <td><?php echo $this->id; ?></td>
+    <td width="36%"><?php echo $this->title; ?></td>
+ 
+	
+    <td><?php echo $this->String()->cut_string(strip_tags($this->description),'200','...'); ?></td>
+    
+    <td width="16%">
+  <?php if($this->permission()->can_access('edit') == true){ ?>
+	   <a class="green" href='/<?=ADMIN?>/group/edit/id/<?php echo $this->id;?>'><i class="fa fa-pencil bigger-130"></i></a> |
+	   
+	   <?php } ?>   
+        <?php if(($this->permission()->can_access('show') == true) || ($this->permission()->can_access('hide') == true)){ ?>
+         <?php if($this->status == 1){ ?>
+         <a title="&#7848;n" class="orange" id="hide_<?php echo $this->id;?>" href="javascript:void(0);" onclick="hide(this)"><i class="fa fa-eye  bigger-130"></i></a>
+           <a title="Hi&#7879;n" style="color: #848484;display: none;" id="show_<?php echo $this->id;?>" href="javascript:void(0);" onclick="show(this)"><i class="fa fa-eye-slash bigger-130"></i> </a> 
+         <?php }else { ?>
+	      <a title="&#7848;n" style="color: #848484;" id="show_<?php echo $this->id;?>" href="javascript:void(0);" onclick="show(this)"><i class="fa fa-eye-slash  bigger-130"></i></a> 
+	      <a title="&#7848;n" class="orange" style ="display: none;" id="hide_<?php echo $this->id;?>" href="javascript:void(0);" onclick="hide(this)"><i class="fa fa-eye bigger-130"></i> </a>    
+	         
+     <?php    } ?>
+     <?php } ?>
+     &nbsp;
+|&nbsp;
+    <?php if(($this->permission()->can_access('feature') == true) || ($this->permission()->can_access('unfeature') == true)){ ?>
+        <?php if($this->featured == 1){ ?>
+         <a title="Set unfeature" class="orange" id="unfeature_<?php echo $this->id;?>" href="javascript:void(0);" onclick="unfeature(this)"><i class="fa fa-star bigger-130"></i></a>
+           <a title="Set feature" style="color: #848484;display: none;" id="feature_<?php echo $this->id;?>" href="javascript:void(0);" onclick="feature(this)"><i class="fa-star bigger-130"></i> </a> 
+         <?php }else { ?>
+	      <a title="Set feature" style="color: #848484;" id="feature_<?php echo $this->id;?>" href="javascript:void(0);" onclick="feature(this)"><i class="fa fa-star bigger-130"></i></a> 
+	      <a title="Set unfeature" class="orange" style ="display: none;" id="unfeature_<?php echo $this->id;?>" href="javascript:void(0);" onclick="unfeature(this)"><i class="fa fa-star bigger-130"></i> </a>    
+	         
+     <?php    } ?>
+     
+     &nbsp;
+     <?php } ?>
+     <?php if($this->permission()->can_access('delete') == true){ ?>
+        <a onclick="return confirm('Bạn muốn xóa?');"  class="red" href='/<?=ADMIN?>/group/delete/id/<?php echo $this->id;?>'><i class="fa fa-trash bigger-130"></i></a>
+        <?php } ?>
+    </td>
+</tr>
+
+<script type="text/javascript">
+ 
+     
+     function feature(o){
+	var ID = $(o).attr("id");
+	var sid=ID.split("_");
+	var newID = sid[1];
+
+	 $('#feature_' + newID).hide();
+	var data = 'id=' + newID;
+  
+    $.ajax({
+            type: "POST",
+            url: "/admin/group/feature",
+            data: data,
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
+             
+
+   $('#unfeature_' + newID).show();
+        
+                       
+            }
+         
+        });
+		
+	 return false;
+	 
+     }
+     
+     
+      
+     function unfeature(o){
+	var ID = $(o).attr("id");
+	var sid=ID.split("_");
+	var newID = sid[1];
+	
+	//alert(userID);
+	
+	var data = 'id=' + newID;
+  $('#unfeature_' + newID).hide();
+
+    
+    $.ajax({
+            type: "POST",
+            url: "/admin/group/unfeature",
+            data: data,
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
+
+   $('#feature_' + newID).show();
+         
+              
+            }
+        });
+		
+	 return false;
+	 
+     }
+    
+     function show(o){
+	var ID = $(o).attr("id");
+	var sid=ID.split("_");
+	var newID = sid[1];
+
+	 $('#show_' + newID).hide();
+	var data = 'id=' + newID;
+    
+    $.ajax({
+            type: "POST",
+            url: "/admin/group/show",
+            data: data,
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
+             
+
+   $('#hide_' + newID).show();
+        
+            
+           
+            }
+         
+        });
+		
+	 return false;
+	 
+     }	
+    
+  function hide(o){
+	var ID = $(o).attr("id");
+	var sid=ID.split("_");
+	var newID = sid[1];
+	
+	//alert(userID);
+	
+	var data = 'id=' + newID;
+  $('#hide_' + newID).hide();
+
+    
+    $.ajax({
+            type: "POST",
+            url: "/admin/group/hide",
+            data: data,
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
+
+   $('#show_' + newID).show();
+         
+              
+            }
+        });
+		
+	 return false;
+	 
+     }
+
+
+    </script>

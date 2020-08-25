@@ -1,0 +1,17 @@
+<tr>
+	<td class="center">
+			<label>
+			<input type="checkbox" class="ace" />
+		<span class="lbl"></span>
+			</label>
+	</td>
+    
+    <td><?php echo $this->name; ?></td>
+    <td><?php echo $this->shortDescription; ?></td>
+    <td width="10%">
+        <a class="green" href='/<?=ADMIN?>/testimonial/edit/id/<?php echo $this->id;?>'><i class="fa fa-pencil bigger-130"></i></a> |
+        <a title="Quản lý ảnh sản phẩm" class="green" href='/<?=ADMIN?>/testimonial/photo/id/<?php echo $this->id;?>'><i class="fa fa-picture-o bigger-130"></i></a> | 
+        <a class="red" href='/<?=ADMIN?>/testimonial/delete/id/<?php echo $this->id;?>'><i class="fa fa-trash bigger-130"></i></a>
+    </td>
+</tr>
+

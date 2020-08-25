@@ -1,0 +1,63 @@
+<div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;">
+		   <div class="container"> <div class="row">
+		 <h1> <?php echo $this->translate('gallery'); ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#"><?php echo $this->translate('home'); ?></a></li>
+  <li class="breadcrumb-item"><a href="#"><?php echo $this->translate('intro'); ?></a></li>
+  <li class="breadcrumb-item active"><?php echo $this->translate('gallery'); ?></li>
+</ol>
+</div> </div>
+	    </div>
+	    
+	    
+	    <div class="row" id = "news-content">
+	    <div class="review-content">
+		   <div id="bg-tabs">
+			    <div class="gallery">
+                     <ul id='gallery_tab' class="nav-tabs-gallery" role="tablist">
+                                        <li role="presentation"><a href="/gallery" class="text-uppercase"><?php echo $this->translate('gallery'); ?></a></li> 
+                                        <li role="presentation" class="active"><a class="text-uppercase" href="#travels" aria-controls="travels" role="tab" data-toggle="tab"><?php echo $this->translate('video'); ?></a></li>
+                      </ul>
+
+                                    <!-- Tab panes -->
+                    <div class="tab-content">
+         <div role="tabpanel" class="tab-pane" id="home"></div>
+             <div role="tabpanel" class="tab-pane active" id="travels">
+	         
+		          <div id="galleries">
+			          
+			           <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+				            <div class="gallery-content">
+					            
+			 <div class="row">
+				  <?php if (count($this->menus) > 0) { ?>
+				   <?php 
+			    $stt= 0;
+			foreach($this->menus as $val): $stt++;
+	
+			 ?>
+			<div class="medium-gallery-bg col-md-3">  
+			   <a href="/video/<?php echo $val['link']; ?>"> <img class="" src="/public/images/backgrounds/<?php echo $val['full']; ?>" /></a>
+			 <div class="title-album"><?php echo $val['name']; ?></div>
+			 </div>
+			<?php  endforeach; ?>
+		    
+			
+			<?php  } ?>
+			</div>
+			
+			
+		  
+				            </div>
+					    </div>
+			       </div>
+	                             
+            </div>
+                                    
+                                    </div>
+				</div>
+                                
+
+		   </div><!--#bg-tabs-->
+	    </div>		    	
+	    	</div>

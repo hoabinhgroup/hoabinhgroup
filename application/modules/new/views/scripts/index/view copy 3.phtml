@@ -1,0 +1,337 @@
+<style>
+		.large_post iframe{
+		width: 100%;
+		height: 430px !important;
+		margin: 10px 0px;
+	}
+
+
+p img{
+	  position: relative;
+	  display: block;
+	  left: 50%;
+	  transform: translate(-50%, 0);
+	  margin-bottom: 10px;
+	  width: 100% !important;
+       height: auto !important;
+}
+   
+      td{
+	   border: 1px solid #dedede;
+	   padding: 5px;
+	      }
+	  .addthis_default_style .at300b, .addthis_default_style .at300bo, .addthis_default_style .at300m{
+		  margin-top: -10px;
+	  }
+	  .at_PinItButton{
+		  margin-top: 10px;
+	  }
+	 
+	  p{
+		  text-align: left;
+		/*width: 636px !important; */ 
+		display: block;
+		clear: both;
+		margin: 10px auto;
+	  }
+	
+</style>
+<section id="main_content">
+	
+	<div class="top_title_holder add-bottom">
+				
+				<div class="top_title_border"></div>
+				<div class="bottom_title_border"></div>
+				
+				<div class="container">
+					
+					<div class="eleven columns">
+						
+						<h3><?php echo $this->name; ?></h3>	
+						
+					
+					</div><!-- end nine -->
+					
+					<div class="seven columns">
+					
+						
+					
+					</div><!-- end seven -->
+				
+				</div><!-- end container -->
+			
+			</div><!-- end .top_title_holder -->
+
+	
+			<div class="container">
+			
+			
+				<div class="twelve columns add-top add-bottom alpha">
+				
+					<article class="large_post add-bottom">
+					
+										
+						<div class="postType standard_post add-top"></div>
+						
+						<div class="post_content eleven columns add-top">
+							
+							
+							<p><?php echo str_replace('\"','',$this->description); ?>								
+							</p>
+							<hr>
+			<?php if($this->lang === 'vi'){ ?>				
+	<p><h5>Tập đoàn Hòa Bình Group </h5></p>
+<p>Địa chỉ: Số 29 Đoàn Thị Điểm, quận Đống Đa, TP. Hà Nội<br/>
+
+Điện thoại: (84-4) 3732 5976 Fax: (84-4) 3732 5978<br/>
+Website: http://hoabinhtourist.com / http://hoabinh-group.com <br/>
+Email: info@hoabinh-group.com<br/>
+Hotline: 0913.311.911 / 04.37325976 Máy lẻ 329 (Ms. Hoàng Lan)</p>
+
+<p><h5>Văn phòng miền Trung:</h5></p>
+<p>Địa chỉ: Số 61 Huỳnh Thúc Kháng, quận Hải Châu, TP. Đà Nẵng<br/>
+Điện thoại: (84-236) 399 6116 Fax: (84-511) 399 6336<br/>
+Hotline: 0905.388.666 (Mr. Thái Sơn)</p>
+
+
+<p><h5>Văn phòng miền Nam:</h5></p>
+
+<p>Địa chỉ: 13 Cù Lao, quận Phú Nhuận, TP. HCM<br/>
+Điện thoại: (84-8) 3517 1797 Fax: (84-8) 3517 0447<br/>
+Hotline: 0913.199.866 (Mr. Jackie Hân)</p>
+			<?php }else{ ?>				
+				<p><em>For more information on conference services, conferences, and events package,  please contact us at:
+</em></p>
+
+<p><strong>Hoabinh Group </strong><br />
+Add: 29 Doan Thi Diem Street, Dong Da District, Ha Noi
+<br />
+Tel: (84-4) 3732 5976 Fax: (84-4) 3732 5978<br />
+Website: http://hoabinhtourist.com / http://hoabinh-group.com <br />
+Email: info@hoabinh-group.com<br />
+Hotline: 0913.311.911 / 04.37325976 Máy lẻ 329 (Ms. Hoang Lan)<br />
+<strong>Branch office in Da Nang city</strong><br />
+Add: 61 Huynh Thuc Khang Street, Hai Chau District, Da Nang city<br />
+Tel: (84-511) 399 6116 Fax: (84-511) 399 6336<br />
+Hotline: 0905.388.666 (Mr. Thai Sơn)<br />
+<strong>Branch office in Ho Chi Minh city:</strong><br />
+Add: 13 Cu Lao Street, Phu Nhuan District, Ho Chi Minh City<br />
+Tel: +848.3517.17.97/ Fax: +848.3517.04.47<br />
+Hotline: 0913.199.866 (Mr. Jackie Han)</p>
+								
+							</p>
+				
+			<?php } ?>			
+							<ul class="post_meta">
+								
+								<li class="author">  <a href="/"> Hoabinh Group </a> </li>
+									<?php 
+									
+			   $db = Zend_Db_Table::getDefaultAdapter();
+	     $select = "select tags from product where id = '".$this->id."'";
+	   $tags_result = $db->fetchRow($select);	
+	   
+	   //luot view
+	    $select_views = "select product.views from product where id = '".$this->id."'";
+	   $result_views = $db->fetchRow($select_views);
+	   
+	   $views = $result_views['views'];
+	   
+	   $views = $views + 1;
+	   
+	   $update_views = "UPDATE product SET views = $views WHERE id = '".$this->id."'";
+	   $db->query($update_views);
+	   
+	  if ($tags_result['tags'] != null){
+		  $tags_result = explode(',',$tags_result['tags']);
+		  
+		  echo '<li class="tags"> ';
+		  foreach($tags_result  as $ktag=>$vtag ): ?>
+				<a title="Tag <?php echo $vtag; ?>" class="taglink" href="/tag/<?php echo $this->string()->url(trim($vtag),'-'); ?>"><?php echo $vtag; ?></a>, 
+			<?php	endforeach;
+			echo '</li>';
+	  }
+				
+				
+				 ?> 
+							
+			<span style="float:right;font-style: italic;"><i class="icon-eye" aria-hidden="true"></i>
+<?php echo $views; ?> <?php  echo $this->translate('view'); ?></span>					
+							</ul><!-- end post_meta -->
+						
+						</div><!-- end .post_content -->
+						
+						<div class="post_share_holder">
+						
+							<h4> <?php echo $this->translate('share_social'); ?></h4>
+		<div style="margin-top: 10px;right:250px;;position: absolute;">				
+							 <!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+<a class="addthis_counter addthis_pill_style"></a>
+</div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-524baa37331d05b7"></script>
+<!-- AddThis Button END -->
+		</div>					
+						</div><!-- .post_share_holder -->
+						
+						
+					
+					</article>
+					
+					
+					
+					
+					
+						
+						<div class="related_posts add-bottom add-top">
+							
+							<div class="fourteen columns" style="margin-left: -10px;margin-top: 5px;">
+								<style>
+				.related_posts ul li:before{
+					content: inherit !important;
+				}					
+				.circle_list li{
+					display: inherit;
+				}					
+								</style>
+		<?php if($this->lang == 'vi'){ ?>	
+		<div class="one-third column">					
+			<ul class="one-third column alpha add-bottom circle_list">
+<li> Tổ chức hội nghị, hội thảo, tập huấn đào tạo </li>
+<li> Tổ chức sự kiện và truyền thông </li>
+<li> Cung cấp giải pháp quảng cáo, truyền thông </li>
+<li> Tổ chức tour du lịch trong nước và quốc tế </li>
+			</ul>
+		</div>
+			<div class="one-third column">	
+			<ul class="one-third column omega add-bottom circle_list">
+<li> Cho thuê xe du lịch</li>
+<li> Cho thuê thiết bị sự kiện</li>
+<li> Cung cấp MC, ca sỹ, vũ đoàn, nhạc công và PG...</li>
+<li> Cung cấp các dịch vụ tiệc buffet, tiệc trà tận nơi</li>
+			</ul>
+			</div>
+		<?php }else{ ?>
+	<div class="one-third column">	
+			<ul class="one-third column omega add-bottom circle_list">
+<li> Organizing conference, meeting, training workshop,...	</li>
+<li> Organizing event</li>
+<li> Providing advertising solution</li>
+<li> Providing local and outbound tour</li>
+			
+				</ul>
+			</div>
+		
+	<div class="one-third column">	
+			<ul class="one-third column omega add-bottom circle_list">
+<li> Car rental </li>
+<li> AV equipment rental </li>
+<li> Providing MC, singers, dancer, PG...</li>
+<li> Providing morning tea break; buffet lunch; afternoon tea break</li>
+			</ul>
+			</div>
+		<?php } ?>
+	</div>
+							
+						
+						</div><!-- end .related_posts -->
+						
+					
+						
+						
+						<div class="reply_holder add-bottom add-top">
+						
+							<div class="title">
+										
+								<h2> <span class="bold"> <?php  echo $this->translate('comment'); ?></span> </h2>
+										
+								<div class="title_sep_container">
+										<div class="title_sep"></div>
+								</div><!-- end .title_sep_container -->
+										
+						</div><!-- end .title -->
+							
+							
+				
+		<div class="fb-comments" data-width="600px" data-href="<?=$this->current?>" data-numposts="10" data-colorscheme="light"></div>	
+										
+							
+						</div><!-- end reply_holder -->	
+						
+						
+						
+					
+				
+				</div><!-- end twelve -->
+				
+				
+				<div class="four columns add-top add-bottom omega" style="padding-top: 10px;">
+			
+				<aside class="sidebar">
+				
+					
+					
+					<article class="widget latest_posts">
+						
+						<div class="widget_title">
+							
+							<h2> <span class="bold"><?php echo $this->translate('newscategory'); ?></span> </h2>
+							
+							<div class="title_sep_container">
+								<div class="title_sep"></div>
+							</div><!-- end .title_sep_container -->
+							
+						</div><!-- end .title -->
+				
+						<ul style="margin-left: 20px;">
+			<?php foreach($this->newsarr as $kcat=>$vcat): ?>
+	<li class="cat-item cat-item-<?=$vcat['id']?>"><a href="http://hoabinh-group.com/<?=$vcat['link']?>" ><?=$vcat['name']?></a>
+</li>
+		<?php endforeach; ?>
+						</ul>	
+						
+					</article><!-- end .latest_posts -->
+					
+					<article class="widget latest_posts">
+						
+						<div class="widget_title">
+							
+							<h2> <span class="bold"><?php echo $this->translate('activities'); ?></span> </h2>
+							
+							<div class="title_sep_container">
+								<div class="title_sep"></div>
+							</div><!-- end .title_sep_container -->
+							
+						</div><!-- end .title -->
+						
+						<ul style="margin-left: -10px;">
+						
+						<ul>
+			<?php foreach($this->newArr as $kcat=>$vcat): ?>
+	<li class="cat-item cat-item-<?=$vcat['id']?>"><a href="/<?=$vcat['link']?>" ><?=$vcat['name']?></a>
+</li>
+		<?php endforeach; ?>
+						</ul>	
+						</ul>
+					</article><!-- end .latest_posts -->
+				
+		
+							
+					<article class="widget">
+			
+						
+											
+					</article><!-- end .widget -->		
+					
+				</aside>
+			
+			</div><!-- end four -->
+				
+				
+								
+			</div><!-- end container -->
+		
+	</section><!-- end #main_content -->

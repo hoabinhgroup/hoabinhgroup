@@ -1,0 +1,127 @@
+ <style>
+
+	.item_gallery{
+    margin-right: 4px;
+    overflow: hidden;
+    width: 290px;
+	}
+	
+	.caption-gallery{
+background: #000 none repeat scroll 0 0;
+    bottom: 0;
+    color: #fff;
+    height: 30px;
+    margin-bottom: 5px;
+    padding: 10px 0 0 10px;
+    position: absolute;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 280px;
+    opacity: 0.8;
+	}
+	.my-gallery figure {
+		height: 210px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    width: 300px;
+}
+	.my-gallery{
+		margin: 15px;
+	}
+	
+	
+</style>
+
+  <?php $count = count($this->menus); ?>
+  <input type="hidden" id="countgallery" value="<?php echo $count; ?>" />
+<div itemscope itemtype="http://schema.org/ImageGallery">
+
+  <?php 
+	
+	
+	  $i = 0;
+	  foreach($this->menus as $key=>$val): $i++; ?>
+     <?php
+	$url = 'http://hoabinh-group.com/public/images/backgrounds/'.str_replace(' ','%20',$val['full']);
+	      $imagesize = getimagesize($url);
+	
+	$datasize = $imagesize[0].'x'.$imagesize[1];
+	     ?>
+    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+      <a class="imagefull_<?php echo $i; ?>" href="http://hoabinh-group.com/public/images/backgrounds/<?php echo $val['full']; ?>" itemprop="contentUrl" data-size="<?=$datasize?>" >
+          <img width="290" src="http://hoabinh-group.com/public/images/backgrounds/<?php echo $val['full']; ?>" itemprop="thumbnail" alt="<?php echo $val['name']; ?>" />
+      </a>
+      <figcaption itemprop="caption description"></figcaption>
+    </figure>
+
+  <?php endforeach; ?>	
+
+  </div>
+	
+	
+		
+	<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+</div>	

@@ -1,0 +1,778 @@
+/* iPhone / mobile webkit */
+@media screen and (max-device-width: 480px) {
+	body, html{
+    overflow-x: hidden;
+	}
+
+	body{
+		width: 100%;
+		overflow-x:hidden !important;
+		
+	}
+	
+	h1{
+		font-size: 1.8em;
+	}
+	
+	#section-play-pause{
+		bottom: 10px;
+	}
+	
+	#myVideo{
+		height: 200px !important; 
+	}
+	.container{
+		 max-width: 100% !important;
+        overflow-x: hidden !important;
+	}
+	.content-louis-news p{
+		width: 100% !important;
+	}
+	.nav-first{
+	margin-left: -15px !important;
+}
+
+.social ul.social-list{
+	margin-left: 20px;
+}
+
+#louis-panel-contact{
+	position: relative;
+	top: 0px;
+	left: auto;
+	}
+	
+	.hotline{
+	top: 12px;
+    left: 10px;
+    float: left;
+	}
+	
+.logo {
+    position: relative;
+    top: 0px;
+}
+
+	.logo img{
+	 width: 180px;
+	 text-align: center;
+	 margin: 0 auto;
+	 display: block;
+	}
+	.nav-after{
+		margin-top: -10px;
+	}
+	
+	.navbar-nav .open .dropdown-menu>li>a{
+		color: #fff;
+		background: transparent;
+	}
+	.dropdown-menu li{
+		margin-left: 20px;
+		margin-bottom: 5px;
+	}
+	
+	.navbar-toggle{
+		background: #ffcd46;
+		border: none;
+		position: relative;
+		top: -5px;
+	}
+.rating-text{
+	left: -25px !important;
+	top:-2px !important;
+}	
+	.bg-header-page{
+		height: auto;
+		padding: 10px;
+	}
+	
+	.navbar-toggle .icon-bar{
+		background: #000;
+	}
+	
+	#service-tabs{
+		display: none;
+	}
+	
+	/*.row{
+		margin: 0px;
+	}
+	*/
+	
+	/*#service-tabs .row{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	*/
+	#intro{
+		background-size: cover;
+		height: 330px;
+		background-attachment: inherit;
+	}
+	
+	#slider .row{
+		margin-right: 0px;
+		margin-left: 0px;
+	}
+	
+	a.right.carousel-control.slider-header{
+		right: 65px;
+	}
+	
+	#header{
+		background: #04245d;
+	}
+	
+	#menu{
+		width: 100%;
+		height: auto;
+	}
+	.service{
+		width: 100%;
+	}
+	
+	/*#content .row{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	*/
+ .content-louis p{
+	 color: #000;
+ }
+ 
+ .web-text{
+	 display: block;
+ }
+ 
+ .title-louis{
+	 background: #04245d;
+	 font-size: 1.8em;
+	 line-height: 1.5em;
+	 color: #fff; 
+	 text-align: center;
+    padding: 9px;
+    min-height: 50px;
+    display: block;
+ }
+ 
+ .title-louis-gallery{
+	 font-size: 1.8em;
+	 line-height: 1.5em;
+	 color: #fff; 
+	 text-align: center;
+    padding: 9px;
+    min-height: 50px;
+    display: block;
+}
+
+ .new-promotions{
+	 margin-top: 5px;
+	 height: auto;
+	 width: 93%;
+	 margin-left: 15px;
+	 padding: 15px;
+ }
+ .info-description{
+	 margin-bottom: 10px;
+	height: auto;
+	width: 100%;
+	border: none;
+ }
+ #intro .description {
+	 text-align: justify;
+	 padding-left: 0px;
+	 }
+ #intro .des{
+	 font-size: 1.8em;
+ }
+ 
+ .underline{
+	 display: none;
+ }
+ 
+ #numbers .description{
+	 margin: 0px;
+ }
+
+ #intro .title {
+    line-height: 2em;
+    border-left: 3px solid #fcd200;
+    margin-bottom: 20px;
+}
+ .info-comment{
+	 text-align: justify;
+ }
+ 
+ #numbers{
+	 background: none;
+	 height: auto;
+	 color: #000;
+	 font-size: 16px;
+	 margin-top: 0px;
+ }
+  #numbers .content-louis{
+	  margin-top: 50px;
+  }
+ 
+ #numbers .content-louis .number-title{
+
+    text-align: left;
+    width: 100%;
+    display: block;
+    }
+ .title-louis-left{
+	 padding: 5px 0px;
+	 text-align: center;
+ }   
+       
+#testimonials {
+	padding: 0px;
+}
+
+#testimonials .content-louis-testimonial{
+	padding: 20px;
+}
+
+  #testimonials .item{
+	    margin-top: 10px !important;
+	    margin-bottom: 20px !important;
+    }
+  
+    
+ .panel-title{
+	 padding-left: 30px;
+ }   
+ 
+ .service{
+	 padding-top: 10px;
+ }
+ 
+ .hidden-sm{
+	display: none; 
+ }
+ .panel-group{
+	 width: 100%;
+ }
+ 
+ .panel-body{
+	 padding-left: 20px;
+	 text-align: justify;
+ }
+ 
+ #myCarousel .carousel-indicators{
+	 display: none;
+ }
+ #owl-profile p a{
+	 color: #02265C;
+ }
+ #news{
+	 padding: 0px;
+ }
+ 
+ .promotions{
+    padding-left: 0px;
+	/*height: 360px !important; */
+}
+ 
+ #videos{
+	 background: none;
+	 min-height: 200px !important;
+ }
+  #videos .left{
+	 display: none;
+	 
+  }
+   #owl-profile{
+	   overflow: hidden;
+   }
+  
+ #owl-profile .owl-nav{
+	 display: none;
+	 height: 0px;
+	 display: block;
+ }
+  #videos .right{
+	 display: none;
+	 
+  }
+ #videos .thumbnail{
+	 margin-bottom: 0px;
+ }
+ 
+ #news img{
+	 margin: 0 auto;
+ }
+ 
+ .louis_news_hover{
+	margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+ }
+ 
+.content-louis-news .row{
+	 padding-bottom: 0px;
+ }
+ .louis_news_hover .blur{
+	 position: relative;
+	 margin: 0 auto;
+	 width: 100%;
+ }
+ 
+ .louis_news_hover .caption-text{
+	 width: 100%;
+	 padding: 0px 20px;
+	 padding-left: 0px;
+	 padding-right: 0px;
+ }
+ 
+  .louis_news_hover .caption-text h4{
+	  padding: 7px 20px !important;
+  }
+ 
+ .f11a1{
+	 width: 100%;
+ }
+ 
+ .office-box{
+	 height: auto;
+	 margin-bottom: 15px;
+ }
+ 
+ .menu-footer{
+	 border-bottom: none;
+	 margin-top: 0px;
+	 padding-top: 0px;
+ }
+ 
+ .menu-footer .list-inline>li{
+	 float: left;
+    width: 100%;
+ }
+ 
+ .col-menu-footer{
+	 padding-left: 15px;
+ }
+ 
+ 
+ 
+ .col-menu-footer ul{
+	 padding-top: 20px;
+	 padding-left: 5px;
+ }
+ 
+ .col-menu-footer ul li{
+	 padding: 5px 0px;
+ }
+ 
+ .register{
+	 border-right: none;
+	 display:  none;
+ }
+ 
+ .register-info{
+	 display: none;
+ }
+ 
+ .form-newsletter input[type="text"]{
+	 width: 85%;
+ }
+ .form-newsletter{
+	 margin-bottom: 20px;
+	 margin-left: -15px;
+ }
+ .social{
+	 margin: 0 auto;
+	 padding-left: 0px;
+ }
+ 
+ .des-testimonial{
+	 width: auto !important;
+ }
+ 
+ /* new*/
+ .border-timline{
+	 padding-left: 15px;
+	 border-left: 0px;
+	 padding-right: 0px;
+ }
+ #news-content{
+	width: auto !important; 
+ }
+ 
+ 
+ .share-mxh{
+	 margin-top: 10px !important;
+	 width: 100%;
+ }
+ 
+ .bg-header-page h1{
+	 font-size: 2.6em;
+ }
+ .news-description-detail{
+	 width: auto;
+ }
+ 
+ .news-description-detail .description{
+	 width: auto;
+ }
+ .item-new .panel-body{
+	 width: auto !important;
+	 height: auto;
+	 padding: 0px;
+ }
+ .news-description{
+	 padding-left: 0px;
+	 padding-right: 0px;
+ }
+ 
+  .news-description .panel-footer{
+	  display: none;
+  }
+  .news-description .panel-extra{
+	  background: transparent;
+  }
+ .item-new h3 a{
+	 font-size: 16px;
+ }
+ 
+ .item-new{
+	 margin-bottom: 15px;
+	 margin-top: 15px;
+ }
+
+.news-col-right{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.louis-panel{
+	width: auto;
+	margin-left: 0px;
+}
+.navbar-form{
+	padding: 0px;
+}
+.pagination{
+	right: 0px;
+}
+
+.navbar-form .input-group{
+	width: 200px;
+	margin: 0 auto;
+}
+ /* end news */
+ 
+ /* review */
+ .review-content{
+	 width: auto;
+	 overflow: hidden;
+ }
+ .youtube-review{
+	 width: 290px;
+ }
+ 
+ #core-value-main{
+	width: auto;
+}
+
+.tab-review{
+	width: auto;
+}
+ 
+ .su-menh-tam-nhin{
+	
+}
+
+.ve-chung-toi{
+	height: 645px;
+}
+.link-dau-an{
+	height: 1000px;
+}
+
+.button-line{
+	margin: 10px auto;
+    display: block;
+}
+
+.mpl50{
+	
+}
+
+
+
+.row{
+	/*margin-left: 0px;
+	margin-right: 0px; */
+}
+
+.fa-long-arrow-right{
+	display: none !important; 
+}
+
+.fa-long-arrow-left{
+	display: none !important; 
+}
+
+.fa-long-arrow-down{
+	display: none !important; 
+}
+
+.heading-text-left{
+	margin-left: 0px;
+	text-align: center;
+}
+.heading-text-left .text{
+	font-size: 14px;
+	top: 0px;
+	padding: 0px;
+}
+.content-timeline{
+	width: auto !important;
+}
+.content-timeline img{
+	height: 250px !important;
+}
+
+.cd-horizontal-timeline{
+	margin-top: 30px !important;
+}
+ol{
+	padding-left: 0px;
+}
+
+.title-louis-activity{
+	line-height: 35px;
+}
+
+#bg-tabs{
+	height: 150px !important;
+}
+
+#bg-tabs-detail{
+   /*height: 180px; */
+   padding: 0px;
+}
+#bg-tabs-detail .des-louis{
+	width: 200px;
+	margin: 0 auto;
+}
+#galleries{
+	width: auto;
+}
+
+.gallery-content{
+height: auto;	
+margin-top: 0px;
+}
+
+#gallery_tab{
+	position: relative;
+    left: 0px;
+    margin-left: 0px;
+}
+
+.medium-ava-bg{
+	margin: 0 auto !important;
+}
+
+.big-ava-bg {
+	margin: 0 auto !important;
+	width: auto;
+	height: auto;
+}
+.slickWindow{
+	width: 280px !important;
+}
+.slickModal .left{
+	width: 100%;
+	float: none;
+}
+.pic a{
+	margin: 0 auto;
+	position: relative;
+	top: 30px;
+	width: 100px;
+	height: 100px;
+}
+.slickWindow .top{
+	height: auto;
+}
+.slickModal .right{
+	width: 100%;
+	right: 0px;
+	padding: 0px 0px 10px 0px;
+}
+.popup-content{
+	height: 290px;
+	overflow: scroll;
+}
+.more_des{
+	height: auto !important;
+	text-align: justify;
+}
+.medium-gallery-bg-detail-nobottom{
+	width: 100%;
+}
+.medium-gallery-bg-detail-nobottom img{
+	width: 100%;
+	height: auto;
+}
+.raxus-slider.fit .slider-relative .slide .image img, .raxus-slider .slider-relative .slide.fit .image img{
+	height: auto !important;
+}
+.raxus-slider .slider-relative .slide .image *{
+	vertical-align: top !important;
+}
+.raxus-slider{
+	height: 140px !important;
+}
+.raxus-slider .slider-relative{
+	height: auto !important;
+}
+.slickWindowGallery{
+	height: auto !important;
+}
+#show_more{
+	display: none !important;
+}
+.button_info{
+	z-index: 100;
+	position: relative;
+	cursor: pointer;
+}
+.medium-gallery-bg{
+	margin-right: 0px;
+	width: auto;
+	background-color: #02265C;
+}
+
+.medium-gallery-bg-detail{
+	width: auto;
+	margin-right: auto;
+}
+.medium-gallery-bg-detail img{
+	width: 100%;
+}
+
+.medium-gallery-bg-detail .name{
+	color: #fff !important;
+}
+
+#gallery_tab li{
+	width: 100%;
+}
+
+.medium-gallery-bg img{
+    /* width: 250px; */
+    width: 100%;
+    height: 178px;
+}
+
+ #louis-panel-contact{
+	left: 0px;
+    position: relative;
+    margin-top: -776px;
+    margin-left: 5px;
+ }
+ .button-join{
+	margin-top: 0px; 
+ }
+.button-join-submit{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#galleries div{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+#bs-example-navbar-collapse-1{
+	margin: 0px;
+}
+
+.breadcrumb{
+	margin-bottom: 0px;
+	padding-right: 0px;
+}
+#core-values{
+	display: none;
+}
+
+#two-content-col{
+	margin-top: 100px;
+}
+
+#responsive-video{
+	position: relative !important;
+	top: 0px !important;
+	margin-left: 0px !important;
+	width: 100% !important;
+	height: 180px !important;
+}
+responsive-video{
+	height: 200px !important;
+	display: block !important;
+}
+.louis-m-tab{
+	margin-top: 150px;
+}
+
+#content-values-m{
+	display: block;
+	text-align: justify;
+}
+
+.news-heading-detail{
+	margin-top: 30px;
+}
+
+.heading-text-l .text{
+	font-size: 14px;
+	}
+
+
+.news-description a.cover-crop{
+	height: auto;
+}
+.news-description .more{
+	display: none;
+}
+#carousel-example-generic a{
+	color: #05235F;
+}
+
+.owl-stage{
+	margin-bottom: 0px;
+}
+#col_list_menu .louis-list-category{
+	width: 100%;
+	text-align: center;
+}
+.border-page-footer .col-first{
+	margin-left: 15px;
+}
+#footer{
+	background-attachment: inherit;
+}
+}
+
+
+
+@media only screen  and (min-width : 1624px) {
+.social a{
+	font-size: 38px !important;
+	margin-right: 10px !important;
+	
+}
+.social ul.social-list{
+	margin-top: 0px;
+}
+.social ul.social-list li{
+	padding-right: 0px;
+}
+.owl-stage{
+	margin-bottom: 70px;
+}
+}

@@ -1,0 +1,213 @@
+<style>
+.post_content{
+	margin-top: 0px !important;
+	margin-left: 25px !important;
+	width: 630px !important;
+}
+	.post_content h2{
+		line-height: 1.4em;
+	}
+	.pagination ul li .current{
+		 border: 1px solid #cdcbcb;
+         padding: 2px 9px;
+         background: #FFB752;
+	}
+	 .large_post img{
+		 height: auto !important;
+		 position: relative;
+	 }
+	 .post_item_holder{
+		 overflow: hidden;
+	 }
+</style>
+<section id="main_content">
+			
+			
+			<div class="top_title_holder add-bottom">
+				
+				<div class="top_title_border"></div>
+				<div class="bottom_title_border"></div>
+				
+				<div class="container">
+					
+					<div class="nine columns">
+						
+						<h3><?php echo $this->menu_content->name; ?></h3>	
+						<p><?php echo $this->menu_content->description; ?></p>
+					
+					</div><!-- end nine -->
+					
+					<div class="seven columns">
+					
+						
+					
+					</div><!-- end seven -->
+				
+				</div><!-- end container -->
+			
+			</div><!-- end .top_title_holder -->
+			
+			
+		<div class="container">
+	
+		
+			<div class="twelve columns">
+		<?php foreach($this->paginator as $val):  ?>
+   <?php   $news = new New_Model_ProductImage();
+		    $full = $news->get_one_where(array('productId' => $val['id']));
+
+	   if (null == $full){
+		   $image =  $this->Image()->getFirstImageContent($val['description']);;
+	   }else{
+		 
+		  $image = '/public/images/news/'.$val['id'].'/'.$full['full'];
+	   }
+	     
+	   
+	    $db = Zend_Db_Table::getDefaultAdapter();
+	     $select = "select t.name, t.ident from tags as t inner join product_tags as p on t.id = p.tag_id where product_id = '".$val['id']."'";
+	   $tags_result = $db->fetchAll($select);
+	   
+
+	  /* echo '<pre>';
+	   print_r($views);
+	   echo '</pre>';
+	   $views = $views + 1;
+	   
+	   $update_views = "UPDATE product SET views = $views WHERE id = '".$val['id']."'";
+	   $db->query($update_views);
+	   */
+	   
+	    //  $src = str_replace('\"', '', $src); ?>
+				<article class="large_post add-bottom add-top">
+				
+					<div class="post_item_holder">
+						
+						<div class="overlayLink">
+							
+							<a href="/tin-tuc/<?=$val['ident']?>.html"> <img src="<?=$image?>" alt=""/> </a>	
+							<div class="post_date"><?php echo date('d/m/Y',$val['date']); ?> </div>
+							
+						</div><!-- end .overlayLink -->
+						
+					</div><!-- end .post_item_holder -->
+					
+					<div class="postType standard_post"></div>
+					
+					<div class="post_content">
+						
+						<h2> <a href="/tin-tuc/<?=$val['ident']?>.html"><?=$val['name']?>  </a> </h2> 
+						<div class="dropcap_v1"><p><?php echo $this->String()->cut_string(strip_tags($val['shortDescription']),'230','...'); ?> </p> </div>
+						
+						<a href="/tin-tuc/<?=$val['ident']?>.html"><?php echo $this->translate('more'); ?> &#187;</a><span style="float:right;font-style: italic;"><i class="icon-eye" aria-hidden="true"></i>
+<?php echo $val['views']; ?> <?php echo $this->translate('view'); ?></span>
+						
+						<ul class="post_meta">
+							
+							<?php
+							
+								 if($tags_result[0]['name'] != null){ ?>
+							<li class="tags"> 
+						<?php 
+				foreach($tags_result  as $ktag=>$vtag ): ?>
+				<a title="Tag <?php echo $vtag['name']; ?>" class="taglink" href="/tag/<?php echo $vtag['ident']; ?>"><?php echo $vtag['name']; ?></a>, 
+			<?php	endforeach;
+				
+				 ?>
+							 </li>
+							 <?php  } ?>
+														
+						</ul><!-- end post_meta -->
+					
+					</div><!-- end .post_content -->
+				
+				</article>
+				
+			<?php endforeach; ?>	
+				<nav class="pagination">
+					  
+					 <?php echo $this->paginationControl($this->paginator,
+     'Sliding',
+     'pagination-control.phtml'); 
+   
+     ?>
+					  
+				</nav><!-- end .pagination -->
+				
+			
+			</div><!-- end twelve -->
+			
+			
+			<div class="four columns add-top add-bottom">
+			
+				<aside class="sidebar">
+				
+					
+					<article class="widget latest_posts">
+						
+						<div class="widget_title">
+							
+							<h2> <span class="bold"><?php echo $this->translate('newscategory'); ?></span> </h2>
+							
+							<div class="title_sep_container">
+								<div class="title_sep"></div>
+							</div><!-- end .title_sep_container -->
+							
+						</div><!-- end .title -->
+						
+						<ul style="margin-left: -10px;">
+						
+						<ul>
+			<?php foreach($this->newsarr as $kcat=>$vcat): ?>
+	<li class="cat-item cat-item-<?=$vcat['id']?>"><a href="http://hoabinh-group.com/<?=$vcat['link']?>" ><?=$vcat['name']?></a>
+</li>
+		<?php endforeach; ?>
+						</ul>	
+						</ul>
+					</article><!-- end .latest_posts -->
+					
+					
+						<article class="widget latest_posts">
+						
+						<div class="widget_title">
+							
+							<h2> <span class="bold"><?php echo $this->translate('activities'); ?></span> </h2>
+							
+							<div class="title_sep_container">
+								<div class="title_sep"></div>
+							</div><!-- end .title_sep_container -->
+							
+						</div><!-- end .title -->
+						
+						<ul style="margin-left: -10px;">
+			
+						<ul>
+			<?php foreach($this->newArr as $kcat=>$vcat): ?>
+	<li class="cat-item cat-item-<?=$vcat['id']?>"><a href="/<?=$vcat['link']?>" ><?=$vcat['name']?></a>
+</li>
+		<?php endforeach; ?>
+						</ul>	
+						</ul>
+					</article><!-- end .latest_posts -->
+				
+							
+					<article class="widget">
+						
+						
+						
+							
+						
+					</article><!-- end .widget -->		
+					
+				</aside>
+			
+			</div><!-- end four -->
+			
+			
+			
+							
+		</div><!-- end container -->
+		
+	</section><!-- end #main_content -->
+	
+	

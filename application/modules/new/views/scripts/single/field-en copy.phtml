@@ -1,0 +1,611 @@
+ <style>
+	 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+	.cd-horizontal-timeline {
+  opacity: 0;
+  margin: 2em auto;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.cd-horizontal-timeline::before {
+  /* never visible - this is used in jQuery to check the current MQ */
+  content: 'mobile';
+  display: none;
+}
+.cd-horizontal-timeline.loaded {
+  opacity: 1;
+}
+.cd-horizontal-timeline .timeline {
+  position: relative;
+  height: 100px;
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.cd-horizontal-timeline .events-wrapper {
+  position: relative;
+  height: 100%;
+  margin: 0 40px;
+  overflow: hidden;
+}
+.cd-horizontal-timeline .events-wrapper::after, .cd-horizontal-timeline .events-wrapper::before {
+  /* these are used to create a shadow effect at the sides of the timeline */
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  height: 100%;
+  width: 20px;
+}
+.cd-horizontal-timeline .events-wrapper::before {
+  left: 0;
+  background-image: -webkit-linear-gradient( left , #f8f8f8, rgba(248, 248, 248, 0));
+  background-image: linear-gradient(to right, #f8f8f8, rgba(248, 248, 248, 0));
+}
+.cd-horizontal-timeline .events-wrapper::after {
+  right: 0;
+  background-image: -webkit-linear-gradient( right , #f8f8f8, rgba(248, 248, 248, 0));
+  background-image: linear-gradient(to left, #f8f8f8, rgba(248, 248, 248, 0));
+}
+.cd-horizontal-timeline .events {
+  /* this is the grey line/timeline */
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 49px;
+  height: 2px;
+  /* width will be set using JavaScript */
+  background: #dfdfdf;
+  -webkit-transition: -webkit-transform 0.4s;
+  -moz-transition: -moz-transform 0.4s;
+  transition: transform 0.4s;
+}
+.cd-horizontal-timeline .filling-line {
+  /* this is used to create the green line filling the timeline */
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #140B43;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+}
+.cd-horizontal-timeline .events a {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  text-align: center;
+  font-size: 1.3rem;
+  padding-bottom: 15px;
+  color: #383838;
+  /* fix bug on Safari - text flickering while timeline translates */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.cd-horizontal-timeline .events a::after {
+  /* this is used to create the event spot */
+  content: '';
+  position: absolute;
+  left: 50%;
+  right: auto;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: -5px;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: 2px solid #dfdfdf;
+  background-color: #f8f8f8;
+  -webkit-transition: background-color 0.3s, border-color 0.3s;
+  -moz-transition: background-color 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.no-touch .cd-horizontal-timeline .events a:hover::after {
+  background-color: #7b9d6f;
+  border-color: #7b9d6f;
+}
+.cd-horizontal-timeline .events a.selected {
+ /* pointer-events: none; */
+       background: #bb1a2f;
+    padding: 6px 10px;
+    margin-bottom: 14px;
+    color: #fff;
+    height: 33px;
+}
+
+.cd-horizontal-timeline .events a::before{
+	margin-top: 10px;
+}
+.cd-horizontal-timeline .events a.selected::after {
+  background-color: #FCD200;
+  border-color: #140b43;
+  
+      top: 40px;
+}
+.cd-horizontal-timeline .events a.older-event::after {
+  border-color: #140b43;
+}
+@media only screen and (min-width: 1100px) {
+  .cd-horizontal-timeline {
+    margin: 2em auto;
+  }
+  .cd-horizontal-timeline::before {
+    /* never visible - this is used in jQuery to check the current MQ */
+    content: 'desktop';
+  }
+}
+
+.cd-timeline-navigation a {
+  /* these are the left/right arrows to navigate the timeline */
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  border: 2px solid #dfdfdf;
+  /* replace text with an icon */
+ /* overflow: hidden; */
+ /* color: transparent;*/
+  text-indent: 100%;
+  white-space: nowrap;
+  -webkit-transition: border-color 0.3s;
+  -moz-transition: border-color 0.3s;
+  transition: border-color 0.3s;
+}
+.cd-timeline-navigation a::after {
+  /* arrow icon */
+ /* content: '';
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(../img/cd-arrow.svg) no-repeat 0 0;*/
+  
+}
+.cd-timeline-navigation a.prev {
+	text-decoration: none;
+  left: 0;
+  -webkit-transform: translateY(-50%) rotate(180deg);
+  -moz-transform: translateY(-50%) rotate(180deg);
+  -ms-transform: translateY(-50%) rotate(180deg);
+  -o-transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
+}
+.cd-timeline-navigation a.next {
+	text-decoration: none;
+  right: 0;
+}
+.no-touch .cd-timeline-navigation a:hover {
+  border-color: #7b9d6f;
+}
+.cd-timeline-navigation a.inactive {
+  cursor: not-allowed;
+}
+.cd-timeline-navigation a.inactive::after {
+  background-position: 0 -16px;
+}
+.no-touch .cd-timeline-navigation a.inactive:hover {
+  border-color: #dfdfdf;
+}
+
+.cd-horizontal-timeline .events-content {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: height 0.4s;
+  -moz-transition: height 0.4s;
+  transition: height 0.4s;
+}
+.cd-horizontal-timeline .events-content li {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  top: 0;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+  padding: 0 5%;
+  opacity: 0;
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+.cd-horizontal-timeline .events-content li.selected {
+  /* visible event content */
+  position: relative;
+  z-index: 2;
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+.cd-horizontal-timeline .events-content li.enter-right, .cd-horizontal-timeline .events-content li.leave-right {
+  -webkit-animation-name: cd-enter-right;
+  -moz-animation-name: cd-enter-right;
+  animation-name: cd-enter-right;
+}
+.cd-horizontal-timeline .events-content li.enter-left, .cd-horizontal-timeline .events-content li.leave-left {
+  -webkit-animation-name: cd-enter-left;
+  -moz-animation-name: cd-enter-left;
+  animation-name: cd-enter-left;
+}
+.cd-horizontal-timeline .events-content li.leave-right, .cd-horizontal-timeline .events-content li.leave-left {
+  -webkit-animation-direction: reverse;
+  -moz-animation-direction: reverse;
+  animation-direction: reverse;
+}
+.cd-horizontal-timeline .events-content li > * {
+ padding: 10px 0px;
+}
+.cd-horizontal-timeline .events-content h2 {
+  font-weight: bold;
+  font-size: 2.6rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.cd-horizontal-timeline .events-content em {
+  display: block;
+  font-style: italic;
+  margin: 10px auto;
+}
+.cd-horizontal-timeline .events-content em::before {
+  content: '- ';
+}
+.cd-horizontal-timeline .events-content p {
+  font-size: 1.4rem;
+  color: #959595;
+}
+.cd-horizontal-timeline .events-content em, .cd-horizontal-timeline .events-content p {
+  line-height: 1.6;
+}
+@media only screen and (min-width: 768px) {
+  .cd-horizontal-timeline .events-content h2 {
+    font-size: 7rem;
+  }
+  .cd-horizontal-timeline .events-content em {
+    font-size: 2rem;
+  }
+  .cd-horizontal-timeline .events-content p {
+    font-size: 1.5rem;
+  }
+}
+
+@-webkit-keyframes cd-enter-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+  }
+}
+@-moz-keyframes cd-enter-right {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateX(0%);
+  }
+}
+@keyframes cd-enter-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+@-webkit-keyframes cd-enter-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+  }
+}
+@-moz-keyframes cd-enter-left {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateX(0%);
+  }
+}
+@keyframes cd-enter-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+} 
+
+.cd-horizontal-timeline .events-wrapper::after{
+	background: none;
+	display: none;
+}
+.cd-horizontal-timeline .events-wrapper::before{
+	background: none;
+	display: none;
+}
+ol, ul{
+	list-style-type: none;
+}
+
+ol{
+	padding-left: 0px;
+}
+
+.content-timeline{
+	background: #f2f2f2;
+	width: 1080px;
+	height: 256px;
+	margin: 0 auto;
+}
+
+.events-content .description{
+	text-align: justify;background: #f2f2f2;padding: 10px;
+}
+</style>
+
+   <div class="bg-header-page" style="background-image: url('/public/templates/news2017/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;">
+		   <div class="container"> 
+			   <div class="row">
+			    <h1><?php echo $this->name ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Field</a></li>
+  <li class="breadcrumb-item active"><?php echo $this->name ?></li>
+</ol>
+		   		</div> 
+		   </div>
+		
+	    </div>
+	    
+	    <div class="row" id = "news-content">
+		    <div id="bg-tabs-detail">
+			            <div class="gallery">
+                                    <div class="title-louis-activity center"> ACTIVITIES FIELDS</div>
+									<div class="underline"></div>
+									<div class="des-louis">Hoa Binh Group - Provides solutions in all fields</div>
+                                    <!-- Tab panes -->
+                                
+</div>
+                                
+			</div>	
+	    <div class="container">
+		   
+			
+	 <div class="col-md-10 col-md-offset-1">
+	    <div class="col-md-10 col-md-offset-1">
+	    	  <ul id='activity_tab' class="nav nav-tabs" role="tablist">
+		    	  
+                                        <li role="presentation" <?php echo ($this->link == 'organizing-conferences-seminars')?' class="active"':''; ?>><a class="nav-bordera" href="/field/organizing-conferences-seminars" aria-controls="home" role="tab">Organizing <br/> Conferences Seminars</a></li>
+                                        <li role="presentation" <?php echo ($this->link == 'organizing-events')?' class="active"':''; ?>><a href="/field/organizing-events" aria-controls="travels" role="tab">Organizing <br/> events</a></li>
+                                        <li role="presentation" <?php echo ($this->link == 'media-advertising-solution')?' class="active"':''; ?>><a href="/field/media-advertising-solution" aria-controls="medias" role="tab">Solution <br/> Media Advertising</a></li>
+                                        <li role="presentation" <?php echo ($this->link == 'organizing-tour-and-teambuilding')?' class="active"':''; ?>><a href="/field/organizing-tour-and-teambuilding" aria-controls="equips" role="tab">Organizing <br/> tour and teambuilding</a></li>
+                                          <li role="presentation" <?php echo ($this->link == 'event-equipment-supply')?' class="active"':''; ?>><a href="/field/event-equipment-supply" aria-controls="others" role="tab">Supply<br/>Event Equipment </a></li>
+                                    </ul>
+              </div>
+	 </div>						
+	    	
+			
+			 
+				 <div class="review-content">
+			      <?php echo $this->description; ?>
+			      </div>
+		 
+		  
+	    </div>	
+	    <?php 
+		    if(count($this->timeline) > 0){
+		    $dateline = array();
+		    foreach($this->timeline as $key=>$val):
+		    $dateline[] = $val['date'];
+		    endforeach;
+		   
+		     ?>
+	    <section class="cd-horizontal-timeline">
+	<div class="timeline">
+		<div class="events-wrapper">
+			<div class="events">
+				<ol>
+					<?php
+						$i = 0;
+						 foreach($dateline as $date): $i++; ?>
+					<li><a href="#0" data-date="<?php echo date('d/m/Y', $date); ?>" <?php echo ($i == 1)?' class="selected"':''; ?>><?php echo date('d', $date); ?>/<?php echo date('m', $date); ?></a></li>
+					<?php endforeach; ?>
+					
+				</ol>
+
+				<span class="filling-line" aria-hidden="true"></span>
+			</div> <!-- .events -->
+		</div> <!-- .events-wrapper -->
+			
+		<ul class="cd-timeline-navigation">
+			<li><a href="#0" class="prev inactive"><i style="color: #000; font-size: 1.8em; margin-left: -20px; margin-top: 2px;display: block;" class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+			<li><a href="#0" class="next"><i style="color: #000; font-size: 1.8em; margin-left: -20px; margin-top: 2px;display: block;" class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+		</ul> <!-- .cd-timeline-navigation -->
+	</div> <!-- .timeline -->
+
+	<div class="events-content">
+		<ol>
+			<?php 
+				$j = 0;
+				foreach($this->timeline as $kinfo => $vinfo): $j++; ?>
+			<li <?php echo ($j == 1)?' class="selected"':''; ?> data-date="<?php echo date('d/m/Y',$vinfo['date']); ?>">
+			
+				<div class="container">
+					<div class="panel-body" style="background: #f2f2f2; padding: 5px;">
+					<div class="pull-left col-xs-12 col-md-6" style="padding: 12px 10px 10px  0px;height: 223px;overflow: hidden;">
+			<img style="position: relative;top: 0px;" class="img-responsive" src="/public/images/timeline/<?php echo $vinfo['id']; ?>/<?php echo $vinfo['full']; ?>" />			
+					</div>
+					<div class="col-md-6 col-xs-12 description" style="color: #555555">
+						<h4><?php echo $vinfo['name']; ?></h4> 
+						<p style="color: #555555"><?php echo $vinfo['description']; ?></p>
+						
+					</div>
+					</div>
+				</div>
+			</li>
+			<?php endforeach; ?>
+
+		</ol>
+	</div> <!-- .events-content -->
+</section>	
+	       <?php } ?> 	
+	    <div class="container">
+	    <div class="row center" style="margin-bottom: 30px;">
+		    <div class="container">
+			    <div class="row">
+	    	<div class="heading-text-left">
+					<div class="icon"><img src="<?php echo TEMPLATE_URL; ?>/default/img/demuc.png" alt="Logo"></div>
+					<div class="text">
+PROCESS ORGANIZING CONFERENCE - EVENTS</div>
+			</div>
+			</div></div>
+			<div class="row mpl50">
+			<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-01.png"/>
+				<p class="pull-left"><b>1.Khảo sát và lựa chọn địa điểm</b><br/>
+				(Venue inspection)</p>
+			</div>
+			<i class="fa fa-long-arrow-right big hidden-sm" aria-hidden="true"></i>
+			<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-02.png"/>
+				<p class="pull-left"><b>2.Lập hồ sơ xin cấp phép tổ chức</b><br/>
+				(Application for Authority permission)</p>
+			</div>
+			<i class="fa fa-long-arrow-right big hidden-sm" aria-hidden="true"></i>
+			<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-03.png"/>
+				<p class="pull-left"><b>3.Xây dựng hồ sơ tài trợ</b><br/>
+				(Profile for sponsorship)</p>
+			</div>
+			</div>
+			<i class="fa fa fa-long-arrow-down big right hidden-sm" aria-hidden="true"></i>
+			
+			<div class="row mpl50">
+			<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-04.png"/>
+				<p class="pull-left"><b>5. Xây dựng kế hoạch đón tiếp lễ tân</b><br/>
+				(Reception plan)</p>
+			</div>	
+			<i class="fa fa-long-arrow-left big hidden-sm" aria-hidden="true"></i>
+			<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-05.png"/>
+				<p class="pull-left"><b>4. Xây dựng và quản trị website hội nghị</b><br/>
+				(Website contruction and management)</p>
+			</div>	
+			</div>
+			
+			<i class="fa fa fa-long-arrow-down big left hidden-sm" aria-hidden="true"></i>
+			<div class="row mpl50">
+				<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-06.png"/>
+				<p class="pull-left"><b>6. Xây dựng kế hoạch đón tiễn, vận chuyển</b><br/>
+				(Transportation)</p>
+			</div>
+			<i class="fa fa fa-long-arrow-right big hidden-sm" aria-hidden="true"></i>
+			<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-07.png"/>
+				<p class="pull-left"><b>7. Thiết kế, in ấn, trang trí</b><br/>
+				(Design, printing and decoration)</p>
+			</div>
+			<i class="fa fa fa-long-arrow-right big hidden-sm" aria-hidden="true"></i>
+			<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-08.png"/>
+				<p class="pull-left"><b>8. Thiết bị hội nghị, sự kiện</b><br/>
+				(AV equipments)</p>
+			</div>
+			</div>
+			<i class="fa fa fa-long-arrow-down big right"  aria-hidden="true"></i>
+			<div class="row mpl50">
+				<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-09.png"/>
+				<p class="pull-left"><b>10. Tổ chức biểu diễn nghệ thuật</b><br/>
+				(Entertainment and Show)</p>
+				</div>
+				<i class="fa fa fa-long-arrow-left big" aria-hidden="true"></i>
+				<div class="button-line">
+				<img src="http://timnhanh360.com/hbg/img/icons/icon%20quy%20trinh-10.png"/>
+				<p class="pull-left"><b>9. Tour du lịch cho hội nghị</b><br/>
+				(Tours for participarts and accompanies)</p>
+				</div>
+			</div>
+		</div>
+		</div>		
+	    	</div>

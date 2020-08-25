@@ -1,0 +1,446 @@
+<div id="graph-wrapper">
+    <div class="graph-info">
+        <a href="javascript:void(0)" class="visitors">Lượt xem</a>
+        <a href="javascript:void(0)" class="returning">Khách ghé thăm</a>
+ 
+        <a href="#" id="bars"><span></span></a>
+        <a href="#" id="lines" class="active"><span></span></a>
+    </div>
+ 
+    <div class="graph-container">
+        <div id="graph-lines"></div>
+        <div id="graph-bars"></div>
+    </div>
+</div>
+<!-- end Graph HTML -->
+
+
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="info-box">
+        <div class="info-box-icon bg-blue">
+            <i class="fa fa-eye"></i>
+        </div>
+        <div class="info-box-content">
+            <span class="info-box-text">Lượt xem</span>
+            <span class="info-box-number" id="page_views_total">0</span>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="info-box">
+        <div class="info-box-icon bg-yellow-casablanca font-white">
+	         <i class="fa fa-users"></i>
+           
+        </div>
+        <div class="info-box-content">
+            <span class="info-box-text">Khách truy cập</span>
+            <span class="info-box-number" id="users_total">0</span>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="info-box border-green-haze">
+        <div class="info-box-icon bg-green-haze font-white">
+            <i class="fa fa-pie-chart"></i>
+        </div>
+        <div class="info-box-content">
+            <span class="info-box-text">Tỉ lệ thoát</span>
+            <span class="info-box-number" id="bounce_rate_total">0</span>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="info-box">
+        <div class="info-box-icon bg-yellow">
+            <i class="fa fa-bar-chart"></i>
+        </div>
+        <div class="info-box-content">
+            <span class="info-box-text">Online</span>
+            <span class="info-box-number" id="bounce_rate_total">...</span>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="url" value= "<?php echo 'http://' . $_SERVER['SERVER_NAME']; ?>" />
+<div class="row">
+			<div class="col-xs-12 col-sm-6 widget-container-col">
+										<!-- #section:custom/widget-box -->
+										<div class="widget-box">
+											<div class="widget-header">
+												<h5 class="widget-title">Thống kê lượng visits theo trang hôm nay </h5>
+
+												<!-- #section:custom/widget-box.toolbar -->
+												<div class="widget-toolbar">
+													<div class="widget-menu">
+														<a href="#" data-action="settings" data-toggle="dropdown">
+															<i class="ace-icon fa fa-bars"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+															<li>
+																<a data-toggle="tab" href="#dropdown1">Option#1</a>
+															</li>
+
+															<li>
+																<a data-toggle="tab" href="#dropdown2">Option#2</a>
+															</li>
+														</ul>
+													</div>
+
+													<a href="#" data-action="fullscreen" class="orange2">
+														<i class="ace-icon fa fa-expand"></i>
+													</a>
+
+													<a href="#" class="refresh-trackByPage" data-action="reload">
+														<i class="ace-icon fa fa-refresh"></i>
+													</a>
+
+													<a href="#" data-action="collapse">
+														<i class="ace-icon fa fa-chevron-up"></i>
+													</a>
+
+													<a href="#" data-action="close">
+														<i class="ace-icon fa fa-times"></i>
+													</a>
+												</div>
+
+												<!-- /section:custom/widget-box.toolbar -->
+											</div>
+
+											<div class="widget-body fix-img100">
+												
+		<table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Trang</th>
+            <th>Xem</th>
+        </tr>
+        </thead>
+        <tfoot><tr><td>&nbsp;</td><td id="pagingtrackByPage"></td></tr></tfoot>
+        <tbody id="trackByPage"></tbody>
+       
+    </table>
+     
+											</div>
+										</div>
+
+										<!-- /section:custom/widget-box -->
+									</div>
+			<div class="col-xs-12 col-sm-6 widget-container-col">
+										<!-- #section:custom/widget-box -->
+										<div class="widget-box">
+											<div class="widget-header">
+												<h5 class="widget-title">Thống kê truy cập từ nguồn hôm nay </h5>
+
+												<!-- #section:custom/widget-box.toolbar -->
+												<div class="widget-toolbar">
+													<div class="widget-menu">
+														<a href="#" data-action="settings" data-toggle="dropdown">
+															<i class="ace-icon fa fa-bars"></i>
+														</a>
+
+														<ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+															<li>
+																<a data-toggle="tab" href="#dropdown1">Option#1</a>
+															</li>
+
+															<li>
+																<a data-toggle="tab" href="#dropdown2">Option#2</a>
+															</li>
+														</ul>
+													</div>
+
+													<a href="#" data-action="fullscreen" class="orange2">
+														<i class="ace-icon fa fa-expand"></i>
+													</a>
+
+													<a href="#" class="refresh-trackBySource" data-action="reload">
+														<i class="ace-icon fa fa-refresh"></i>
+													</a>
+
+													<a href="#" data-action="collapse">
+														<i class="ace-icon fa fa-chevron-up"></i>
+													</a>
+
+													<a href="#" data-action="close">
+														<i class="ace-icon fa fa-times"></i>
+													</a>
+												</div>
+
+												<!-- /section:custom/widget-box.toolbar -->
+											</div>
+
+											<div class="widget-body fix-img100">
+												
+		<table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nguồn</th>
+            <th>Xem</th>
+        </tr>
+        </thead>
+        <tfoot><tr><td>&nbsp;</td><td id="pagingtrackBySource"></td></tr></tfoot>
+        <tbody id="trackBySource"></tbody>
+       
+    </table>
+     
+											</div>
+										</div>
+
+										<!-- /section:custom/widget-box -->
+									</div>
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		var dataLouis = [];
+		$('.fix-img100').on('click','#pagingtrackByPage a', trackByPage);
+		$('.fix-img100').on('click','#pagingtrackBySource a', trackBySource);
+		
+		function timeConverter(t) 
+		{     
+   var a = new Date(t);
+    var today = new Date();
+    var yesterday = new Date(Date.now() - 86400000);
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var year = a.getFullYear();
+    var month = a.getMonth() + 1;
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    if (a.setHours(0,0,0,0) == today.setHours(0,0,0,0))
+        return 'hôm nay, ' + date + '/' + month;
+    else if (a.setHours(0,0,0,0) == yesterday.setHours(0,0,0,0))
+        return 'hôm qua, ' + date + '/' + month;
+    else if (year == today.getFullYear())
+        return date + ' ' + month + ', ' + hour + ':' + min;
+    else
+        return date + ' ' + month + ' ' + year + ', ' + hour + ':' + min;
+}
+	
+		function showGraph()
+		{
+    $.post("/admin/index/load",{ },graph);
+    
+    function graph(data, status)
+    {
+       console.log(data);
+       
+       	// Graph Data ##############################################
+	var graphData = data.chart;
+	 console.log('graphData',graphData);
+	var visits = data.visits;
+	var views = data.views;
+	
+	var bounceRate = data.bounceRate;
+	//console.log(graphData);
+	//console.log(bounceRate);
+	$("#users_total").text(visits);
+	$("#page_views_total").text(views);
+	$("#bounce_rate_total").text(bounceRate + '%');
+
+	// Lines Graph #############################################
+	$.plot($('#graph-lines'), graphData, {
+		series: {
+			points: {
+				show: true,
+				radius: 5
+			},
+			lines: {
+				show: true
+			},
+			shadowSize: 0
+		},
+		grid: {
+			color: '#646464',
+			borderColor: 'transparent',
+			borderWidth: 20,
+			hoverable: true
+		},
+		xaxis: {
+			mode: "time",
+			timeformat: "%m/%d/%y",
+			minTickSize: [1, "day"]
+		},
+		yaxis: {
+			tickSize: 300
+		}
+	});
+
+	// Bars Graph ##############################################
+	$.plot($('#graph-bars'), graphData, {
+		series: {
+			bars: {
+				show: true,
+				barWidth: .9,
+				align: 'center'
+			},
+			shadowSize: 0
+		},
+		grid: {
+			color: '#646464',
+			borderColor: 'transparent',
+			borderWidth: 20,
+			hoverable: true
+		},
+		xaxis: {
+			mode: "time",
+			timeformat: "%m/%d/%y",
+			minTickSize: [1, "day"]
+		},
+		yaxis: {
+			tickSize: 500
+		}
+	});
+
+	// Graph Toggle ############################################
+	$('#graph-bars').hide();
+
+	$('#lines').on('click', function (e) {
+		$('#bars').removeClass('active');
+		$('#graph-bars').fadeOut();
+		$(this).addClass('active');
+		$('#graph-lines').fadeIn();
+		e.preventDefault();
+	});
+
+	$('#bars').on('click', function (e) {
+		$('#lines').removeClass('active');
+		$('#graph-lines').fadeOut();
+		$(this).addClass('active');
+		$('#graph-bars').fadeIn().removeClass('hidden');
+		e.preventDefault();
+	});
+
+	// Tooltip #################################################
+	function showTooltip(x, y, contents) 
+	{
+		$('<div id="tooltip">' + contents + '</div>').css({
+			top: y - 16,
+			left: x + 20
+		}).appendTo('body').fadeIn();
+	}
+
+	var previousPoint = null;
+
+	$('#graph-lines, #graph-bars').bind('plothover', function (event, pos, item) {
+		if (item) {
+			if (previousPoint != item.dataIndex) {
+				previousPoint = item.dataIndex;
+				$('#tooltip').remove();
+				var x = item.datapoint[0],
+					y = item.datapoint[1]
+					date = timeConverter(x);
+					showTooltip(item.pageX, item.pageY, y + ' lượt truy cập ngày ' + date);
+			}
+		} else {
+			$('#tooltip').remove();
+			previousPoint = null;
+		}
+	});
+		}
+    }
+    
+		//setInterval(showGraph, 5000);  
+		showGraph(); 
+		
+		
+	    function filter(selector)
+		{
+		
+		if (typeof(dataLouis[selector]) == "undefined") {
+			if(selector == 'url'){
+				return window.location.href;
+			}
+				return $("#"+ selector).val();
+		} else {
+			return dataLouis[selector];
+		}
+	}
+     
+        function ajaxResponse(dataLouis, method = "POST", type="trackByPage") 
+		{
+		
+		var page = 1;	
+					   
+		    var url = filter('url');
+		    
+		    var current = url.substring(url.lastIndexOf('/') + 1);
+		if ($.isNumeric(current)) {
+			page = current;
+			}
+	
+		
+			$.ajax({
+                     url : '/admin/index/response',
+                     type : method,
+                     data: { 
+	                     page: page, 
+	                     type: type, 
+	                     },
+	                 beforeSend: function(){
+					 $(".refresh-"+type+"[data-action='reload']").trigger( "click");		                 
+		                 }
+	                 ,
+                     success : function (result)
+                     {                  
+						 display_data(result, type);
+                     }
+                 });
+	};
+	
+		function display_data(response, type)
+		{
+
+		$('#'+ type).html('');
+		var data = $.parseJSON(response);
+		console.log(data); 
+		var item = '';
+		obj = data['data'];
+
+ 
+		$.each( obj, function( key, value ) {
+		item += '<tr>'; 
+		item += '<td class="center">'+key+' </td>';
+		item += '<td>'+value.page+'</td>';
+		item += '<td>'+value.total+'</td>';
+		item += '</tr>';
+		});
+ 
+	
+		$('#' + type).html(item);
+      
+		// Thay đổi nội dung phân trang
+		$('#paging'+ type).html(data['paging']);
+		
+		
+		}	 
+	
+
+	function trackByPage()
+	{
+		dataLouis['url'] = $(this).attr('href');
+		ajaxResponse(dataLouis, "POST");  
+		return false;
+	}
+	
+	function trackBySource()
+	{
+		dataLouis['url'] = $(this).attr('href');
+		ajaxResponse(dataLouis, "POST", "trackBySource");  
+		return false;
+	}
+	
+	ajaxResponse(dataLouis , "POST");
+	ajaxResponse(dataLouis , "POST", "trackBySource");
+	
+	
+     });
+     
+     
+    
+    
+</script>

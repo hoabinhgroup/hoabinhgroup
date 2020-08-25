@@ -1,0 +1,239 @@
+body{
+	background: url('../img/stripBg.gif') repeat top center;
+	
+}
+#header{
+	background: #0f191f;
+	width: 100%;
+	height: 600px;
+}
+
+.img-header{
+	background: url('../img/web sheraton-03.png') no-repeat top center;
+	background-size: contain;
+	height: 500px;
+}
+
+#review{
+	height: 400px;
+}
+
+.louis-title{
+	text-align: center;
+    font-size: 35px;
+    color: #fff;
+    display: block;
+    border-top: 1px solid rgba(255,255,255,0.45);
+    border-bottom: 1px solid rgba(255,255,255,0.45);
+    width: 320px;
+    margin: 0 auto;
+    background: #0c161f;
+    padding: 14px 0 18px 0;
+    }
+    
+#promotion{
+	background: url('../img/web sheraton-08.png') no-repeat center center;
+	background-size: cover;
+	width: 100%;
+	height: 400px;	
+} 
+
+#register-newsletter{
+	height: 100px;
+} 
+
+#form-register{
+	width: 944px;
+	height: 70px;
+	background: #0f2939;
+	margin: 0 auto;
+	display: block;
+	margin-top: 30px;
+}  
+.label-register{
+    float: left;
+    height: 100%;
+    width: 160px;
+    background: #8c0d29;
+    color: #fff;
+    font-size: 21px;
+    padding: 5px 20px 5px 20px;
+    text-align: center;
+    }
+    
+ .info-register{
+	 padding: 18px 22px;
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    margin-left: 160px;
+ }
+ 
+ .line-yellow{
+	 width: 100%;
+	 height: 10px;
+	 background: #f9cd47;
+ }
+ 
+ #footer{
+	background: #072966 url('../img/web sheraton-11.png') no-repeat top center;
+	background-attachment: fixed;
+	background-size: cover;
+	font-weight: 300;
+	color: #fff;
+	padding: 20px;
+}
+
+.f11a1 {
+    width: 350px;
+    /*background: url('../images/i3.png') no-repeat 0 23px;*/
+    height: 120px;
+    color: #ffffff;
+    padding-top: 8px;
+}
+
+.f11a1 .at2 {
+    margin-top: 8px;
+    margin-left: 24px;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.f11a1 .at1 {
+    margin-top: 8px;
+    margin-left: 2px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.iconvne {
+    font-size: 1.4em !important;
+    color: #fff;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+#imgvideo{
+	    position: absolute;
+    margin-top: -649px;
+    left: 50%;
+    margin-left: -296px;
+}
+
+#thevideo{
+	  position: absolute;
+    margin-top: -659px;
+    left: 50%;
+    margin-left: -296px;
+}
+
+#video{
+    width: 480px;
+    position: relative;
+    left: 50%;
+    margin-left: -400px;
+    top: 669px;
+}
+
+.carousel-control.right{
+	    right: 50px;
+    top: 110px;
+    background: none;
+}
+
+#video-slider{
+	margin-left: 600px;
+}
+
+.video-title{
+	font-size: 21px;
+    width: 448px;
+    color: #fff;
+    text-align: right;
+}
+
+.thumbnail{
+	width: 450px;
+	height: 230px;
+	background: #0f2939;
+	border: none;
+	color: #fff;
+	padding: 20px;
+	
+}
+
+.thumbnail p{
+	text-align: justify;
+	font-size: 13px;
+	font-weight: 200;
+	line-height: 19px;
+}
+.booking{
+	width: 142px;
+    height: 35px;
+    background: #891128;
+    border-radius: 10px;
+    font-size: 21px;
+    color: #fff;
+    padding-left: 22px;
+    padding-top: 3px;
+    position: relative;
+}
+
+a.booking:hover{
+	color: #fff;
+}
+
+a.booking:visited{
+	color: #fff;
+}
+
+.info-register label{
+	margin-right: 20px;
+}
+
+.info-register input{
+	margin-right: 20px;
+	color: #000;
+}
+
+.thumbnails-slider{
+	position: absolute;margin-left: 0px;left: 50%;width: 578px;
+}
+
+#frame_thevideo{
+	width: 482px;
+	height: 263px;
+}
+
+.bg_form_register{
+	background: url('../img/slot-02.jpg') no-repeat top center;
+	background-size: 940px;
+	width: 940px;
+	height: 400px;
+	margin: 0 auto;
+	margin-left: -472px;
+	position: relative;
+	left: 50%;
+}
+
+.form_register{
+	    width: 240px;
+    height: 400px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    z-index: 100;
+    margin-left: -472px;
+    padding: 20px;
+}
+
+.form_register input{
+	margin: 5px 0px;
+	display: block;
+	width: 200px;
+}
+.form_register textarea{
+	width: 200px;
+	height: 100px;
+}

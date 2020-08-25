@@ -1,0 +1,125 @@
+
+<section class="container paddtb10">
+	<?php if(count($this->data) > 0){ ?>
+		<div class="row cndl-head margintb10">
+			
+			<div class="col-sm-8">
+				<div class="pixel-slide">
+					<?php foreach($this->featured as $k=>$v):
+						$image = PATH_TOURS . $v['id'] . '/' . $v['full'];
+						 ?>
+			        <div class="content-slide" data-img="<?php echo $image; ?>">
+			        	<div class="content-title">
+				        	<h4>DU LỊCH VIỆT NAM</h4>
+				        	<H2><a href="/cam-nang/<?php echo $v['ident']; ?>.html" class="text-muted"> <?php echo $v['name']; ?></a></H2>
+				        	<p> <?php echo $v['shortDescription'];  ?></p>
+				        </div>
+			        </div>
+			        
+					<?php endforeach; ?>
+		    		<script type="text/javascript">
+			            $(".pixel-slide").pixel_slide({
+			            	height: "450px",
+			                delayTime:5000,
+			            });
+			        </script>
+			    </div>
+			</div>
+			
+			<div class="col-sm-4">
+				<div class="thumb-big">
+					<img class="img02" src="/<?=TEMPLATE_URL?>/default/images/dulich/du-lich04.jpg">
+					<div class="content">
+						<h4><u><a style="color: #fff;" href="/chuyen-muc/am-thuc">ẨM THỰC</a></u></h4>
+						<h3>CHÂN GÀ NƯỚNG NỔI TIẾNG PHỐ NÚI</h3>
+					</div>
+				</div>
+				<div class="thumb-big">
+					<img class="img02" src="/<?=TEMPLATE_URL?>/default/images/dulich/du-lich05.jpg">
+					<div class="content">
+						<h4><u>DU LỊCH VIỆT NAM</u></h4>
+						<h3>5 ĐIỂM ĐẾN MANG TÊN CON GÀ TRONG NĂM 2017</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+		<div class="col-sm-8 list-tour">
+			<ol class="breadcrumb">
+				<li>
+					<a href="/">Trang chủ</a>
+				</li>
+				<li>
+					<a href="/cam-nang">Cẩm nang</a>
+				</li>
+				<li class="active">
+				<a href="/<?php echo $this->obj_menu->link_folder; ?>/<?php echo $this->obj_menu->link; ?>"> <?php echo $this->obj_menu->name; ?></a>
+				</li>
+			</ol>
+			<div class="fix-img100">
+				<?php if(count($this->data) > 0){ ?>
+				<?php foreach($this->data as $val): 
+					$image = PATH_TOURS . $val['pid'] . '/resize_334x179/' .$val['full'];
+				?>
+				<div class="row margintb10 paddtb10">
+					<div class="col-sm-4">
+					<a href="/cam-nang/<?php echo $val['ident'] ; ?>.html"><img class="img-rounded" src="<?php echo $image; ?>"></a>
+					</div>
+					<div class="col-sm-8">
+						<h3><a href="/cam-nang/<?php echo $val['ident'] ; ?>.html"> <?php echo $val['pname']; ?></h3></a>
+						<p><?php echo $val['shortDescription']; ?></p>
+
+						<span class="clearfix"></span>
+					</div>
+				</div>
+				<?php endforeach; ?>
+					<?php }else{ ?>
+					Chưa cập nhật bài viết	
+					<?php } ?>			
+			</div>
+		</div>
+		
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tìm bài viết</h3>
+				</div>
+				<div class="panel-body">
+					<form id="form-user_v1" name="form-user_v1">
+    <div class="typeahead__container">
+        <div class="typeahead__field">
+ 
+            <span class="typeahead__query">
+                <input class="js-typeahead-user_v1" name="user_v1[query]" type="search" placeholder="Tìm bài viết..." autocomplete="off">
+            </span>
+            <span class="typeahead__button">
+                <button type="submit">
+                    <i class="typeahead__search-icon"></i>
+                </button>
+            </span>
+ 
+        </div>
+    </div>
+</form>
+				</div>
+			</div>
+			
+			<div class="ds-baiviet fix-img100">
+				<?php echo $this->TravelGuideMenuWidget($this->ident); ?>
+			</div>
+
+			<div class="panel panel-default"> <?php 
+			
+				echo $this->HotelWidget($this->locations); ?></div>
+
+			<div class="ds-baiviet fix-img100">
+				<?php echo $this->TravelGuideViewestWidget(); ?>
+			</div>
+
+			<div class="ds-baiviet fix-img100">
+				<?php echo $this->TravelGuideNewestWidget(); ?>
+			</div>
+
+		</div>
+
+	</section>

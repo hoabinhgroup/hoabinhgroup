@@ -1,0 +1,97 @@
+<div class="row">
+<div class="col-sm-12">
+<div class="widget-box transparent">
+    <div class="widget-header widget-header-flat">
+    	<h4 class="lighter">
+    		<i class="icon-star orange"></i>
+			Danh mục Menu Items <?php echo $this->menu->name; ?>
+    	</h4>
+
+    	
+    </div>
+
+<?php if($this->items != null) { ?>
+<?php
+	$ns = new Zend_Session_Namespace('language');
+	echo $ns->lang;
+$menu = new Louis_System_Recursive($this->items->toArray());
+
+$menu = $menu->buildArray(0);
+
+	//echo $this->select('menu',null,$this->items->toArray());
+?>
+
+<div class="widget-body">
+	<div class="widget-main no-padding">
+	    <table class="table table-bordered table-striped">
+	    	<thead class="thin-border-bottom">
+	    		<tr>
+	    			
+					<th>
+			    	<i class="icon-caret-right blue"></i>
+			    			Nhãn
+			    	</th>
+			    	<th>
+			    	
+			    			Page
+			    	</th>
+			    	<th>
+			    	<i class="icon-caret-right blue"></i>
+			    			Đường dẫn
+			    	</th>
+			    	<th>
+			    	<i class="icon-caret-right blue"></i>
+			    			Hiển trị ở trang chủ
+			    	</th>
+			    	<th>
+	    				<i class="icon-caret-right blue"></i>
+	    				Thao tác
+	    			</th>
+
+			    </tr>
+		  </thead>
+		  <tbody>
+		  <?php foreach($menu as $key=>$val): ?>
+		   <tr>
+		  <?php if ($val['level'] == 1){  ?>
+		 
+			 <td><strong>+ <?php echo $val['name']; ?></strong></td> 
+		
+		  <?php }else { 
+			  $padding = ($val['level'] - 1) * 25;
+			  $padding = 'padding-left: ' . $padding . 'px;';
+		  ?>
+			 
+			 <td style="<?=$padding?>">- <?php echo $val['name']; ?></td> 
+		      
+			<?php  } ?>
+			<td> <?php echo $val['page_id']; ?></td> 
+			<td> <?php echo $val['link']; ?></td> 
+			<td> <?php echo $val['isHome']; ?></td>
+			 <td class='links'>
+        <a href='/<?=ADMIN?>/menuitem/update/id/<?php echo $val['id'];?>'><i class="icon-pencil bigger-130 green"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/image/id/<?php echo $val['id'];?>/menu/<?php echo $val['menu_id'];?>'><i class="icon-th-list bigger-130 green"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/move/direction/up/id/<?php echo $val['id'];?>'>
+          <i class="icon-arrow-up bigger-130 blue"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/move/direction/down/id/<?php echo $val['id'];?>'>
+          <i class="icon-arrow-down bigger-130 blue"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/delete/id/<?php echo $val['id'];?>'><i class="icon-trash bigger-130 red"></i></a> 
+    </td>
+			</tr> 
+		  <?php endforeach; ?>
+		  </tbody>
+	    			</table>
+	    		</div><!-- /widget-main -->
+	    	</div><!-- /widget-body -->
+	    </div><!-- /widget-box -->
+	</div>
+</div>
+
+<?php }else{?>
+<p>Bạn chưa có menu.</p>
+<?php }?>
+
+<a class="btn btn-info btn-sm" href='/<?=ADMIN?>/menuitem/add/menu/<?php echo $this->menu->id ?>'>Thêm menu mới</a>
+<a class="btn btn-info btn-sm" href='/<?=ADMIN?>/menuitem/homecat'>Quản lý Category Home</a>
+    
+<?php //ECHO $_SERVER['DOCUMENT_ROOT'] ?>

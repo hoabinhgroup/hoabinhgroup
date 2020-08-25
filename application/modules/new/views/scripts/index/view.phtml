@@ -1,0 +1,231 @@
+ <style>
+	 .news-heading-detail h1{
+		 font-size: 1.8em !important;
+		 line-height: 1.5em;
+	 }
+	 .mnnav{
+		color: #fff;
+    border-left: 5px solid #fad101;
+    padding-left: 10px;
+    margin-left: 18px;
+    margin-top: 0;
+    font-size: 3.6em;
+	}
+</style>
+ 
+   <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/v-mezhdunarodnyiy-fond-selskohozyaystvennogo-razvitiya-vstupaet-rossiya.jpg'); background-position: 0px -101px;background-attachment: fixed;">
+		    <div class="container">  
+			    <div class="row">
+		 <h2 class="mnnav"> <?php echo $this->menu_content->name; ?> </h2>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/"><?php echo $this->translate('home'); ?></a></li>
+  <li class="breadcrumb-item"><a href="#"><?php echo $this->translate('news'); ?></a></li>
+  <li class="breadcrumb-item active"><a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $this->menu_content->link; ?>"><?php echo $this->menu_content->name; ?></a></li>
+</ol>
+</div> </div>
+	    </div>
+	    <div class="container">
+	    <div class="row" id = "news-content">
+	   
+		    <div class="col-md-8">
+			    <div class="news-heading-detail">
+			   <h1 style="font-size: 19px;"><?php echo $this->name; ?></h1>
+			      <div>
+			   
+				  <div class="row">
+				   <div class="col-md-6">
+					 <div class="share-mxh" style="display: inline-block;margin-top: -20px;">
+				
+					 <!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+<a class="addthis_counter addthis_pill_style"></a>
+</div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-524baa37331d05b7"></script>
+<!-- AddThis Button END -->
+			</div>
+				   </div>
+				   <div class="col-md-6 text-right">
+			 <i class="fa fa-eye" aria-hidden="true"></i> <?php echo $this->translate('views'); ?>: <?php echo $this->views; ?></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $this->translate('date_created'); ?>: <?php echo date('d/m/Y',$this->date); ?></span>	
+				
+			       </div>
+			  
+			   		</div>
+			  
+				   </div>
+			   
+			    </div>
+			  
+			    <div class="news-description-detail">
+				   
+			<div class="description">   
+			   <p><?php echo str_replace('\"','',$this->description); ?></p>
+		
+			</div>
+		    </div>
+			<div class="share-mxh">
+				
+					 <!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+<a class="addthis_counter addthis_pill_style"></a>
+</div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-524baa37331d05b7"></script>
+<!-- AddThis Button END -->
+			</div>
+			<div class="tags">
+				<?php  
+						
+					if($this->tags != null){
+					$tags_result = explode(',',$this->tags);	
+					
+					
+					  ?>
+				<i class="fa fa-tags" aria-hidden="true"></i> <b>Từ khóa</b>: 
+				<span>
+				<?php 
+					$count = count($tags_result);
+					$i = 0;
+					foreach($tags_result as $ktag=>$vtag):  $i++; ?>
+				<a style="color: #8d8c8c;" title="Tag <?php echo $vtag; ?>" class="taglink" href="/tag/<?php echo $this->string()->to_slug($vtag); ?>"><?php echo $vtag; ?></a>
+				<?php echo ($count == $i)?'':', '; ?>
+				<?php endforeach; ?>
+				</span>
+				<?php } ?>
+			</div>
+			
+			 <div class="news-description-detail">
+				<div class="fb-comments" data-href="<?=$this->current?>" data-width="100%" data-numposts="5"></div>
+			 </div>
+			
+			<div id="latest-news">
+				<div class="title-louis-3 center"><?php echo $this->translate('latest_news_in_category'); ?> <span style="text-transform: uppercase"><?php echo $this->menu_content->name; ?></span></div>
+				<div class="underline"></div>
+				<div class="row">
+				<div class="col-md-12 content-louis">
+					<?php 
+						if(count($this->mostViews) > 0){
+						foreach( $this->mostViews as $kview=>$vview): ?>
+					<div class="col-md-4">
+						<a class="img-href" href="/<?php echo $this->translate('news_link'); ?>/<?php echo $vview['ident']; ?>.html"><img class="img-responsive" src="/public/images/news/<?php echo $vview['id']; ?>/<?php echo $vview['full']; ?>" /></a>
+						<a class="title-href" href="/<?php echo $this->translate('news_link'); ?>/<?php echo $vview['ident']; ?>.html"><?php echo $vview['name']; ?></a>
+						<div class="date"> <?php echo date('d',$vview['date']); ?> tháng <?php echo date('m',$vview['date']); ?>, <?php echo date('Y',$vview['date']); ?> </div>
+					</div>
+					<?php  endforeach; 
+						}
+					?>
+					
+				</div>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		    </div>
+		    
+		    
+		   <div class="news-col-right col-md-4">
+			    
+			    <div class="row">
+			     <div class="col-sm-12 col-md-12">
+        <form action="/<?=$this->menu_content->link_folder?>/<?=$this->menu_content->link?>" class="form-louis" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control form-text-louis" placeholder=" <?php echo $this->translate('search'); ?>" name="q">
+            <div class="input-group-btn">
+                <button id="search" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search big"></i></button>
+            </div>
+        </div>
+        </form>
+				</div>
+			     </div>
+			    
+			    
+				<div role="tabpanel" class="tabs-support">
+						
+						
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="home"><p style="text-align: center; font-size: 1.1em; font-weight: bold; text-transform: uppercase; background-color: #ffcf01; padding: 5px; color: #000;"><?php echo $this->translate('support'); ?></p>
+<p style="font-size: 1.2em; margin-top: 15px; text-transform: uppercase; text-align: center; font-weight: bold;">&nbsp;&nbsp;&nbsp;<?php echo $this->translate('hanoi'); ?>: <span style="color: #ffffff;"><a style="color: #ffffff;" href="tel:0913311911">0913.311.911</a></span></p>
+<p style="font-size: 1.2em; margin-top: 15px; text-transform: uppercase; text-align: center; font-weight: bold;"><?php echo $this->translate('danang'); ?>: <a style="color: #fff;" href="tel:0913186829">0913.186.829</a></p>
+</div>
+								
+							</div>
+						</div>
+				
+			    
+			    <div class="row">
+			      <div class="col-sm-12 col-md-12">
+			     <div class="panel panel-default">
+    <div class="panel-heading"><?php echo $this->translate('care_article'); ?></div>
+    <div class="panel-body">
+	    <?php if(count($this->beInterested) > 0){ ?>
+	    <ul class="list-group">
+		    <?php foreach($this->beInterested as $key=>$val): ?>
+  <li class="list-group-item louis-list-item">
+      <a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $val['ident']; ?>.html"><img alt="<?=$val['name']?>" class="img-responsive" src="/public/images/news/<?php echo $val['id']; ?>/<?php echo $val['full']; ?>" /></a>
+      <p><a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $val['ident']; ?>.html"> <?php echo $val['name']; ?> </a>
+      		<?php if($this->lang == 'en'){ ?>
+      	 <span class="time"><?php echo date('m',$val['date']); ?> / <?php echo date('d',$val['date']); ?>/ <?php echo date('Y',$val['date']); ?>
+      	 - <span style="color: #d3d3d3"><?php echo $val['votes']; ?> likes</span>
+      	 </span>	      <?php }else{ ?>
+	      <span class="time"><?php echo date('d',$val['date']); ?> tháng <?php echo date('m',$val['date']); ?>, <?php echo date('Y',$val['date']); ?> - <span style="color: #d3d3d3"><?php echo $val['votes']; ?> lượt thích</span>
+	         
+	       </span> 
+	      
+	      <?php } ?>
+      </p>
+      <div style="clear:both"></div>
+  </li>
+  <?php endforeach; ?>
+
+  		</ul>
+  		<?php } ?>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			     </div>
+			     <div class="row">
+			       <div class="col-sm-12 col-md-12">
+			     <div id="category-news" class="panel panel-default">
+    <div class="panel-heading"><?php echo $this->translate('article_cat'); ?></div>
+    <div class="panel-body">
+
+	    <ul class="list-group">
+		  <?php foreach($this->categories as $menu): ?>
+  <li class="list-group-item louis-list-category <?php echo ($this->link == $menu['link'])?'active':''; ?>">
+    <a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $menu['link']; ?>"> <span style="text-transform: uppercase;"><?php echo $menu['name']; ?></span></a> 
+  </li>
+  <?php endforeach; ?>
+
+
+
+  		</ul>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			     </div>
+			     <?php echo $this->VideoWidget(); ?>
+			     <div class="row">
+			       <div class="col-sm-12 col-md-12">
+			     <div id="category-tags" class="panel panel-default">
+    <!--<div class="panel-heading"><?php echo $this->translate('keywords'); ?></div>-->
+    <div class="panel-body">
+	    <ul class="list-group">
+	    	<a target="_blank" href="http://hoabinhevents.com"><img width="100%" src="/public/images/7533626739771635315.gif" /></a>
+	    </ul>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			      </div>
+		    </div>
+	    	
+	    	</div>
+	    	
+	    </div>
+	    	

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+      <meta name="google-site-verification" content="qi8U2LlUcwIWQcOj4Yt3FukaTa8Uh8iLjBwsJNN_Jps" /> 
+    <?php echo $this->headTitle() ?>
+  <?php echo $this->headMeta() ?>  
+  <link rel="shortcut icon" href="/public/images/favicon-1.ico"> 
+   
+  <meta name="robots" content="INDEX,FOLLOW" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?v=1.1" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="<?=TEMPLATE_URL?>/default/css/style.min.css?v=1.1" rel="stylesheet">
+      <?php echo $this->headLink() ?>
+
+    <link href="<?=TEMPLATE_URL?>/default/css/font-awesome.min.css?v=1.1" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css?v=1.1" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,400i,500,500i,700,700i,900&amp;subset=vietnamese" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js?v=1.1"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js?v=1.1"></script>
+    <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js?v=1.1"></script>
+<!-- <script type="text/javascript" src="http://hoabinhtourist.com/public/js/happy-new-year.js"></script> -->
+
+<?php  $data = getApiUrl("http://hoabinhtourist.com/default/api/getchat");
+	if($data->status){
+      if($data->data->type == 'facebook'){ ?>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WN28S4C');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN28S4C"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	<?php  }else{ ?>
+
+  	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KMHJ4CL');</script>
+<!-- End Google Tag Manager -->
+
+ <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMHJ4CL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<?php }} ?>
+
+  <?php 
+	function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}	
+	?>
+	<?php if(isMobile()): ?>
+	
+	<?php else: ?>
+  <!--<script src="http://hoabinh-group.com/public/js/jquery.happy_new_year_v2.js"></script>-->
+    <?php endif; ?>     
+	<style>
+		/* Note: Design for a width of 320px */
+
+@media only screen and (max-width: 767px) {
+	#section-play-pause{
+		bottom: 10px;
+		top: auto !important;
+	}
+
+
+}
+/* #Mobile (Landscape) ================================================== */
+
+/* Note: Design for a width of 480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	#section-play-pause{
+		bottom: 10px;
+		top: auto !important;
+	}
+
+
+}
+
+
+		
+	</style>
+	
+	<script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Event organization",
+            "name": "HoaBinh events",
+            "description": "The best Event organization all over the Vietnam!",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Ha Noi, VN",
+                "streetAddress": "29 Doan Thi Diem str., Dong Da dist., Hanoi city"
+            },
+            "openingHours": [
+                "Mo-Sa 09:00-22:30",
+                "Su 09:00-23:00"
+            ],
+            "telephone": "+84913311911"
+        }
+    </script>
+    
+    
+    
+  </head>
+  <body>
+	  <!-- Load Facebook SDK for JavaScript -->
+     <!-- <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v7.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="943509025705581"
+  logged_in_greeting="Xin chào, bạn có cần mình hỗ trợ gì không?"
+  logged_out_greeting="Xin chào, bạn có cần mình hỗ trợ gì không?">
+      </div>-->
+      
+	 <!-- <div id="section-play-pause" style="position: fixed; top: 10px; right: 20px; background: #fff; z-index: 10000; padding: 5px;">
+    <div class="pretty p-icon p-toggle p-plain">
+        <input type="checkbox" id="music-button" />
+        <div class="state p-warning-o p-off">
+            <i class="icon fa fa-play"></i>
+            <label>Bật nhạc...</label>
+        </div>
+        <div class="state p-on">
+            <i class="icon fa fa-pause"></i>
+            <label>Tắt</label>
+        </div>
+    </div>
+	  </div>
+	<audio id="playMusic" src="http://hoabinh-group.com/public/music/HappyNewYear-ABBA_3.mp3" autoplay>
+<p>If you are reading this, it is because your browser does not support the audio element.     </p>
+	</audio>
+	
+	<script>		
+		$("#music-button").on('click', function(){
+			if($(this).is(":checked")){
+				document.getElementById("playMusic").play();
+			}else{
+				document.getElementById("playMusic").pause();
+			}
+		});
+	</script>
+	
+	  <style>.img-defer{ opacity: 0; } .img-load{ opacity:1; transition:opacity 0.8s ease-in; }</style>
+	  <div class="snow"></div>-->
+	  	 
+	
+  <?php  $lang = Zend_Registry::get('Zend_Locale');
+  		// echo $locale;
+  			  ?>		  
+	<div id="header">
+		
+		<div id="header-top" class="header-home hidden-xs" data-spy="affix" data-offset-top="197">
+	
+		<!-- END Social Icons -->
+	<div class="container">
+		<div class="row">
+		<div class="col-md-10">
+			<?php  echo $this->render('/'.$lang. '/menu.phtml'); ?>
+		
+		</div>
+		<div class="col-md-2">
+			<div class="hotline" style="margin-top: -10px;">					
+                        <span class="pull-right">
+                      
+                       
+                        <a href="/translate/filter/change/vi"> <img class="img-defer" alt="VN" height="24" data-src= '<?=TEMPLATE_URL?>/default/img/Vietnam_flat.png'/>	</a>
+                        <a href="/translate/filter/change/en"><img class="img-defer" alt="EN" height="24" data-src= '<?=TEMPLATE_URL?>/default/img/United-Kingdom_flat.png'/></a>
+                        </span>
+                       	
+                    </div>
+		</div>
+		</div>
+		</div>
+	</div>
+
+<!-- END Top Area --> 
+  
+		
+		<div id="menu">
+		    	<div class="panel-box">
+
+		    <nav class="navbar">
+			    	<div class="hotline">					
+                        <span class="pull-right">
+                        <img class="" alt="hotline Hòa Bình Group" height="24" src= '<?=TEMPLATE_URL?>/default/img/icon hotline.png'/> 
+                        <b><a class="click2call" href="tel:0913311911">+84.913.311.911</a></b>
+                        <a href="/translate/filter/change/vi"> <img alt="VN" height="24" src= '<?=TEMPLATE_URL?>/default/img/Vietnam_flat.png'/>	</a>
+                        <a href="/translate/filter/change/en"><img alt="EN" height="24" src= '<?=TEMPLATE_URL?>/default/img/United-Kingdom_flat.png'/></a>
+                        </span>
+                       	
+                    </div>
+                   
+                 
+  
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    
+    </div>
+    
+
+	
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    
+	    
+	     <div class="logo visible-xs-block">
+		  
+	       <?php if($lang == 'vi'){ ?>
+	        <a title="Home" href="/">
+	       <img width="220" src="/public/images/logo-01.png" />
+	       </a>
+	       	<?php }else{ ?>
+	       	  <a title="Home" href="/en">
+	       	 <img width="220" src="/public/images/logo en-01.png" />
+	       	  </a>
+	       	<?php } ?>
+		   
+
+   </div>
+	    
+      <div id="top_menu_louis">
+     <?php  echo $this->render('/'.$lang. '/menu.phtml'); ?>
+      </div>
+    </div><!-- /.navbar-collapse -->
+  
+</nav>
+	   
+		    	</div> 	 
+	    	</div><!-- #menu-->
+	    	<!-- #slider -->
+			<div id="slider">
+		     <div class="panel-box">
+    <div class="row no-gutter">
+		
+		   
+    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+    <!-- Carousel indicators -->
+    <?php $menuitem = new Model_MenuItem();
+	    $image = new Model_ProductImage();
+	   $menu = $menuitem->get_one_where(array(
+		    'menu_id' => 12,
+		    'id' => 341,
+		    'lang' => 'vi',
+	    ));	    
+		$id_menu = $menu->id;
+		$images = $image->get_details(array(
+			'productId' => $id_menu
+		));
+		$countImages = count($images);
+	     ?>
+    <ol class="carousel-indicators">
+	    		<?php for($order = 0; $order < $countImages; $order++){ ?>
+	    		 <li data-target="#myCarousel" data-slide-to="<?php echo $order;?>"  <?php echo ($order == 0)?' class="active"':''; ?>></li>
+	    		<?php } ?>
+
+       
+         
+            </ol>   
+    <!-- Carousel items -->
+    <?php if($lang == 'vi'): ?>
+    <div class="carousel-inner">
+	    	<?php 
+		    	$stt = 0;
+		    	foreach($images as $keyImages=>$valImages): $stt++; ?>
+		    	 <div class="item <?php echo ($valImages['isDefault'] == 'Yes')?' active':''; ?>">
+       <a href="<?php echo $valImages['url']; ?>"> <img class="img-responsive" src="/public/images/backgrounds/<?php echo $valImages['full']; ?>" alt="<?php echo $valImages['full']; ?>"></a>
+		    	 </div>
+             <?php endforeach; ?> 
+        
+                        
+    </div>
+    <?php else: ?>
+  <?php  $menu = $menuitem->get_one_where(array(
+		    'menu_id' => 12,
+		    'id' => 342,
+		    'lang' => 'en',
+	    ));	    
+		$id_menu = $menu->id;
+		$images = $image->get_details(array(
+			'productId' => $id_menu
+		));
+		$countImages = count($images);
+	     ?>
+     <div class="carousel-inner">
+	    
+	          <?php 
+		       
+		    	foreach($images as $keyImages=>$valImages): ?>
+	            <div class="item <?php echo ($valImages['isDefault'] == 'Yes')?' active':''; ?>">
+       <a href="<?php echo $valImages['url']; ?>"> <img class="img-responsive" src="/public/images/backgrounds/<?php echo $valImages['full']; ?>" alt="<?php echo $valImages['full']; ?>"></a>
+            	 </div>
+             <?php endforeach; ?>     
+              
+    </div>
+    <?php endif; ?>
+
+    <!-- Carousel nav -->
+   <a class="left carousel-control slider-header" href="http://hoabinh-group.com/#myCarousel" data-slide="prev"> <img class="img-defer" data-src="<?=TEMPLATE_URL?>/default/img/btn-l.png" /> </a> <a class="right carousel-control slider-header" href="http://hoabinh-group.com/#myCarousel" data-slide="next"><img class="img-defer" data-src="<?=TEMPLATE_URL?>/default/img/btn-r.png" />  </a> 
+</div>
+		    
+	    
+    </div>
+    </div>	
+		    	
+	    	</div><!-- #slider -->
+			<!-- #end_slider -->
+	</div>
+	    	
+	    	
+    	

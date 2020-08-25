@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<title>ZID</title>
+
+		<!-- Including tooltip style -->
+		<link href="css/tooltip.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/subitems.css">
+
+		<!-- Including jQuery and rating plugin -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/jquery.5stars.js"></script>
+
+
+		<script type="text/javascript">
+			$(document).ready(function(){ 
+			
+			
+				var php= 'admin/php/manager.php';
+				var skinFolder= 'skins/';
+			
+			
+				$('.stars').rating({
+					php: php,				
+					step: 0,
+					animate:true,
+					textmain:'%ms',
+					textloading:'&nbsp;<a src="'+skinFolder+'loading.gif"/>&nbsp;'
+				});
+				
+				$('.substars').rating({
+					php: php,
+					animate:true,
+					textmain:'%v',
+					textloading:'&nbsp;<img src="'+skinFolder+'loading.gif"/>&nbsp;',
+					textdelay:0
+				});
+				
+					
+					
+				////example 2
+				$('.bar').rating({
+					php: php,	
+					skin: skinFolder+'bars_b.png',
+					step: 0,
+					stars:1,
+					animate:true,
+					textmain:'%m%',
+					textloading:''
+				});
+				
+				$('.subbar').rating({
+					php: php,
+					skin: skinFolder+'bars_b.png',
+					animate:true,
+					step: 0,
+					stars:1,
+					textmain:'%v',
+					textdelay:0,
+					texthover:'%p%',
+					textloading:'&nbsp;<img src="'+skinFolder+'loading.gif"/>&nbsp;',
+					tooltipeasing:0
+				});
+			
+			
+			
+			});		
+
+		</script>   
+
+	
+
+	</head>
+	<body>
+	
+		
+		<h1>Example of using subitems</h1>
+		<p>Use this file code as a template for your project</p>
+
+		<h1>Example 1</h1>
+
+
+		<div>
+			<div class="leftpanel">
+				<div class="center">
+					<div class="highlight">Overall rating</div>
+					<div id="textID"></div>
+					<div class="stars alignright" data-textlocation="textID" data-id="item1" data-title="Stats with subitems" data-haschild="true"></div>
+					
+				</div>
+			</div>
+			
+			<div class="rightpanel border-panel">
+				<div>
+					<div class="leftside">Design:</div>
+					<div class="substars rightside" data-id="item1" data-property="subitem: design" data-textlocation="_txt1"></div>
+					<div class="statstext"><img src="skins/user.png" /><span id="_txt1"></span></div>
+				</div>
+				<div>	
+					<div class="leftside">Performance:</div>
+					<div class="substars rightside" data-id="item1" data-property="subitem: performance" data-textlocation="_txt2"></div>
+					<div class="statstext"><img src="skins/user.png" /><span id="_txt2"></span></div>
+				</div>
+				<div>	
+					<div class="leftside">Price:</div>
+					<div class="substars rightside" data-id="item1" data-property="subitem: price" data-textlocation="_txt3"></div>
+					<div class="statstext"><img src="skins/user.png" /><span id="_txt3"></span></div>
+				</div>
+			</div>
+		</div>
+
+
+
+		</br>
+
+		<h1>Example 2</h1>
+			
+	
+		<div class="rightpanel">
+			<div class="border-bottom">
+				<div class="leftside highlight">Overall:</div>
+				<div class="bar rightside" data-id="item2" data-title="Stats with subitems second example" data-haschild="true" data-textlocation="_txt20"></div>
+				<div class="statstext"><span id="_txt20"></span></div>
+			</div>
+			<div>
+				<div class="leftside">Location:</div>
+				<div class="subbar rightside" data-id="item2" data-property="subitem: Location" data-textlocation="_txt21"></div>
+				<div class="statstext"><img src="skins/user2.png" /><span id="_txt21"></span></div>
+			</div>
+			<div>	
+				<div class="leftside">Service:</div>
+				<div class="subbar rightside" data-id="item2" data-property="subitem: Service" data-textlocation="_txt22"></div>
+				<div class="statstext"><img src="skins/user2.png" /><span id="_txt22"></span></div>
+			</div>
+			<div>	
+				<div class="leftside">Cleanliness:</div>
+				<div class="subbar rightside" data-id="item2" data-property="subitem: Cleanliness" data-textlocation="_txt23"></div>
+				<div class="statstext"><img src="skins/user2.png" /><span id="_txt23"></span></div>
+			</div>
+			<div>	
+				<div class="leftside">Value:</div>
+				<div class="subbar rightside" data-id="item2" data-property="subitem: Value" data-textlocation="_txt24"></div>
+				<div class="statstext"><img src="skins/user2.png" /><span id="_txt24"></span></div>
+			</div>
+		</div>
+	
+	
+	
+	
+	</body>
+</html>

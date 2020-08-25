@@ -1,0 +1,101 @@
+<style>
+#pav-slideshow{
+	display: none !important;
+}
+
+</style>
+
+
+<div id="content">
+				<h1>
+			Giỏ hàng
+					</h1>
+		
+		<div class="checkout wrapper no-margin">		
+			<form action="/cart" method="post" enctype="multipart/form-data" role="form">
+				<div class="cart-info table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<td class="image">Image</td>
+								<td class="name">Product Name</td>
+								<td class="model">Model</td>
+								<td class="quantity">Quantity</td>
+								<td class="price">Unit Price</td>
+								<td class="total">Total</td>
+							</tr>
+						</thead>
+						<tbody>
+														
+						<?php foreach ($this->viewCart as $k=>$v):  ?>
+						
+							<tr>
+								<td class="image" data-label="Image">
+							<a href="/<?=$v['ident']?>.html">
+						<img src="<?=$v['image']?>" alt="<?=$v['name']?>" title="<?=$v['name']?>" width="220px">
+										</a>
+																	</td>
+								<td class="name" data-label="Product Name">
+									<a href="/<?=$v['ident']?>.html">
+										<?=$v['name']?>									
+									</a>
+											<div class="cart-option">
+										
+																			</div>
+									
+																	</td>
+									
+								<td class="model" data-label="Model"><?=$v['model']?>	</td>
+								<td class="quantity" data-label="Quantity">
+									<input name="quantity[<?=$v['id']?>]" value="<?=$v['qty']?>" size="1" type="text">
+									&nbsp;
+									<input src="/application/templates/louis/default/image/default/update.png" alt="Update" title="Update" type="image">
+									&nbsp;<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=checkout/cart&amp;remove=36::"><img src="/application/templates/louis/default/image/default/remove.png" alt="Remove" title="Remove"></a>
+								</td>
+								<td class="price" data-label="Unit Price"><?=$v['price']?></td>
+								<td class="total" data-label="Total"><?=$v['total']?></td>
+							</tr>
+						<?php endforeach; ?>								
+
+						
+													
+													</tbody>
+					</table>
+				</div>
+			</form>
+			
+			
+							
+
+		  
+  <div class="row">
+	<div class="col-lg-9 col-md-9">  
+		<div class="buttons clearfix">
+			<div class="pull-right right"><a href="/checkout" class="button btn btn-theme-default">Thanh toán</a></div>
+			<div class="center pull-left"><a href="/" class="button btn btn-theme-default ">Tiếp tục mua hàng</a></div>
+		</div>
+	</div>  
+	<div class="col-lg-3 col-md-3">
+	  <div class="cart-total clearfix">
+		<table id="total">
+		  		  <tbody><tr>
+			<td class="right"><b>Sub-Total:</b></td>
+			<td class="right pull-right">$180.00</td>
+		  </tr>
+		  
+		  		  <tr>
+			<td class="right"><b>Total:</b></td>
+			<td class="right pull-right">$215.50</td>
+		  </tr>
+		  		</tbody></table>
+	  </div>
+	</div>     
+  </div>  
+
+			
+
+		</div>	
+		
+		
+
+	</div> 

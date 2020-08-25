@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>FileNAME</title>
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="css/layout.css">
+	<link rel="stylesheet" href="css/bjqs.css">
+	<link rel="stylesheet" href="css/slider.css">
+	
+	
+	<!-- Including style for tooltip if necessary -->
+	<link href="css/tooltip.css" rel="stylesheet" type="text/css">
+		
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	
+	<!-- Including jQuery -->
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	
+	<!-- Including rating plugin -->	
+	<script type="text/javascript" src="js/jquery.5stars.min.js"></script>
+	
+	<!-- Including slider plugin -->	
+	<script type="text/javascript" src="js/bjqs-1.3.js"></script>
+	
+	<script type="text/javascript">
+	   
+		$(document).ready(function(){	
+			//START 
+			
+			//init the stars
+			$('#sliderstars').rating({
+				//php: 'admin/php/manager.php',  //uncomment this line to switch between "Database-free" and "Normal" modes 
+				animate:true,
+				round:false,
+				textmain: 'you gave %ms stars'
+			});
+			
+			//init the slider
+			$('#banner-fade').bjqs({
+				height      : 320,
+				width       : 620,
+				showmarkers : false,
+				animspeed	: 8000,
+				responsive  : true,
+				randomstart	: false,
+				usecaptions	: false,
+				onchange	: onslidechange //this function will be executed every time then slide is changed
+			});
+						
+		});
+
+		
+		//update ID of the stars
+		function onslidechange(n){
+			var img=$('.bjqs').find('img')[n];
+			var title=$(img).attr('title');		//find image title attribute
+			$('#title').html(title);
+			$('#sliderstars').rating('option','title','slider: image number '+n).rating('id','slider'+n); //update stars title and ID (will cause automatical stats reloading for new ID)
+		}
+		
+		
+		
+	</script>	
+
+	
+	
+</head>
+<body>
+	
+	<p>Note: "Database-free" is activated by not providing path to manager.php
+	</p>
+	<!--  Outer wrapper for presentation only, this can be anything you like -->
+	<div id="banner-fade">
+
+		<!-- start Basic Jquery Slider -->
+		<ul class="bjqs">
+			<li><img src="images/slider/banner01.jpg" title="Admin area: filter support"></li>
+			<li><img src="images/slider/banner03.jpg" title="Admin area: detailed items statistics"></li>
+			<li><img src="images/slider/banner02.jpg" title="Admin area: detailed IP statistics"></li>
+		</ul>
+		<!-- end Basic jQuery Slider -->
+		
+		
+		<div class="shadow"><img src="images/shadow.png"></img></div>
+		<div id="title" class="left"></div>
+		
+		<!-- stars will appear here. Initial data-id is set to "" (empty) to avoid loading anything. data-id is controlled by slider (see function onslidechange above) -->
+		<div id="sliderstars" class="right" data-id=""></div>
+	
+	</div>
+
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

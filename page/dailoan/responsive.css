@@ -1,0 +1,51 @@
+@media screen and (max-device-width: 480px){
+	 
+}
+
+@media only screen and (min-width : 1324px) and (max-width : 1523px){
+	#main{
+		height: 900px !important;
+	}
+	
+	#registration-form{
+	position: relative;
+	top: 460px !important;
+	}
+}
+
+@media only screen and (min-width : 1524px) and (max-width : 1623px){
+	#main{
+		height: 1000px !important;
+	}
+	
+	#registration-form{
+	position: relative;
+	top: 520px !important;
+	}
+}
+
+@media only screen and (min-width : 1624px) and (max-width : 1723px){
+	#main{
+		height: 1100px !important;
+	}
+	#registration-form{
+	position: relative;
+	top: 590px !important;
+	}
+}
+
+@media only screen and (min-width : 1724px) and (max-width : 1823px){
+	#main{
+		height: 1300px !important;
+	}
+	#registration-form{
+	position: relative;
+	top: 590px !important;
+	}
+}
+
+@media only screen and (min-width : 1824px) and (max-width : 2524px){
+	#site-header{
+		height: 1300px !important;
+	}
+}

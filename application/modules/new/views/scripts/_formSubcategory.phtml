@@ -1,0 +1,66 @@
+<div id='subcategory_backgroundimage' class='form-wrapper' style="display:none;">
+	<img src="/public/ajax-loader.gif" alt="" />
+</div>
+<div id="subcategory_id-wrapper" class="form-wrapper" style="display:none;">
+<div id="subcategory_id-label" class="form-label">
+<label class="optional" for="subcategory_id"></label>
+</div>
+<div id="subcategory_id-element" class="form-element">
+<select id="subcategory_id" name="subcategory_id" >
+
+</select>
+
+</div>
+</div>
+
+
+<script type="text/javascript">
+//alert(3434);
+$(document).ready(function() {
+//alert(344);
+	//$j('#subcategory_id-wrapper').style.display = 'none';
+	//$j('#subcat').show();
+	$('#categoryId').change(function(){
+	$('subcategory_backgroundimage').show();
+	 $('#subcategory_backgroundimage').show();	        
+	// $('#subcategoryId').hide();	        
+
+	  
+	  var drop_var = $('#categoryId').val();
+      $.ajax({
+            type: "POST",
+            url: "/admin/product/save/",
+            data: {drop_var : drop_var},
+            dataType: 'json',
+            success: function(data) {
+                //alert(JSON.stringify(data, null, 4));
+                console.log(data);
+                document.getElementById("subcategory_id").options.length = 0;
+                if (data !=null){
+                $('#subcategory_id-wrapper').show();
+	              // $j('#subcat').show(); 
+               
+             $.each(data, function(key, value) {
+            $('#subcategory_id').append($('<option>').text(value).attr('value', key));
+        });
+     
+        $('#subcategory_backgroundimage').hide();
+        
+          }else{
+          $('#subcategory_id-wrapper').hide();
+         $('#subcategory_backgroundimage').hide();
+          }
+           
+            },
+            error: function() {
+                alert("loi");
+            }
+          
+
+           });
+    	return false;
+    	
+	});
+});
+
+</script>

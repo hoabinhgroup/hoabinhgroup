@@ -1,0 +1,31 @@
+@media only screen and (max-width: 480px){
+.img-header{
+	background-size: contain !important;
+	height: 130px !important; 
+}
+#header{
+	height: 300px;
+}
+
+#video{
+	left: 0px;
+	margin-left: 0px;
+}
+#imgvideo{
+	display: none;
+}
+#thevideo{
+	width: 325px !important;
+	display: block !important;
+	left: 0px;
+	margin-left: 0px;
+}
+#frame_thevideo{
+	    display: block;
+    width: 325px !important;
+    height: 170px !important;
+}
+#play-video{
+	display: none;
+}
+}

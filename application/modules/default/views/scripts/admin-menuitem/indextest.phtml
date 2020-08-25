@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <!-- no cache headers -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- end no cache headers -->
+  
+   	 <title>Quản trị Admin</title>      
+   	 <title></title>   	    
+   	     	    
+		<link rel="stylesheet" href="/public/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="/public/assets/css/font-awesome.css" />
+
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="/public/assets/css/ace-fonts.css" />
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="/public/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="/public/assets/css/ace-part2.css" class="ace-main-stylesheet" />
+		<![endif]-->
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="/public/assets/css/ace-ie.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+	   	 <script type="text/javascript" src="/public/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/public/assets_old/js/jquery.nestable.min.js"></script> 
+		<!-- ace settings handler -->
+		
+	</head>
+<body>
+<style>
+	.blue{
+		display: block !important;
+	}
+	.zend_form{
+		
+	}
+	
+	#is_conveyance_required{
+		margin-left: 20px;
+		
+	}
+	.zend_form select {
+    width: 200px;
+}
+#add_menuitem{
+	margin-bottom: 50px;
+}
+</style>
+
+<div class="row">
+	<div id="page_menu">
+		
+	
+	<div class="col-xs-12">
+		<h4 class="lighter">
+
+			Đổi tên thư mục cấp 2:
+    	</h4>
+    	<form action="" id="form_change_name_url" method="post">
+    <select name="parent">
+	    <?php 
+		    if($this->itemParent){
+		    foreach($this->itemParent as $k): ?>
+	    <option value="<?php echo $k->id; ?>"><?php echo $k->name; ?></option>
+	    <?php endforeach; 
+		    }
+	    ?>
+    </select>
+    
+    <input name="link_folder" type="text" />
+    <input id="submit" class="btn btn-info" type="submit" value="Submit" name="submit" style="height: 28px;line-height:8px; margin-top:-4px">
+    	</form>
+
+	</div>
+	<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-sm-6">
+	<div class="dd" id="nestable">									
+	<?php if($this->items != null) { 
+	
+	?>
+<?php
+ $mdlMenuItem = new Model_MenuItem();
+ $menu = $mdlMenuItem->getItemsByMenuAdmin( $this->menu->id);	
+ 
+  $recursive = new Louis_System_RecursiveMenuAdmin($menu->toArray());
+  
+ echo $recursive->buildArrayUl(0);
+ 
+ 
+ }
+		            									
+	?>									
+	</div>	
+	</div>								
+		
+
+			<div class="vspace-16-sm"></div>
+									
+	<div class="col-sm-6">								
+<?php echo $frmMenuItem = new Form_MenuItemAdd(); ?>
+<?php  echo $this->Ckeditor('description',150,450);
+	//echo $frmMenuItem;
+	 ?>
+	</div>
+								</div><!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+		
+	
+		
+<script type="text/javascript">
+
+	
+			jQuery(function($){
+		
+
+
+				var updateOutput = function(e)
+    {
+        var list   = e.length ? e : $(e.target),
+            output = list.data('output');
+        if (window.JSON) {
+	      var data =  list.nestable('serialize');
+           // console.log(data);//, null, 2));
+            
+            $.ajax({
+	        url: '/admin/menuitem/sort',
+	        type: "POST",
+            data: {dataString: data},
+          success: function ( data ) {
+           // alert(data);
+        }
+           
+        });
+        } else {
+            output.val('JSON browser support required for this demo.');
+        }
+    };
+
+    // activate Nestable for list 1
+    $('#nestable').nestable({
+        group: 1
+    })
+    .on('change', updateOutput);
+
+   
+    // output initial serialised data
+    updateOutput($('#nestable').data('output', $('#nestable-output')));
+
+			
+				$('.dd-handle a').on('mousedown', function(e){
+					e.stopPropagation();
+				});
+				
+				$('[data-rel="tooltip"]').tooltip();
+				
+				
+				
+				
+			
+			});
+		
+	
+			
+	
+		
+		</script>						
+</div>
+</body>
+</html>		

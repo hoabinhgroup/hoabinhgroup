@@ -1,0 +1,300 @@
+
+<div class="col-sm-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tìm Tours</h3>
+				</div>
+				<div class="panel-body">
+						<form id="form-hockey_v1" name="form-hockey_v1">
+    <div class="typeahead__container">
+        <div class="typeahead__field">
+ 
+            <span class="typeahead__query">
+                <input class="js-typeahead-hockey_v1" name="hockey_v1[query]" type="search" placeholder="Bạn muốn du lịch ở đâu?" autocomplete="off">
+            </span>
+            <span class="typeahead__button">
+                <button type="submit">
+                    <i class="typeahead__search-icon"></i>
+                </button>
+            </span>
+ 
+        </div>
+    </div>
+</form>
+				</div>
+			</div>
+
+			<div class="panel panel-default"> <?php echo $this->HotelWidget($this->location_str); ?></div>
+  <style>
+	  .travel_guide_block a{color: #fff; text-decoration: underline;}
+	  
+</style>
+			
+			<div class="list-group">
+				<div class="list-group-item travel_guide_block active">Kinh nghiệm du lịch <?php echo $this->locations; ?></div>
+				<?php foreach( $this->travel_guide as $key=>$val): ?>
+			  	<a href="/cam-nang/<?php echo $val['ident']; ?>.html" class="list-group-item"><span class="glyphicon glyphicon-triangle-right"></span> <?php echo $val['name']; ?></a>
+			   <?php endforeach; ?>
+
+			  	<a href="#" class="list-group-item text-center">Xem thêm ...</a>
+			</div>
+					
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tour Khuyến mại</h3>
+				</div>
+				
+					<div class="list-group">
+						<?php if($this->promotions){
+						
+							foreach($this->promotions as $kp=>$vp):
+						$image = PATH_TOURS . $vp['id'] . '/resize_97x60/' . $vp['full'];
+							 ?>
+						<a href="/tour/<?php echo $vp['ident']; ?>.html" class="list-group-item">
+							<img width="50" height="50" style="margin-top: 5px;margin-right: 10px;" src="<?php echo $image; ?>" class="pull-left">
+							<p><b><?php echo $vp['name']; ?></b><br/>
+							Giá từ: <span style="color: #fd1c50;font-size: 1.3em"><?php echo number_format($vp['price']); ?> đ</span><br/>
+							<span style="color: red;">Tour đang giảm giá <?php echo $vp['discountPercent']; ?>%</span></p>
+							<span class="clearfix"></span>
+						</a>
+						<?php endforeach;
+							} ?>
+						
+					</div>
+				
+			</div>
+
+		</div>
+		<div class="col-sm-9 ct-tour">
+			<div class="row">
+				<ol class="breadcrumb">
+					<li>
+						<a href="/"><span class="glyphicon glyphicon-home"></span> Trang chủ</a>
+					</li>
+					<li>
+					<?php echo $this->menus; ?>
+					</li>
+					<li><?php echo $this->locations; ?></li>
+					<li class="active"> Tour <?php echo $this->name; ?></li>
+				</ol>
+
+				<h1> <?php echo $this->name; ?></h1>
+				 <!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+<a class="addthis_counter addthis_pill_style"></a>
+</div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-524baa37331d05b7"></script>
+<!-- AddThis Button END -->
+            </p>
+<!-- AddThis Button END -->
+				<hr>
+				<div class="col-sm-12">
+					<?php if(count($this->imagesProduct) > 1){ ?>
+					<div class="pixel-slide">
+						
+						<?php foreach($this->imagesProduct as $key=>$val):
+					$image = PATH_TOURS . $val['productId'] . '/' . $val['full'];
+							 ?>
+				        <div class="content-slide" data-img="<?php echo $image; ?>"></div>
+				        <?php endforeach; ?>
+			
+			    		<script type="text/javascript">
+				            $(".pixel-slide").pixel_slide({
+				            	height: "380px",
+				                delayTime:5000,
+				            });
+				        </script>
+				      
+				    </div>
+				      <?php }else{ 
+					if(isset($this->imagesProduct[0]['full'])){     
+					$image = PATH_TOURS . $this->imagesProduct[0]['productId'] . '/' . $this->imagesProduct[0]['full']; 
+					}      
+					      
+				      ?>
+				      <div class="content-slide">
+				        <img style="margin-left: -15px;" width="900" alt="<?php echo $this->name; ?>" src="<?php echo $image; ?>" />
+				      </div>
+				        <?php } ?>
+				</div>
+				
+				<div class="col-sm-12 margintb10 paddtb10 mota-nd">
+					<div class="col-sm-6">
+						<p><strong>Thời gian:</strong> <?php echo $this->time_travel; ?></p>
+						<p><strong>Điểm khởi hành:</strong> <?php echo $this->schedule; ?></p>
+						<p><strong>Phương tiện:</strong> <?php echo $this->communication; ?></p>
+					</div>
+					<div class="col-sm-6 text-right">
+						<h2 class="text-danger"> <?php echo number_format($this->price); ?> VNĐ</h2>
+						<a class="btn btn-danger" data-toggle="modal" href='#dat-tour'>Đặt tour</a>
+					</div>
+
+					<!-- modal -->
+					
+					<div class="modal fade" id="dat-tour">
+						<div class="modal-dialog">
+							<div class="modal-content">
+							<form name="bookForm" id="bookForm" action="/product/index/booking" method="POST">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title">Đặt Tour</h4>
+								</div>
+								<div class="modal-body">
+							
+					<input type="hidden" name ="id_tour" value="<?php echo $this->id; ?>" />
+										<div class="form-group col-sm-4">
+										    <label for="exampleInputEmail1">Số người lớn</label>
+							 <select name="adult" class="form-control input-sm">
+								<?php  for($i= 1;$i<=100;$i++){ ?>
+								 <option value="<?php echo $i; ?>"> <?php echo $i; ?></option>
+								<?php } ?>
+							</select>
+										</div>
+										<div class="form-group col-sm-4">
+										    <label for="exampleInputPassword1">Số trẻ em</label>
+										       <select name="child" class="form-control input-sm">
+								<?php  for($j= 1;$j<=100;$j++){ ?>
+								<option value="<?php echo $j; ?>"> <?php echo $j; ?></option>
+								<?php } ?>
+							</select>
+										</div>
+										<div class="form-group col-sm-4">
+										    <label for="exampleInputPassword1">Ngày đi</label>
+										  							<div class="input-group">
+<input id="id-date-picker-1" class="form-control date-picker" name="start" type="text" data-date-format="dd/mm/yyyy" placeholder="Chọn thời gian" value="03/11/2017">
+<span class="input-group-addon">
+<i class="fa fa-calendar bigger-110 red"></i>
+</span>
+</div>
+										</div>
+
+										<div class="form-group col-sm-6">
+										    <label for="exampleInputPassword1">Họ tên</label>
+										    <input type="text" class="form-control" id="name" placeholder="Họ tên" name="name">
+										</div>
+										<div class="form-group col-sm-6">
+										    <label for="exampleInputPassword1">Số ĐT</label>
+										    <input type="text" class="form-control" id="mobiphone" placeholder="Số ĐT" name="mobiphone">
+										</div>
+										<div class="form-group col-sm-6">
+										    <label for="exampleInputPassword1">Email</label>
+										    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+										</div>
+										<div class="form-group col-sm-6">
+										    <label for="exampleInputPassword1">Địa chỉ</label>
+										    <input type="text" class="form-control" id="address" placeholder="Địa chỉ" name="address">
+										</div>
+									
+									<span class="clearfix"></span>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary">Đặt Tour</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+									
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div role="tabpanel">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lịch trình chi tiết</a>
+						</li>
+						<li role="presentation">
+							<a href="#tab1" aria-controls="tab" role="tab" data-toggle="tab">Giá bao gồm</a>
+						</li>
+						<li role="presentation">
+							<a href="#tab2" aria-controls="tab" role="tab" data-toggle="tab">Đánh giá của khách hàng</a>
+						</li>
+					</ul>
+				
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="home">
+							<div id="box_tab_chitiet" class="box-tab">
+							  <?php echo $this->description; ?>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="tab1"> <?php echo $this->others; ?></div>
+						<div role="tabpanel" class="tab-pane" id="tab2">
+							
+							<div class="fb-comments" data-href="<?php echo $this->current; ?>" data-width="800" data-numposts="10"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default" style="border:none;">
+					<div class="panel-heading">
+						<h3 class="panel-title">Tour du lịch cùng chuyên mục<span class="pull-right">Xem tất cả tour <?php echo $this->locations; ?> ></span></h3>
+					</div>
+					<div class="panel-body fix-img100 nd-lq" style="padding-left: 0;padding-right: 0;">
+						<?php foreach($this->other_products as $kop=>$vop): ?>
+						<div class="col-sm-4">
+							<a href="<?php echo $vop['ident']; ?>.html"><img class="img-rounded" src="<?php echo $vop['img']; ?>"></a>
+							<div class="tour-content">
+								<h4><a href="<?php echo $vop['ident']; ?>.html"> <?php echo $vop['name']; ?></a></h4>
+								<p><span class="pull-left"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $vop['time_travel']; ?></span> 
+								<span class="pull-right">
+								<?php echo $vop['communication']; ?>
+								</span>
+								</p><span class="clearfix"></span>
+								<p style="height: 30px;"><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo $vop['schedule']; ?></p>
+								<h4 class="text-danger"> <?php echo $vop['price']; ?> VNĐ <a href="<?php echo $vop['ident']; ?>.html" class="btn btn-info btn-xs pull-right">Xem tour</a></h4>
+
+								<span class="clearfix"></span>
+							</div>
+						</div>
+						<?php endforeach; ?>
+					
+					</div>
+				</div>
+
+			</div>
+		</div>
+	<script>
+	 var frmContact = $('#bookForm');
+    frmContact.submit(function (ev) {
+	
+	    ev.preventDefault();	   
+	    var  nameContact = $('#name').val();
+	   
+	 var  emailContact = $('#email').val();
+	 var  mobiphone = $('#mobiphone').val();
+	    if ((nameContact == '') || (nameContact == null)){
+		    alert('Xin nhập tên của bạn!');
+		    return false;
+	    }else if((emailContact == '') || (emailContact == null) ){
+		    alert('Xin nhập Email của bạn!');
+		     return false;
+		 }else if((mobiphone == '') | (mobiphone == null)  ){
+		    alert('Xin nhập điện thoại của bạn!');
+		     return false;
+		 }
+	    			
+ 
+        $.ajax({
+            type: frmContact.attr('method'),
+            url: frmContact.attr('action'),
+            data: frmContact.serialize(),
+            success: function (data) {
+                console.log(data);
+				   alert('Cám ơn bạn book! Chúng tôi sẽ trả lời cho bạn trong thời gian sớm nhất. Xin vui lòng check mail!');
+				  // $(this).fadeOut('fast');
+		
+                
+              
+            }
+        });
+
+        
+    });	
+</script>	

@@ -1,0 +1,45 @@
+  <div class="bg-header-page" style="background: #02265C;">
+		 <h1><?php echo $this->menu->name; ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Giới thiệu</a></li>
+  <li class="breadcrumb-item active"><?php echo $this->breadcrum; ?></li>
+</ol>
+	    </div>
+	    <div class="row" id = "news-content" style="margin-right: 0px;">
+	       <div class="review-content">
+		   <div id="bg-tabs-detail">
+			                     <div class="gallery">
+                                    <div class="title-louis-gallery center"> <?php echo $this->menu->name; ?></div>
+									<div class="underline"></div>
+									<div class="des-louis" style="width: 200px; margin: 0 auto;">Hòa Bình Group - đem đến giải pháp trong mọi lĩnh vực</div>
+                                    <!-- Tab panes -->
+                                 
+      
+	          <div class="row" style="height: 1000px">
+		          <div id="galleries">
+			           <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+				            <div class="gallery-content" style="margin-left: 15px;">
+	<?php
+		$stt= 0;
+			 foreach($this->menus as $key=>$val): $stt++;
+			// echo $val['shortDescription'];
+				// $thumb = $this->Image()->get_youtube_thumb($val['shortDescription']);
+			
+				 ?>	
+			  <iframe style="margin: 10px auto; display: block;" width="320px" height="210" src="<?=str_replace('watch?v=','embed/',$val['shortDescription'])?>" frameborder="0" allowfullscreen></iframe>
+			<?php endforeach; ?>
+					    </div>  <!-- .gallery-content-->
+			           </div> 		           
+		          </div><!-- #galleries-->
+	          </div>                  
+            
+             
+
+                                
+			</div>	
+		  
+	    </div>		    	
+	    	</div>
+	    </div>
+	    </div>

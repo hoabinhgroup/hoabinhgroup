@@ -1,0 +1,27 @@
+<section class="container paddtb10">
+		<div class="travel-group">
+			<h2 style="text-transform: uppercase;"> <?php echo $this->menu_name; ?></h2>
+			<div class="row text-center">
+				<?php foreach($this->menus as $key=>$val): ?>
+				<div style="z-index: 0; position: relative;" class="col-md-3 col-sm-4">
+					<a href="/tour/<?php echo $val['link']; ?>">
+						<div class="container-box-img">
+							<span class="img-mark"></span>
+							<img alt="<?php echo $val['name']; ?>" class="img-c" src="/public/images/backgrounds/<?php echo $val['full']; ?>">
+						
+						</div>
+						<h3> <?php echo $val['name']; ?></h3>
+					</a>
+				</div>
+				<?php endforeach; ?>
+			
+			</div>
+			
+			<span class="clearfix"></span>
+				<?php echo $this->paginationControl($this->menus,
+                     'Sliding',
+                     'pagination-control.phtml'); ?>
+		</div>
+
+		
+	</section>

@@ -1,0 +1,144 @@
+ <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/v-mezhdunarodnyiy-fond-selskohozyaystvennogo-razvitiya-vstupaet-rossiya.jpg'); background-position: 0px -101px;background-attachment: fixed;">
+		    <div class="container"> 
+			    <div class="row">
+		 <h1> Từ khóa <?php echo $this->tags['name']; ?> </h1>
+	</div> 
+			</div>
+	    </div>
+	    <div class="container">
+	    <div class="row" id = "news-content">
+		   <div class="news-description col-md-8"> 
+			   <?php foreach($this->paginator as $val):  ?>
+			    <?php   $news = new New_Model_ProductImage();
+		    $full = $news->get_one_where(array('productId' => $val['id']));
+
+	   if (null == $full){
+		   $image =  $this->Image()->getFirstImageContent($val['description']);;
+	   }else{
+		 
+		  $image = '/public/images/news/'.$val['id'].'/'.$full['full'];
+	   }
+	     
+	   
+	    $db = Zend_Db_Table::getDefaultAdapter();
+	     $select = "select t.name, t.ident from tags as t inner join product_tags as p on t.id = p.tag_id where product_id = '".$val['id']."'";
+	   $tags_result = $db->fetchAll($select);
+	   ?>
+		     <div class="item-new" data-aos="fade-up" data-aos-duration="2500">
+			 		<div class="col-md-1">&nbsp;</div>
+		       	    <div class="col-md-11 border-timline">
+			       	 <div class="row">
+			    <div class="panel-body">
+					<a href="/tin-tuc/<?=$val['ident']?>.html"><img class="cover img-responsive" src="http://hoabinh-group.com/<?=$image?>" alt=""/></a>
+					<div class="time-event">
+						<span class="time">
+	
+						<?php echo date('d',$val['date']); ?> th.<?php echo date('m',$val['date']); ?> </span>
+						<span class="circle"></span>
+					</div>
+					<h3><a href="/tin-tuc/<?=$val['ident']?>.html"><?=$val['name']?></a></h3>
+					<p><?php echo $this->String()->cut_string(strip_tags($val['shortDescription']),'230','...'); ?></p>
+					
+					<p>
+						<span class="col-md-12 panel-extra">
+						<span class="col-md-8">
+							Do you like it? <i class="fa fa-heart" aria-hidden="true"></i> 139   &nbsp;&nbsp;|&nbsp;&nbsp;  <i class="fa fa-eye" aria-hidden="true"></i> <?php echo $val['views']; ?> <?php echo $this->translate('view'); ?>
+						</span>
+						
+						<span class="more col-md-4"><a href="/tin-tuc/<?=$val['ident']?>.html">XEM CHI TIẾT</a>
+						</span>
+					</p>
+				
+					</div>
+					
+				     
+				<div class="panel-footer">&nbsp;</div>
+					</div>
+			 
+		       	    </div>
+		      </div><!--.item-new--> 
+		       <?php endforeach; ?>
+		     
+		    <?php echo $this->paginationControl($this->paginator,
+     'Sliding',
+     'pagination-control.phtml'); 
+   
+     ?>
+
+		
+		     <div style="clear:both;"></div>
+		    </div>
+		   
+		    <div class="news-col-right col-md-4">
+			    
+			    <div class="row">
+			     <div class="col-sm-12 col-md-12">
+        <form class="form-louis" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control form-text-louis" placeholder="Search" name="q">
+            <div class="input-group-btn">
+                <button id="search" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search big"></i></button>
+            </div>
+        </div>
+        </form>
+				</div>
+			     </div>
+			   
+			     <div class="row">
+			       <div class="col-sm-12 col-md-12">
+			     <div id="category-news" class="panel panel-default">
+    <div class="panel-heading">danh mục bài viết</div>
+    <div class="panel-body">
+
+	    <ul class="list-group">
+		  <?php foreach($this->categories as $menu): ?>
+  <li class="list-group-item louis-list-category <?php echo ($this->link == $menu['link'])?'active':''; ?>">
+    <a href="/tin-tuc/<?php echo $menu['link']; ?>"> <span style="text-transform: uppercase;"><?php echo $menu['name']; ?></span></a> 
+  </li>
+  <?php endforeach; ?>
+
+
+
+  		</ul>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			     </div>
+			     <div class="row">
+			       <div class="col-sm-12 col-md-12">
+			     <div id="category-news" class="panel panel-default">
+    <div class="panel-heading">video nổi bật</div>
+    <div class="panel-body">
+	     <ul class="list-group">
+	    <div id="owl-video" class="owl-carousel owl-theme">	
+	<div class="item">   
+  <li class="list-group-item louis-list-video">
+   <span id="playtube" href="#"></span>
+	   <img style="width: 100%;" src= "http://timnhanh360.com/hbg/img/demo%20web-11.png"/>
+   <p>Hội nghị quốc tế về khoa học vật liêu tiên tiến và công nghệ Nano</p>
+      </li>
+	</div>
+
+<div class="item">   
+  <li class="list-group-item louis-list-video">
+   <span id="playtube" href="#"></span>
+	   <img style="width: 100%;" src= "http://timnhanh360.com/hbg/img/demo%20web-11.png"/>
+   <p>Hội nghị quốc tế về khoa học vật liêu tiên tiến và công nghệ Nano</p>
+      </li>
+	</div>
+
+  		
+	    </div>
+	    </ul>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			     </div>
+			     
+		    </div>
+	    	
+	    	</div>
+	    </div>
+	    

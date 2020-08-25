@@ -1,0 +1,122 @@
+	<div class="row">
+
+									<div class="col-xs-12">
+										<h3 class="header smaller lighter blue">Quản lý Video</h3>
+							<a class="btn btn-info btn-sm" href='/<?=ADMIN?>/product/create_video'>Thêm video mới</a>	
+							<?php 
+		$mdlMenu = new Model_MenuItem();
+		 $parentVal = 0;
+		 $cat = 0;
+		 $select = $mdlMenu->select();
+       // $select->where('parent = ?', 0);
+        $select->where('menu_id = ?', 10);
+        $select->where('lang = ?', 'vi');
+        $select->order('position asc');
+        $menus = $mdlMenu->fetchAll($select);
+        if(isset($_GET['cat'])){
+	        $cat = $_GET['cat'];
+        }
+		//$parentVal = array($cat);
+		$recursive = new Louis_System_Recursive($menus->toArray());
+        $newArr = $recursive->buildArray(0);
+  
+        $attribs = array('onChange' => 'filterCat(this);');
+        echo $mdlMenu->itemInSelectbox('parentID[]',$cat,$newArr,'Chọn danh mục',$attribs);
+		 ?>	
+<?php
+if($this->products != null) {
+?>
+
+	
+    
+										<div class="table-responsive">
+		
+											<table id="video_table" class="table table-striped table-bordered table-hover">
+												<thead>
+													<tr>
+														<th class="center">
+															<label>
+																<input type="checkbox" class="ace" />
+																<span class="lbl"></span>
+															</label>
+														</th>
+														
+														<th>Tên sản phẩm</th>
+														
+														<th>Miêu tả</th>
+														<th class="center sorting_disabled">Link</th>
+													</tr>
+												</thead>
+
+												<tbody>
+				<?php echo $this->partialLoop('_video-row.phtml', $this->products); ?>																						
+
+												</tbody>
+											</table>
+										</div>
+	
+	<?php }else{?>
+	<br/>
+<p>Bạn chưa có sản phẩm nào!</p>
+<?php }?>									
+										
+									</div>
+								</div>
+	<br/>
+														
+<script type="text/javascript">
+	
+	function filterCat(o)
+	{
+		var value = $(o).val();
+		//var url = location.href + "?cat=" + value;
+		//window.location.href = '/admin/product/list_video?cat=' + value;
+	//	$("#video_table").load('/admin/product/list_video?cat=' + value + " #video_table");	 
+		
+		$(".table-responsive").load('/admin/product/list_video?cat=' + value + " #video_table", function(){
+				var table = $('#video_table').dataTable( {
+				 retrieve: true,
+				"aoColumns": [
+			      { "bSortable": false },
+			      null, null,
+				  { "bSortable": false }
+				] } );
+				
+				$('table th input:checkbox').on('click' , function(){
+					var that = this;
+					$(this).closest('table').find('tr > td:first-child input:checkbox')
+					.each(function(){
+						this.checked = that.checked;
+						$(this).closest('tr').toggleClass('selected');
+					});
+						
+				});
+			
+		});	
+		
+		
+	}
+	
+	$(document).ready(function()
+    {
+				var table = $('#video_table').dataTable( {
+				"aoColumns": [
+			      { "bSortable": false },
+			      null, null,
+				  { "bSortable": false }
+				] } );
+				
+				
+				$('table th input:checkbox').on('click' , function(){
+					var that = this;
+					$(this).closest('table').find('tr > td:first-child input:checkbox')
+					.each(function(){
+						this.checked = that.checked;
+						$(this).closest('tr').toggleClass('selected');
+					});
+						
+				});
+			
+			
+			});
+		</script>									

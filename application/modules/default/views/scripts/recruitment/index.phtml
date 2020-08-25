@@ -1,0 +1,119 @@
+	<div id="content">
+ <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/1481098142Unibentuyendung.jpg'); background-position: 0px -41px; background-attachment: fixed;">
+		    <div class="container">
+			    <div class="row">
+		 <h1>Danh sách tin tuyển dụng</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+  <li class="breadcrumb-item active">Tuyển dụng</li>
+</ol>	
+			</div>
+			</div>
+	    </div>
+	    <style>
+		    .button-join-ask{
+			    padding-top: 8px;
+			    cursor: pointer;
+		    }
+		    .item-join .panel-title{
+			    color: #000;
+		    }
+		    p{
+			    color: #000;
+		    }
+		    .title-featured{
+			    color: red !important;
+		    }
+		  </style>
+	<div class="container">
+		
+	    <div class="row" id = "join-content">
+		    	    
+		    <div class="join-description col-md-8">
+			    <div id="loadding"></div>
+			    <div id="join-info">
+			    	
+			    </div>
+				<span class="clearfix"></span>
+				 <div id="paging" style="margin: 0 auto; display: block">
+              
+            	</div>
+
+		    </div>
+		    
+		      <div class="news-col-right col-md-4">
+				<div class="row">
+			       <div class="col-xs-12 col-md-12">
+			     <div id="join-filter" class="panel panel-default">
+    <div class="panel-heading">Tìm kiếm tin tuyển dụng</div>
+    <div class="panel-body">
+	    <form id="louis-form-search" method="post" action="/default/recruitment/response">
+	    
+	   <div class="form-group">
+  <input type="text" class="form-control" id="usr" name="keyword" placeholder="Nhập từ khóa">
+  	</div>
+  	
+  	<div class="form-group">
+  <select name="work_group" class="form-control" id="sel1">
+	  <option value= "0">Chọn nhóm ngành nghề</option>
+	  <?php $group = new Model_Group();
+		  $group = $group->get_details();
+		  foreach($group as $k=>$v):
+		   ?>
+    <option value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+    <?php endforeach; ?>
+
+  </select>
+</div>
+
+	<div class="form-group">
+  <select name="location" class="form-control" id="sel2">
+	  <option value= "0">Chọn địa điểm làm việc</option>
+    <option value= "1">Hà Nội</option>
+    <option value= "2">Đà Nẵng</option>
+    <option value= "3">TP. HCM</option>
+  </select>
+</div>
+
+
+<div class="form-group">
+  <select name="company" class="form-control" id="sel3">
+	  <option value="0">Chọn Công ty</option>
+    <option value= "1">Hòa Bình Group</option>
+    <option value= "2">DanangEvents</option>
+    <option value= "3">VietnamEvents</option>
+  </select>
+</div>
+	<input type="submit" value="Tìm kiếm" class="button-join-submit" />
+	<input type="reset" value="chọn lại" class="button-join-submit" />
+	    </form>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			      </div>
+			    <div class="row">  
+			       <div class="col-sm-12 col-md-12">
+			   
+			     <div id="ul-tags" class="panel panel-default">
+				      <div class="panel-body">
+		<div class="form-group">			      
+    	<a href="/public/files/Hoabinhgroup_don%20ung%20tuyen.xlsx" title="HỎI ĐÁP FAQ" class="button-join-ask form-control text-center" />HỎI ĐÁP FAQ</a>
+		</div>
+		
+	<a href="/public/files/Hoabinhgroup_don%20ung%20tuyen.xlsx" title="TẢI MẪU ĐƠN ỨNG TUYỂN" class="button-join-ask form-control text-center" />TẢI MẪU ĐƠN ỨNG TUYỂN</a>
+	
+				      </div>
+ 
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			         </div>
+			    <?php echo $this->VideoWidget(1); ?>
+			     
+			  
+		    </div>
+	    	
+	     </div>
+    </div><!--.container-->	
+</div>    

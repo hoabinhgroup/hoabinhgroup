@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>FileNAME</title>
+	
+	<!-- Including style for tooltip if necessary -->
+	<link href="css/tooltip.css" rel="stylesheet" type="text/css">
+	
+	<!-- Including jQuery and rating plugin -->
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.5stars.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){ 
+			//start plugin
+			$(".stars").rating({										
+				php	: 'admin/php/manager.php', 	//path to manager.php file relative to HTML document. Not required in Display-only and Database-free modes.
+				skin	: 'skins/skin.png' 		//path to skin file relative to HTML document
+			});					
+		});			
+	</script>   
+
+</head>
+<body>
+
+	<h2>Simple usage (default settings)</h2>
+	<p>Use this file code as a template for your project</p>
+
+	</br>
+
+	<p>1. Normal mode (stats are stored in database, requires PHP)</p>
+	<!-- 1. Stars will appear here. Note: unique itemId is REQUIRED!!! -->
+	<div class="stars" data-id="someItemID"></div>
+
+	</br>
+	
+	<p>2. Display-only mode (displays values which you provide in html)</p>
+	<!-- 2. Display-only mode -->
+	<div class="stars" data-value="60" data-votes="45" data-displaymode="true"></div>
+
+	</br>
+	
+	<p>3. Database-free mode: rate stored locally (browser MUST support HTML5)</p>
+	<!-- 3. Database-free mode (browser MUST support HTML5) 
+	  Note: unique itemId is required; php MUST be set to ""  -->
+	<div class="stars" data-id="itemId" data-php="" data-textmain="you gave %ms out of %maxs stars"></div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<?php $ns = new Zend_Session_Namespace('language');
+	   $lang = $ns->lang; 
+	   if (empty($ns->lang)){
+			 $lang = 'vi';
+			 }
+	   ?>
+<dt id="parentID-label">
+<label class="required" for="parentID">Chọn danh mục:</label>
+</dt>
+<dd id="parentID-element">
+<?php
+	$mdlMenu = new Model_MenuItem();
+        $parentVal = 0;
+        $a = null;
+        $menuID = Zend_Controller_Front::getInstance()->getRequest()->getParam('menu');
+        if($menuID == null){
+	        $mID = Zend_Controller_Front::getInstance()->getRequest()->getParam('id');
+
+	       $a =  $mdlMenu->getMenuidByID($mID)->toArray();
+	     $menuID =  $a[0]['menu_id'];
+	     $parentVal = $a[0]['parent'];
+
+        }
+        /*
+        $parentId = $this->createElement('select', 'parentID');
+        // element options
+        $parentId->setLabel('Chọn danh mục: ');
+        $parentId->setRequired(true);
+*/
+       
+        $select = $mdlMenu->select();
+       // $select->where('parent = ?', 0);
+        $select->where('menu_id = ?', $menuID);
+        $select->where('lang = ?', $lang);
+        $select->order('position asc');
+        $menus = $mdlMenu->fetchAll($select);
+         /*
+        $parentId->addMultiOption(0, 'None');
+        if($menus->count() > 0) {
+            foreach ($menus as $menu) {
+                $parentId->addMultiOption($menu->id, $menu->name);
+				} 
+			}
+		$parentId->setValue($parentVal);	//set selected
+			
+		$this->addElement($parentId);
+        */
+		$recursive = new Louis_System_Recursive($menus->toArray());
+        $newArr = $recursive->buildArray(0);
+  
+        $attribs = array('size'=>5, 'style'=>'width:250px');
+        echo $mdlMenu->itemInSelectbox('parentID',$parentVal,$newArr,'',$attribs);
+       ?>
+</dd>

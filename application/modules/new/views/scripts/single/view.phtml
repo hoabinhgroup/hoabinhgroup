@@ -1,0 +1,124 @@
+<style>
+.sidebar .widget.latest_posts ul li::before{
+	color: transparent;
+}
+h1{
+	font-size: 2.2em;
+}
+p{
+	font-size: 1.1em;
+	text-align: left;
+	line-height: 1.9em;
+}
+a{
+	color:#04245D;
+}
+a:hover{
+	color:orange;
+	text-decoration: underline;
+}
+a:visited{
+	color:#04245D;	
+}
+.title, .widget_title {
+    display: table;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    overflow: hidden;
+}	
+.container .twelve.columns {
+    width: 644px;
+}
+.border-bong{
+	 background: rgba(0, 0, 0, 0) url("/public/images/hoabinh-db.png") no-repeat scroll center top;
+    display: block;
+    height: 100%;
+    left: 50%;
+    margin-left: 140px;
+    position: absolute;
+    width: 60px;
+    z-index: 20;
+}
+
+.name{
+	font-size: 1.4em;
+}
+.cart_list{
+	width: 190px !important;
+}
+.cart_list li{
+	border-bottom: 1px solid #7492c5;
+}
+.img-group{
+	position: relative;
+	z-index: 0;
+}
+td{
+	border: 1px solid #7492C5;
+	padding: 10px;
+}
+
+p img{
+	height: auto !important;
+}
+</style>
+<div class="container">
+	<div class="four columns add-top add-bottom">
+				
+					<aside class="sidebar">
+						<article class="widget latest_posts">
+							
+							<div class="widget_title">
+								
+									<h2> <span class="bold"><?php echo $this->menu_name; ?></span> </h2>
+								
+								<div class="title_sep_container">
+									<div class="title_sep"></div>
+								</div><!-- end .title_sep_container -->
+								
+							</div><!-- end .title -->
+	
+		
+				
+					<div class="one-third column add-bottom">	
+						<ul class="cart_list">
+					<?php foreach($this->result as $key=>$val): ?>	
+				<li><h2 style='font-size:13px;line-height:16px;margin-bottom:0px;font-family: "HelveticaNeue","Helvetica Neue",Arial,sans-serif;'> <a title="<?=$val['name']?>" href="/<?=$val['link']?>"><?=$val['name']?></a></h2> </li>		
+					<?php endforeach; ?>	
+						</ul>
+					</div>		
+						
+						</article><!-- end .latest_posts -->
+		
+					</aside>
+				
+				</div><!-- end four -->
+
+<div class="twelve columns add-top add-bottom">
+			<div id="single_description" style="padding-right: 10px;">	
+		
+		<p><h1><?php echo $this->name; ?></h1></p>
+				
+				<div id="description">
+					
+			<?php 
+				if($this->message != null){
+					echo $this->translate($this->message);
+				}
+				
+				echo $this->description; ?>	
+				
+				</div>
+			</div>				
+				</div>
+</div>			
+				<div style="clear:both"></div>
+				
+				
+		<script>
+		$(document).ready(function() {
+  $('#description').children('ul').children('li').css('list-style-type','disc');
+  $('#description').children('ul').children('li').css('list-style','inside');
+});
+	</script>		
+			

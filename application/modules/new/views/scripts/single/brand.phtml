@@ -1,0 +1,89 @@
+<style>
+.sidebar .widget.latest_posts ul li::before{
+	color: transparent;
+}
+a{
+	color:#04245D;
+}
+a:hover{
+	color:red;
+}
+a:visited{
+	color:#04245D;	
+}
+.title, .widget_title {
+    display: table;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    overflow: hidden;
+}	
+.container .twelve.columns {
+    width: 644px;
+}
+.border-bong{
+	 background: rgba(0, 0, 0, 0) url("/public/images/hoabinh-db.png") no-repeat scroll center top;
+    display: block;
+    height: 100%;
+    left: 50%;
+    margin-left: 140px;
+    position: absolute;
+    width: 60px;
+    z-index: 20;
+}
+.item{
+	height:110px;
+	border-bottom: 1px dashed #7b7b7b;
+	margin-bottom: 20px;
+}
+.name{
+	font-size: 1.4em;
+}
+.title-brand{
+	font-size: 1.5em;
+	margin-bottom: 10px; 
+}
+</style>
+<div class="twelve columns add-top add-bottom">
+			<div style="padding-right: 10px;">	
+		<br/>
+		<p><h3><?php echo $this->name; ?></h3></p>
+		<br/>
+				
+				
+			<?php echo $this->description; ?>	
+			</div>				
+				</div><!-- end twelve -->
+				
+			
+				
+				<div class="four columns add-top add-bottom">
+				
+				
+				</div><!-- end four -->
+		<script>
+		$(document).ready(function() {
+  $('.latest_posts').scrollToFixed();
+});
+
+$('.lu-hanh').hover(function(){
+	$(this).attr('src','http://tour.louis-intelli.com/public/images/brand/linh-vuc-lu-hanh-a2.jpg');
+},function(){
+	$(this).attr('src','http://tour.louis-intelli.com/source/Brand/linh-vuc-lu-hanh-a.jpg');
+	
+});
+
+$('.khach-san').hover(function(){
+	$(this).attr('src','http://tour.louis-intelli.com/public/images/brand/linh-vuc-khach-san-a2.jpg');
+},function(){
+	$(this).attr('src','http://tour.louis-intelli.com/source/Brand/linh-vuc-khach-san-a.jpg');
+	
+});
+
+$('.truc-tuyen').hover(function(){
+	$(this).attr('src','http://tour.louis-intelli.com/public/images/brand/linh-vuc-truc-tuyen-a2.jpg');
+},function(){
+	$(this).attr('src','http://tour.louis-intelli.com/source/Brand/linh-vuc-truc-tuyen.jpg');
+	
+});
+	</script>		
+			

@@ -1,0 +1,35 @@
+<table id="employee-grid"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
+					<thead>
+						<tr>
+							<th class="center"><label>
+					<input type="checkbox" class="ace" /><span class="lbl"></span>
+							</label>
+							</th>
+							<th>Tiêu đề</th>
+							<th>Danh mục</th>
+							<th>Ngày đăng</th>
+							<th>Miêu tả</th>
+							<th class="center sorting_disabled">Link</th>
+						</tr>
+					</thead>
+</table>
+
+
+<script type="text/javascript" language="javascript" >
+			$(document).ready(function() {
+				var dataTable = $('#employee-grid').DataTable( {
+					"processing": true,
+					"serverSide": true,
+					"ajax":{
+						url :"/admin/new/list2", // json datasource
+						type: "post",  // method  , by default get
+						error: function(){  // error handling
+							$(".employee-grid-error").html("");
+							$("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+							$("#employee-grid_processing").css("display","none");
+							
+						}
+					}
+				} );
+			} );
+		</script>

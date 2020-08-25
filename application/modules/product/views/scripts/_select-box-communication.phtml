@@ -1,0 +1,26 @@
+<?php 
+	$options = $this->element->getDecorator('ViewScript')->getOptions();
+	$optionArr = array();
+	if(!empty($options['List'])){
+	$optionString = $options['List'];
+	//echo $optionString;
+	$optionArr = explode(',', $optionString); 
+	}
+	 ?>
+<dt id="parentID-label">
+<label class="required" for="communication">Chọn Phương tiện:</label>
+</dt>
+<dd id="parentID-element">
+
+<select id="communication" name="communication[]" style="width:250px" size="3" multiple="true">
+<option value="car" label="Car" <?php echo (in_array('car', $optionArr))?'selected="selected"':''; ?>>Ô tô</option>
+<option value="plane" label="Plane" <?php echo (in_array('plane', $optionArr))?'selected="selected"':''; ?>>Máy bay</option>
+<option value="train" label="Train" <?php echo (in_array('train', $optionArr))?'selected="selected"':''; ?>>Tàu</option>
+<option value="seaplain" label="SeaPlain" <?php echo (in_array('seaplane', $optionArr))?'selected="selected"':''; ?>>Thủy phi cơ</option>
+<option value="helicopter" label="helicopter" <?php echo (in_array('helicopter', $optionArr))?'selected="selected"':''; ?>>Trực Thăng</option>
+<option value="bike" label="bike" <?php echo (in_array('bike', $optionArr))?'selected="selected"':''; ?>>Xe đạp</option>
+<option value="cruise" label="cruise" <?php echo (in_array('cruise', $optionArr))?'selected="selected"':''; ?>>Thuyền</option>
+</select>
+
+</dd>
+

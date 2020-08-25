@@ -1,0 +1,108 @@
+<style>
+	.zend_form{
+		padding: 40px;
+	}
+</style>
+<div class="sixteen columns add-bottom add-top"> 
+	<div class="inside">
+		<div class="item-page">
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:400px;width:900px;"><div id="gmap_canvas" style="height:400px;width:900px;"></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="http://www.map-embed.com" id="get-map-data">http://www.map-embed.com/</a></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:15,center:new google.maps.LatLng(21.02608197684531,105.83278650898433),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(21.02608197684531, 105.83278650898433)});infowindow = new google.maps.InfoWindow({
+		content:"<div style='float:left'><img width='200' src='http://hoabinh-group.com/public/templates/news/default/images/logo_hbgroupvn.png'/></div><div style='font-weight:bold; font-size:16px;'><b>Hòa Bình Group</b><br/>29 Doan Thi Diem Street, Quoc Tu Giam Ward, Dong Da Dist, Hanoi City</div>" 
+		});google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+		</div>
+		<div class="sixteen columns add-bottom add-top">
+			
+	<div class="eight columns contact_form_holder add-top add-bottom" style="float: left;">
+					<h3>Liên hệ với chúng tôi</h3>		
+			<form name="contactForm" id="contactForm" method="post" action="/contact/submit">
+								
+			 <input type="text" name="name" id="name"  value="" placeholder="Tên của bạn" />
+								   <br/>
+								   
+								   <input type="text" name="email" id="email" value="" placeholder="Email của bạn" />
+								   <br/>
+								   
+								   <input type="text" name="subject" id="subject" value="" placeholder="Tiêu đề"/>
+								   <br/>
+								   <textarea name="message" id="message"></textarea>
+								  
+								  
+									<div class="buttonHolder" id="submit"> 
+									   
+									   <input type="submit" class="standard_button medium" value="Send"/>
+								
+									   
+									</div><!-- end .buttonHolder -->  
+								   
+								  
+								   
+							   </form>
+							  
+						   
+						</div><!-- end .contact_form_holder -->
+						
+			<div class="seven columns" style="margin-left: -20px;">
+	<p><h3>Tập đoàn Hòa Bình Group</h3></p>
+<p>Địa chỉ: Số 29 Đoàn Thị Điểm, quận Đống Đa, TP. Hà Nội<br/>
+
+Điện thoại: (84-4) 3732 5976 Fax: (84-4) 3732 5978<br/>
+Website: http://hoabinhtourist.com / http://hoabinh-group.com <br/>
+Email: info@hoabinh-group.com<br/>
+Hotline: 0913.311.911 / 04.37325976 Máy lẻ 329 (Ms. Hoàng Lan)</p>
+
+<p><h3>Văn phòng miền Trung:</h3></p>
+<p>Địa chỉ: Số 61 Huỳnh Thúc Kháng, quận Hải Châu, TP. Đà Nẵng<br/>
+Điện thoại: (84-236) 399 6116 Fax: (84-236) 399 6336<br/>
+Hotline: 0905.388.666 (Mr. Thái Sơn)</p>
+
+
+<p><h3>Văn phòng miền Nam:</h3></p>
+
+<p>Địa chỉ: 13 Cù Lao, quận Phú Nhuận, TP. HCM<br/>
+Điện thoại: (84-8) 3517 1797 Fax: (84-8) 3517 0447<br/>
+Hotline: 0913.199.866 (Mr. Jackie Hân)</p>
+
+
+
+
+	           </div>			
+	           
+	           </div>
+	</div>
+</div>
+
+<script>
+	
+	
+	var j = jQuery.noConflict();
+	 var frmContact = j('#contactForm');
+    frmContact.submit(function (ev) {
+	    ev.preventDefault();	   
+	    var  nameContact = j('#name').val();
+	 var  emailContact = j('#emails').val();
+	    if ((nameContact == '') || (nameContact == null)){
+		    alert('Please enter Your Name!');
+		    return false;
+	    }else if(emailContact == ''){
+		    alert('Please enter Your Email!');
+		     return false;
+		 }
+	    			
+ 
+        j.ajax({
+            type: frmContact.attr('method'),
+            url: frmContact.attr('action'),
+            data: frmContact.serialize(),
+            success: function (data) {
+               // console.log(data);
+				   alert('Yêu cầu đã được gửi thành công. Cám ơn Quý khách đã gửi yêu cầu.');
+				  // $(this).fadeOut('fast');
+		
+                
+              
+            }
+        });
+
+        
+    });
+</script>

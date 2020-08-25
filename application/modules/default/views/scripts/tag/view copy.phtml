@@ -1,0 +1,40 @@
+<div id="middlecol" class="span8 sidebar_left">
+	<div class="inside">
+		<div class="item-page">
+		
+				<div class="span12">
+					<ul class="breadcrumb"></ul>
+
+					<h3>Từ khóa: <?php echo $this->tags['name']; ?></h3>
+					<div class="travel-list">
+					
+   <?php
+	      echo $this->message;
+	    foreach($this->paginator as $val): 
+	    ?>
+   
+	<div class="travel-item">
+	<?php  $src= $this->Image()->getFirstImageContent($val['description']); ?>
+	<div class="travel-image"><a title="<?=$val['name']?>" href="/tin-tuc/<?=$val['ident']?>.html"><img src="<?=$src?>" width="180px" /></a></div>
+	<br/>
+	 <span class="travel-title"><a title="<?=$val['name']?>" href="/tin-tuc/<?=$val['ident']?>.html"><h3 class="mod-title"><?php echo $this->String()->cut_string($val['name'],'80','...'); ?></h2></a></span>
+	 <span class="travel-description"><?php echo $this->String()->cut_string(strip_tags($val['shortDescription']),'300','...'); ?></span>
+	</div>
+	<div style="clear:both;"></div>
+	<?php endforeach; ?>
+					
+					
+					<?php echo $this->paginationControl($this->paginator,
+     'Sliding',
+     'pagination-control.phtml'); 
+   
+     ?>
+     </div>
+				</div>
+			
+	
+		</div>
+		
+	</div>
+	
+</div>	

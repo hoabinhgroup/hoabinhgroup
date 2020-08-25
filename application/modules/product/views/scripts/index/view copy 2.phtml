@@ -1,0 +1,559 @@
+﻿
+<ul class="breadcrumb"><li class="active"><span class=""></span></li><li><a href="/">Home</a><span class="divider">/</span></li> <?php echo
+$this->content()->createBreadcrum($this->maxcatid, 'menu_items', 2); ?></ul>
+<style>
+	.hotelPhone{
+		font-size: 1.6em;
+	}
+	#simplemodal-container{
+		width: 600px;
+		height: 490px;
+	}
+	#detailTab p{
+		margin-bottom: 10px !important;
+		
+	}
+	#icetab3 ul{
+		margin-bottom: 10px;
+	}
+	#icetab3 strong{
+		text-decoration: underline; 
+	}
+	p > strong{
+		text-decoration: none;
+	}
+	
+	ol > li{
+	list-style-type: decimal;
+	list-style-position: inside;	
+	}
+	
+	@media only screen and (max-device-width: 480px) {
+		
+		
+	}
+	tr td{
+		border: 1px solid #000;
+		padding: 15px;
+	}
+	
+.affix {
+   position: fixed;
+    right: 50%;
+    margin-right: -580px;
+    top: 0;
+    width: 295px;
+}
+
+.affix-top {
+  position: static;
+}
+.affix-bottom {
+z-index: 1;
+}
+.content-blog{
+	position: relative;
+	z-index: 10;
+}
+#footer{
+	position: relative;
+	z-index: 10;
+}
+</style>
+
+<style type="text/css">
+.lightboxcontainer {
+  width:100%;
+  text-align:left;
+}
+.lightboxleft {
+  width: 40%;
+  float:left;
+}
+.lightboxright {
+  width: 60%;
+  float:left;
+}
+.lightboxright iframe {
+  min-height: 390px;
+}
+.divtext {
+  margin: 36px;
+}
+@media (max-width: 800px) {
+  .lightboxleft {
+    width: 100%;
+  }
+  .lightboxright {
+    width: 100%;
+  }
+  .divtext {
+    margin: 12px;
+  }
+}
+</style>
+
+<div id="middlecol" class="span8 col-sm-9">
+		<div class="inside">
+		<div class="item-page">
+			<div class="span12">					
+                <div class="header_tour">
+                    <div id="slider1_container" style="width: 100%;
+                    height: 445px; background: #fff; overflow: hidden; float: left; border-radius: 5px;margin-bottom:30px; ">
+
+                       <div id="owl-demo" class="owl-carousel owl-theme">
+                        	        <?php foreach ($this->imagesProduct as $key => $val): ?>
+                                    <div class="item">
+                                        <img src="/public/images/tours/<?= $val['productId'] ?>/<?= $val['full'] ?>" />
+                                        
+                                    </div>
+                                    <?php endforeach; ?>
+                        </div>
+            
+                </div>
+                <!--
+                <a role="button" class="btnBookThisTour" title="Book this tour" href="#myModal" data-toggle="modal">
+                <span>Book this tour</span>
+                <span class="no-fees">Hotline: 0913.311.911</span>
+                </a>
+                -->
+                </div>
+<div style="text-transform: uppercase;position: absolute;top:40px;color:#fff;font-size: 2.5em;text-shadow: 2px 2px 8px #FF5312;" class="col-sm-12"><h1><?php echo $this->name; ?></h1></div>
+            <div style="clear:both;"></div>
+	
+            <div class="icetabs simple" id="detailTab">
+            	<ul class=" resp-tabs-list clearfix">
+            		<li class=" resp-tab-item active">
+                    <a id="content_tour" href="#icetab1" data-toggle="tab">Tổng Quan- Lịch trình</a></li>            									
+            		<!--<li><a id="ITINERARY" href="#icetab2" data-toggle="tab">Lịch Trình</a></li>-->
+            		<li><a id="Price" href="#icetab3" data-toggle="tab">Bảng giá</a></li>						
+            		<li><a id="discussion" href="#icetab4" data-toggle="tab">Nhận xét đánh giá</a></li>
+            	</ul>
+            	
+            	<div class=" resp-tabs-container"><div id="icetab1" class="tab-pane active">
+            											<?php echo $this->shortDescription; ?><br/>
+                                                        <?php echo $this->description; ?>
+            											
+            									 </div>
+            								
+            							<!--<div id="icetab2" class="tab-pane">
+            								<?php //echo $this->description; ?>
+            							</div>-->
+            							
+            							<div id="icetab3" class="tab-pane">
+            								<?php echo $this->others; ?>
+            							</div>	
+            						
+            									<div id="icetab4" class="tab-pane">
+	            				
+	            				<!-- easyComment Content Div -->
+<div id="easyComment_Content"></div>
+	
+<!-- easyComment -->
+<script type="text/javascript">
+	// CONFIGURATION VARIABLES
+	var easyComment_ContentID = '<?php echo $this->ident; ?>';
+	
+	// CORE 
+	var easyComment_Domain = 'http://dulichhoabinh.com/';
+	
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var EC = document.createElement('script');
+		EC.type = 'text/javascript';
+		EC.async = true;
+		EC.src = easyComment_Domain + 'plugin/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(EC);
+	})();
+</script>
+					
+	            									
+	            									
+            									</div>
+            							
+            									
+            							</div></div>
+                                <br/>
+            											<?php $tagArr = explode(', ', $this->tags); ?>
+            											<span style="color:#1E1D4D"><i class="fa fa-tags"></i> Tags: </span>
+            											<?php
+$countTag = count($tagArr);
+$itag = 0;
+
+foreach ($tagArr as $ktag => $vtag):
+    $itag++; ?>
+                                <a href="/tag/<?php echo $this->string()->slug($vtag,
+'-'); ?>"><?php echo
+$vtag; ?></a><?php echo ($itag <
+$countTag) ? ', ' : ''; ?>
+            											<? endforeach; ?>
+            											<br/>
+                            <br/>
+            				</div>
+            
+            		</div>
+            		</div>
+                    
+            	
+            </div>
+    
+     <div id="nav-wrapper">  
+   
+            <div id="sidebar" class="span4 sidebar_left col-sm-3 affix-top affix-bottom" data-spy="affix" data-offset-top="150" data-offset-bottom="345">
+				<div class="vacationFilterContainer">
+					<form class="generalForm" id="sidebarBook" action="#" method="POST">
+						<div class="row">
+							
+						<?php if ($this->schedule) { ?>
+							<div class="col-sm-12 col-md-12 col-lg-12">
+                            <span class="txt-orange">Lịch trình:</span> <?php echo
+$this->schedule; ?></div>
+                        <?php } ?>
+						</div>
+                         <?php if ($this->time_travel) { ?>
+                        <div class="row">
+                        
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div style="float: left; margin-right:5px; height: 20px;"><span class="txt-orange">Phương tiện:</span>
+                        <?php $str_comuni = explode(',', $this->communication);
+    foreach ($str_comuni as $val):
+        echo ($val == 'car') ? '<i class="fa fa-car communication"></i>' : '';
+        echo ($val == 'train') ? '<i class="fa fa-train communication"></i>' : '';
+        echo ($val == 'plane') ? '<i class="fa fa-plane communication"></i>' : '';
+        echo ($val == 'bike') ? '<i class="fa fa-bicycle communication"></i>' : '';
+        echo ($val == 'seaplane') ? 'Seaplane' : '';
+        echo ($val == 'helicopter') ? 'Helicopter' : '';
+        echo ($val == 'cruise') ? 'Cruise' : '';
+    endforeach;
+?>
+                        </div>
+                        	
+                        <p class="day-night">
+                        
+                        <i class="fa fa-clock-o"></i>&nbsp;<?php echo $this->
+string()->time_travel($this->time_travel); ?></p>
+                       
+                        </div>
+                          
+                        </div>
+						<?php } ?>
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-4"></div>
+							<div class="col-sm-12 col-md-12 col-lg-8" style="">
+                            <?php if ($this->price == 0) { ?>
+                            <p class="totalPrice" style="line-height: 35px;"> Liên Hệ
+                            
+                            </p>
+                            <?php } else { ?>
+                            <p class="totalPrice" style="line-height: 35px;"><?php echo
+number_format($this->price); ?> VND
+                            
+                            </p><?php } ?>
+                            
+                            </div>
+						</div><!-- /row -->
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-6">
+                            <a role="button" class="btnBookThisTour" title="Book this tour" id="tourModal1">
+                            <span>Đặt tour</span>
+                            <span class="no-fees">Liên hệ để có giá tốt</span>
+                            </a>
+                            </div>
+						</div><!-- /row -->
+						
+						
+						
+						
+					</form><!-- /sidebarBook -->
+		
+					<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-6">
+
+                            </div>
+						</div><!-- /row -->
+					
+					<div class="filter">
+						<h5 class="active">ĐƯỜNG DÂY NÓNG</h5>
+						<div class="filterInner">
+							
+							<p><a class="hotelPhone" href="tel:+8488886868" title="Booking phone"><span style="margin-top: 3px;display: inline-block">0913.311.911</span></a></p>
+						</div><!-- /filterInner -->
+					</div><!-- /filter -->
+					
+					<div class="filter">
+						<h5 class="active">Tour Hấp Dẫn</h5>                        
+						<div class="filterInner">
+							<?php $itn = 0;
+foreach ($this->lstproduct as $key => $v1):
+    if ($itn < 5) {
+?>
+                            <a href="/tour/<?= $v1['ident'] ?>.html" title="<?= $v1['name'] ?>" class="row hotDeal">
+								<div class="col-sm-12 col-md-12 col-lg-4"><img style="height: 43px;" src="/public/images/tours/<?php echo
+        $v1['id'] ?>/resize_97x60/<?php echo $v1['full'] ?>" alt="hot deal" /></div>
+								<div class="col col-sm-12 col-md-12 col-lg-8">
+									<p><?php echo $v1['name']; ?></p>
+								
+								</div>
+							</a>
+                            <?php }
+    $itn++;
+endforeach ?>
+						</div><!-- /filterInner -->
+					</div><!-- /filter -->
+					
+				</div><!-- /vacationFilterContainer -->
+                   
+                </div>
+  
+     </div>
+
+	<script type="text/javascript">
+	
+    function discussion(){
+    	j('#content_tour').parent().removeClass('active');
+    	j('#discussion').parent().addClass('active');
+    	j('#icetab1').removeClass('active');
+    	j('#icetab4').addClass('active');
+    	j('html, body').animate({ scrollTop: j('#icetab3').offset().top }, 'slow');
+    }
+       
+    </script>
+
+<img src="/public/images/loading_bar.gif" id="loading-indicator" style="display:none" />
+<div id="tourModals" class="sun-booking" style="display:none;">
+
+ 
+
+            <div class="modal-header">
+            
+                <h4 class="modal-title">Đặt Tour <?= $this->name ?></h4>
+
+            </div>
+            <form id="bookingtourFormHB" method="post" action="/product/index/booking/id/<?= $this->id ?>" enctype="multipart/form-data">
+            <div class="modal-body">                
+	           <dl class="zend_form">
+	           <dt id="name-label">
+			   <label class="required" for="name">Tên của bạn:</label>
+				</dt>
+				<dd id="name-element">
+				<input id="name" type="text" size="40" value="" name="name">
+				</dd>
+				
+				<dt id="email-label">
+			   <label class="required" for="name">Email:</label>
+				</dt>
+				<dd id="email-element">
+				<input id="email" type="text" size="40" value="" name="emails">
+				</dd>
+				
+				<dt id="mobi-label">
+			   <label class="required" for="name">Điện thoại:</label>
+				</dt>
+				<dd id="mobi-element">
+				<input id="mobiphone" type="text" size="40" value="" name="mobiphone">
+				</dd>
+				
+				<dt id="address-label">
+			   <label class="required" for="name">Địa chỉ liên hệ:</label>
+				</dt>
+				<dd id="address-element">
+				<input id="address" type="text" size="40" value="" name="address">
+				</dd>
+				<!--
+				<dt id="payment-label">
+			   <label class="required" for="name">Phương thức thanh toán:</label>
+				</dt>
+				<dd id="payment-element">
+				<select name="payment" id="payment">
+					<option value="onepay">Onepay</option>
+					<option value="paypal">Paypal</option>
+				</select>
+				</dd>-->
+	           
+	           
+	           	<dt id="note-label">
+			   <label class="required" for="name">Ghi chú:</label>
+				</dt>
+				<dd id="note-element">
+				<textarea style="height: 100px;" name="note" rows="5" /></textarea>
+				</dd>
+				
+	           </dl>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default modalCloseImg simplemodal-close" data-dismiss="modal">Đóng</button>
+
+                <button type="submit" class="btn btn-primary">Đặt Tour</button>
+
+            </div>
+            
+			 </form>
+			 
+        
+
+      
+
+    </div>
+   
+    <!--<style>#simplemodal-container{position: unset !important;}</style>-->
+    <script type="text/javascript">
+    var frmBookingtour = jQuery('#bookingtourFormHB');
+	
+    frmBookingtour.submit(function (ev) {
+    ev.preventDefault();
+	var  nameBookingtourForm = jQuery('#name').val();
+    var  emailBookingtourForm = jQuery('#emails').val();
+	var  mobileBookingtourForm = jQuery('#mobiphone').val();
+	var  addBookingtourForm = jQuery('#address').val();
+	if ((nameBookingtourForm == '') || (nameBookingtourForm == null)){
+		    alert('Xin vui lòng nhập tên !');
+		    return false;
+	    }else if(emailBookingtourForm == ''){
+		    alert('Xin vui lòng nhập Email !');
+		     return false;
+		 }else if(mobileBookingtourForm == ''){
+		    alert('Xin vui lòng nhập số điện thoại !');
+		     return false;
+		    }else if(addBookingtourForm == ''){
+		    alert('Xin vui lòng nhập địa chỉ liên hệ !');
+		     return false;
+		    }
+		    
+		    else {
+	    jQuery('.close').trigger('click');
+	    
+        jQuery.ajax({
+            type: frmBookingtour.attr('method'),
+            url: frmBookingtour.attr('action'),
+            data: frmBookingtour.serialize(),
+            beforeSend: function (){
+	            jQuery('#loading-indicator').show();
+            },
+            success: function (data) {
+               // console.log(data);
+			   jQuery('#loading-indicator').hide();
+				   alert('Thanks for booking!');
+				  // $(this).fadeOut('fast');                
+              
+            }
+        });
+
+        return false;
+        
+        }
+    });
+    </script>
+
+</div>
+
+<script type="text/javascript">
+ jQuery.noConflict();
+    jQuery(document).ready(function() {
+     
+      var time = 7; // time in seconds
+ 
+  var $progressBar,
+      $bar, 
+      $elem, 
+      isPause, 
+      tick,
+      percentTime;
+ 
+    //Init the carousel
+    $("#owl-demo").owlCarousel({
+      slideSpeed : 500,
+      paginationSpeed : 500,
+      singleItem : true,
+      afterInit : progressBar,
+      afterMove : moved,
+      startDragging : pauseOnDragging
+    });
+ 
+    //Init progressBar where elem is $("#owl-demo")
+    function progressBar(elem){
+      $elem = elem;
+      //build progress bar elements
+      buildProgressBar();
+      //start counting
+      start();
+    }
+ 
+    //create div#progressBar and div#bar then prepend to $("#owl-demo")
+    function buildProgressBar(){
+      $progressBar = $("<div>",{
+        id:"progressBar"
+      });
+      $bar = $("<div>",{
+        id:"bar"
+      });
+      $progressBar.append($bar).prependTo($elem);
+    }
+ 
+    function start() {
+      //reset timer
+      percentTime = 0;
+      isPause = false;
+      //run interval every 0.01 second
+      tick = setInterval(interval, 10);
+    };
+ 
+    function interval() {
+      if(isPause === false){
+        percentTime += 1 / time;
+        $bar.css({
+           width: percentTime+"%"
+         });
+        //if percentTime is equal or greater than 100
+        if(percentTime >= 100){
+          //slide to next item 
+          $elem.trigger('owl.next')
+        }
+      }
+    }
+ 
+    //pause while dragging 
+    function pauseOnDragging(){
+      isPause = true;
+    }
+ 
+    //moved callback
+    function moved(){
+      //clear interval
+      clearTimeout(tick);
+      //start again
+      start();
+    }
+ 
+    //uncomment this to make pause on mouseover 
+    // $elem.on('mouseover',function(){
+    //   isPause = true;
+    // })
+    // $elem.on('mouseout',function(){
+    //   isPause = false;
+    // })
+ 
+     $("#tourModal1").on('click',function() {
+        // Chained call with no options
+        $("#tourModals").modal();
+   });
+   $('#nav-wrapper').height($("#sidebar").height());
+   $('#sidebar').affix({
+    offset: { top: 200, bottom: 300}
+    
+})
+
+
+
+ $('#sidebar').on('affixed-bottom.bs.affix', function(){
+        alert('The navigation menu is about to return to its original bottom position - The .affix class has been replaced with .affix-bottom');
+    });
+    });
+
+   
+	//$('#simplemodal-container').removeAttr('style');
+	
+ 
+</script>
+

@@ -1,0 +1,73 @@
+  <style>
+            li{float:left; margin: 3px; border: solid 1px gray; list-style: none}
+            a{padding: 5px;}
+            span{display:inline-block; padding: 0px 3px; background: blue; color:white }
+        </style>
+<div id="content">
+            <div id="list">
+                <table border="1" cellspacing="0" cellpadding="5">
+                    <?php foreach ($this->tour as $item){ ?>
+                    <tr>
+                        <td>
+                           <?php echo $item['id']; ?>  
+                        </td>
+                        <td>
+                           <?php echo $item['name']; ?> 
+                        </td>
+                    
+                      
+                    </tr>
+                    <?php } ?>
+                </table>
+            </div>
+            <div id="paging">
+                <?php echo $this->pagination; ?>
+            </div>
+        </div>
+        
+<script language="javascript">
+			
+	
+             $('#content').on('click','#paging a', function ()
+             {
+                 var url = $(this).attr('href');
+                  
+                 $.ajax({
+                     url : url,
+                     type : 'get',
+                     dataType : 'json',
+                     success : function (result)
+                     {
+	                  
+                         //  kiểm tra kết quả đúng định dạng không
+                         if (result.hasOwnProperty('tour') && result.hasOwnProperty('paging'))
+                         {
+                        var html = '<table border="1" cellspacing="0" cellpadding="5">';
+                             // lặp qua danh sách thành viên và tạo html
+                             $.each(result['tour'], function (key, item){
+                                html += '<tr>';
+                                html += '<td>'+item['id']+'</td>'; 
+                                html += '<td>'+item['name']+'</td>'; 
+                                html += '</tr>';
+                             });
+                              
+                             html += '</table>';
+                              
+                             // Thay đổi nội dung danh sách thành viên
+                             $('#list').html(html);
+                              
+                             // Thay đổi nội dung phân trang
+                             $('#paging').html(result['paging']);
+                              
+                             // Thay đổi URL trên website
+                             window.history.pushState({path:url},'',url);
+
+                         }
+                     }
+                 });
+                 return false;
+             });
+             
+             
+          
+         </script>

@@ -1,0 +1,50 @@
+<style>
+.disabled{
+color: #a9a8a6;	
+}
+
+#content ul li, #content ol li, header ul.main-menu li .seven_mega_menu ul li{
+	list-style: none;
+}
+</style>
+<?php if ($this->pageCount){
+    // you need to add each of the request parameters to url
+    $params = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+    // remove the system parameters
+    unset($params['module']);
+    unset($params['controller']);
+    unset($params['action']);
+?>
+<div class="row text-center">
+<ul class="pagination">
+
+<?php if (isset($this->previous)){ ?>
+ <li> <a lass="prev page-numbers" href="<?php echo $this->url(array_merge(
+      $params, array('page' => $this->previous))); ?>">
+     &laquo; Trang trước
+  </a> </li>
+<?php } else { ?>
+  <!--<li><span class="disabled">Prev</span></li>-->
+<?php } ?>
+<!-- Numbered page links -->
+<?php foreach ($this->pagesInRange as $page){ ?>
+  <?php if ($page != $this->current){ ?>
+    <li> <a class='page-numbers' href="<?php echo $this->url(array_merge($params,
+        array('page' => $page))); ?>">
+        <?php echo $page; ?>
+    </a></li>
+  <?php } else { ?>
+  <li class="active"> <span class="page-numbers current">  <?php echo $page; ?></span> </li>
+<?php }}?>
+<!-- Next page link -->
+<?php if (isset($this->next)){ ?>
+ <li> <a class="next page-numbers" href="<?php echo $this->url(
+      array_merge($params, array('page' => $this->next))); ?>">
+    Trang sau &raquo;
+  </a></li>
+<?php } else { ?>
+ <!---<li> <span class="disabled">Next</span></li>-->
+<?php } ?>
+</ul>
+</div>
+<?php } ?>

@@ -1,0 +1,101 @@
+<?php
+	//echo $_SERVER['DOCUMENT_ROOT']; die();
+	$url = '';
+	if($this->layout == 'topmenu'){
+		$url = $_SERVER['DOCUMENT_ROOT']. '/public/templates/news2017/default/layouts/'.$this->lang.'/menu.phtml';
+	}elseif($this->layout == 'homecontent'){
+		$url = $_SERVER['DOCUMENT_ROOT'].  '/application/modules/default/views/scripts/index/index-'.$this->lang.'.phtml';
+	}
+	$front = Zend_Controller_Front::getInstance(); 
+
+
+	$filename = $url;
+	$handle = fopen($filename, "rb");
+	$content_old = fread($handle, filesize($filename));
+	fclose($handle);
+	
+	if($_POST){
+	$content = $_POST['editor'];
+	$fp = fopen($url, "w");
+	
+	fwrite($fp, stripslashes($content));
+	fclose($fp);
+	header( 'Location: http://'. $front->getRequest()->getHttpHost().'/admin/editor');
+	
+	}
+	 ?>
+	 <style>
+		 #editor{
+			 height: 300px;
+		 }
+	</style>	
+
+	  <form class="bs-example form-horizontal" method="POST" action="#">
+		<fieldset>
+		  <legend>Chỉnh sửa nội dung</legend>
+		   <div class="form-group">
+			<div class="col-lg-12">
+			  <button type="submit" class="btn btn-primary">Lưu</button> 
+			</div>
+		  </div>
+		 <br />
+		  <div class="form-group">
+			<div class="col-lg-12">
+				<!--<pre id="editor"><?=$this->escape($content_old)?></pre>-->
+			 <textarea id="editor" data-editor="xml" rows="20" cols="140" name="editor">
+		   	<?=$this->escape($content_old)?>
+			 </textarea>
+			</div>
+		  </div>		 
+		 
+		</fieldset>
+	  </form>
+	 
+<script>
+/*$(function() {
+
+  // Target all classed with ".lined"
+  $(".lined").linedtextarea(
+    {selectedLine: 1}
+  );
+
+
+});*/
+/*var textarea = $('textarea[name="description"]');
+
+   var editor = ace.edit("description");
+   editor.setTheme("ace/theme/twilight");
+   editor.getSession().setMode("ace/mode/javascript");
+
+   editor.getSession().on('change', function () {
+       textarea.val(editor.getSession().getValue());
+   });
+
+   textarea.val(editor.getSession().getValue());*/
+      $(function () {
+        $('textarea[data-editor]').each(function () {
+            var textarea = $(this);
+            var mode = textarea.data('editor');
+            var editDiv = $('<div>', {
+                position: 'absolute',
+                width: textarea.width(),
+                height: textarea.height(),
+                'class': textarea.attr('class')
+            }).insertBefore(textarea);
+            textarea.css('visibility', 'hidden');
+            var editor = ace.edit(editDiv[0]);
+            editor.renderer.setShowGutter(true);
+            editor.getSession().setValue(textarea.val());
+            editor.getSession().setMode("ace/mode/" + mode);
+           //  editor.setTheme("ace/theme/twilight");
+             editor.setTheme("ace/theme/textmate");
+            // copy back to textarea on form submit...
+            textarea.closest('form').submit(function () {
+                textarea.val(editor.getSession().getValue());
+            })
+            
+        });
+    });
+ 
+
+</script>

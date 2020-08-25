@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	
+	<!-- Basic Page Needs
+  ================================================== 
+	<meta charset="utf-8">
+	<title>Code generator</title>-->
+	<meta name="description" content="Rating system, 5 stars, jquery plugin, php, ajax">
+	<meta name="author" content="Sandi">
+
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	  
+	<!-- Including styles -->
+	<link type="text/css" href="css/style.css" rel="stylesheet" />	
+	<link type="text/css" href="css/prettify.css" rel="stylesheet" />
+	<link href="css/custom-theme/jquery-ui-1.9.1.custom.css" rel="stylesheet">
+	
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link href="css/tooltip.css" rel="stylesheet" type="text/css">
+
+	<!-- Including jQuery and other staff-->
+	<script src="js/jquery-1.8.2.js"></script>
+	<script src="js/jquery-ui-1.9.1.custom.min.js"></script>
+	
+	<!-- Including rating plugin-->	
+	<script type="text/javascript" src="js/jquery.5stars.min.js?v=2"></script>	
+	<script type="text/javascript">
+		
+		
+		//variable
+		var mode=1;
+	   
+	   
+	   //DEFAULT SETTINGS	   		
+		var settings = {
+		
+			php					: '',					//path to manager.php file. If not provided - display mode will be activated (no stats load/update)
+			id					: '',					//item ID, must be uniqe for each item
+			title				: '',					//item short description 
+			displaymode			: false,				//if true - no database reqired, values taken from html
+			rewrite				: false,				//if true - user can change the rate he gave before
+			showmean			: true,					//if false - user's rate will be shown instead of mean
+			debug				: false,				//if true - error mesages will be displayed
+			
+			skin				: '',					//path to skin file. Can point to several files: 'file1|file2|file3' for back, front, hover skins
+			stars				: 5, 					//number of stars
+            step				: 1, 					//round every 'step' stars. For example step=0.5 will cause rounding to half star on hover
+			round				: true,					//if true - mean value(loaded from DB) will be also rounded 
+            decimals			: 1,					//number of decimal digits
+			cursor				: 'pointer', 			//cursor CSS property
+			
+			load				: true,					//load stats on start or not
+			enable				: true,					//enable/disable mouse
+			animate				: false,					//apply animation
+			easing				: 5,					//easing coefficient (if animate==true)
+			
+			showtext			: true,					//show text messages
+			tooltip				: true,					//show tooltip on mouse over: true,false, 'mobile', 'desktop'
+			tooltipeasing		: 2.5,					//easing coefficient for tooltip
+			textlocation		: 'bottom',				//'top', 'bottom' or ID of the dom element
+			minvotes			: 0,					//minimum votes required to show stats
+			textstart			: 'rate to see statistics',		//text shown on start if load=false
+			textloading			: '...loading',			//text on stats loading
+			textminvotes		: '%r votes required',			//if number of votes<minvotes this text will be shown	
+			textmain			: '%ms / %maxs (from %v votes)',		//main text, shown then stats are loaded		
+			texthover			: 'very bad|bad|average|good|perfect', //text shown on mouse move in format 'txt1|txt2|txt3|...|txtN'. Which part of this text will be shown depends on pointed value 
+			textthanks			: 'thank you',						//text shown on user vote
+			textdelay			: 1500,					//delay in milliseconds to show textthanks, if ==0 no textthanks will be shown
+			
+			ondata              : function(){},			//triggers then stats loaded from DB
+			onmove              : function(){},			//triggers then user changes value by mouse moving
+			onlieve             : function(){},			//triggers then user move mouse avay
+			onclick             : function(){}			//triggers then user voted
+			
+		};
+		
+	   
+	   
+	   
+		$(document).ready(function(){	
+			
+			$('.space').hide();
+			
+			//START 						
+			$(".stars").rating({										
+				php	: 'admin/php/manager.php', 	//path to manager.php file relative to HTML document. Not required in Display-only and Database-free modes.
+				skin	: 'skins/skin.png', 		//path to skin file relative to HTML document
+				ondata   : ondata,			//triggers then stats loaded from DB
+				onmove   : onmove,			//triggers then user changes value by mouse moving
+				onlieve  : onlieve,			//triggers then user move mouse avay
+				onclick  : onclick			//triggers then user voted
+
+			});	
+
+			//$(".stars").rating("votes",25);
+			//$(".stars").rating("value",66.66);
+			
+			$( "#tabs" ).tabs();
+			
+			$('#tabs-0').children('input').click(function(){
+				mode= $(this).attr('value');
+				toggle('s1',false);
+				toggle('s2',false);
+				toggle('s3',false);
+				toggle('s'+mode,true);					
+			});
+
+			
+			$($('#tabs').find('li')[3]).click(function(){
+				 getthecode();
+			});
+			
+			//get the code
+			function getthecode(){
+				mode= $(this).attr('value');
+				
+				//check default settings
+				var txt='';
+				var obj=$($(".stars")[0]);	
+				
+				var val=obj.rating('option','displaymode');
+				if(val)	txt+='<span class="jscript_def">                    displaymode    </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">false</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//if true - no database reqired, values will be taken from html</span></br></br>';
+				
+				var val=obj.rating('option','rewrite');
+				if(val)	txt+='<span class="jscript_def">                    rewrite    </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">true</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//if true - user can change the rate he gave before</span></br>';
+				
+				var val=obj.rating('option','showmean');
+				if(!val)	txt+='<span class="jscript_def">                    showmean    </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">false</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//if false - user\'s rate will be shown instead of mean</span></br>';
+											
+				var val=obj.rating('option','stars');				
+				if(val!=5)	txt+='<span class="jscript_def">                    stars                </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'+val+'</span><span class="jscript_op">,</span><span class="jscript_def">         </span><span class="jscript_com">//number of stars</span></br>';
+			
+				val=obj.rating('option','step');
+				if(val!=1) txt+='<span class="jscript_def">                    step                 </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'+val+'</span><span class="jscript_op">,</span><span class="jscript_def">           </span><span class="jscript_com">//round every \'step\' stars. For example step=0.5 will cause rounding to half star on hover</span></br>';
+			
+				val=obj.rating('option','round');
+				if(val==false) txt+='<span class="jscript_def">                    round              </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">false</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//if true - mean value(loaded from DB) will be also rounded</span></br>';
+			
+				val=obj.rating('option','decimals');
+				if(val!=1) txt+='<span class="jscript_def">                    decimals              </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'+val+'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//number of decimal digits</span></br>';
+			
+				val=obj.rating('option','cursor');
+				if(val!='pointer') txt+='<span class="jscript_def">                    cursor             </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">\''+val+'\'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//cursor CSS property</span></br>';
+			
+				val=obj.rating('option','load');
+				if(val==false){
+					txt+='<span class="jscript_def">                    load                </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">false</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//load stats on start or not</span></br>';					
+				}
+				
+				val=obj.rating('option','enable');
+				if(val==false) txt+='<span class="jscript_def">                    enable             </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">false</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//enable/disable mouse</span></br>';
+				
+				val=obj.rating('option','animate');
+				if(val==true){				
+					txt+='<span class="jscript_def">                    animate           </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">true</span><span class="jscript_op">,</span><span class="jscript_def">       </span><span class="jscript_com">//apply animation</span></br>';
+				
+					val=obj.rating('option','easing');
+					if(val!=5) txt+='<span class="jscript_def">                    easing             </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'+val+'</span><span class="jscript_op">,</span><span class="jscript_def">          </span><span class="jscript_com">//easing coefficient</span></br>';
+				}
+				
+				
+				
+				var vals=obj.rating('option','showtext');
+				if(vals==false) txt+='<span class="jscript_def">                    showtext          </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">false</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//show text messages</span></br>';
+				else{
+					
+					val=obj.rating('option','textstart');
+					if(val!=settings['textstart'] && !obj.rating('option','load')) txt+='<span class="jscript_def">                    textstart           </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">\''+val+'\'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//text shown on start if load=false</span></br>';
+									
+					val=obj.rating('option','textlocation');
+					if(val!='bottom') txt+='<span class="jscript_def">                    textlocation      </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">\''+val+'\'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//\'top\', \'bottom\' or ID of the dom element</span></br>';
+					
+					val=obj.rating('option','minvotes');
+					if(val!=0) txt+='<span class="jscript_def">                    minvotes         </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'+val+'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//minimum votes required to show main text (see textmain below)</span></br>';
+					
+					val=obj.rating('option','textloading');
+					if(val!=settings['textloading']) txt+='<span class="jscript_def">                    textloading      </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">\''+val+'\'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//text on stats loading</span></br>';
+					
+					val=obj.rating('option','textminvotes');
+					if(val!=settings['textminvotes']) txt+='<span class="jscript_def">                    textminvotes    </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">\''+val+'\'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//if number of votes is less then minvotes this text will be shown</span></br>';
+					
+					val=obj.rating('option','textmain');
+					if(val!=settings['textmain']) txt+='<span class="jscript_def">                    textmain          </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">\''+val+'\'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//main text, shown then stats are loaded</span></br>';
+				}
+
+				var tooltip = document.getElementById('tooltip');				
+				var toolt=tooltip.value;
+				if(toolt!="true" && toolt!="false") toolt='\''+toolt+'\'';
+				
+				if(toolt!="true") txt+='<span class="jscript_def">                    tooltip          </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'+(toolt)+'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//show tooltip on mouse over: true,false, \'mobile\', \'desktop\'</span></br>';
+				
+				
+				if(toolt!="false"){
+						val=obj.rating('option','tooltipeasing');
+					if(val!=2.5) txt+='<span class="jscript_def">                    tooltipeasing        </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'+val+'</span><span class="jscript_op">,</span><span class="jscript_def">          </span><span class="jscript_com">//easing coefficient for tooltip</span></br>';
+				
+				}
+				if(vals || toolt){
+					val=obj.rating('option','texthover');
+					if(val!=settings['texthover']) txt+='<span class="jscript_def">                    texthover         </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">\''+val+'\'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//text shown on mouse move in format \'txt1|txt2|txt3|...|txtN\'. Which part of this text will be shown depends on pointed value</span></br>';
+				}
+
+				
+				if(vals){	
+					val=obj.rating('option','textthanks');
+					if(val!=settings['textthanks']) txt+='<span class="jscript_def">                    textthanks       </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">\''+val+'\'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//text shown on user vote</span></br>';
+					
+					val=obj.rating('option','textdelay');
+					if(val!=settings['textdelay']) txt+='<span class="jscript_def">                    textdelay         </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'+val+'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//delay in milliseconds to show textthanks, if ==0 no textthanks will be shown</span></br>';
+				}
+				
+				obj=$('#tabs-3').find('input');
+				
+				var notlast=(obj[0].checked||obj[1].checked||obj[2].checked||obj[3].checked);
+				
+				txt+='<span class="jscript_def">                    debug             </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">false</span><span class="jscript_op">'+(notlast?',':'')+'</span><span class="jscript_def">      </span><span class="jscript_com">//if true - debug mode will be enabled</span></br>';
+								
+				
+				var flist='';
+				
+				if(obj[0].checked){
+					notlast=(obj[1].checked||obj[2].checked||obj[3].checked);
+					txt+='<span class="jscript_def">                    ondata            </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">ondata</span><span class="jscript_op">'+(notlast?',':'')+'</span><span class="jscript_def">      </span><span class="jscript_com">//triggers then stats loaded from DB</span></br>';
+					
+					flist+='</br><span class="jscript_def">            </span><span class="jscript_keyword">function</span><span class="jscript_def"> ondata</span><span class="jscript_op">(</span><span class="jscript_def">data, $thisStarsObject</span><span class="jscript_op">){</span><span class="jscript_def">';
+					flist+='</br>                </span><span class="jscript_com">//your code here';
+					flist+='</br></span><span class="jscript_def">                </span><span class="jscript_com">//alert(\'stats loaded! itemID:\'+data.id+\'; mean rate:\'+data.value+\'%; votes:\'+data.votes+(data.error!=\'\'?(\'error:\'+data.error):\'\'));';
+					flist+='</br></span><span class="jscript_def">            </span><span class="jscript_op">}</span><span class="jscript_def">';
+					//flist+='</br>            ';
+					flist+='</br>            </span>';	
+				}
+				
+				if(obj[1].checked){
+				
+					notlast=(obj[2].checked||obj[3].checked);
+				
+					txt+='<span class="jscript_def">                    onclick            </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">onclick</span><span class="jscript_op">'+(notlast?',':'')+'</span><span class="jscript_def">      </span><span class="jscript_com">//triggers then user voted</span></br>';
+					
+					
+					flist+='</br><span class="jscript_def">            </span><span class="jscript_keyword">function</span><span class="jscript_def"> onclick</span><span class="jscript_op">(</span><span class="jscript_def">value, $thisStarsObject</span><span class="jscript_op">){</span><span class="jscript_def">';
+					flist+='</br>                </span><span class="jscript_com">//your code here';
+					flist+='</br></span><span class="jscript_def">                </span><span class="jscript_com">//alert(\'on click: \'+value+\'%\');';
+					flist+='</br></span><span class="jscript_def">            </span><span class="jscript_op">}</span><span class="jscript_def">';
+					//flist+='</br>            ';
+					flist+='</br>            </span>';
+					
+						
+				}
+				
+				if(obj[2].checked){
+					notlast=(obj[3].checked);
+				
+					txt+='<span class="jscript_def">                    onmove          </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">onmove</span><span class="jscript_op">'+(notlast?',':'')+'</span><span class="jscript_def">      </span><span class="jscript_com">//triggers on mouse move over stars</span></br>';
+					
+					flist+='</br><span class="jscript_def">            </span><span class="jscript_keyword">function</span><span class="jscript_def"> onmove</span><span class="jscript_op">(</span><span class="jscript_def">value, $thisStarsObject</span><span class="jscript_op">){</span><span class="jscript_def">';
+					flist+='</br>                </span><span class="jscript_com">//your code here';
+					flist+='</br></span><span class="jscript_def">                </span><span class="jscript_com">//alert(\'on click: \'+value+\'%\');';
+					flist+='</br></span><span class="jscript_def">            </span><span class="jscript_op">}</span><span class="jscript_def">';
+					//flist+='</br>            ';
+					flist+='</br>            </span>';
+										
+				}
+				
+				if(obj[3].checked){
+					txt+='<span class="jscript_def">                    onlieve           </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">onlieve</span><span class="jscript_def">      </span><span class="jscript_com">//triggers on mouse roll out the stars</span></br>';
+					
+					flist+='</br><span class="jscript_def">            </span><span class="jscript_keyword">function</span><span class="jscript_def"> onlieve</span><span class="jscript_op">($thisStarsObject</span><span class="jscript_op">){</span><span class="jscript_def">';
+					flist+='</br>                </span><span class="jscript_com">//your code here';
+					flist+='</br></span><span class="jscript_def">            </span><span class="jscript_op">}</span><span class="jscript_def">';
+					
+				}
+				
+				
+				var codeContainer=document.getElementById('settingsfield');				
+				codeContainer.innerHTML=txt;
+				
+				var fContainer=document.getElementById('functionsfield');				
+				if(fContainer) fContainer.innerHTML=flist;
+				
+			}
+
+			
+			/// checkboxes
+			//set initial state.
+			//$('#textbox1').val($(this).is(':checked'));
+			
+			$('input:checkbox').change(function() {
+				$(this).val($(this).is(':checked'));
+			});
+
+			$('input:checkbox').click(function() {
+				var obj=$(this);
+				var checked=obj.is(':checked');
+				var name=obj.attr('name');
+				
+				if(name=='onlieve' || name=='ondata' || name=='onmove' || name=='onclick'){
+					// do nothing
+				}
+				else setProperty(name, checked);				
+			});			
+			/// end of checkboxes
+			
+			
+			//text fields
+			$('input:text').keyup(function() {
+				var obj=$(this);
+				var name=obj.attr('name');
+				var val=obj.attr('value');
+				var isNumber=obj.hasClass('number');
+				
+				if(isNumber){					
+					val=val.replace(/[^\d.]/g,'');
+					obj.attr('value',val);
+				}
+				
+				setProperty(name, val);	
+			});
+			
+			
+			//dropdown lists
+			$("select").change(function () {
+				var obj=$(this);
+				var name=obj.attr('id');
+				var val=obj.val();				
+				setProperty(name, val);
+			});
+			
+			
+			//highlight the code
+			//prettyPrint();
+		
+		});
+		
+		
+		function printlog(str){
+			var ele = document.getElementById('output');	
+			ele.innerHTML='OUTPUT: '+str;
+		}
+		
+		function ondata(data){
+			var obj=$('#ondata');
+			var checked=obj.is(':checked');
+			if(checked){
+				printlog('stats loaded!<br />itemID:'+data.id+'<br />mean rate:'+data.value+'%<br />votes:'+data.votes+(data.error!=''?('<br />error:'+data.error):''));
+			}
+		}
+		function onmove(n){
+			var obj=$('#onmove');
+			var checked=obj.is(':checked');
+			if(checked){
+				printlog('on mouse move: '+n+'%');
+			}
+		}
+		function onlieve(){
+			var obj=$('#onlieve');
+			var checked=obj.is(':checked');
+			if(checked){
+				printlog('on mouse lieve');
+			}
+		}
+		function onclick(n){
+			var obj=$('#onclick');
+			var checked=obj.is(':checked');
+			if(checked){
+				printlog('on click: '+n+'%');
+				alert('on click: '+n+'%');
+			}
+		}
+		
+		function setProperty(name, value){
+			
+			
+			switch(name){
+				case 'enable':
+					var ele = document.getElementById('cursor');			
+					ele.disabled = !value; 
+					break;
+				case 'animate':
+					var ele = document.getElementById('easing');			
+					ele.disabled = !value; 
+					break;
+				case 'step':
+					value=parseFloat(value);
+					var ele = document.getElementById('round');	
+					ele.disabled = (value==0); 
+					
+					ele = document.getElementById('decimals');
+					ele.disabled = (value!=0);
+					
+					break;
+				case 'decimals':
+					value=parseInt(value);
+					var ele = document.getElementById('round');									
+					break;
+				case 'round':					
+					var ele = document.getElementById('decimals');	
+					ele.disabled = (value!=0); 					
+					break;
+					
+				case 'showmean':					
+					var ele = document.getElementById('textmain');
+					ele.value = (value==0)?'you gave %ms out of %maxs stars':'%ms / %maxs (from %v votes)'; 					
+					setProperty('textmain', ele.value);
+					break;
+									
+				case 'minvotes':					
+					value=parseFloat(value);
+					var ele = document.getElementById('textminvotes');	
+					ele.disabled = (value==0);					
+					break;
+				
+				case 'showtext':
+					var tooltip = document.getElementById('tooltip');
+					var showtt=tooltip.value;
+					var touch = ( 'ontouchstart' in document.documentElement ) ? true : false;
+					
+					var valold=value;
+					
+					if(showtt=='false') showtt=false;
+					else showtt=true;
+											
+					if(showtt) valold=1;
+					
+					$('.textoption').each(function(){
+						var ele = this;
+						ele.disabled = (value==0);
+					});
+					
+					$('.hover').each(function(){
+						var ele = this;
+						ele.disabled = (valold==0);
+					});
+					
+					
+					
+					
+					if(value==0) $('.space').show();
+					else{
+						$('.space').hide();
+						var ele=document.getElementById('load');
+						var value2=ele.checked;
+						ele = document.getElementById('textstart');	
+						ele.disabled = value2;
+					}
+					
+					break;
+				
+				case 'tooltip':
+					var showtext = document.getElementById('showtext');
+					var showtt=showtext.checked;
+
+					if(!showtt){
+						showtt=value;
+						if(showtt=='false') showtt=false;
+						else showtt=true;							
+					}
+					
+					$('.hover').each(function(){
+						var ele = this;
+						ele.disabled = !showtt; 	
+					});
+					break;
+				
+				case 'load':
+					var ele = document.getElementById('textstart');	
+					ele.disabled = !(value==0);
+					break;
+						
+			}
+			
+			$(".stars").each(function(index){				
+				if(value=='externaltextid')	$(this).rating('option',name,'externaltextid'+(index+1));				
+				else{
+					$(this).rating('option',name,value);
+					if(name=='load'){
+						if(value){
+							var id=$(this).rating('id');						
+							$(this).rating('id',id); //emitate reload
+						}else{
+							$(this).rating('value',0,true).rating('votes',0);
+						}
+					}else if(name=='minvotes'){
+						var id=$(this).rating('id');
+						$(this).rating('id',id); //emitate reload
+					}
+				}
+			});
+			
+			
+		}
+		
+		
+		function toggle(showHideDiv, flag) {
+			var ele = document.getElementById(showHideDiv);			
+			if(ele.style.display == "block" && !flag) {
+				ele.style.display = "none";				
+			}
+			else if(flag){
+				ele.style.display = "block";				
+			}			
+		} 
+		
+		function html5_storage_support() {			
+			try { return typeof window.localStorage == 'object';}
+			catch (e) {return false;}
+		}
+		
+	</script>	
+	<style>
+
+	h4{padding-top:20px;padding-bottom:20px;}
+	    
+	
+	
+	
+	.inputs{
+		margin-right: 100px;
+		display:inline-block;
+		*display: inline;     /* for IE7*/
+		zoom:1;              /* for IE7*/
+		vertical-align:top;
+	}
+	
+	.inputs input, .inputs select, .inputslong input, .inputslong select {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		display:inline-block;
+		*display: inline;     /* for IE7*/
+		zoom:1;              /* for IE7*/
+		vertical-align:middle;
+		
+	}
+
+	
+	.inputs label{
+		display:inline-block;
+		*display: inline;     /* for IE7*/
+		zoom:1;              /* for IE7*/
+		float: left;
+		padding-top: 5px;		
+		width: 60px;
+	}
+	
+	.inputslong label {
+		display:inline-block;
+		*display: inline;     /* for IE7*/
+		zoom:1;              /* for IE7*/
+		float: left;
+		padding-top: 5px;		
+		width: 160px;		
+	}
+	
+	
+	
+	.small {width:50px;  text-align:center;}
+	.middle {width:100px; }
+	.big {width:200px; }
+	.huge {width:70%; }
+	
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	
+	.gray{color:#999;}
+	</style>
+	
+	
+</head>
+
+
+	<body>
+			
+		<div class="row">		
+			
+			<div class="thumb_img border-box">
+			<p><a href="#" onclick="history.go(-1)">&lt;&lt; back to main page</a></p>
+			</div>
+
+			<h2>Code generator</h2>
+			</br>
+			
+			
+			<div id="s1" style="display:block;">
+				<!-- 1. Stars will appear here. Note: unique item Id is required -->
+				<div class="stars" data-id="codeGen" data-textlocation="_id"></div>
+				
+				<div id="externaltextid1" style="float:right;"></div>
+				
+			</div>
+			
+			
+			
+			
+			
+			<div class="space">&nbsp;</div>
+			
+			<div class="clearfix"></div>
+			
+			<!-- Tabs -->
+			<br />
+			
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Look & Behaviour</a></li>
+					<li><a href="#tabs-2">Text options</a></li>
+					<li><a href="#tabs-3">Custom functions</a></li>
+					<li><a href="#tabs-4">Get the code</a></li>
+				</ul>
+				
+				
+				
+				
+				<div id="tabs-1">
+					<div class="inputs">
+						
+						<LABEL for="stars">stars:</LABEL>
+						<INPUT type="text" id="stars" name="stars" value="5" class="small number"  maxlength="2">
+						<br />
+						<LABEL for="step">step:</LABEL>
+						<INPUT type="text" id="step" name="step" value="1" class="small number"  maxlength="5"><span class="gray"> e.g. 0 or 0.5</span>
+						<br />
+						<input type="checkbox" id="round" name="round" value="1" checked> round mean to step 
+						<br />
+						<input type="checkbox" id="showmean" name="showmean" value="1" checked> display "mean" or only the last rate from current user
+						<br />
+						<input type="checkbox" id="rewrite" name="rewrite" value="1"> user can change his rate
+						
+					</div>
+					
+					<div class="inputs">
+						<input type="checkbox" id="animate" name="animate" value="1"> animate 
+						<br />
+						<LABEL for="easing">easing:</LABEL>
+						<INPUT type="text" disabled id="easing" name="easing" value="5" class="small number"  maxlength="3">
+						<br />
+						<LABEL for="decimals">decimals:</LABEL>
+						<INPUT type="text" id="decimals" name="decimals" value="1" class="small number"  maxlength="5" disabled>
+						<br />
+						<LABEL for="tooltipeasing">tooltipeasing:</LABEL><br />
+						<INPUT type="text" id="tooltipeasing" name="tooltipeasing" value="2.5" class="small number"  maxlength="4">
+						
+					</div>
+					
+					<div class="inputs">
+						<input type="checkbox" id="enable" name="enable" value="1" checked> enable 
+						<br />
+						<LABEL for="cursor">cursor:</LABEL>
+						<select id="cursor" class="middle">
+						  <option value="pointer" selected>pointer</option>
+						  <option value="default">default</option>
+						  <option value="auto">auto</option>
+						  <option value="w-resize">w-resize</option>
+						  <option value="help">help</option>
+						  <option value="crosshair">crosshair</option>
+						  <option value="progress">progress</option>
+						</select>
+						
+						
+					</div>
+					
+				</div>
+				
+				
+				<div id="tabs-2">
+					<div class="inputslong">
+						<input type="checkbox" id="showtext" name="showtext" value="1" checked> <LABEL for="textloading">show text: </LABEL>  
+						<select id="textlocation" class="middle textoption">
+						  <option value="bottom" selected>bottom</option>
+						  <option value="top">top</option>
+						  <option value="externaltextid">DOM element</option>	  
+						</select>
+						<br />
+						
+						<LABEL for="tooltip">show tooltip:</LABEL>
+						<select id="tooltip" class="middle">
+						  <option value="true" selected>yes</option>
+						  <option value="false">no</option>
+						  <option value="mobile">mobile</option>
+						  <option value="desktop">desktop</option>						  
+						</select>
+						<br />
+					
+						<input type="checkbox" id="load" name="load" class="" value="1" checked> <LABEL for="textloading">load stats:  </LABEL> 
+						<INPUT type="text" id="textstart" name="textstart" value="rate to see statistics" class="big textoption" disabled>
+						<br />
+						
+						<LABEL for="textloading">loading text:</LABEL>
+						<INPUT type="text" id="textloading" name="textloading" value="...loading" class="big textoption">
+						<br />
+						
+						<LABEL for="minvotes">minimum votes:</LABEL>
+						<INPUT type="text" id="minvotes" name="minvotes" value="0" class="small textoption number">
+						<INPUT type="text" id="textminvotes" name="textminvotes" value="%r votes required" class="big textoption" disabled>
+						
+						<br />
+						
+						<LABEL for="textmain">stats text:</LABEL>
+						<INPUT type="text" id="textmain" name="textmain" value="%ms / %maxs (from %v votes)" class="huge textoption">
+						<br />
+						
+						<LABEL for="texthover">hover text:</LABEL>
+						<INPUT type="text" id="texthover" name="texthover" value="very bad|bad|average|good|perfect" class="huge textoption hover">
+						<br />
+						
+						<LABEL for="textthanks">thanks text:</LABEL>
+						<INPUT type="text" id="textthanks" name="textthanks" value="thank you" class="big textoption">
+						
+						
+						<span> show during </span>
+						<INPUT type="text" id="textdelay" name="textdelay" value="1500" class="small textoption number"><span> milliseconds</span>
+						<br />
+						
+						
+					
+					</div>
+					
+					
+					<div class="inputslong">
+						<br />
+						<p style="color:#777;">
+							<b>Text masks:</b><br />
+							%m - mean rate (measured in %)<br />
+							%ms - mean rate (stars)<br />
+							%p - hover/pointed rate (%)<br />
+							%ps - hover/pointed rate (stars)<br />
+							%i - hover/pointed index number (depends on | number in texthover)<br />
+							%maxs - total number of stars<br />
+							%v - number of votes<br />
+							%r and %rr - total (%r) and rest (%rr=%r-%v) required number of votes to display stats
+						</p>
+						* all text can be HTML formatted
+					</div>
+					
+					
+					
+				</div>
+				
+				
+				<div id="tabs-3">
+					<div class="inputs">
+						<p>Execute your custom functions on following events:</p>
+						<input type="checkbox" id="ondata" name="ondata" value="1"> on stats loaded 
+						<br />
+						<input type="checkbox" id="onclick" name="onclick" value="1"> on click 
+						<br />
+						<input type="checkbox" id="onmove" name="onmove" value="1"> on mouse move 
+						<br />
+						<input type="checkbox" id="onlieve" name="onlieve" value="1"> on mouse out 
+						<br />
+						<div id="output"></div>
+					</div>
+				</div>
+				
+				<div id="tabs-4">
+					<h4>Complete html code</h4>
+					
+					<div>
+					
+					<span>* Dont forget to provide the correct paths to .js (and manager.php) files</span>
+			
+			
+			
+			
+			
+			
+			
+			
+<!-- CODE -->
+                <div class="container_code">
+<pre class="dr_hl_lang_html"><span class="html_tagop">&lt;</span><span class="html_doctype">!DOCTYPE</span><span class="html_def"> </span><span class="html_doctype">html</span><span class="html_tagop">&gt;</span><span class="html_def">
+    </span><span class="html_tagop">&lt;</span><span class="html_tag">head</span><span class="html_tagop">&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">meta</span><span class="html_def"> </span><span class="html_attr">http-equiv</span><span class="html_attrop">=</span><span class="html_attrvalue">"Content-Type"</span><span class="html_def"> </span><span class="html_attr">content</span><span class="html_attrop">=</span><span class="html_attrvalue">"text/html; charset=UTF-8"</span><span class="html_def"> </span><span class="html_tagop">/&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">title</span><span class="html_tagop">&gt;</span><span class="html_def">Five Stars</span><span class="html_tagop">&lt;/</span><span class="html_tag">title</span><span class="html_tagop">&gt;</span><span class="html_def">
+
+ 	</span><span class="html_com">&lt;!-- Including style for tooltip if necessary --&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">link</span><span class="html_def"> </span><span class="html_attr">type</span><span class="html_attrop">=</span><span class="html_attrvalue">"text/css"</span><span class="html_def"> </span><span class="html_attr">rel</span><span class="html_attrop">=</span><span class="html_attrvalue">"stylesheet"</span><span class="html_def"> </span><span class="html_attr">href</span><span class="html_attrop">=</span><span class="html_attrvalue">"css/tooltip.css"</span><span class="html_tagop">/&gt;</span><span class="html_def">
+        
+        </span><span class="html_com">&lt;!-- Including jQuery 1.7 or higher and rating plugin --&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">script</span><span class="html_def"> </span><span class="html_attr">type</span><span class="html_attrop">=</span><span class="html_attrvalue">"text/javascript"</span><span class="html_def"> </span><span class="html_attr">src</span><span class="html_attrop">=</span><span class="html_attrvalue">"js/jquery-1.7.1.min.js"</span><span class="html_tagop">&gt;&lt;/</span><span class="html_tag">script</span><span class="html_tagop">&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">script</span><span class="html_def"> </span><span class="html_attr">type</span><span class="html_attrop">=</span><span class="html_attrvalue">"text/javascript"</span><span class="html_def"> </span><span class="html_attr">src</span><span class="html_attrop">=</span><span class="html_attrvalue">"js/jquery.5stars.min.js"</span><span class="html_tagop">&gt;&lt;/</span><span class="html_tag">script</span><span class="html_tagop">&gt;</span><span class="html_def">
+        
+        </span><span class="html_com">&lt;!-- Starting rating plugin --&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">script</span><span class="html_def"> </span><span class="html_attr">type</span><span class="html_attrop">=</span><span class="html_attrvalue">"text/javascript"</span><span class="html_tagop">&gt;</span><span class="jscript_def">
+            $</span><span class="jscript_op">(</span><span class="jscript_prop">document</span><span class="jscript_op">).</span><span class="jscript_def">ready</span><span class="jscript_op">(</span><span class="jscript_keyword">function</span><span class="jscript_op">(){</span><span class="jscript_def"> 
+
+	</span><span class="jscript_com">	//start plugin with settings
+</span><span class="jscript_def">                $</span><span class="jscript_op">(</span><span class="jscript_string">".stars"</span><span class="jscript_op">).</span><span class="jscript_def">rating</span><span class="jscript_op">({</span><span class="jscript_def">                       
+                    php </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'path/to/manager.php'</span><span class="jscript_op">,</span><span class="jscript_def">    </span><span class="jscript_com">//path to manager.php file relative to HTML document. Not required in Display-only and Database-free modes.
+</span><span class="jscript_def">                    skin    </span><span class="jscript_op">:</span><span class="jscript_def"> </span><span class="jscript_string">'skins/skin.png'</span><span class="jscript_op">,</span><span class="jscript_def">      </span><span class="jscript_com">//path to skin file relative to HTML document
+</span><span id="settingsfield"></span><span class="jscript_def">                </span><span class="jscript_op">});</span><span class="jscript_def">                 
+</span>
+      <span class="jscript_op">});</span>
+      <span id="functionsfield"></span>
+	  <span class="jscript_def">         
+        </span>
+    <span class="html_tagop">&lt;/</span><span class="html_tag">script</span><span class="html_tagop">&gt;</span><span class="html_def">   
+
+    </span><span class="html_tagop">&lt;/</span><span class="html_tag">head</span><span class="html_tagop">&gt;</span><span class="html_def">
+    </span><span class="html_tagop">&lt;</span><span class="html_tag">body</span><span class="html_tagop">&gt;</span><span class="html_def">
+
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">p</span><span class="html_tagop">&gt;</span><span class="html_def">Normal mode (stats stored in database, requires PHP)</span><span class="html_tagop">&lt;/</span><span class="html_tag">p</span><span class="html_tagop">&gt;</span><span class="html_def">
+        </span><span class="html_com">&lt;!-- 1. Stars will appear here. Note: unique item Id is required --&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">div</span><span class="html_def"> </span><span class="html_attr">class</span><span class="html_attrop">=</span><span class="html_attrvalue">"stars"</span><span class="html_def"> </span><span class="html_attr_unknown">data-id</span><span class="html_attrop">=</span><span class="html_attrvalue_unknown">"itemId"</span><span class="html_def"> </span><span class="html_attr_unknown">data-title</span><span class="html_attrop">=</span><span class="html_attrvalue_unknown">"optional short item description"</span><span class="html_tagop">&gt;&lt;/</span><span class="html_tag">div</span><span class="html_tagop">&gt;</span><span class="html_def">
+
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">p</span><span class="html_tagop">&gt;</span><span class="html_def">Display-only mode (displays values which you provide in html)</span><span class="html_tagop">&lt;/</span><span class="html_tag">p</span><span class="html_tagop">&gt;</span><span class="html_def">
+        </span><span class="html_com">&lt;!-- 2. Display-only mode --&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">div</span><span class="html_def"> </span><span class="html_attr">class</span><span class="html_attrop">=</span><span class="html_attrvalue">"stars"</span><span class="html_def"> </span><span class="html_attr_unknown">data-value</span><span class="html_attrop">=</span><span class="html_attrvalue_unknown">"60"</span><span class="html_def"> </span><span class="html_attr_unknown">data-votes</span><span class="html_attrop">=</span><span class="html_attrvalue_unknown">"45"</span><span class="html_def"> </span><span class="html_attr_unknown">data-displaymode</span><span class="html_attrop">=</span><span class="html_attrvalue_unknown">"true"</span><span class="html_tagop">&gt;&lt;/</span><span class="html_tag">div</span><span class="html_tagop">&gt;</span><span class="html_def">
+
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">p</span><span class="html_tagop">&gt;</span><span class="html_def">Database-free mode: rate stored locally (browser MUST support </span><span class="html_tagop">&lt;</span><span class="html_tag">a</span><span class="html_def"> </span><span class="html_attr">href</span><span class="html_attrop">=</span><span class="html_attrvalue">"http://diveintohtml5.info/storage.html"</span><span class="html_tagop">&gt;</span><span class="html_def">HTML5 localstorage</span><span class="html_tagop">&lt;/</span><span class="html_tag">a</span><span class="html_tagop">&gt;</span><span class="html_def">)</span><span class="html_tagop">&lt;/</span><span class="html_tag">p</span><span class="html_tagop">&gt;</span><span class="html_def">
+        </span><span class="html_com">&lt;!-- 3. Database-free mode (browser MUST support HTML5 localstorage) 
+          Note: unique item Id is required; php MUST be set to ""  --&gt;</span><span class="html_def">
+        </span><span class="html_tagop">&lt;</span><span class="html_tag">div</span><span class="html_def"> </span><span class="html_attr">class</span><span class="html_attrop">=</span><span class="html_attrvalue">"stars"</span><span class="html_def"> </span><span class="html_attr_unknown">data-id</span><span class="html_attrop">=</span><span class="html_attrvalue_unknown">"itemId2"</span><span class="html_def"> </span><span class="html_attr_unknown">data-php</span><span class="html_attrop">=</span><span class="html_attrvalue_unknown">""</span><span class="html_def"> </span><span class="html_attr_unknown">data-textmain</span><span class="html_attrop">=</span><span class="html_attrvalue_unknown">"you gave %ms out of %maxs stars"</span><span class="html_tagop">&gt;&lt;/</span><span class="html_tag">div</span><span class="html_tagop">&gt;</span><span class="html_def">
+
+    </span><span class="html_tagop">&lt;/</span><span class="html_tag">body</span><span class="html_tagop">&gt;</span><span class="html_def">
+</span><span class="html_tagop">&lt;/</span><span class="html_tag">html</span><span class="html_tagop">&gt;</span></pre>
+                </div>
+          
+
+
+<!-- END OF CODE -->
+			
+			
+					</div>
+					
+					
+					
+					
+					
+					
+				</div>
+				<!-- end of tab 4 -->
+				
+			</div>
+			
+			
+			
+				
+			
+			
+		</div>	
+	</body>
+</html>

@@ -1,0 +1,363 @@
+<section class="container paddtb10">
+		<div class="col-sm-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tìm Tours</h3>
+				</div>
+				<div class="panel-body">
+					<form id="form-hockey_v1" name="form-hockey_v1">
+    <div class="typeahead__container">
+        <div class="typeahead__field">
+ 
+            <span class="typeahead__query">
+                <input class="js-typeahead-hockey_v1" name="hockey_v1[query]" type="search" placeholder="Bạn muốn du lịch ở đâu?" autocomplete="off">
+            </span>
+            <span class="typeahead__button">
+                <button type="submit">
+                    <i class="typeahead__search-icon"></i>
+                </button>
+            </span>
+ 
+        </div>
+    </div>
+</form>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Bộ lọc</h3>
+				</div>
+				<div class="panel-body loc-tours">
+					<div class="row">
+						<h4 class="title-loc">Theo mức giá <span class="pull-right" data-toggle="collapse" data-target="#lt-gia" aria-expanded="false" aria-controls="lt-gia"><i class="fa fa-sort-asc" aria-hidden="true"></i></span></h4>
+						<div class="collapse in" id="lt-gia">
+						  	<div class="col-sm-12">
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="price[]" value="1" class="price">
+						    			Dưới 2,000,000 VNĐ
+						    		</label>
+						    	</div>
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="price[]" value="2" class="price">
+						    			2,000,000 - 4,000,000 VNĐ
+						    		</label>
+						    	</div>
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="price[]" value="3" class="price">
+						    			4,000,000 - 6,000,000 VNĐ
+						    		</label>
+						    	</div>
+						  	</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<h4 class="title-loc">Theo loại tours <span class="pull-right" data-toggle="collapse" data-target="#lt-loai" aria-expanded="false" aria-controls="lt-loai"><i class="fa fa-sort-asc" aria-hidden="true"></i></span></h4>
+						<div class="collapse in" id="lt-loai">
+						  	<div class="col-sm-12">
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="tour[]" value="1" class="tour">
+						    			Trọn gói
+						    		</label>
+						    	</div>
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="tour[]" value="2" class="tour">
+						    			Chỉ vé máy bay và khách sạn
+						    		</label>
+						    	</div>
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="tour[]" value="3" class="tour">
+						    			Không vé máy bay
+						    		</label>
+						    	</div>
+						  	</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<h4 class="title-loc">Theo chủ đề <span class="pull-right" data-toggle="collapse" data-target="#lt-chude" aria-expanded="false" aria-controls="lt-chude"><i class="fa fa-sort-asc" aria-hidden="true"></i></span></h4>
+						<div class="collapse in" id="lt-chude">
+						  	<div class="col-sm-12">
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="travel[]" value="1" class="travel">
+						    			Du lịch khám phá
+						    		</label>
+						    	</div>
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="travel[]" value="2" class="travel">
+						    			Du lịch biển đảo
+						    		</label>
+						    	</div>
+						    	<div class="checkbox">
+						    		<label>
+						    			<input type="checkbox" name="travel[]" value="3" class="travel">
+						    			Du lịch mua sắm, lễ hội
+						    		</label>
+						    	</div>
+						  	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tour Khuyến mại</h3>
+				</div>
+				
+					<div class="list-group">
+						<?php if($this->promotions){
+						
+							foreach($this->promotions as $kp=>$vp):
+						$image = PATH_TOURS . $vp['id'] . '/resize_97x60/' . $vp['full'];
+							 ?>
+						<a href="/tour/<?php echo $vp['ident']; ?>.html" class="list-group-item">
+							<img width="50" height="50" style="margin-top: 5px;margin-right: 10px;" src="<?php echo $image; ?>" class="pull-left">
+							<p><b><?php echo $vp['name']; ?></b><br/>
+							Giá từ: <span style="color: #fd1c50;font-size: 1.3em"><?php echo number_format($vp['price']); ?> đ</span><br/>
+							<span style="color: red;">Tour đang giảm giá <?php echo $vp['discountPercent']; ?>%</span></p>
+							<span class="clearfix"></span>
+						</a>
+						<?php endforeach;
+							} ?>
+						
+					</div>
+				
+			</div>
+
+		</div>
+		<style>
+		#loadding_tour{
+			width: 214px;
+			position: absolute;
+			top:25%;
+			left: 50%;
+			margin-left: -120px;
+			display: none;
+		}	
+		</style>
+		<div class="col-sm-9 list-tour">
+			<div class="fix-img100" >
+				<div id="loadding_tour" ><img src="/public/images/processing.gif" /></div>
+				<h2>TOUR ĐI <?php echo strtoupper($this->title); ?> <span>(<span id="count_tour"><?php echo $this->count_tour; ?></span> tour)</span>
+					<div class="pull-right">
+						<select id="sort_tour" style="width:150px;background: #fff;border: 1px solid #e1e1e1;border-radius: 4px;">
+                                <option value="0">Sắp xếp hiển thị</option>                   
+                    			<option value="1">Giá tăng dần</option>
+                    			<option value="2">Giá giảm dần</option>
+                    			<option value="3">Lịch trình ngắn ngày</option>
+                    			<option value="4">Lịch trình dài ngày</option>
+							</select>
+					</div>
+				</h2>
+				<input type="hidden" name="str_price" value="" id="id_price" />
+				<input type="hidden" name="str_tour" value="" id="id_tour" />
+				<input type="hidden" name="str_travel" value="" id="id_travel" />
+				<input type="hidden" name="str_sort" value="" id="id_sort" />
+				<div id="list_tour_category" style="min-height: 400px;">
+					
+				</div>
+				
+				
+				<span class="clearfix"></span>
+				 <div id="paging" style="margin: 0 auto; display: block">
+              
+            		</div>
+				<?php // echo $this->paginationControl($this->menus,
+                     //'Sliding',
+                     //'pagination-control.phtml'); ?>
+
+			</div>
+		</div>
+		</div>
+</section>
+
+<script>
+	 $(document).ready(function() {
+var mid = '<?php echo $this->id_menu; ?>';	
+
+function display_data(response)
+{
+	var data = $.parseJSON(response);
+ // console.log(data); 
+ // return false;
+   $("#count_tour").html(data['count']);
+    var item = '';
+      $.each( data['tour'], function( key, value ) {
+   
+      
+      item += '<div class="col-sm-6" style="height:390px;">';
+      item += '<a href="/tour/'+value.ident+'.html">';
+      item += '<img class="img-rounded tnt" src="'+value.img+'">';
+      item += '</a>';
+      item += '<div class="tour-content">';
+      item += '<h3><a href="/tour/'+value.ident+'.html"> '+value.name+'</a></h3>';
+      item += '<p>';
+      item += '<span class="pull-left"><i class="fa fa-clock-o" aria-hidden="true"></i> '+value.time_travel+'</span>';
+      item += '<span class="pull-right"> '+value.communication+'</span>';
+      item += '</p>';
+      item += '<span class="clearfix"></span>';
+      item += '<p style="height:30px;"><i class="fa fa-map-marker" aria-hidden="true"></i> '+value.schedule+'</p>';
+      item += '<h4 class="text-danger"> '+value.price+' VNĐ <a href="/tour/'+value.ident+'.html" class="btn btn-info pull-right">Xem tour</a></h4>';
+      item += '<span class="clearfix"></span>';
+      item += '</div>';
+      item += '</div>';
+    
+});
+	
+ $('#list_tour_category').html(item); 
+ 
+ // Thay đổi nội dung phân trang
+  $('#paging').html(data['paging']);
+$("#loadding_tour").hide();
+}	 
+		 
+var checkprice = $("input[name='price[]']:checkbox");
+var checktour = $("input[name='tour[]']:checkbox");
+var checktravel= $("input[name='travel[]']:checkbox");
+var current = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+if($.isNumeric(current) == true){
+	current_page = current;
+}else{
+	current_page = 1;
+}
+
+function callprice(){
+	//console.log(current_page);
+   var classname = $(this).attr('class');
+   	var values_price = [];
+   	var values_tour = [];
+   	var values_travel = [];
+  
+		checkprice.filter(':checked').map(function(){ 
+			values_price.push($(this).attr('class') + '_' + $(this).val());
+			
+		    }).get();
+		    
+		  checktour.filter(':checked').map(function(){ 
+			values_tour.push($(this).attr('class') + '_' + $(this).val());
+			
+		    }).get();
+		    
+		 checktravel.filter(':checked').map(function(){ 
+			values_travel.push($(this).attr('class') + '_' + $(this).val());
+			
+		    }).get();
+      
+  //  console.log(valuesarr);
+   obj_price = values_price.join(',');
+   obj_tour = values_tour.join(',');
+   obj_travel = values_travel.join(',');
+   
+  $("#loadding_tour").show();
+  // console.log(obj_price);
+  //console.log(obj_tour);
+  //console.log(obj_travel);
+  $("#id_price").val(obj_price);
+  $("#id_tour").val(obj_tour);
+  $("#id_travel").val(obj_travel);
+var obj_sort = $("#id_sort").val();
+$('#list_tour_category').html('');
+   $.ajax({
+    type: "POST",
+    url: '/product/index/response',
+    data: {price: obj_price, tour: obj_tour, travel: obj_travel, mid: mid, sortid: obj_sort, page: current_page},
+    success: function(response)
+    {	  
+	// console.log( response);
+	                 
+    	display_data(response);
+
+    }
+    
+    
+});
+	
+  
+	    };
+
+	    
+     checkprice.on('click',callprice);
+     checktour.on('click',callprice);
+	 checktravel.on('click',callprice); 
+    	
+	 callprice();
+	
+	$('#sort_tour').on('change', function() {
+		var current = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+if($.isNumeric(current) == true){
+	page = current;
+}else{
+	page = 1;
+}
+
+//console.log(page);
+  $("#loadding_tour").show();
+   var sortid = this.value;
+   $("#id_sort").val(sortid);
+   var obj_price =  $("#id_price").val();
+   var obj_tour =  $("#id_tour").val();
+   var obj_travel = $("#id_travel").val();
+   $('#list_tour_category').html('');
+  $.ajax({
+    type: "POST",
+    url: '/product/index/response',
+    data: {price: obj_price, tour: obj_tour, travel: obj_travel, mid: mid, sortid: sortid, page: page},
+    success: function(response)
+    {
+	 	 display_data(response);
+
+    }
+     
+		});
+	});
+	
+	
+	
+             $('.fix-img100').on('click','#paging a', function ()
+             {
+                $("#loadding_tour").show();
+                 var url = $(this).attr('href');
+                 var current = url.substring(url.lastIndexOf('/') + 1);
+                 if($.isNumeric(current) == true){
+				 page = current;
+				}else{
+				 page = 1;
+				 }
+                  //return false;
+                var obj_price =  $("#id_price").val();
+				var obj_tour =  $("#id_tour").val();
+				var obj_travel = $("#id_travel").val();
+				var obj_sort = $("#id_sort").val();
+                 $.ajax({
+                     url : '/product/index/response',
+                     type : 'POST',
+                   //  dataType : 'json',
+                     data: {price: obj_price, tour: obj_tour, travel: obj_travel, mid: mid, sortid: obj_sort, page: page},
+                     success : function (result)
+                     {
+	                  $("#loadding_tour").hide();
+                     	 	display_data(result);
+                              
+                             // Thay đổi URL trên website
+                             window.history.pushState({path:url},'',url);
+
+                        
+                     }
+                 });
+                 return false;
+             });
+
+	
+             
+});
+</script>

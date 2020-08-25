@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>FileNAME</title>
+	
+	<!-- Including style for tooltip if necessary -->
+	<link href="css/tooltip.css" rel="stylesheet" type="text/css">
+	
+	<!-- Including jQuery and rating plugin -->
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.5stars.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){ 
+			//start plugin
+			$(".stars").rating({										
+				php	: 'admin/php/manager.php', 	//path to manager.php file relative to HTML document. Not required in Display-only and Database-free modes.
+				skin	: 'skins/skin.png', 		//path to skin file relative to HTML document
+				tooltip	: true,
+				step:0,
+				animate: true
+			});	
+		});			
+	</script>   
+
+</head>
+<body>
+
+	<h2>Example with sub-items</h2>
+	<p>Use this file code as a template for your project</p>
+
+
+	</br>
+	<p>Normal mode (stats are stored in database, requires PHP)</p>
+	<!--  Stars will appear here. Note: unique itemId is REQUIRED!!! -->
+	<div class="stars" data-id="someItem" data-haschild="true"     data-title="someItem with sub-items" data-textmain="mean: %ms / %maxs"></div>
+	<div class="stars" data-id="someItem" data-property="subitem1" data-title="someItem: subitem1" data-textmain="design: %ms / %maxs"></div>
+	<div class="stars" data-id="someItem" data-property="subitem2" data-title="someItem: subitem2" data-textmain="performance: %ms / %maxs"></div>
+	<div class="stars" data-id="someItem" data-property="subitem3" data-title="someItem: subitem3" data-textmain="price: %ms / %maxs"></div>
+	
+
+
+</body>
+</html>

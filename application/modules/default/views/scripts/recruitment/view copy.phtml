@@ -1,0 +1,318 @@
+ <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/1481098142Unibentuyendung.jpg'); background-position: 0px -41px; background-attachment: fixed;">
+		<div class="container"> 
+			<div class="row">
+		 <h1>Thông tin tuyển dụng</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+  <li class="breadcrumb-item active">Tuyển dụng</li>
+</ol>
+			</div>
+		</div>   
+	    </div>
+	    
+		    <div class="container">
+	     <div class="row" id = "join-content">
+	<div class="loadding"></div>
+		    <div class="join-description col-md-8">
+			     <div id="join-info">
+		<div class="block-join">
+			<h3>Tuyển dụng: <?php echo $this->title; ?></h3>
+			<div class="row">
+	
+				<div class="col-md-9 info-first npl">
+					
+				&nbsp; &nbsp;&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i>	Lượt xem: <?php echo $this->views; ?>  &nbsp; &nbsp;&nbsp;&nbsp;  <i class="fa fa-clock-o" aria-hidden="true"></i> Hạn tuyển dụng: <?php echo $this->expired; ?>
+				
+				</div>
+				<div class="col-md-3 npl">
+					<div class="upload-profile-button openSlickModal-1 manualLabel">NỘP HỒ SƠ</div>
+				</div>
+		
+				
+				<p class="info-profile-section-a">
+				<ul class="pull-left info-profile-a col-md-6">
+					<li><i class="fa fa-money" aria-hidden="true"></i> <b>Mức lương</b>: <?php echo $this->salary; ?></li>
+					<li><i class="fa fa-star" aria-hidden="true"></i> <b>Yêu cầu kinh nghiệm</b>: <?php echo $this->exp; ?></li>
+					<li><i class="fa fa-graduation-cap" aria-hidden="true"></i> <b>Yêu cầu bằng cấp</b>: <?php echo $this->reg; ?></li>
+					<li><i class="fa fa-user" aria-hidden="true"></i> <b>Số lượng cần tuyển</b>: <?php echo $this->people; ?></li>
+					<li><i class="fa fa-object-group" aria-hidden="true"></i> <b>Nhóm ngành nghề</b>: <?php echo $this->work_group; ?></li>
+				</ul>
+				
+				<ul class="pull-right info-profile-a col-md-6">
+					<li><i class="fa fa-map-marker" aria-hidden="true"></i> <b>Địa điểm làm việc</b>: <?php echo $this->location; ?></li>
+					<li><i class="fa fa-home" aria-hidden="true"></i> <b>Công ty</b>: <?php echo $this->company; ?></li>
+					<li><i class="fa fa-briefcase" aria-hidden="true"></i> <b>Chức vụ</b>: <?php echo $this->job; ?></li>
+					<li><i class="fa fa-address-card-o" aria-hidden="true"></i> <b>Hình thức làm việc</b>: <?php echo $this->work_style; ?></li>
+					<li><i class="fa fa-venus-mars" aria-hidden="true"></i> <b>Yêu cầu giới tính</b>: <?php echo $this->sex; ?></li>
+					<li><i class="fa fa-tasks" aria-hidden="true"></i> <b>Yêu cầu độ tuổi</b>: <?php echo $this->age; ?></li>
+				</ul>	
+					
+				</p>
+			</div>
+		</div>
+		<div class="block-join">
+			<?php echo $this->description; ?>
+			
+		</div>
+		
+		<div class="block-join">
+			<h3 style="margin-top: 0px;">THÔNG TIN LIÊN HỆ</h3>
+			<div class="row row-contact">
+				<div class="col-md-4">NGƯỜI LIÊN HỆ</div>
+				<div class="col-md-8"><?php echo $this->contact; ?></div>
+			</div>
+			<div class="row row-contact">
+				<div class="col-md-4">ĐỊA CHỈ CÔNG TY</div>
+				<div class="col-md-8"><?php echo $this->address; ?></div>
+			</div>
+			<div class="row row-contact">
+				<div class="col-md-4">HẠN NỘP HỒ SƠ</div>
+				<div class="col-md-8"><?php echo $this->expired; ?></div>
+			</div>
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-md-9">
+					<div class="contruction-upload">
+					Vui lòng bấm nút "Nộp hồ sơ" để ứng tuyển vào vị trí công việc này
+					</div>
+				</div>
+				<div class="col-md-3 npl">
+					<div class="upload-profile-button">NỘP HỒ SƠ</div>
+				</div>
+			</div>
+		</div>
+			     </div>
+			     <span class="clearfix"></span>
+				 <div id="paging" style="margin: 0 auto; display: block">
+              
+            	</div>
+		    </div>
+		    <div class="news-col-right col-md-4">
+				<div class="row">
+			       <div class="col-sm-12 col-md-12">
+			     <div id="join-filter" class="panel panel-default">
+    <div class="panel-heading">Tìm kiếm tin tuyển dụng</div>
+    <div class="panel-body">
+	  <form id="louis-form-search" method="post" action="/default/recruitment/response">
+	    
+	   <div class="form-group">
+  <input type="text" class="form-control" id="usr" name="keyword" placeholder="Nhập từ khóa">
+  	</div>
+  	
+  	<div class="form-group">
+  <select name="work_group" class="form-control" id="sel1">
+	  <option value= "0">Chọn nhóm ngành nghề</option>
+	  <?php $group = new Model_Group();
+		  $group = $group->get_details();
+		  foreach($group as $k=>$v):
+		   ?>
+    <option value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+    <?php endforeach; ?>
+
+  </select>
+</div>
+
+	<div class="form-group">
+  <select name="location" class="form-control" id="sel2">
+	  <option value= "0">Chọn địa điểm làm việc</option>
+    <option value= "1">Hà Nội</option>
+    <option value= "2">Đà Nẵng</option>
+    <option value= "3">TP. HCM</option>
+  </select>
+</div>
+
+
+<div class="form-group">
+  <select name="company" class="form-control" id="sel3">
+	  <option value="0">Chọn Công ty</option>
+    <option value= "1">Hòa Bình Group</option>
+    <option value= "2">Đà Nẵng Event</option>
+    <option value= "3">VietnamEvents</option>
+  </select>
+</div>
+	<input type="submit" value="Tìm kiếm" class="button-join-submit" />
+	<input type="reset" value="chọn lại" class="button-join-submit" />
+	    </form>
+
+
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			      </div>
+			    <div class="row">  
+			       <div class="col-sm-12 col-md-12">
+			   
+			     <div id="ul-tags" class="panel panel-default">
+				      <div class="panel-body">
+		<div class="form-group">			      
+    	<a href="/public/files/Hoabinhgroup_don%20ung%20tuyen.xlsx" title="HỎI ĐÁP FAQ" class="button-join-ask form-control text-center" />HỎI ĐÁP FAQ</a>
+		</div>
+		
+	<a href="/public/files/Hoabinhgroup_don%20ung%20tuyen.xlsx" title="TẢI MẪU ĐƠN ỨNG TUYỂN" class="button-join-ask form-control text-center" />TẢI MẪU ĐƠN ỨNG TUYỂN</a>
+	
+				      </div>
+ 
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			         </div>
+			    <?php echo $this->VideoWidget(1); ?>
+			  
+		    </div>
+		    
+	 
+	    	</div>
+	    	
+	    	
+	    </div>
+
+	   
+		
+	    <script type="text/javascript">
+		    	function display_data(response)
+{
+	var data = $.parseJSON(response);
+  //console.log(data); 
+ // return false;
+ 
+  
+    var item = '';
+    if(data['rec'] == ''){
+	 item += '<h3>Không có kết quả!</h3>';
+ 	}
+      $.each( data['rec'], function( key, value ) {
+   
+      
+      item += '<div class="item-join">';
+      item += '<div class="panel-title">';
+      item += '<img src="/public/templates/news2017/default/img/icons/hot-red.png"/> ';
+      item +=  value.title;
+      item += '</div>';
+      item += '<div class="row">';
+      item += '<div class="col-md-10">';
+      item += '<div class="container-fluid">';
+      item += '<div class="panel-body">';
+      item += '<div class="col-md-12">';
+      item += '<p><i class="fa fa-user" aria-hidden="true"></i> <b>Số lượng</b>: '+value.people+' &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-clock-o" aria-hidden="true"></i> <b>Hạn tuyển dụng</b>: '+value.expired+'</p>';
+      item += '<p><i class="fa fa-map-marker" aria-hidden="true"></i> <b>Địa điểm làm việc</b>: '+value.location+'</p>';
+      item += '<p><i class="fa fa-home" aria-hidden="true"></i> <b>Công ty</b>: '+value.company+'</p>';
+      item += '<p><i class="fa fa-newspaper-o" aria-hidden="true"></i> <b>Nhóm ngành nghề</b>: '+value.work_group+'</p>';
+      
+      item += '</div>';
+      item += '</div>';
+      item += '</div>';
+      item += '</div>';
+      item += '<div class="col-md-2"><div class="button-join"><a style="color:#05235F" href="/tuyen-dung/'+value.ident+'.html">XEM CHI TIẾT</a></div></div>';
+      item += '</div>';  //row
+   
+      item += '</div>';   //.panel-title
+      item += '</div>';  // .item-join
+    
+});
+	
+ $('#join-info').html(item); 
+ 
+ // Thay đổi nội dung phân trang
+  $('#paging').html(data['paging']);
+
+}	 
+		    
+		    
+		      var frmSearch = $('#louis-form-search');
+    frmSearch.submit(function (ev) {
+	    loader.show();
+	    ev.preventDefault();	   
+	           $.ajax({
+            type: frmSearch.attr('method'),
+            url: frmSearch.attr('action'),
+            data: frmSearch.serialize(),
+            success: function (data) {
+	           
+               // console.log(data);
+				 display_data(data);
+				  // $(this).fadeOut('fast');
+				  loader.hide();
+                
+              
+            }
+        });
+
+        
+    });  
+    
+   
+    $(document).ready(function() {
+
+			    // Modal 1
+			    $('#popup-1').slickModals({
+			        // Hide on pages
+			        hideOnPages: [
+			            '/foo/page1/',
+			            '/foo/page2/',
+			            '/foo/page3/'
+			        ],
+			        // Popup type
+			        popupType: 'delayed',
+			        delayTime: 0,
+			        scrollTopDistance: 400,
+
+			        // Overlay styling
+			        overlayBg: true,
+			        overlayClosesModal: true,
+			        overlayBgColor: 'rgba(0,0,0,0.4)',
+			        overlayTransitionSpeed: '0.4',
+			        // Background effects
+			        pageEffect: 'scale',
+			        blurBgRadius: '1px',
+			        scaleBgValue: '1',
+			        // Popup styling
+			        popupWidth: '400px',
+			        popupHeight: '500px',
+			        popupLocation: 'center',
+			        popupAnimationDuration: '0.6',
+			        popupAnimationEffect: 'zoomIn',
+			        popupShadowOffsetX: '0',
+			        popupShadowOffsetY: '0',
+			        popupShadowBlurRadius: '30px',
+			        popupShadowSpreadRadius: '0',
+			        popupShadowColor: 'rgba(0,0,0,0.2)',
+			        popupBackground: "#fff",
+			        popupRadius: '0',
+					//popupMargin: '30px',
+					//popupPadding: '30px',
+			        // Responsive rules
+			        responsive: false,
+			        breakPoint: '480px',
+			        mobileLocation: 'center',
+			        mobileWidth: '480px',
+			        mobileHeight: '280px',
+			        mobileRadius: '0',
+			        mobileMargin: '0',
+			        mobilePadding: '20px',
+			        // Animate content
+			        contentAnimate: true,
+			        contentAnimateEffect: 'slideBottom',
+			        contentAnimateSpeed: '0.8',
+			        contentAnimateDelay: '0.4',
+			        // Youtube videos
+			        videoSupport: false,
+			        videoAutoPlay: true,
+			        videoStopOnClose: true,
+			        // Close and reopen button
+			        addCloseButton: true,
+			        buttonStyle: 'labeled',
+			        enableESC: true,
+			        reopenClass: 'openSlickModal-1',
+			        // Additional events
+			        onSlickLoad: function() {
+			            console.log("Slick is visible")
+			        },
+			        onSlickClose: function() {
+			            console.log("Slick is hidden")
+			        }
+			    });
+
+			});	 
+		    
+		 </script>
+		 

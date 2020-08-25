@@ -1,0 +1,49 @@
+<div class="row">
+<div class="col-sm-5">
+<div class="widget-box transparent">
+    <div class="widget-header widget-header-flat">
+    	<h4 class="lighter">
+    		<i class="icon-star orange"></i>
+    		Danh mục Menu
+    	</h4>
+
+    	
+    </div>
+
+
+<?php if($this->menus != null) { ?>
+<div class="widget-body">
+	<div class="widget-main no-padding">
+	    <table class="table table-bordered table-striped">
+	    	<thead class="thin-border-bottom">
+	    		<tr>
+	    			<th>
+	    				<i class="icon-caret-right blue"></i>
+	    				Link
+	    			</th>
+
+													
+
+			<th class="hidden-480">
+			    	<i class="icon-caret-right blue"></i>
+			    				Menu
+			    			</th>
+			    </tr>
+		  </thead>
+		  <tbody>
+    <?php echo $this->partialLoop('_menu-row.phtml', $this->menus); ?>
+		  </tbody>
+	    			</table>
+	    		</div><!-- /widget-main -->
+	    	</div><!-- /widget-body -->
+	    </div><!-- /widget-box -->
+	</div>
+</div>
+
+<?php }else{?>
+<p>You do not have any menus yet.</p>
+<?php }?>
+
+<a class="btn btn-info btn-sm" href='/<?=ADMIN?>/menu/create'>Thêm loại menu mới</a>
+    
+<?php //ECHO $_SERVER['DOCUMENT_ROOT'] ?>

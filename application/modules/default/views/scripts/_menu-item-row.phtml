@@ -1,0 +1,38 @@
+<tr>
+    <td class='links'>
+        <a href='/<?=ADMIN?>/menuitem/update/id/<?php echo $this->id;?>'><i class="icon-pencil bigger-130 green"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/move/direction/up/id/<?php echo $this->id;?>'>
+          <i class="icon-arrow-up bigger-130 blue"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/move/direction/down/id/<?php echo $this->id;?>'>
+          <i class="icon-arrow-down bigger-130 blue"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/delete/id/<?php echo $this->id;?>'><i class="icon-trash bigger-130 red"></i></a> 
+    </td>
+    <td><?php echo $this->name ?></td>
+    <td><?php //echo $pageName ?></td>
+<td><?php echo $this->link ?></td>
+<td><?php echo $this->isHome;?></td>
+
+ <?php
+            $db = Zend_Db_Table::getDefaultAdapter();
+$select = "SELECT * FROM menu_items WHERE parent = $this->id order by position asc";
+$module = $db->fetchAll($select); 
+	foreach($module as $key=>$val): ?>
+	
+		<tr style="margin-left: 20px;">
+    <td>
+        <a href='/<?=ADMIN?>/menuitem/update/id/<?php echo $val['id'];?>'>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="icon-pencil bigger-100 green"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/smove/direction/up/id/<?php echo $val['id'];?>'>
+            <i class="icon-arrow-up bigger-100 grey"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/smove/direction/down/id/<?php echo $val['id'];?>'>
+            <i class="icon-arrow-down bigger-100 grey"></i></a> |
+        <a href='/<?=ADMIN?>/menuitem/delete/id/<?php echo $val['id'];?>'><i class="icon-trash bigger-100 red"></i></a>
+    </td>
+    <td><?php echo $val['name'];?></td>
+    <td><?php //echo $pageName ?></td>
+<td><?php echo $val['link'];?></td>
+<td><?php echo $val['isHome'];?></td>
+</tr>
+	
+<?	endforeach;
+               ?>  
+</tr>

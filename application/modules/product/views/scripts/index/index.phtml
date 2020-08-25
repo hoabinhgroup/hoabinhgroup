@@ -1,0 +1,121 @@
+
+		<div class="travel-group">
+			<h2>DU LỊCH TRONG NƯỚC</h2>
+			<div class="row text-center">
+				<?php foreach($this->inbound as $key=>$val): ?>
+				<div class="col-md-3 col-sm-4">
+					<a href="/tour/<?php echo $val['link']; ?>">
+						<div class="container-box-img">
+							<span class="img-mark"></span>
+							<img alt="<?php echo $val['name']; ?>" class="img-c" src="/public/images/backgrounds/<?php echo $val['full']; ?>">
+						</div>
+						<h3> <?php echo $val['name']; ?></h3>
+					</a>
+				</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="row text-center">
+				<p><a href="/du-lich-trong-nuoc">Xem thêm <i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+			</div>
+		</div>
+
+		<div class="travel-group">
+			<h2>DU LỊCH NƯỚC NGOÀI</h2>
+			<div class="row text-center">
+				<?php foreach($this->outbound as $k=>$v): ?>
+				<div class="col-md-3 col-sm-4">
+					<a href="/tour/<?php echo $v['link']; ?>">
+						<div class="container-box-img">
+							<span class="img-mark"></span>
+							<img class="img-c" src="/public/images/backgrounds/<?php echo $v['full']; ?>">
+						</div>
+						<h3> <?php echo $v['name']; ?></h3>
+					</a>
+				</div>
+				<?php endforeach; ?>
+				
+			</div>
+			<div class="row text-center">
+				<p><a href="/du-lich-nuoc-ngoai">Xem thêm <i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+			</div>
+		</div>
+
+		<HR>
+		<div class="row">
+			<div class="col-sm-6 travel-cols-style">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title bg-title-panel"><i class="fa fa-umbrella" aria-hidden="true"></i> Khách sạn</h3>
+					</div>
+					<div class="panel-body fix-img100 content-style-col">
+						<?php foreach($this->hotel as $kh => $vh): 
+				$image = PATH_HOTELS . $vh['id'] . '/' . $vh['full'];			
+							
+						?>
+						<div class="row paddtb10">
+							<div class="col-sm-6">
+								<div class="img-effect img-thumbnail">
+									<span class="img-mark">+</span>
+									<a title="<?php echo $vh['name']; ?>" href="/<?php echo $vh['ident']; ?>.html"><img src="<?php echo $image; ?>"></a>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<h4><a title="<?php echo $vh['name']; ?>" href="/<?php echo $vh['ident']; ?>.html"> <?php echo $vh['name']; ?></a></h4>
+								<p><?php for($i=0;$i<$vh['star'];$i++){
+						  echo '<i class="fa fa-star yellow"></i>';	
+							} ?></p>
+								<div class="row text-muted">
+									<div class="col-sm-6">
+										<i class="fa fa-eye" aria-hidden="true"></i> Lượt xem: <?php echo $vh['views']; ?>
+									</div>
+									<div class="col-sm-6">
+										 Giá: <span style="font-weight: bold;color: red;"><?php echo number_format($vh['price']); ?>đ</span>
+									</div>
+									<div class="col-sm-6">
+										<i class="fa fa-users" aria-hidden="true"></i> Đã đến: 321
+									</div>
+									<div class="col-sm-6">
+										<i class="fa fa-commenting" aria-hidden="true"></i> Bình luận: 21
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php endforeach;  ?>
+
+						<p class="pull-right"><br><a href="/dat-phong"><span class="badge">Xem thêm <i class="fa fa-angle-right" aria-hidden="true"></i></span></a></p>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 travel-cols-style">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title bg-title-panel"><i class="fa fa-map" aria-hidden="true"></i> Kinh nghiệm du lịch</h3>
+					</div>
+					<div class="panel-body fix-img100 content-style-col img-effect2">
+
+						<div class="row paddtb10">
+							<?php
+								$stt = 0;
+								 foreach( $this->guide as $kg=>$vg):  $stt++;
+								 $image = PATH_TOURS . $vg['pid'] . '/resize_334x179/' . $vg['full'];
+								  ?>
+							<div class="col-sm-6">
+								<a href="/cam-nang/<?php echo $vg['ident']; ?>.html"><img class="img-thumbnail" src="<?php echo $image; ?>"></a>
+								<h4><a href="/cam-nang/<?php echo $vg['ident']; ?>.html"> <?php echo $vg['name']; ?></a></h4>
+								<p> <?php echo $vg['shortDescription']; ?></p>
+							</div>
+							<?php 
+								echo ($stt%2 == 0)?'</div><div class="row paddtb10">':'';
+								endforeach; ?>
+							
+						</div>
+
+				
+						
+						<p class="pull-right"><br><a href="/cam-nang"><span class="badge">Xem thêm <i class="fa fa-angle-right" aria-hidden="true"></i></span></a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	

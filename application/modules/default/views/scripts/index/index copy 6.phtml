@@ -1,0 +1,432 @@
+<div id="intro">
+			<div class="container">
+		    	<div class="row">
+			    
+			    		<div class="col-md-5 title">
+				    		<div data-aos="fade-right" data-aos-duration="2500">
+				    		<span class="website"><span class="web-text"><img alt="logo Hòa Bình Group" class="img-responsive" height="45" src="<?=TEMPLATE_URL?>/default/img/logo 2-01.png"/></span></span>
+				    		<span style="height: 6px;width: 5px;display: block;">&nbsp;</span>
+				    		<span class="des text-uppercase"><?php echo $this->translate('mission_vision'); ?></span>
+				    		</div>
+				    		</div>
+						<div class="col-md-7 description" data-aos="fade-left" data-aos-duration="2500"><?php echo $this->translate('intro_description'); ?>
+					  <span class="more">
+					  <?php if($this->lang == 'vi'){ ?>
+					  <a title="Xem tiếp giới thiệu" href="/ve-chung-toi"><?php echo $this->translate('more'); ?> >></a></span>		
+					  <?php }else{ ?>
+				  <a title="View more intro" href="/about-us"><?php echo $this->translate('more'); ?> >></a></span>				  
+					<?php	  } ?>
+						</div>
+			        
+		    	</div>
+		    </div>	
+</div>
+	    	<div class="row sv hidden-sm">
+	    		<div id="service-tabs">
+		    	<div class="col-md-10 col-md-offset-1">
+		    		<div class="title-louis text-center animated flipInX">
+		    		<span class="web-text"><img alt="Logo Hòa Bình Group" height="30" src="<?=TEMPLATE_URL?>/default/img/logo 2-01.png"/></span> <?php echo $this->translate('provide_service'); ?>
+					</div><!-- .title-louis-->
+					<div class="content-louis">
+						
+						<div class="row">
+		                   
+                                   <div class="service">
+                                    <ul id='services_tab' class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="/"><?php echo $this->translate('service_1'); ?></a></li>
+                                        <li role="presentation"><a href="/"><?php echo $this->translate('service_2'); ?></a></li>
+                                        <li role="presentation"><a href="/"><?php echo $this->translate('service_3'); ?></a></li>
+                                        <li role="presentation"><a href="/"><?php echo $this->translate('service_4'); ?></a></li>
+                                          <li role="presentation"><a href="/"><?php echo $this->translate('service_5'); ?></a></li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                   
+                                    <div class="tab-content">
+	                                   <?php if($this->lang == 'vi'){ ?>  
+                                        <div role="tabpanel" class="tab-pane active" id="home">
+	            <div class="hidden-sm" style="margin-top: -50px;margin-left: -50px;">
+	        <img alt="Bản đồ dịch vụ" src="<?=TEMPLATE_URL?>/default/img/services/map-sv-01.png" />  
+	           <div data-toggle="tooltip" title="Tổ chức Hội nghị, sự kiện" data-placement="right" id="hbg-center" data-aos="fade-left" data-aos-duration="2500"><a  href="/linh-vuc/to-chuc-su-kien"><img alt="Tổ chức sự kiện" width="200" height="200" src="/public/images/su-kien-flc.jpg" /></a> </div>        
+	           <div data-toggle="tooltip" title="Tổ chức Hội nghị hội thảo" data-placement="left" id="hbg2" data-aos="fade-left" data-aos-duration="3500">
+		           <a href="/linh-vuc/to-chuc-hoi-nghi-hoi-thao"><img alt="Tổ chức galadiner" width="120" height="120" src="/public/images/hoi-nghi-hoi-thao.jpg" /></a> </div> 
+	           <div data-toggle="tooltip" title="Giải pháp quảng cáo truyền thông" data-placement="left" id="hbg3" data-aos="fade-right" data-aos-duration="2500">
+		            <a href="/linh-vuc/giai-phap-quang-cao-truyen-thong"><img alt="Giải pháp quảng cáo truyền thông" width="110" height="110" src="/public/images/truyen-thong.jpg" /> </a></div>  
+	             <div data-toggle="tooltip" title="Tổ chức Tour, Team building" data-placement="left" id="hbg4" data-aos="fade-down" data-aos-duration="2500">
+		             <a href="/linh-vuc/to-chuc-tour-teambuilding"><img alt="Tổ chức Tour, Teambuilding" width="150" height="150" src="/public/images/teambuilding.jpg" /></a> </div>  
+	             <div data-toggle="tooltip" title="Cung cấp thiết bị sự kiện" data-placement="left" id="hbg5">
+		              <a href="/linh-vuc/cung-cap-thiet-bi-su-kien"><img alt="Cung cấp thiết bị sự kiện" width="100" height="100" src="/public/images/thietbi_hbg.jpg" /></a> </div>    
+	             
+	             </div>     
+	            <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>               
+                                        </div>
+                                        
+                                         <?php }else{ ?>
+                                     <div role="tabpanel" class="tab-pane active" id="home">
+	            <div class="hidden-sm" style="margin-top: -50px;margin-left: -50px;">
+	        <img src="<?=TEMPLATE_URL?>/default/img/services/map-sv-01.png" />  
+	           <div data-toggle="tooltip" title="Events, Conferences Organization" data-placement="right" id="hbg-center" data-aos="fade-left" data-aos-duration="2500"><a  href="/field/organizing-events"><img width="200" height="200" src="/public/images/su-kien-flc.jpg" /></a> </div>        
+	           <div data-toggle="tooltip" title="Conferences seminars Organization" data-placement="left" id="hbg2" data-aos="fade-left" data-aos-duration="3500">
+		           <a href="/field/organizing-conferences-seminars"><img width="120" height="120" src="/public/images/hoi-nghi-hoi-thao.jpg" /></a> </div> 
+	           <div data-toggle="tooltip" title="Advertisement, Media solutions" data-placement="left" id="hbg3" data-aos="fade-right" data-aos-duration="2500">
+		            <a href="/field/media-advertising-solution"><img width="110" height="110" src="/public/images/truyen-thong.jpg" /> </a></div>  
+	             <div data-toggle="tooltip" title="Tour, Team building Organization" data-placement="left" id="hbg4" data-aos="fade-down" data-aos-duration="2500">
+		             <a href="/field/organizing-tour-and-teambuilding"><img width="150" height="150" src="/public/images/teambuilding.jpg" /></a> </div>  
+	             <div data-toggle="tooltip" title="Event equipment supply" data-placement="left" id="hbg5">
+		              <a href="/field/event-equipment-supply"><img width="100" height="100" src="/public/images/thietbi_hbg.jpg" /></a> </div>    
+	             
+	             </div>     
+	            <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>               
+                                        </div>
+                                    <?php } ?>
+                                        <div role="tabpanel" class="tab-pane" id="travels">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                                        <div role="tabpanel" class="tab-pane" id="medias">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                                        <div role="tabpanel" class="tab-pane" id="equips">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+                                                  <div role="tabpanel" class="tab-pane" id="others">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+                                    </div>
+                                   
+</div>
+                                
+	</div>
+
+					</div><!-- .content-louis-->
+		    	</div>
+	    	</div>
+	    	</div>
+			<div class="row">
+	    		<div id="numbers">
+		    		<div class="col-md-12 description">
+			    	<div class="title-louis text-center"><span class="web-text"><img alt="Hòa Bình Group & <?php echo $this->translate('talking_numbers'); ?>" height="30" src="<?=TEMPLATE_URL?>/default/img/logo 2-01.png"/></span> & <?php echo $this->translate('talking_numbers'); ?></div>
+			    	<div class="underline"></div>
+			    	<div class="content-louis col-md-10 col-md-offset-1 pt20">
+				    	<div class="col-md-3 text-center">
+					    	<span class="number-title"><?php echo $this->translate('talking_numbers_1', '<br/><span class="pin count-title count-number timer" data-from="1" data-to="10" data-speed="1500">10</span>'); ?></span>
+				    	</div>
+				    	<div class="col-md-3 text-center">
+					    	<span class="number-title"><?php echo $this->translate('talking_numbers_2',array('<br/>','<span class="pin count-title count-number timer" data-to="500" data-speed="1500">500</span>')); ?> 
+				    	</div>
+				    	<div class="col-md-3 text-center">
+					    	<span class="number-title">
+					    	<?php echo $this->translate('talking_numbers_3', '<span class="pin count-title count-number timer" data-to="1000" data-speed="1500">1.000</span><br/>'); ?>
+					    	</span>
+				    	</div>
+					    
+				    	<div class="col-md-3 text-center">
+					    		<span class="number-title">
+					    <?php echo $this->translate('talking_numbers_4', array('<br/>', '<span class="pin count-title count-number timer" data-to="3000" data-speed="1500">3.000</span>'));	?>
+					    		</span>
+					    </div>
+			    	</div>
+		    		</div>
+	    		
+				</div>
+				
+			<div class="row">
+		    	<div id="testimonials">
+		    		<div class="col-md-12">
+			    		<div class="title-louis text-center text-capitalize"><?php echo $this->translate('testimonial_about'); ?> <span class="web-text"><img alt="Logo Hòa Bình Group" height="30" src="<?=TEMPLATE_URL?>/default/img/logo 2-01.png"/></span></div>
+			    		<div class="underline"></div>
+			    		<div class="content-louis-testimonial">
+				    		<div class="des-testimonial">
+ 
+			<div id="carousel-testimonials" class="carousel slide" data-ride="carousel"> 
+				<div class="carousel-inner"> 
+					<?php if(count($this->testimonial) >0){ ?>
+					<div class="item active">
+						 <div class="row">
+					<?php
+						$sttt = 0;
+						 foreach($this->testimonial as $kt=>$vt): $sttt++; 
+						 $param = explode('-', $vt['name']);
+						 ?>
+					  
+			<div class="col-md-4">
+						    		<div class="info-text">
+							    		<div class="img-wrapper">
+							    	  <img alt="<?=$vt['name']?>" class="img-circle" width="110" height="110" src="/public/images/testimonial/<?=$vt['id']?>/<?=$vt['full']?>" />
+							    	    </div>
+							    	  <div class="info-title">
+							    	 <span class="info-name"> <?php echo $param[0]; ?></span>
+							    	 <span class="info-job"> <?php echo $param[1]; ?></span>
+							    	  </div>
+						    		</div>
+						    		<div class="info-description">
+							    		<div class="info-slogan">
+								    		<?php echo $vt['shortDescription']; ?>
+							    		</div>
+							    		<hr/>
+							    		<div class="info-comment">
+								    	<?php echo $vt['description']; ?>
+							    		</div>
+						    		</div>
+					    		</div>
+					   
+						
+			 <?php //echo ($sttt%3==0)?'</div></div>':''; ?>		 
+					 <?php endforeach; ?>
+					 
+					  </div>
+					</div><!--.item-->
+					<?php } ?>
+				</div><!--.carousel-inner-->
+
+			</div><!--#carousel-testimonials-->
+				    		</div>
+			    		</div>
+		    		</div>
+		    	</div>
+	    	</div>
+	    	
+	    	<?php if(count( $this->result_video) >0 ){ ?>
+	    	<div class="row">
+		    	<div id="videos">
+		    		<div class="col-md-12">
+			    		<div class="title-louis text-center" style="padding-left: 22px;">Profile</div>
+			    		<div class="underline"></div>
+			    		<div class="content-louis">
+				    		
+				    		<div class="container">
+ <div class="col-md-12"> 
+ <div id="owl-profile" class="owl-carousel owl-theme">
+	    <?php
+		    $sttv = 0;
+		     foreach($this->result_video as $kv=>$vv): $sttv++;
+		     $thumb = $this->Image()->get_youtube_thumb($vv['shortDescription']);
+		    // echo $vv['shortDescription'];
+		      ?>
+   
+	    
+      <div class="item openSlickModal-1" data="<?php echo str_replace('watch?v=', 'embed/', $vv['shortDescription']) ?>" onClick="showContent(this);"> 
+       <li> <a title="<?=$vv['name']?>" style="cursor: pointer;"><img alt="<?=$vv['name']?>" class="img-responsive img-thumbnail" src="<?=$thumb?>" alt=""><div class="video-bg"></div></a> 
+       
+        <p><a href="#"><?php echo $vv['name']; ?></a></p> 
+         
+       </li>
+      </div> 
+     
+    <?php endforeach; ?>
+ 
+  
+		
+ </div>
+
+</div>
+				    		
+			    		</div>
+		    		</div>
+		    	</div>
+	    	</div>
+	    	<?php  } ?>
+	    	<div class="container">
+	    	<div class="row">
+		    	<!-- tin tuc uu dai -->
+		    	<div id="news">
+			    	
+		    		<div class="col-md-8">
+			    		<div class="title-louis text-uppercase"><?php echo $this->translate('news'); ?></div>
+			    		<div class="content-louis-news">
+				    <div class="row">
+					    <div class="col-md-12">		
+				<?php 
+		
+					$i = 0;
+					 foreach($this->news as $knew=>$vnew): $i++; ?>	
+					 	    		
+					    		<div class="louis_news_hover col-md-6" data-aos="zoom-in" data-aos-duration="1500">
+						    		<p><img alt="Ảnh <?php echo $vnew['name']; ?>" class="thumbnail-new" src="/public/images/news/<?=$vnew['id']?>/<?=$vnew['full']?>" /></p>
+						    		<div class="caption">
+							<div class="blur"></div>
+							<div class="caption-text">
+								<h4 style="border-top:2px solid white; border-bottom:2px solid white; padding:8px 10px;color: #fff;line-height: 28px;"><?php echo $vnew['name']; ?></h4>
+								<p><?php echo $this->string()->cut_string(strip_tags($vnew['shortDescription']),'100','...'); ?></p>
+								<a class=" btn btn-default" href="/<?php echo $this->translate('news_link'); ?>/<?php echo $vnew['ident']; ?>.html"> <?php echo $this->translate('more'); ?></a>
+							</div>
+						</div>
+						    		
+					    		</div>
+				<?php 
+					echo ($i%2==0)?'</div></div><div class="row"><div class="col-md-12">':'';
+					endforeach; ?>		    		
+					    		
+			    		</div>
+		    		</div>
+		    		
+			    		</div></div>
+			    		<?php if(count($this->featured) > 0){ ?>
+		    		<div class="col-md-4">
+			    		<div class="title-louis text-left text-uppercase"><?php echo $this->translate('promotions'); ?></div>
+			    		<div class="content-louis">
+						
+						<div class="row">
+		                   
+                                   <div class="new-promotions">
+                               <div class="row">
+<div class="col-md-12">
+<ul class="promotions">
+	
+	<?php foreach($this->featured as $kf=>$vf):
+	$image = new Model_ProductImage();
+	$image = $image->get_one_where(array('productId' => $vf['id']));
+
+		 ?>
+<li class="promotions-item">
+<table cellpadding="5">
+<tr>
+<td><a class="img-wrapper2" style="width: 100px; overflow: hidden;display: block; margin-right: 15px;" href="/<?php echo $this->translate('news_link'); ?>/<?php echo $vf['ident']; ?>.html"><img src="/public/images/news/<?php echo $vf['id']; ?>/<?php echo $image->full; ?>" height="80" /></a></td>
+<td> <a class="title" href="/<?php echo $this->translate('news_link'); ?>/<?php echo $vf['ident']; ?>.html"><?php echo $vf['name']; ?></a><br/><a class="readmore" href="/<?php echo $this->translate('news_link'); ?>/<?php echo $vf['ident']; ?>.html"> <?php echo $this->translate('more'); ?>...</a></td>
+</tr>
+</table>
+</li>
+	<?php endforeach; ?>
+	
+</ul>
+</div>
+</div>  
+</div>
+                                
+	</div>
+
+					</div><!-- .content-louis-->
+		    		</div>
+		    			<?php } ?>
+		    	</div>
+	    	</div>
+	    	</div>
+	    
+	    	<div class="row">
+		    	<div class="title-louis text-center"> <?php echo $this->translate('partner_of_hbg', '<span class="web-text"><img height="30" src="'.TEMPLATE_URL.'/default/img/logo 2-01.png"/></span>'); ?></div>
+		    	<div class="underline"></div>
+		    	<div class="content-louis">
+			    	
+			    	<div class="container-fluid" style="margin-left:5px;">
+    <div class="well" style="border:0px solid grey;background: transparent;">
+	    <div id="owl-clients" class="owl-carousel owl-theme">	
+			<?php for($i=1;$i<=50;$i++){ 
+				if($i != 2){
+			?>		
+	<div class="item"><li> <img alt="Logo đối tác <?=$i?>" class="showTipsy grayscale" title="HoabinhGroup"  src="/public/images/logo/logo<?=$i?>.png" alt=""></li></div>
+			<?php 
+				}
+				} ?>
+					
+					</div>
+       
+        <!--/myCarousel-->
+    </div>
+    <!--/well-->
+</div>
+		    	</div>
+	    	</div>
+	    	
+	    	
+	    	<div id="popup-1" class="slickModal">
+
+			<div class="slickWindow">
+				<!-- Your popup content -->
+		
+				<!-- / Your popup content -->
+			</div>
+		</div>
+		
+		<?php
+		/*	 $this->inlineScript()->captureStart();
+echo <<<JS
+  
+ 	jQuery(function() {
+				jQuery("body").snow({
+					intensity: 50,
+					sizeRange: [5, 10],
+					opacityRange: [0.3, 1],
+					driftRange: [12, 30],
+					speedRange: [55, 120]
+				});
+			});
+  
+JS;
+		$this->inlineScript()->captureEnd();
+		*/
+		?>
+		<script type="text/javascript">
+			function showContent(o)
+		{
+		
+		var url = $(o).attr('data');
+		var title = $(o).attr('title');
+		
+		$(".slickWindow").html('<iframe width="1000" height="620" id="myVideo" src="'+url+'?&autoplay=1" allowfullscreen></iframe>');
+		}
+		
+		
+			$(document).ready(function() {
+				
+				
+
+			    // Modal 1
+			    $('#popup-1').slickModals({
+			      
+			        // Overlay styling
+			        overlayBg: true,
+			        overlayClosesModal: true,
+			        overlayBgColor: 'rgba(0,0,0,0.85)',
+			        overlayTransitionSpeed: '0.4',
+			        // Background effects
+			        pageEffect: 'none',
+			        blurBgRadius: '1px',
+			        scaleBgValue: '0.9',
+			        // Popup styling
+			        popupWidth: '80%',
+			        popupHeight: '80%',
+			        popupLocation: 'center',
+			        popupAnimationDuration: '0.6',
+			        popupAnimationEffect: 'slideBottom',
+			        popupShadowOffsetX: '0',
+			        popupShadowOffsetY: '0',
+			        popupShadowBlurRadius: '40px',
+			        popupShadowSpreadRadius: '0',
+			        popupShadowColor: 'rgba(0,0,0,0.4)',
+			        popupBackground: '#000',
+			        popupRadius: '0',
+			        popupMargin: '0',
+			        popupPadding: '0',
+			        // Responsive rules
+			        responsive: true,
+			        breakPoint: '480px',
+			        mobileLocation: 'center',
+			        mobileWidth: '480px',
+			        mobileHeight: '280px',
+			        mobileRadius: '0',
+			        mobileMargin: '0',
+			        mobilePadding: '20px',
+			        // Animate content
+			        contentAnimate: false,
+			        contentAnimateEffect: 'zoomIn',
+			        contentAnimateSpeed: '0.4',
+			        contentAnimateDelay: '0.4',
+			        // Youtube videos
+			        videoSupport: true,
+			        videoAutoPlay: true,
+			        videoStopOnClose: true,
+			        // Close and reopen button
+			        addCloseButton: true,
+			        buttonStyle: 'labeled',
+			        enableESC: true,
+			        reopenClass: 'openSlickModal-1',
+			        // Additional events
+			        onSlickLoad: function() {
+			            console.log("Slick is visible");
+			        },
+			        onSlickClose: function() {
+			            console.log("Slick is hidden");
+					$('#myVideo').attr('src', '');
+			        }
+			    });
+			});
+		</script>

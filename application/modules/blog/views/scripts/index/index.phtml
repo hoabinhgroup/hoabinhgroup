@@ -1,0 +1,91 @@
+<header class="pav-header">
+				<h1>Latest Blogs</h1>
+				<?php
+				//$date = Zend_Date::now();
+				//$timeStamp = gmdate("Y-m-d", '1411570379');
+				//echo $timeStamp;
+				/*
+				$obj = new stdClass();
+				echo $obj->day   = $date->get(Zend_Date::DAY);
+				$obj->month = $date->get(Zend_Date::MONTH);
+				$obj->year  = $date->get(Zend_Date::YEAR);
+				*/
+				?>
+				<a class="rss-wrapper" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=pavblog/blogs/rss"><span class="fa fa-feed"></span></a>	
+			</header>    
+			<section class="pav-filter-blogs wrapper blog-wrapper">
+				<div class="pav-blogs">
+										<div class="leading-blogs blog-list-item">
+						<div class="row">
+						</div>
+					</div>
+					
+       <div class="secondary blog-list-item">
+						<div class="row">	
+			<?php foreach($this->pages as $item): ?>		
+			
+			<div class="col-lg-12 col-sm-12 col-xs-12">
+				<article class="blog-item">	
+		<figure class="blog-body image">						
+		<img src="/public/images/blog/<?=$item->photo?>" title="<?=$item->name?>" alt="<?=$item->name?>" class="img-responsive">
+	</figure>	
+		
+			
+	
+		<header class="blog-header clearfix">
+			<span class="created">
+			<span class="day"><?php echo $day = gmdate("d", $item->date_created); ?></span>
+			<span class="month">&nbsp;<?php echo $month = gmdate("m", $item->date_created); ?>&nbsp; </span> /
+			<span class="year"><?php echo $year = gmdate("Y", $item->date_created); ?></span>
+		</span>
+		<h4 class="blog-title"><a href="/blog/<?=$item->name_clean?>" title="<?=$item->name?>"><?=$item->name?></a></h4>
+		</header>
+	
+	
+	<footer>	
+		<section class="blog-meta">
+						<span class="author">
+				<span><i class="fa fa-pencil"></i>Write By: </span> 
+				<span class="t-color">admin</span>
+			</span>
+						
+						<span class="publishin">
+				<span><i class="fa fa-thumb-tack"></i>Published In: </span>
+				<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=pavblog/category&amp;id=21" class="t-color" title="Pages &amp; template">Pages &amp; template</a>
+			</span>
+						
+						<span class="hits">
+				<span><i class="fa fa-insert-template"></i>Hits: </span>
+				<span class="t-color">146</span>
+			</span>
+						
+						<span class="comment_count">
+				<span><i class="fa fa-comment"></i>Comment: </span>
+				<span class="t-color">0</span>
+			</span>
+					</section>
+	
+	
+					
+		<section class="description">
+			<?=$item->description?>
+		</section>
+			
+				<section class="btn-more-link">
+			<a href="/blog/<?=$item->name_clean?>" class="readmore btn btn-theme-default">Xem tiếp</a>
+		</section>
+			
+	
+	</footer>	
+
+</article>							</div>
+			
+			<?php endforeach; ?>	
+						
+																		
+																				</div>
+					</div>
+									
+					<div class="pav-pagination clearfix"><div class="results">Showing 1 to 5 of 5 (1 Pages)</div></div>
+				</div>
+			</section>

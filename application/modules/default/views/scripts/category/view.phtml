@@ -1,0 +1,66 @@
+<style>
+	.description_country{
+		padding: 10px;
+	}
+</style>
+<div id="middlecol" class="span8 sidebar_left">
+	<div class="inside">
+		<div class="item-page">
+		
+				<div class="span12">
+					<ul class="breadcrumb"><li class="active"><span class=""></span></li><li><a href="/">Home</a><span class="divider">/</span></li>
+<?php echo $this->content()->createBreadcrum($this->sID, 'menu_items', 2); ?></ul>
+
+<div class="sort"><span>Sort By:</span>
+		<select onchange="location = this.value;" style="width:200px;">
+									<option value="/<?=$this->current?>" <?php echo ($this->uri == '/'.$this->current)?' selected="selected"':''; ?>>Default</option>
+				<option value="/<?=$this->current?>/sort/name/order/asc" <?php echo ($this->uri == '/'.$this->current.'/sort/name/order/asc')?' selected="selected"':''; ?>>Tên (A - Z)</option>
+				<option value="/<?=$this->current?>/sort/name/order/desc" <?php echo ($this->uri == '/'.$this->current.'/sort/name/order/desc')?' selected="selected"':''; ?>>Tên (Z - A)</option>
+			<option value="/<?=$this->current?>/sort/price/order/asc" <?php echo ($this->uri == '/'.$this->current.'/sort/price/order/asc')?' selected="selected"':''; ?>>Price (Low - High)</option>
+			<option value="/<?=$this->current?>/sort/price/order/desc" <?php echo ($this->uri == '/'.$this->current.'/sort/price/order/desc')?' selected="selected"':''; ?>>Price (High - Low)</option>
+			<option value="/<?=$this->current?>/sort/time/order/asc" <?php echo ($this->uri == '/'.$this->current.'/sort/time/order/asc')?' selected="selected"':''; ?>>Time travel (Low - High)</option>
+			<option value="/<?=$this->current?>/sort/time/order/desc" <?php echo ($this->uri == '/'.$this->current.'/sort/time/order/desc')?' selected="selected"':''; ?>>Time travel (High - Low)</option>
+								</select>
+	</div>
+	
+	<div class="description_country">
+		<?php echo $this->description; ?>
+		
+	</div>
+
+					<div class="travel-list">
+					
+   <?php
+	      echo $this->message;
+	    foreach($this->paginator as $val): 
+	    ?>
+   
+	<div class="travel-item">
+	<?php  $src= $this->Image()->getFirstImageContent($val['description']); ?>
+
+	<div class="travel-image"><a style="height: 164px;" title="<?=$val['name']?>" href="/touris/<?=$val['ident']?>.html"><img src="<?=$src?>" width="280px" /></a>
+	<span class="tour-title"><i class="fa fa-clock-o"></i>&nbsp;<?php echo $this->string()->time_travel($val['time_travel']); ?></span>
+	</div>
+
+	 <span class="travel-title"><a title="<?=$val['name']?>" href="/touris/<?=$val['ident']?>.html"><h3 class="mod-title"><?php echo $this->String()->cut_string($val['name'],'34','...'); ?></h2></a></span>
+	 <span class="travel-price"><h4><?php echo number_format($val['price']); ?> VND</h4></span>
+	 <span class="travel-description"><?php echo $this->String()->cut_string($val['shortDescription'],'230','...'); ?></span>
+	</div>
+	<div style="clear:both;"></div>
+	<?php endforeach; ?>
+					
+					
+					<?php echo $this->paginationControl($this->paginator,
+     'Sliding',
+     'pagination-control.phtml'); 
+   
+     ?>
+     </div>
+				</div>
+			
+	
+		</div>
+		
+	</div>
+	
+</div>	

@@ -1,0 +1,64 @@
+<style>
+
+	.item_gallery{
+		  height: 210px;
+    margin-right: 4px;
+    overflow: hidden;
+    width: 290px;
+	}
+	
+	.caption-gallery{
+background: #000 none repeat scroll 0 0;
+    bottom: 0;
+    color: #fff;
+    min-height: 44px;
+    margin-bottom: 5px;
+    padding: 10px 0 0 10px;
+    position: absolute;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 280px;
+    opacity: 0.8;
+	}
+	
+	
+</style>
+<div class="sixteen columns add-bottom add-top"> 
+					
+					<ul class="gallery_project_list">
+					<?php 
+						krsort($this->gallery);
+					
+						foreach($this->gallery as $key=>$val): ?>
+					<!-- first row -->
+						<li class="first">
+							<div class="gallery_project_item"> 
+							
+									<div class="item_gallery">
+									
+	<a href="/<?php echo $val['url']; ?>" rel=""> <img width="290" src="/public/images/backgrounds/<?php echo $val['full']; ?>" alt=""/> </a>
+									
+								</div><!-- end zoomOverlay -->
+								<span class="caption-gallery"><?php echo $val['caption']; ?></span>
+							</div><!-- end .gallery_project_item -->
+						</li>
+					<?php endforeach; ?>	
+												
+						
+					</ul><!-- end ul.gallery_project_list -->	
+				
+				
+				</div><!-- end sixteen -->
+				
+<script>
+	$('.first').hover(function(){
+		$(this).each(function(){
+			$(this).children('div').children('span').css('background','#FED148');
+			$(this).children('div').children('span').css('color','#000');
+		});
+		
+	}, function(){
+		$(this).children('div').children('span').css('background','#000');
+		$(this).children('div').children('span').css('color','#fff');
+	});
+</script>

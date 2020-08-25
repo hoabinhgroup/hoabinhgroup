@@ -1,0 +1,161 @@
+  <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;">
+		 <h1><?php echo $this->menu->name; ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Giới thiệu</a></li>
+  <li class="breadcrumb-item active"><?php echo $this->breadcrum; ?></li>
+</ol>
+	    </div>
+	    <div class="row" id = "news-content">
+	       <div class="review-content">
+		   <div id="bg-tabs-detail">
+			                     <div class="gallery">
+                                    <div class="title-louis-gallery center"> <?php echo $this->menu->name; ?></div>
+									<div class="underline"></div>
+									<div class="des-louis">Hòa Bình Group - đem đến giải pháp trong mọi lĩnh vực</div>
+                                    <!-- Tab panes -->
+                                 
+      
+	          <div class="row">
+		          <div id="galleries">
+			           <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+				            <div class="gallery-content">
+			
+			 <div class="row">
+			<?php 
+				
+				$stt = 0;
+				foreach($this->menus as $key=>$val): $stt++;
+				
+				 ?>	
+			<div class="medium-gallery-bg-detail-nobottom col-md-3 openSlickModal-1 manualLabel" >  
+			   <a href="#"> <img class="" class="img-c" src="/public/images/backgrounds/<?php echo $val['full']; ?>" /></a>
+			
+			 </div>
+			<?php echo ($stt%4==0)?'</div><div class="row">':''; ?>
+			
+			<?php endforeach; ?>
+
+			
+
+			
+		  
+				            </div>
+					    </div>   		           
+		          </div><!-- #galleries-->
+	          </div>                  
+            
+             
+
+                                
+			</div>	
+		  
+	    </div>		    	
+	    	</div>
+	    </div>
+	    <style>
+		#slideLouis {
+    width: 100%;
+
+}
+		  </style>
+	    
+	    <div id="popup-1" class="slickModal">
+			<div class="slickWindow slickWindowGallery">
+				<!-- Your popup content -->
+				<div id="slideLouis" class="raxus-slider fit" data-direction="horizontal"  data-thumbnail="right" data-keypress="true" data-dots="hide" data-arrows="auto-hide" data-thumbbgcolor="#000" data-bgcolor="#000" data-fullscreen="show" >
+
+    <ul class="slider-relative">
+<?php $stt = 0;
+	foreach($this->menus as $key=>$val): $stt++;
+			?>	
+        <li class="slide">
+            <img src="/public/images/backgrounds/<?php echo $val['full']; ?>" alt="" /> <!-- your image -->
+        </li>
+    <?php endforeach;?>
+        
+
+
+    </ul>
+
+</div>
+				
+				<!-- / Your popup content -->
+			</div>
+		</div>
+		
+		
+		<script>
+			$(document).ready(function() {
+
+			    // Modal 1
+			    $('#popup-1').slickModals({
+			        // Hide on pages
+			        hideOnPages: [
+			            '/foo/page1/',
+			            '/foo/page2/',
+			            '/foo/page3/'
+			        ],
+			        // Popup type
+			        popupType: 'scrolled',
+			        delayTime: 0,
+			        scrollTopDistance: 400,
+			   
+			        // Overlay styling
+			        overlayBg: true,
+			        overlayClosesModal: true,
+			        overlayBgColor: 'rgba(0,0,0,0.4)',
+			        overlayTransitionSpeed: '0.4',
+			        // Background effects
+			        pageEffect: 'scale',
+			        blurBgRadius: '1px',
+			        scaleBgValue: '1',
+			        // Popup styling
+			        popupWidth: '1000px',
+			        popupHeight: '450px',
+			        popupLocation: 'topCenter',
+			        popupAnimationDuration: '0.6',
+			        popupAnimationEffect: 'zoomIn',
+			        popupShadowOffsetX: '0',
+			        popupShadowOffsetY: '0',
+			        popupShadowBlurRadius: '30px',
+			        popupShadowSpreadRadius: '0',
+			        popupShadowColor: 'rgba(0,0,0,0.2)',
+			        popupBackground: "#fff",
+			        popupRadius: '0',
+					//popupMargin: '30px',
+					//popupPadding: '30px',
+			        // Responsive rules
+			        responsive: false,
+			        breakPoint: '480px',
+			        mobileLocation: 'center',
+			        mobileWidth: '280px',
+			        mobileHeight: '180px',
+			        mobileRadius: '0',
+			        mobileMargin: '0',
+			        mobilePadding: '20px',
+			        // Animate content
+			        contentAnimate: true,
+			        contentAnimateEffect: 'slideBottom',
+			        contentAnimateSpeed: '0.8',
+			        contentAnimateDelay: '0.4',
+			        // Youtube videos
+			        videoSupport: false,
+			        videoAutoPlay: true,
+			        videoStopOnClose: true,
+			        // Close and reopen button
+			        addCloseButton: true,
+			        buttonStyle: 'labeled',
+			        enableESC: true,
+			        reopenClass: 'openSlickModal-1',
+			        // Additional events
+			        onSlickLoad: function() {
+			            console.log("Slick is visible")
+			        },
+			        onSlickClose: function() {
+			            console.log("Slick is hidden")
+			        }
+			    });
+
+			});	   
+	</script>

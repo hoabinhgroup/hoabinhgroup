@@ -1,0 +1,41 @@
+<dt id="parentID-label">
+<label class="required" for="parentID">Chọn danh mục:</label>
+</dt>
+<dd id="parentID-element">
+<?php
+	$mdlMenu = new Model_MenuItem();
+        $parentVal = 0;
+        $a = null;
+      
+   
+        /*
+        $parentId = $this->createElement('select', 'parentID');
+        // element options
+        $parentId->setLabel('Chọn danh mục: ');
+        $parentId->setRequired(true);
+*/
+       
+        $select = $mdlMenu->select();
+       // $select->where('parent = ?', 0);
+        $select->where('menu_id = ?', 2);
+        $select->where('lang = ?', 'vi');
+        $select->order('position asc');
+        $menus = $mdlMenu->fetchAll($select);
+         /*
+        $parentId->addMultiOption(0, 'None');
+        if($menus->count() > 0) {
+            foreach ($menus as $menu) {
+                $parentId->addMultiOption($menu->id, $menu->name);
+				} 
+			}
+		$parentId->setValue($parentVal);	//set selected
+			
+		$this->addElement($parentId);
+        */
+		$recursive = new Louis_System_Recursive($menus->toArray());
+        $newArr = $recursive->buildArray(229);
+  
+        $attribs = array('size'=>5, 'style'=>'width:250px', 'multiple'=>true);
+        echo $mdlMenu->itemInSelectbox('parentID[]',$parentVal,$newArr,'Chọn danh mục',$attribs);
+       ?>
+</dd>

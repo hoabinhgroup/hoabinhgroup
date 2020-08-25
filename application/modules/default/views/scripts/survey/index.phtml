@@ -1,0 +1,30 @@
+<div style="width: 600px;margin: 0 auto;padding: 20px;">
+<?php
+ if($this->value == 1){
+	 ?>
+	
+<div id="c1">
+    Fill out my <a href="http://form.timnhanh360.com/app/form?id=1">online form</a>.
+</div>
+<script type="text/javascript">
+    (function(d, t) {
+        var s = d.createElement(t), options = {
+            'id': 1,
+            'container': 'c1',
+            'height': '1506px',
+            'form': '//form.timnhanh360.com/app/embed'
+        };
+        s.type= 'text/javascript';
+        s.src = 'http://form.timnhanh360.com/static_files/js/form.widget.js';
+        s.onload = s.onreadystatechange = function() {
+            var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+            try {  FormWidget.initialize(options); FormWidget.display() } catch (e) { }
+        };
+        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+    })(document, 'script');
+</script>
+
+	 <?php
+ }	
+?>
+</div>

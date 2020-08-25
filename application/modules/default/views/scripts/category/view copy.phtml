@@ -1,0 +1,340 @@
+<script src="/application/templates/louis/default/js/totalStorage.js" type="text/javascript"></script>
+<style>
+.product-block .image{
+	height: 210px;
+	width: 180px;
+}
+.product-block a:hover{
+	color: #fff;
+}
+.product-block .product-zoom{
+	right: 55%;
+}
+
+</style>
+<div class="container">
+<div class="row">
+<aside class="col-md-3">
+				<div id="column-left" class="sidebar">
+					<div class="box filter">
+  <div class="box-heading">
+    <span>Refine Search</span>
+    <em class="line"></em>
+  </div>
+  <div class="box-content">
+    <ul class="box-filter clearfix">
+            <li class="first last">
+        <span id="filter-group1">Filter by price</span>
+        <ul class="clearfix">
+                              <li class="first">
+            <input value="7" id="filter7" type="checkbox">
+            <label for="filter7">$0.00 - $50.00 (1)</label>
+          </li>
+                                        <li>
+            <input value="8" id="filter8" type="checkbox">
+            <label for="filter8">$100.00 - $200.00 (10)</label>
+          </li>
+                                        <li>
+            <input value="9" id="filter9" type="checkbox">
+            <label for="filter9">$200.00 - $400.00 (3)</label>
+          </li>
+                                        <li>
+            <input value="10" id="filter10" type="checkbox">
+            <label for="filter10">$400.00 - $600.00 (4)</label>
+          </li>
+                                        <li>
+            <input value="11" id="filter11" type="checkbox">
+            <label for="filter11">$50.00 - $100.00 (3)</label>
+          </li>
+                                        <li class="last">
+            <input value="12" id="filter12" type="checkbox">
+            <label for="filter12">$600.00 - $3.000.00 (0)</label>
+          </li>
+                            </ul>
+      </li>
+          </ul>
+    <a id="button-filter" class="button btn btn-theme-default">Refine Search</a>
+  </div>
+</div>
+<script type="text/javascript"><!--
+$('#button-filter').bind('click', function() {
+ filter = [];
+
+ $('.box-filter input[type=\'checkbox\']:checked').each(function(element) {
+  filter.push(this.value);
+});
+
+ location = 'http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&path=20&filter=' + filter.join(',');
+});
+//--></script> 
+			<div class="box latest orange nopadding">
+	
+<div class="box-heading">
+	<span class="title">Latest</span>
+</div>  
+
+<div class="box-content">		
+			<div class="row product-items last">
+		 <?php $product = new Product_Model_Product(); 
+			 
+			 $latest = $product->latestProducts();
+	 
+	       foreach ($latest as $l):
+	       $dImage = $this->image()->getDefaultImageProduct($l->id);
+		 ?>
+		<div class="col-lg-3 col-md-3 col-sm-3 product-cols" style="height: 120px;">
+			<div class="product-block">
+				<div class="image" style="padding-right: 2px;">
+					<span class="product-label product-label-special">
+						<span>Sale</span>  								
+					</span>							
+												<a href="/<?=$l->ident?>.html"><img class=" img img-responsive" src="<?=$dImage?>" alt="<?=$l->name?>"></a>
+													<a href="<?=$dImage?>" class="info-view colorbox product-zoom cboxElement" rel="colorbox" title="<?=$l->name?>"><i class="fa fa-search-plus"></i></a>
+						
+						<!-- Show Swap -->
+												<!-- end Show Swap -->
+<!--<a class="pav-colorbox btn btn-theme-default cboxElement" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=themecontrol/product&amp;product_id=59"><em class="fa fa-eye"></em><span>Quick View</span></a>-->
+													
+					</div>
+								
+				<div class="product-meta">
+					<div class="left">
+						<h3 class="name"><a href="/<?=$l->ident?>.html"><?=$l->name?></a></h3>
+			<div class="price">
+					<span class="price-old">$119.50</span> 
+							<span class="price-new"><?=$this->string()->product_price('VND',$l->price)?></span>
+													</div>
+											</div>
+					
+					<div class="right">		
+						
+						<div class="action">							
+							<div class="cart">						
+        						
+								<button onclick="addToCart('59');" class="btn btn-shopping-cart">
+									<span class=" fa fa-shopping-cart">Add to Cart</span>
+								</button>
+      						</div>
+							
+							<div class="button-group">
+								<div class="wishlist">
+									<a onclick="addToWishList('59');" title="Add to Wish List" class="fa fa-heart product-icon">
+										<span>Add to Wish List</span>
+									</a>	
+								</div>
+								<div class="compare">			
+									<a onclick="addToCompare('59');" title="Add to Compare" class="fa fa-refresh product-icon">
+										<span>Add to Compare</span>
+									</a>	
+								</div>
+							</div>							
+						</div>		 
+					</div>																		
+				</div>		
+			</div>
+		</div>		
+					
+		 <? endforeach; ?>
+		
+			</div>
+				
+			
+</div>		
+</div>  			<div style="position: relative; height: 404px;" id="banner0" class="box banner hidden-xs hidden-sm">
+      <div style="display: none; position: absolute; top: 0px; left: 0px; z-index: 2; opacity: 0;"><a href="#"><img src="Kitchen_files/banner1-282x408.jpg" alt="banner " title="banner " class="img-responsive"></a></div>
+        <div style="position: absolute; top: 0px; left: 0px; z-index: 1; opacity: 1; display: block;"><a href="#"><img src="Kitchen_files/banner1.jpg" alt="banner " title="banner " class="img-responsive"></a></div>
+    </div>
+	</div>			</aside>	
+ 
+ 
+<section class="col-md-9">
+<div id="content">
+								
+								<div class="category-info clearfix hidden-xs hidden-sm">
+										
+										<h1><?php echo $this->data[0]['label']; ?></h1>
+										<div class="category-description">
+					
+					</div>
+									</div>
+				 
+				
+					
+
+
+												<div class="product-filter clearfix">
+	<div class="display"><span style="float: left;">Kiểu hiển thị:</span><a class="list" onclick="display('list');"><em>List</em></a><a class="grid active"><em>Grid</em></a></div>
+	
+  
+
+	<div class="sort"><span>Sắp xếp theo:</span>
+		<select onchange="location = this.value;">
+									<option value="<?=$this->current?>" <?php echo ($this->uri == $this->current)?' selected="selected"':''; ?>>Default</option>
+				<option value="<?=$this->current?>/sort/name/order/asc" <?php echo ($this->uri == $this->current.'/sort/name/order/asc')?' selected="selected"':''; ?>>Tên (A - Z)</option>
+				<option value="<?=$this->current?>/sort/name/order/desc" <?php echo ($this->uri == $this->current.'/sort/name/order/desc')?' selected="selected"':''; ?>>Tên (Z - A)</option>
+			<option value="<?=$this->current?>/sort/price/order/asc" <?php echo ($this->uri == $this->current.'/sort/price/order/asc')?' selected="selected"':''; ?>>Giá (Low &gt; High)</option>
+			<option value="<?=$this->current?>/sort/price/order/desc" <?php echo ($this->uri == $this->current.'/sort/price/order/desc')?' selected="selected"':''; ?>>Giá (High &gt; Low)</option>
+								</select>
+	</div>	
+	
+	<div class="limit"><span>Show:</span>
+		<select onchange="location = this.value;">
+									<option value="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20&amp;limit=16" selected="selected">16</option>
+												<option value="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20&amp;limit=25">25</option>
+												<option value="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20&amp;limit=50">50</option>
+												<option value="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20&amp;limit=75">75</option>
+												<option value="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20&amp;limit=100">100</option>
+								</select>
+	</div>
+</div>    
+  
+<div class="product-grid"> 
+
+	<div class="products-block">
+						
+		<?php 
+
+
+if ($this->paginator != null){
+?>
+<div class="row product-items">
+<?
+$stt = 0;
+	foreach ($this->paginator as $val):
+	$stt++;
+	
+	$coverImage = $this->image()->getDefaultImageProduct($val['productID']);
+	?>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 product-cols">			
+			<div class="product-block">	
+														<div class="image">
+												<span class="product-label product-label-special"><span>Sale</span></span>
+												<a class="img" href="/<?php echo $val['ident'].'.html'; ?>"><img class="img-responsive" src="<?=$coverImage?>" title="<?php echo $val['name']; ?>" alt="Body lotions Nineties revival"></a>							
+						<!-- zoom image-->
+													<a href="<?=$coverImage?>" class="info-view colorbox product-zoom cboxElement" title="<?php echo $val['name']; ?>"><i class="fa fa-search-plus"></i></a>
+						
+
+						<!-- Show Swap -->
+												<!-- Show Swap -->
+
+
+																			<!--<a class="pav-colorbox btn btn-theme-default cboxElement" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=themecontrol/product&amp;product_id=36"><em class="fa fa-eye"></em><span>Quick View</span></a>-->
+													
+					</div>
+												 
+				<div class="product-meta">		  
+					<div class="left">
+						<h3 class="name"><a href="/<?php echo $val['ident'].'.html'; ?>"><?php echo $val['name']; ?></a></h3>	
+												<div class="price">
+													<span class="price-old">$119.50</span> 
+								<span class="price-new"><?php echo $this->string()->product_price('VND',$val['price']); ?></span>
+															        
+								
+													</div>
+							
+					</div>
+			  
+					<div class="right">		
+						
+					    
+						<p class="description"><?php echo strip_tags($val['shortDescription']); ?></p>
+
+						<div class="action">							
+							<div class="cart">						
+        						
+								<a type="submit" href="/cart/add/pid/<?php echo $val['productID']; ?>/qty/1" class="btn btn-shopping-cart">
+									<i class="fa fa-shopping-cart"></i><span>Add to Cart</span>
+								</a>
+      						</div>
+							
+							<div class="button-group">
+								<div class="wishlist">
+									<a onclick="addToWishList('36');" title="Add to Wish List" class="fa fa-heart product-icon">
+										<span>Add to Wish List</span>
+									</a>	
+								</div>
+								<div class="compare">			
+									<a onclick="addToCompare('36');" title="Add to Compare" class="fa fa-refresh product-icon">
+										<span>Add to Compare</span>
+									</a>	
+								</div>
+							</div>							
+						</div>		 
+					</div>	 
+				</div>		 
+			</div>
+		</div>
+<?
+if($stt%4 == 0){
+		?>
+		</div><div class="row product-items">
+		<?
+	}	
+?>
+
+<?
+	endforeach;
+}else {
+	echo 'Chua co san pham';
+}
+?>
+		
+		
+	
+		
+				
+						
+						
+						
+			</div>
+</div>
+
+<?php echo $this->paginationControl($this->paginator,
+     'Sliding',
+     'pagination-control.phtml'); ?>
+											
+
+						
+						</div>
+						
+						
+						<script type="text/javascript">
+		<!--
+		function display(view) {
+			if (view == 'list') {
+				$('.product-grid').attr('class', 'product-list');
+
+				$('.products-block  .product-block').each(function(index, element) {
+
+					$(element).parent().addClass("col-fullwidth");
+				});		
+
+				$('.display').html('<span style="float: left;">Display:</span><a class="list active"><em>List</em></a><a class="grid" onclick="display(\'grid\');"><em>Grid</em></a>');
+
+				$.totalStorage('display', 'list'); 
+			} else {
+				$('.product-list').attr('class', 'product-grid');
+
+				$('.products-block  .product-block').each(function(index, element) {
+					$(element).parent().removeClass("col-fullwidth");  
+				});	
+
+				$('.display').html('<span style="float: left;">Display:</span><a class="list" onclick="display(\'list\');"><em>List</em></a><a class="grid active"><em>Grid</em></a>');
+
+				$.totalStorage('display', 'grid');
+			}
+		}
+
+		view = $.totalStorage('display');
+
+		if (view) {
+			display(view);
+		} else {
+			display('grid');
+		}
+	//-->
+	</script> 
+
+</section>
+</div>
+</div>

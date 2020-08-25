@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>FileNAME</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+
+	<link rel="stylesheet" href="css/layout.css">
+		
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	
+	
+	<!-- Including jQuery -->
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	
+	<!-- Including rating plugin -->	
+	<script type="text/javascript" src="js/jquery.5stars.min.js"></script>
+				
+	<script type="text/javascript">
+	   
+		$(document).ready(function(){	
+			//START 
+						
+			//init the stars. Note: many of the parameters are provided not here but directly in DIV (see below)
+			$('.textstarscss').rating({
+				php: 'admin/php/manager.php',
+				tooltip:false
+			});
+			
+			
+		});
+
+		
+		
+	</script>	
+
+	
+	
+</head>
+<body>
+
+	<p>Use component only for stats loading and displaying. This particular example requires PHP</p><br>
+	
+	<!-- text with loaded stats will apper here because attribute data-textlocation of the next DIV is set to ID of this DIV (ribbintext)-->
+	<div class="ribbon"><span id="ribbintext"><span></div>
+	
+	<!-- stars would appear here if data-stars attribute wouldn't be equal to zero -->
+	<div class="textstarscss" data-id="itemID" data-stars="0" data-textlocation="ribbintext" data-enable="false" data-textmain="<span class='highlight'>%v</span> people love it"><br></br></div>
+			
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

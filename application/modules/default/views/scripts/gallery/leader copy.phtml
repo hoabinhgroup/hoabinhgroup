@@ -1,0 +1,376 @@
+  <div class="bg-header-page"  style="background-image: url('<?=TEMPLATE_URL?>/default/img/south-head-sydney.jpg'); background-position: 0px -271px; background-attachment: fixed;">
+		    <div class="container">
+			     <div class="row">
+			   	 <h1>Đội ngũ lãnh đạo</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Giới thiệu</a></li>
+  <li class="breadcrumb-item active">Đội ngũ lãnh đạo</li>
+</ol> 
+			    
+		    </div>
+		    	 </div>
+	
+	    </div>
+	    <div class="container">
+	    <div id = "news-content">
+	    <div class="review-content">
+		    <div class="title-louis text-center">ĐỘI NGŨ LÃNH ĐẠO</div>
+		    <div class="underline"></div>
+		   <div class="des-louis text-center">Những "hoa tiêu" tiên phong làm nên thương hiệu Hòa Bình Group</div> 
+		  <div class="container"> <div class="row">
+		   <?php $stt= 0;
+			   foreach($this->result as $k=>$v): $stt++;
+			   if($v['position'] == 1){
+			    ?>
+		   <div id="openmodal_" data-user="<?=$v['id']?>" class="big-ava-bg col-md-4 col-md-offset-4 openSlickModal-<?=$stt?> manualLabel">  
+			   <a style="cursor: pointer;"> <img class="big-ld img-responsive" src="/public/images/backgrounds/<?php echo $v['full']; ?>" /></a>
+			 <span class="name"> <?php echo $v['name']; ?></span>
+			 <div class="title-job"><?php echo $v['icon']; ?></div></div>
+		   <?php 
+			   	}
+			   endforeach; ?>
+		   
+		   
+		   
+		   </div> 
+		   </div>
+			
+		
+		
+		   
+		   <div class="container" style="margin-top: 20px;">
+			   <div class="row">
+				   <?php
+					   
+			   foreach($this->result as $k2=>$v2): 
+			  
+			   if($v2['position'] > 1){
+				   
+			    ?>
+			   <div class="medium-ava-bg col-md-3 openSlickModal-<?=$v2['id']?>">
+				     <a style="cursor: pointer;"> <img class="med-ld img-responsive" src="/public/images/backgrounds/<?php echo $v2['full']; ?>" /></a>
+			 <span class="name">  <?php echo $v2['name']; ?></span>
+			 <div class="title-job">  <?php echo $v2['icon']; ?></div>
+			   </div>
+			
+			    <?php 
+				    }
+				     endforeach; ?>
+		   	</div>
+		  </div>
+		    
+		    
+		    
+	    </div>	
+	    
+	    
+	    
+	     <?php if($this->lang == 'vi'){ ?>
+	    <div class="col-md-10 col-md-offset-1 hidden-xs" style="margin-top: 20px;">
+		    <div class="col-md-10 col-md-offset-1">
+	    	  <ul id='review_tab' class="nav nav-tabs" role="tablist">
+                                        <li role="presentation"><a href="/ve-chung-toi">Về chúng tôi</a></li>
+                                        <li role="presentation"><a href="/tam-nhin-su-menh">Giá trị cốt lõi</a></li>
+                                        <li role="presentation"><a href="/nang-luc-tai-chinh" >Năng lực tài chính</a></li>
+                                        <li role="presentation"><a href="/dau-an-phat-trien">Những dấu ấn của sự phát triển</a></li>
+                                          <li role="presentation" class="active"><a href="/doi-ngu-lanh-dao">Đội ngũ lãnh đạo</a></li>
+                                    </ul>
+                                    
+                                    </div>
+	    	</div>
+	      <?php }else{ ?>
+	    	 <div class="col-md-10 col-md-offset-1" style="margin-top: 20px;">
+		    <div class="col-md-10 col-md-offset-1">
+	    	  <ul id='review_tab' class="nav nav-tabs" role="tablist">
+                   <li role="presentation"><a href="/about-us">About us</a></li>
+                   <li role="presentation"><a href="/financial-capacity" aria-controls="travels">Financial Capacity</a></li>
+                    <li role="presentation"><a href="/core-values" aria-controls="medias">Core Values</a></li>
+                   <li role="presentation"><a href="/the-mark-of-development">The mark of development</a></li>
+                                          <li role="presentation" class="active"><a href="/leadership-team">Leadership Team</a></li>
+                                    </ul>
+                                    
+                                    </div>
+	    	</div>
+	    	
+	    	<?php } ?>
+	    	</div>
+	    </div>	
+	    
+	    
+	
+	    <div id="popup-1" class="slickModal">
+			<div class="slickWindow">
+				<!-- Your popup content -->
+				<div class="top">
+					<div class="left">
+						<div class="pic">
+							<a href="#"> <img class="med-ld-detail img-responsive" src="/public/images/backgrounds/<?php echo $this->result[0]['full']; ?>" /></a>
+						</div>
+					</div>
+					<div class="right">
+						<div class="name">ông <span style="color: #fad101"><?php echo $this->result[0]['name']; ?></span></div>
+						<div class="desc">CHỦ TỊCH HĐQT HÒA BÌNH GROUP</div>
+						<div style="width: 170px; height: 5px; display: block; border-bottom: 1px solid #ddd; color: black; margin: 5px auto;"></div>
+						<i><?php echo $this->result[0]['caption']; ?></i>
+					</div>
+				</div>
+				<div class="popup-content">
+					<?php echo $this->result[0]['description']; ?>
+				</div>
+				<!-- / Your popup content -->
+			</div>	
+		</div>
+		
+		
+		 <?php
+					   
+			   foreach($this->result as $k2=>$v2): 
+			  
+			   if($v2['position'] > 1){
+				   
+			    ?>
+		<div id="popup-<?=$v2['id']?>" class="slickModal">
+			<div class="slickWindow">
+				<!-- Your popup content -->
+				<div class="top">
+					<div class="left">
+						<div class="pic">
+							<a style="cursor: pointer"> <img class="med-ld-detail img-responsive" src="/public/images/backgrounds/<?php echo $v2['full']; ?>" /></a>
+						</div>
+					</div>
+					<div class="right">
+						<div class="name"><span style="color: #fad101"><?php echo $v2['name']; ?></span></div>
+						<div class="desc"><?php echo $v2['icon']; ?></div>
+						<div style="width: 170px; height: 5px; display: block; border-bottom: 1px solid #ddd; color: black; margin: 5px auto;"></div>
+						<i><?php echo $v2['caption'] ?></i>
+					</div>
+				</div>
+				<div class="popup-content">
+					<?php echo $v2['description']; ?>
+							</div>
+				<!-- / Your popup content -->
+			</div>	
+		</div>
+		<script type="text/javascript">
+			 // Modal 1
+			 $(document).ready(function() {
+			    $('#popup-<?php echo $v2['id']; ?>').slickModals({
+			        
+			      //  popupType: 'delayed',
+			       // delayTime: 0,
+			        scrollTopDistance: 400,
+			        // Popup cookies
+			
+			        // Overlay styling
+			        overlayBg: true,
+			        overlayClosesModal: true,
+			        overlayBgColor: 'rgba(0,0,0,0.4)',
+			        overlayTransitionSpeed: '0.4',
+			        // Background effects
+			        pageEffect: 'scale',
+			        blurBgRadius: '1px',
+			        scaleBgValue: '1',
+			        // Popup styling
+			        popupWidth: '800px',
+			        popupHeight: '600px',
+			        popupLocation: 'center',
+			        popupAnimationDuration: '0.6',
+			        popupAnimationEffect: 'zoomIn',
+			        popupShadowOffsetX: '0',
+			        popupShadowOffsetY: '0',
+			        popupShadowBlurRadius: '30px',
+			        popupShadowSpreadRadius: '0',
+			        popupShadowColor: 'rgba(0,0,0,0.2)',
+			        popupBackground: "#fff",
+			        popupRadius: '0',
+					//popupMargin: '30px',
+					//popupPadding: '30px',
+			        // Responsive rules
+			        responsive: true,
+			        breakPoint: '280px',
+			        mobileLocation: 'center',
+			        mobileWidth: '280px',
+			        mobileHeight: '280px',
+			        mobileRadius: '0',
+			        mobileMargin: '0',
+			        mobilePadding: '20px',
+			        // Animate content
+			        contentAnimate: true,
+			        contentAnimateEffect: 'slideBottom',
+			        contentAnimateSpeed: '0.8',
+			        contentAnimateDelay: '0.4',
+			        // Close and reopen button
+			        addCloseButton: true,
+			        buttonStyle: 'labeled',
+			        enableESC: true,
+			        reopenClass: 'openSlickModal-<?php echo $v2['id']; ?>',
+			        // Additional events
+			        onSlickLoad: function() {
+			           // console.log("Slick is visible");			    
+			         //  $('#popup-1').children().html(1332);
+			        },
+			        onSlickClose: function() {
+			           // console.log("Slick is hidden")
+			        }
+			    });
+					});
+		</script>
+		<?php
+			 } ?>
+			<?php endforeach; ?>
+		
+			    
+	     
+		
+		<script>
+			$(document).ready(function() {
+
+			    // Modal 1
+			    $('#popup-1').slickModals({
+			        // Hide on pages
+			        hideOnPages: [
+			            '/foo/page1/',
+			            '/foo/page2/',
+			            '/foo/page3/'
+			        ],
+			        // Popup type
+			      //  popupType: 'delayed',
+			       // delayTime: 0,
+			        scrollTopDistance: 400,
+			        // Overlay styling
+			        overlayBg: true,
+			        overlayClosesModal: true,
+			        overlayBgColor: 'rgba(0,0,0,0.4)',
+			        overlayTransitionSpeed: '0.4',
+			        // Background effects
+			        pageEffect: 'scale',
+			        blurBgRadius: '1px',
+			        scaleBgValue: '1',
+			        // Popup styling
+			        popupWidth: '800px',
+			        popupHeight: '600px',
+			        popupLocation: 'center',
+			        popupAnimationDuration: '0.6',
+			        popupAnimationEffect: 'zoomIn',
+			        popupShadowOffsetX: '0',
+			        popupShadowOffsetY: '0',
+			        popupShadowBlurRadius: '30px',
+			        popupShadowSpreadRadius: '0',
+			        popupShadowColor: 'rgba(0,0,0,0.2)',
+			        popupBackground: "#fff",
+			        popupRadius: '0',
+					//popupMargin: '30px',
+					//popupPadding: '30px',
+			        // Responsive rules
+			        responsive: false,
+			        breakPoint: '480px',
+			        mobileLocation: 'center',
+			        mobileWidth: '280px',
+			        mobileHeight: '280px',
+			        mobileRadius: '0',
+			        mobileMargin: '0',
+			        mobilePadding: '20px',
+			        // Animate content
+			        contentAnimate: true,
+			        contentAnimateEffect: 'slideBottom',
+			        contentAnimateSpeed: '0.8',
+			        contentAnimateDelay: '0.4',
+			        // Youtube videos
+			        videoSupport: false,
+			        videoAutoPlay: true,
+			        videoStopOnClose: true,
+			        // Close and reopen button
+			        addCloseButton: true,
+			        buttonStyle: 'labeled',
+			        enableESC: true,
+			        reopenClass: 'openSlickModal-1',
+			        // Additional events
+			        onSlickLoad: function() {
+			            console.log("Slick is visible");			    
+			         //  $('#popup-1').children().html(1332);
+			        },
+			        onSlickClose: function() {
+			            console.log("Slick is hidden")
+			        }
+			    });
+			    
+			   			    
+			   			    
+			    
+			    
+			     // Modal 1
+			    $('#popup-3').slickModals({
+			        // Popup type
+			       // popupType: 'delayed',
+			        //delayTime: 0,
+			        scrollTopDistance: 400,
+			        // Popup cookies
+			        setCookie: true,
+			        cookieDays: 30,
+			        cookieTriggerClass: 'setCookie-3',
+			        cookieName: 'slickModal-3',
+			        cookieScope: 'domain',
+			        // Overlay styling
+			        overlayBg: true,
+			        overlayClosesModal: true,
+			        overlayBgColor: 'rgba(0,0,0,0.4)',
+			        overlayTransitionSpeed: '0.4',
+			        // Background effects
+			        pageEffect: 'scale',
+			        blurBgRadius: '1px',
+			        scaleBgValue: '1',
+			        // Popup styling
+			        popupWidth: '800px',
+			        popupHeight: '600px',
+			        popupLocation: 'center',
+			        popupAnimationDuration: '0.6',
+			        popupAnimationEffect: 'zoomIn',
+			        popupShadowOffsetX: '0',
+			        popupShadowOffsetY: '0',
+			        popupShadowBlurRadius: '30px',
+			        popupShadowSpreadRadius: '0',
+			        popupShadowColor: 'rgba(0,0,0,0.2)',
+			        popupBackground: "#fff",
+			        popupRadius: '0',
+					//popupMargin: '30px',
+					//popupPadding: '30px',
+			        // Responsive rules
+			        responsive: false,
+			        breakPoint: '480px',
+			        mobileLocation: 'center',
+			        mobileWidth: '480px',
+			        mobileHeight: '280px',
+			        mobileRadius: '0',
+			        mobileMargin: '0',
+			        mobilePadding: '20px',
+			        // Animate content
+			        contentAnimate: true,
+			        contentAnimateEffect: 'slideBottom',
+			        contentAnimateSpeed: '0.8',
+			        contentAnimateDelay: '0.4',
+			        // Youtube videos
+			        videoSupport: false,
+			        videoAutoPlay: true,
+			        videoStopOnClose: true,
+			        // Close and reopen button
+			        addCloseButton: true,
+			        buttonStyle: 'labeled',
+			        enableESC: true,
+			        reopenClass: 'openSlickModal-3',
+			        // Additional events
+			        onSlickLoad: function() {
+			            console.log("Slick is visible");			    
+			         //  $('#popup-1').children().html(1332);
+			        },
+			        onSlickClose: function() {
+			            console.log("Slick is hidden")
+			        }
+			    });
+
+
+			    
+			   
+			});	           
+	
+		</script>

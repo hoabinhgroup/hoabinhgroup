@@ -1,0 +1,124 @@
+	.list-checkbox-left{
+		float: left;
+		width: 230px;
+		margin: 10px 0px;
+	}
+	.list-checkbox-left li{
+		margin: 10px 0px;
+	}
+.zend_form{  
+background:#fff;  
+width:760px;  
+margin:5px auto;  
+padding:0;  
+overflow:auto;  
+}  
+  
+.zend_form dt{  
+padding:0;  
+clear:both;  
+width:20%;  
+float:left;  
+text-align:right;  
+margin:5px 5px 5px 0;  
+}  
+  
+.zend_form dd{  
+padding:0;  
+float:left;  
+width:78%;  
+margin:5px 2px 5px 0;  
+}  
+  
+.zend_form p{  
+padding:0;  
+margin:0;  
+}  
+  
+.zend_form input, .zend_form textarea{  
+margin:0 0 2px 20px;  
+padding:5px;  
+}  
+.zend_form select{
+	margin-left: 20px;
+}
+  
+.submit{  
+float:right;  
+}  
+  
+.required:before{content:'* '}  
+  
+.optional:before{content:'+ '} 
+
+.tags{
+	width: 600px;
+}
+
+.bg-red, .bg-yellow, .bg-aqua, .bg-blue, .bg-light-blue, .bg-green, .bg-navy, .bg-teal, .bg-olive, .bg-lime, .bg-orange, .bg-fuchsia, .bg-purple, .bg-maroon, .bg-black {
+    color: #f9f9f9 !important;
+}
+.bg-aqua {
+    background-color: #00c0ef !important;
+}
+
+.small-box > .inner {
+    padding: 10px;
+}
+
+.small-box .icon {
+    bottom: 17px;
+    color: rgba(0, 0, 0, 0.15);
+    font-size: 90px;
+    position: absolute;
+    right: 21px;
+    top: 0;
+    z-index: 0;
+}
+
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.small-box > .small-box-footer {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    padding: 3px 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.small-box > .small-box-footer:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);
+    color: #fff;
+}
+
+.small-box p {
+    font-size: 15px;
+}
+.small-box p > small {
+    color: #f9f9f9;
+    display: block;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+.bg-green {
+    background-color: #00a65a !important;
+}
+
+.bg-yellow {
+    background-color: #f39c12 !important;
+}
+
+.bg-red {
+    background-color: #f56954 !important;
+}

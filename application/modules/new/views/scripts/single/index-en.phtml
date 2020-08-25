@@ -1,0 +1,77 @@
+<style>
+			#responsive-video {
+   position: absolute;top:-5px;margin-left: 28px;
+   width:500px;
+   height: 315px;
+}
+		
+		</style>
+		
+		<?php
+			 $bg_style = '';
+	$bg_style.= ($this->link == 'about-us')?"background-image: url('/public/templates/news2017/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;":'';
+	
+	$bg_style.= ($this->link == 'financial-capacity')?"background-image: url('/public/templates/news2017/default/img/deposito-a-plazo.jpg'); background-repeat: no-repeat; background-position: 0px -171px; background-attachment: fixed;":'';
+	
+	$bg_style.= ($this->link == 'core-values')?"background-image: url('/public/templates/news2017/default/img/v-mezhdunarodnyiy-fond-selskohozyaystvennogo-razvitiya-vstupaet-rossiya.jpg'); background-position: 0px -141px;background-attachment: fixed;":'';
+	
+	$bg_style.= ($this->link == 'the-mark-of-development')?"background-image: url('/public/templates/news2017/default/img/6048504789_dc0dbcef0e_b.jpg'); background-position: 0px 0px; background-attachment: fixed;":'';
+		
+			 ?>
+ <div class="bg-header-page" style="<?php echo $bg_style; ?>">
+		   <div class="container"> <div class="row">
+			  	 <h1><?php echo $this->name; ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Intro</a></li>
+  <li class="breadcrumb-item active"><?php echo $this->name; ?></li>
+</ol> 
+		   </div> </div>
+	
+	    </div>
+	    
+	    <div class="container">
+	    <div class="row" id = "news-content">
+	  
+		    
+			<?php echo $this->description; ?>	
+		    
+	   
+	    	
+	    	
+	    	    <div class="container hidden-xs">
+	       <style>
+		       .collapse.in{
+			       display: none !important;
+		       }
+		    </style>
+	   <div class="col-md-10 col-md-offset-1" style="margin-top: 20px;">
+		    <div class="col-md-10 col-md-offset-1">
+	    	  <ul id='review_tab' class="nav nav-tabs" role="tablist">
+                   <li role="presentation" <?php echo ($this->link == 'about-us')?' class="active"':''; ?>><a href="/about-us">About us</a></li>
+                   <li role="presentation" <?php echo ($this->link == 'financial-capacity')?' class="active"':''; ?>><a href="/financial-capacity" aria-controls="travels">Financial Capacity</a></li>
+                    <li role="presentation" <?php echo ($this->link == 'core-values')?' class="active"':''; ?>><a href="/core-values" aria-controls="medias">Core Values</a></li>
+                   <li role="presentation" <?php echo ($this->link == 'the-mark-of-development')?' class="active"':''; ?>><a href="/the-mark-of-development">The mark of development</a></li>
+                                          <li role="presentation" <?php echo ($this->link == 'leadership-team')?' class="active"':''; ?>><a href="/leadership-team">Leadership Team</a></li>
+                                    </ul>
+                                    
+                                    </div>
+	    	</div>
+	    	</div>
+	    	
+	    	</div>
+	    	</div>
+<script>
+	$(document).ready(function() {
+	
+	//$(".comment").shorten();
+	
+	$('.more_des').readmore({
+  speed: 75,
+  lessLink: '<a id="show_more" style="cursor:pointer">Rút gọn</a>',
+  moreLink: '<a id="show_more" style="cursor:pointer">Tìm hiểu thêm</a>',
+  collapsedHeight: 200,
+
+});
+ });
+</script>	    	

@@ -1,0 +1,283 @@
+	<div id="content">
+ <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/1481098142Unibentuyendung.jpg'); background-position: 0px -41px; background-attachment: fixed;">
+		    <div class="container">
+			    <div class="row">
+		 <h1>Job Listings</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">Recruitment</li>
+</ol>	
+			</div>
+			</div>
+	    </div>
+	    <style>
+		    .button-join-ask{
+			    padding-top: 8px;
+			    cursor: pointer;
+		    }
+		    .item-join .panel-title{
+			    color: #000;
+		    }
+		    p{
+			    color: #000;
+		    }
+		  </style>
+	<div class="container">
+		
+	    <div class="row" id = "join-content">
+		    	    
+		    <div class="join-description col-md-8">
+			    <div id="loadding"></div>
+			    <div id="join-info">
+			    	
+			    </div>
+				<span class="clearfix"></span>
+				 <div id="paging" style="margin: 0 auto; display: block">
+              
+            	</div>
+
+		    </div>
+		    
+		      <div class="news-col-right col-md-4">
+				<div class="row">
+			       <div class="col-xs-12 col-md-12">
+			     <div id="join-filter" class="panel panel-default">
+    <div class="panel-heading">Search Recruitment information</div>
+    <div class="panel-body">
+	    <form id="louis-form-search" method="post" action="/recruitment/response">
+	    
+	   <div class="form-group">
+  <input type="text" class="form-control" id="usr" name="keyword" placeholder="Input keywords">
+  	</div>
+  	
+  	<div class="form-group">
+  <select name="work_group" class="form-control" id="sel1">
+	  <option value= "0">Select a category</option>
+	  <?php $group = new Model_Group();
+		  $group = $group->get_details();
+		  foreach($group as $k=>$v):
+		   ?>
+    <option value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+    <?php endforeach; ?>
+
+  </select>
+</div>
+
+	<div class="form-group">
+  <select name="location" class="form-control" id="sel2">
+	  <option value= "0">Select work location</option>
+    <option value= "1">Ha Noi</option>
+    <option value= "2">Da Nang</option>
+    <option value= "3">TP. HCM</option>
+  </select>
+</div>
+
+
+<div class="form-group">
+  <select name="company" class="form-control" id="sel3">
+	  <option value="0">Select Company</option>
+    <option value= "1">Hoa Binh Group</option>
+    <option value= "2">DanangEvents</option>
+    <option value= "3">VietnamEvents</option>
+  </select>
+</div>
+	<input type="submit" value="Search" class="button-join-submit" />
+	<input type="reset" value="Reset" class="button-join-submit" />
+	    </form>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			      </div>
+			    <div class="row">  
+			       <div class="col-sm-12 col-md-12">
+			   
+			     <div id="ul-tags" class="panel panel-default">
+				      <div class="panel-body">
+		<div class="form-group">			      
+    <input type="submit" value="ASK FAQ" class="button-join-ask form-control" />
+		</div>
+		
+	<input type="submit" value="DOWNLOAD APPLICATION CV" class="button-join-ask form-control" />
+	
+				      </div>
+ 
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			         </div>
+			     <div class="row">  
+			       <div class="col-sm-12 col-md-12">
+			     <div id="category-news" class="panel panel-default">
+    <div class="panel-heading">About Hoa Binh Group</div>
+    <div class="panel-body">
+	     <ul class="list-group">
+	    <div id="owl-video" class="owl-carousel owl-theme">	
+	<div class="item">   
+  <li class="list-group-item louis-list-video">
+   <span id="playtube" href="#"></span>
+	   <img style="width: 100%;" src= "<?=TEMPLATE_URL?>/default/img/demo%20web-11.png"/>
+	   <div style="text-align: justify;padding: 15px;">
+	  With passion for the profession of organizing conferences, events, exhibitions and tourism (M.I.C.E); Together with endless efforts and dedication and dedication, we - Hoa Binh Group specialists are working hard every day to provide our customers with the best service with the highest value.
+	   </div>
+   <p style="text-align: justify;padding: 15px;font-style: italic">Quality makes reputation - That is the message Hoa Binh Group wants to send to all customers.</p>
+      </li>
+	</div>
+
+<div class="item">   
+  <li class="list-group-item louis-list-video">
+   <span id="playtube" href="#"></span>
+	   <img style="width: 100%;" src= "<?=TEMPLATE_URL?>/default/img/demo%20web-11.png"/>
+  <div style="text-align: justify;padding: 15px;">
+	  With passion for the profession of organizing conferences, events, exhibitions and tourism (M.I.C.E); Together with endless efforts and dedication and dedication, we - Hoa Binh Group specialists are working hard every day to provide our customers with the best service with the highest value.
+	   </div>
+   <p style="text-align: justify;padding: 15px;font-style: italic">Quality makes reputation - That is the message Hoa Binh Group wants to send to all customers.</p>
+      </li>
+	</div>
+
+  		
+	    </div>
+	    </ul>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			     </div> 
+			  
+		    </div>
+	    	
+	     </div>
+    </div><!--.container-->	
+	</div> 
+<script type="text/javascript">
+	
+						
+	
+	function display_data(response)
+{
+	var data = $.parseJSON(response);
+  //console.log(data); 
+ // return false;
+ 
+  
+    var item = '';
+    if(data['rec'] == ''){
+	 item += '<h3>Không có kết quả!</h3>';
+ 	}
+      $.each( data['rec'], function( key, value ) {
+   
+      
+      item += '<div class="item-join">';
+      item += '<div class="panel-title">';
+      item += '<img src="/public/templates/news2017/default/img/icons/hot-red.png"/> ';
+      item +=  value.title;
+      item += '</div>';
+      item += '<div class="row">';
+      item += '<div class="col-md-10">';
+      item += '<div class="container-fluid">';
+      item += '<div class="panel-body">';
+      item += '<div class="col-md-12">';
+      item += '<p><i class="fa fa-user" aria-hidden="true"></i> <b>Số lượng</b>: '+value.people+' &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-clock-o" aria-hidden="true"></i> <b>Hạn tuyển dụng</b>: '+value.expired+'</p>';
+      item += '<p><i class="fa fa-map-marker" aria-hidden="true"></i> <b>Địa điểm làm việc</b>: '+value.location+'</p>';
+      item += '<p><i class="fa fa-home" aria-hidden="true"></i> <b>Công ty</b>: '+value.company+'</p>';
+      item += '<p><i class="fa fa-newspaper-o" aria-hidden="true"></i> <b>Nhóm ngành nghề</b>: '+value.work_group+'</p>';
+      
+      item += '</div>';
+      item += '</div>';
+      item += '</div>';
+      item += '</div>';
+      item += '<div class="col-md-2"><div class="button-join"><a style="color:#05235F" href="/tuyen-dung/'+value.ident+'.html">XEM CHI TIẾT</a></div></div>';
+      item += '</div>';  //row
+   
+      item += '</div>';   //.panel-title
+      item += '</div>';  // .item-join
+    
+});
+	
+ $('#join-info').html(item); 
+ console.log(data['paging']);
+ // Thay đổi nội dung phân trang
+  $('#paging').html(data['paging']);
+
+}	 
+	
+	
+	var current = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+if($.isNumeric(current) == true){
+	current_page = current;
+}else{
+	current_page = 1;
+}
+
+	 $.ajax({
+    type: "POST",
+    url: '/recruitment/response',
+    data: {page: current_page},
+    success: function(response)
+    {	  
+	    loader.show();
+	   // $('#join-info').html('');
+	// console.log( response);
+	    // alert(1);            
+    	display_data(response);
+		loader.hide();
+    }
+    
+    
+});
+
+
+$('.join-description').on('click','#paging a', function ()
+             {
+                loader.show();
+                 var url = $(this).attr('href');
+                 var current = url.substring(url.lastIndexOf('/') + 1);
+                 if($.isNumeric(current) == true){
+				 page = current;
+				}else{
+				 page = 1;
+				 }
+                  //return false;
+           
+                 $.ajax({
+                     url : '/recruitment/response',
+                     type : 'POST',
+                   //  dataType : 'json',
+                     data: {page: page},
+                     success : function (result)
+                     {
+	                 loader.hide();
+                     	 	display_data(result);
+                              
+                             // Thay đổi URL trên website
+                             window.history.pushState({path:url},'',url);
+
+                        
+                     }
+                 });
+                 return false;
+             });
+             
+      var frmSearch = $('#louis-form-search');
+    frmSearch.submit(function (ev) {
+	    loader.show();
+	    ev.preventDefault();	   
+	           $.ajax({
+            type: frmSearch.attr('method'),
+            url: frmSearch.attr('action'),
+            data: frmSearch.serialize(),
+            success: function (data) {
+	           
+               // console.log(data);
+				 display_data(data);
+				  // $(this).fadeOut('fast');
+				  loader.hide();
+                
+              
+            }
+        });
+
+        
+    });        
+             
+	</script>

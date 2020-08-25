@@ -1,0 +1,39 @@
+<div id="middlecol" class="span8 sidebar_left">
+	<div class="inside">
+		<div class="item-page">
+		
+				<div class="span12">
+				
+
+
+					<div class="travel-list">
+					
+   <?php
+	      echo $this->message;
+	    foreach($this->paginator as $val): 
+	    ?>
+   
+	<div class="travel-item">
+	<?php  $src= $this->Image()->getFirstImageContent($val['description']); ?>
+	<div class="travel-image"><a title="<?=$val['name']?>" href="/news/<?=$val['ident']?>.html"><img src="<?=$src?>" width="280px" /></a></div>
+	 <h3 class="mod-title" style="height: 10px;display: block;"><span class="travel-title"><a style="color: #005580;" title="<?=$val['name']?>" href="/news/<?=$val['ident']?>.html"><?php echo $this->String()->cut_string($val['name'],'38','...'); ?></a></span></h3>
+	 <span class="travel-description"><?php echo $this->String()->cut_string($val['shortDescription'],'230','...'); ?></span>
+	</div>
+	<div style="clear:both;"></div>
+	<?php endforeach; ?>
+					
+					
+					<?php echo $this->paginationControl($this->paginator,
+     'Sliding',
+     'pagination-control.phtml'); 
+   
+     ?>
+     </div>
+				</div>
+			
+	
+		</div>
+		
+	</div>
+	
+</div>	

@@ -1,0 +1,257 @@
+ <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/v-mezhdunarodnyiy-fond-selskohozyaystvennogo-razvitiya-vstupaet-rossiya.jpg'); background-position: 0px -101px;background-attachment: fixed;">
+<style>
+	.liststars .rating-text{
+		position: relative !important;
+	}
+	
+</style>	 
+	 
+		    <div class="container"> 
+			    <div class="row">
+		 <h1> <?php echo $this->menu_content->name; ?> </h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/"><?php echo $this->translate('home'); ?></a></li>
+  <li class="breadcrumb-item"><a href="#"><?php echo $this->translate('news'); ?></a></li>
+  <li class="breadcrumb-item active"><?php echo $this->menu_content->name; ?></li>
+</ol>
+	</div> 
+			</div>
+	    </div>
+	    <div class="container">
+	    <div class="row" id = "news-content">
+		   <div class="news-description col-md-8"> 
+			   <?php if(count($this->paginator) > 0){ ?>
+			   <?php foreach($this->paginator as $val):  ?>
+			    <?php   $news = new New_Model_ProductImage();
+		    $full = $news->get_one_where(array('productId' => $val['id']));
+
+	   if (null == $full){
+		   $image =  $this->Image()->getFirstImageContent($val['description']);
+	   }else{
+		 
+		  $image = '/public/images/news/'.$val['id'].'/'.$full['full'];
+	   }
+	     
+	   
+	    $db = Zend_Db_Table::getDefaultAdapter();
+	     $select = "select t.name, t.ident from tags as t inner join product_tags as p on t.id = p.tag_id where product_id = '".$val['id']."'";
+	   $tags_result = $db->fetchAll($select);
+	   ?>
+		     <div class="item-new">
+			 		<div class="col-md-1 hidden-xs">&nbsp;</div>
+		       	    <div class="col-md-11 border-timline">
+			       	 <div class="row">
+			    <div class="panel-body">
+					<a class="cover-crop" href="/<?php echo $this->translate('news_link'); ?>/<?=$val['ident']?>.html"><img alt="<?=$val['name']?>" class="cover img-responsive" src="<?=$image?>" alt=""/></a>
+					<div class="time-event">
+						<span class="time">
+	<?php if($this->lang == 'en'){ ?>
+			<?php echo date('W F',$val['date']); ?>
+	<?php }else{ ?>
+						<?php echo date('d',$val['date']); ?> th.<?php echo date('m',$val['date']); 
+							}
+						?> </span>
+						<span class="circle"></span>
+					</div>
+					<h3><a href="/<?php echo $this->translate('news_link'); ?>/<?=$val['ident']?>.html"><?=$val['name']?></a></h3>
+					<p><?php echo $this->String()->cut_string(strip_tags($val['shortDescription']),'230','...'); ?></p>
+				<style>
+					.do_you_like{
+						float: left;
+					}
+					.stars{
+						float: right;
+						width: 40px;
+						 margin-left: 10px;
+						 margin-top: 5px;
+					}
+					#text_like{
+						float: left;
+					}
+					.rating-text{
+						    position: absolute;
+							top: 0px;
+							left: 134px;
+					}
+				</style>	
+					<p>
+						<span class="col-md-12 panel-extra">
+						<span class="col-md-8">
+							<span class="do_you_like"><?php echo $this->translate('do_you_like'); ?> ?  <span class="stars" data-id="<?=$val['id']?>" data-title="Like bài này"></span> </span>   &nbsp;&nbsp;|&nbsp;&nbsp;  <i class="fa fa-eye" aria-hidden="true"></i> <?php echo $val['views']; ?> <?php echo $this->translate('view'); ?>
+						</span>
+						
+						<span class="more col-md-4"><a href="/<?php echo $this->translate('news_link'); ?>/<?=$val['ident']?>.html"><?php echo $this->translate('more'); ?></a>
+						</span>
+					</p>
+				
+					</div>
+					
+				     
+				<div class="panel-footer">&nbsp;</div>
+					</div>
+			 
+		       	    </div>
+		      </div><!--.item-new--> 
+		       <?php endforeach; ?>
+		     
+		    <?php echo $this->paginationControl($this->paginator,
+     'Sliding',
+     'pagination-control.phtml'); 
+   
+     ?>
+	 				<?php }else{ ?>
+	 				<style>
+	 				#no_result{
+		 				margin-top: 100px;
+	 				}
+	 				</style>
+		   <div class="row">
+			   <div class="col-md-12">
+				   <div id="no_result">
+				   	Không tìm thấy kết quả nào!
+		   	</div>
+		   		</div>
+		   </div>
+	 				<?php } ?>
+		     <div style="clear:both;"></div>
+		    </div>
+		   
+		    <div class="news-col-right col-md-4">
+			    
+			    <div class="row">
+			     <div class="col-sm-12 col-md-12">
+        <form class="form-louis" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control form-text-louis" placeholder="Tìm kiếm" name="q">
+            <div class="input-group-btn">
+                <button id="search" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search big"></i></button>
+            </div>
+        </div>
+        </form>
+				</div>
+			     </div>
+			    
+			    <div role="tabpanel" class="tabs-support">
+						
+						
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="home"><p style="text-align: center; font-size: 1.1em; font-weight: bold; text-transform: uppercase; background-color: #ffcf01; padding: 5px; color: #000;"><?php echo $this->translate('support'); ?></p>
+<p style="font-size: 1.2em; margin-top: 15px; text-transform: uppercase; text-align: center; font-weight: bold;">&nbsp;&nbsp;&nbsp;<?php echo $this->translate('hanoi'); ?>: <span style="color: #ffffff;"><a style="color: #ffffff;" href="tel:0913311911">0913.311.911</a></span></p>
+<p style="font-size: 1.2em; margin-top: 15px; text-transform: uppercase; text-align: center; font-weight: bold;"><?php echo $this->translate('danang'); ?>: <a style="color: #fff;" href="tel:0913186829">0913.186.829</a></p>
+</div>
+								
+							</div>
+						</div>
+			    
+			    <div class="row">
+			      <div class="col-sm-12 col-md-12">
+			     <div class="panel panel-default">
+    <div class="panel-heading"><?php echo $this->translate('care_article'); ?></div>
+    <div class="panel-body">
+	    <?php if(count($this->beInterested) > 0){ ?>
+	    <ul class="list-group">
+		    <?php foreach($this->beInterested as $key=>$val): ?>
+  <li class="list-group-item louis-list-item">
+      <a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $val['ident']; ?>.html"><img alt="<?=$val['name']?>" class="img-responsive" src="/public/images/news/<?php echo $val['id']; ?>/<?php echo $val['full']; ?>" /></a>
+      <p><a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $val['ident']; ?>.html"> <?php echo $val['name']; ?> </a>
+      		<?php if($this->lang == 'en'){ ?>
+      	 <span class="time"><?php echo date('m',$val['date']); ?> / <?php echo date('d',$val['date']); ?>/ <?php echo date('Y',$val['date']); ?>
+      	 - <span style="color: #d3d3d3"><?php echo $val['votes']; ?> likes</span>
+      	 </span>	      <?php }else{ ?>
+	      <span class="time"><?php echo date('d',$val['date']); ?> tháng <?php echo date('m',$val['date']); ?>, <?php echo date('Y',$val['date']); ?> - <span style="color: #d3d3d3"><?php echo $val['votes']; ?> lượt thích</span>
+	         
+	       </span> 
+	      
+	      <?php } ?>
+      </p>
+      <div style="clear:both"></div>
+  </li>
+  <?php endforeach; ?>
+
+  		</ul>
+  		<?php } ?>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			     </div>
+			     <div class="row">
+			       <div class="col-sm-12 col-md-12">
+			     <div id="category-news" class="panel panel-default">
+    <div class="panel-heading"><?php echo $this->translate('article_cat'); ?></div>
+    <div class="panel-body">
+
+	    <ul class="list-group">
+		  <?php foreach($this->categories as $menu): ?>
+  <li class="list-group-item louis-list-category <?php echo ($this->link == $menu['link'])?'active':''; ?>">
+    <a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $menu['link']; ?>"> <span style="text-transform: uppercase;"><?php echo $menu['name']; ?></span></a> 
+  </li>
+  <?php endforeach; ?>
+
+
+
+  		</ul>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			     </div>
+			     <?php echo $this->VideoWidget(); ?>
+			     <div class="row">
+			       <div class="col-sm-12 col-md-12">
+			     <div id="category-tags" class="panel panel-default">
+   <!-- <div class="panel-heading"><?php echo $this->translate('keywords'); ?></div>-->
+    <div class="panel-body">
+	    <ul class="list-group">
+	    	<a target="_blank" href="http://hoabinhevents.com"><img width="100%" src="/public/images/7533626739771635315.gif" /></a>
+	    </ul>
+    </div>
+   <!-- <div class="panel-footer">Panel Footer</div>-->
+				</div>
+			      </div>
+			      </div>
+		    </div>
+	    	
+	    	</div>
+	    </div>
+	   <?php  /* $url = "https://graph.facebook.com/?fields=og_object{likes.limit(0).summary(true)},share&ids=http://timnhanh360.com/tin-tuc/hoi-nghi-ban-le-cua-dior.html"; 
+		   $json = file_get_contents($url);
+		   $dom = new Zend_Dom_Query($json);
+		 echo "<pre>";
+		 print_r($dom);
+		 echo "</pre>";
+		 */
+		  //$json = file_get_contents($url);
+		  //$json_output = json_decode($dom); 
+		
+		
+		   
+	   ?> 
+	  	
+	  	 <script type="text/javascript">
+            $(document).ready(function(){ 
+
+		//start plugin with settings
+                $(".stars").rating({  
+	                php : '/rating/admin/php/manager.php',    //path to manager.php file relative to HTML document. Not required in Display-only and Database-free modes.
+                    skin    : '/rating/skins/hurt_3.png|/rating/skins/hurt_1.png|/rating/skins/hurt_2.png',      //path to skin file relative to HTML document
+                    stars                : 1,         //number of stars
+                    enable             : true,      //enable/disable mouse
+                    textlocation      : 'text_like',      //'top', 'bottom' or ID of the dom element
+                    textloading      : '...xin chờ',      //text on stats loading
+                    textmain          : '%v',      //main text, shown then stats are loaded
+                    tooltip          : false,      //show tooltip on mouse over: true,false, 'mobile', 'desktop'
+                    texthover         : '',      //text shown on mouse move in format 'txt1|txt2|txt3|...|txtN'. Which part of this text will be shown depends on pointed value
+                    textthanks       : '',      //text shown on user vote
+                    debug             : false      //if true - debug mode will be enabled
+                    
+            
+                });                 
+
+      });
+      
+	           
+        
+    </script>   
+	    

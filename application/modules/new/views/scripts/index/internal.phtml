@@ -1,0 +1,132 @@
+<div class="bg-header-page" style="background-image: url('/public/templates/news2017/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;">
+		   <div class="container"> <div class="row">
+			  	 <h1>Bản tin Hòa Bình Group</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+  <li class="breadcrumb-item active">Bản tin</li>
+</ol> 
+		   </div> </div>
+	
+	    </div>
+	 <style>
+#category-news{
+	margin-top: 20px;
+}
+
+#content_temp{
+	margin-top: 20px;
+}
+
+.louis-list-category a{
+	padding: 25px 23px;
+    border-radius: 50%;
+    font-size: 1.8em;
+    text-decoration: none;
+    background: #f1f1f1;
+}
+
+#owl-news{
+	padding: 25px 25px 25px 50px;
+}
+
+.louis-list-category a:hover{
+	background: #FDD300;
+}
+
+.louis-list-category a.active{
+	background: #FDD300;
+}
+
+a.right.carousel-control{
+	margin: 0px;
+	top: 30px;
+    right: -30px;
+}
+
+a.left.carousel-control img{
+	position: relative;
+    left: 50px;
+    top: -40px;
+}
+
+
+	 </style>
+<div class="container">
+			<div class="row">
+			<div id="col_list_menu" class="">
+				<div id="category-news" class="panel panel-default">
+				
+					<div class="panel-body">
+				
+						<ul id="owl-news" class="list-inline owl-carousel owl-theme">
+							<?php
+								$loop = 0;
+					 foreach($this->result as $key=>$value): $loop++; ?>
+							<li class="item list-group-item louis-list-category"> <a class="item_<?php echo $loop; ?>" <?php echo (($loop == 1)?" class='active'":""); ?> data="<?php echo strip_tags($value['description']); ?>" style="cursor: pointer" onClick="viewTemplate(this);" > <?php echo str_replace(array('Bản tin Hoabinh Group số',"Bản tin Hòa Bình Group số"," - 2019"," - 2017"," - 2018"),"",$value['name']); ?> </a><?php echo ($loop == 1)?'<img style="height: 25px !important; width: auto !important;position: absolute;top: -5px;right: 0px;" src="/public/img/new2.gif">':''; ?> </li>
+							
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+				<div id="content_temp" class="embed-responsive">
+					
+				</div>
+				
+				
+			</div><!-- .row -->	
+			</div><!-- .row -->
+								
+	</div><!-- end container -->
+			
+			<script type="text/javascript">
+				
+			
+				
+				function viewTemplate(o){
+					var value = $(o).attr('data');
+					console.log(value);
+					$('#content_temp').html('<iframe class="embed-responsive-item" src="'+value+'" height="900" width="1100"></iframe>');
+					//$(o).parent().removeClass('list-inline').addClass('list-group');
+					//$('#category-news').addClass('col-md-4');
+				$(".list-group-item a").removeClass("active");
+					$(o).addClass("active");
+					$('#content_temp').css('height','1000px').addClass('embed-responsive-16by9').css('margin-bottom','20px;');
+					//$('.louis-list-category').css('width','100%').addClass('text-center').css('margin-bottom','3px');
+				}
+				viewTemplate($(".item_1"));	
+				
+				$(document).ready(function(){
+
+   $("#owl-news").owlCarousel({
+   	 nav : true,
+     items : 8,
+     navText: ['<a class="left carousel-control" data-slide="prev"> <img src="http://hoabinh-group.com/public/templates/news2017/default/img/btn-l.png" /> </a>','<a data-slide="next" class="right carousel-control"><img src="http://hoabinh-group.com/public/templates/news2017/default/img/btn-r.png" /></a>'],
+      autoplay :false,
+      smartSpeed:100,
+	  autoplayHoverPause :true,
+	  responsiveRefreshRate: true,
+	  responsiveClass: true,
+	  responsive : {
+          0 : {
+              items: 1,
+          },
+          768 : {
+              items: 3
+          },
+          960 : {
+              items: 8,
+              nav: true
+          }
+       
+      }
+   
+	  
+  });
+  });
+				
+			</script>

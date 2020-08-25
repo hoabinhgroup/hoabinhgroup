@@ -1,0 +1,173 @@
+  <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;">
+		 <h1><?php echo $this->menu->name; ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Giới thiệu</a></li>
+  <li class="breadcrumb-item active"><?php echo $this->breadcrum; ?></li>
+</ol>
+	    </div>
+	    <div class="row" id = "news-content">
+	       <div class="review-content">
+		   <div id="bg-tabs-detail">
+			            <div class="gallery">
+                                    <div class="title-louis-gallery center"> <?php echo $this->menu->name; ?></div>
+									<div class="underline"></div>
+									<div class="des-louis text-center">Hòa Bình Group - đem đến giải pháp trong mọi lĩnh vực</div>
+                                    <!-- Tab panes -->
+                                 
+			                     </div>
+			   <div class="container">
+			   	<div class="row">
+			   		&nbsp;
+			   	</div><!-- .row -->
+			   </div><!-- .container -->                  
+	          <div class="row">
+		          <div id="galleries">
+			           <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+				            <div class="gallery-content">
+			
+			 <div class="row">
+			<?php 
+				
+				$stt = 0;
+				$albums = array();
+			
+				foreach($this->menus as $key=>$val): $stt++;
+				$albums[] = array(
+					'src' => '/public/images/backgrounds/'.$val['full'],
+					'w' => '1200',
+					'h' => '800'
+				);
+				 ?>	
+			<div class="col-md-3" style="margin-bottom: 30px; height: 162px; overflow: hidden">  
+			   <a href="#" data-item="<?php echo $stt - 1; ?>" class="conference_view"> <img class="" class="img-c" style="width: 100%" src="/public/images/backgrounds/<?php echo $val['full']; ?>" /></a>
+			
+			 </div>
+			<?php echo ($stt%4==0)?'</div><div class="row">':''; ?>
+			
+			<?php endforeach; 
+				
+				//echo json_encode($albums);
+			?>
+
+			
+
+			
+		  
+				            </div>
+					    </div>   		           
+		          </div><!-- #galleries-->
+	          </div>                  
+            
+             
+
+                                
+			</div>	
+		  
+			 </div>		    	
+	    	</div>
+	    </div>
+	
+
+		
+	
+	<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+var openPhotoSwipe = function(index) {
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+
+    // build items array
+    var items = <?php echo json_encode($albums); ?>;
+    
+    // define options (if needed)
+    var options = {
+             // history & focus options are disabled on CodePen  
+      //  index: index,      
+        history: false,
+        focus: false,
+
+        showAnimationDuration: 1,
+        hideAnimationDuration: 1
+        
+    };
+    
+    var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+    gallery.init();
+    gallery.updateSize(true);
+    gallery.goTo(index);
+    
+};
+
+//openPhotoSwipe();
+
+$(".conference_view").on('click', function(){
+	openPhotoSwipe(parseInt($(this).attr('data-item')));
+});
+</script>	

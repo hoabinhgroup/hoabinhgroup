@@ -1,0 +1,209 @@
+#bg-tabs{
+	background: #072966 url('../img/bg-hbg 800-01.png') no-repeat top center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+#bg-tabs-detail{
+	background: #072966 url('../img/bg-hbg 800-01.png') no-repeat top center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    padding: 0px 20px;
+    width: 100%;
+    height: 120px;
+    margin-bottom: 20px;
+}
+.des-louis{
+	text-align: center;
+}
+
+#gallery_tab{
+	background: transparent;
+    position: absolute;
+    left: 50%;
+    margin-left: -260px;
+    margin-top: 10px;
+	
+}
+
+#gallery_tab li{
+	list-style-type: none;
+	width: 200px;
+	float: left;
+	text-align: center;
+	font-size: 23px;
+	
+	padding-bottom: 15px;
+	text-decoration: none;
+}
+
+
+#gallery li.active{
+	text-decoration: none;
+}
+
+#gallery_tab > li > a{
+	display: inline-block;
+    background: url('../img/arr-01-02.png') no-repeat bottom;
+    background-size: 100%;
+    width: 100%;
+    height: 42px;
+    padding-bottom: 15px;
+    border-bottom: none;
+    color: #FCD200;
+}
+
+#gallery_tab > li.active > a{
+ 	display: inline-block;
+    background: url('../img/arr-01-01.png') no-repeat bottom;
+    background-size: 100%;
+    width: 100%;
+    height: 46px;
+    padding-bottom: 15px;
+    border-bottom: none;
+    color: #FCD200 !important;
+	}
+	
+	
+	
+
+#gallery_tab li:first-child a{
+  
+}
+
+#gallery_tab li > a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+
+#gallery_tab li > a:visited{
+	color: #fff;
+	text-decoration: none;
+	
+}
+
+#gallery_tab li > a:focus{
+	color: #FCD200;
+	text-decoration: none;
+	
+}
+
+.medium-gallery-bg{
+	background: url('../img/bg-doi-ngu-lanh-dao1.png') no-repeat top center;
+    background-size: 100%;
+    height: 222px;
+    width: 240px;
+    margin-right: 30px;
+    padding: 0px;
+    overflow-x: hidden;
+    margin-bottom: 30px;
+    border: 2px solid #06006D;
+    border-bottom: 2px solid #FCD200;
+}
+
+.medium-gallery-bg-detail{
+	background:#0B2659;
+    background-size: 100%;
+    height: 222px;
+    width: 240px;
+    margin-right: 30px;
+    padding: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin-bottom: 30px;
+    border: 2px solid #06006D;
+    border-bottom: 2px solid #FCD200;
+}
+
+.medium-gallery-bg-detail-nobottom{
+	background:#0B2659;
+    background-size: 100%;
+    width: 240px;
+    margin-right: 30px;
+    padding: 0px;
+    overflow-x: hidden;
+    margin-bottom: 30px;
+    border: 2px solid #06006D;
+    border-bottom: 2px solid #FCD200;
+}
+
+.med-ld{
+	width: 150px;
+    height: auto;
+}
+
+.medium-gallery-bg .name{
+	display: block;
+	text-align: center;
+	margin-top: 3px;
+	font-weight: bold;
+}
+
+.medium-gallery-bg .title-album{
+	display: block;
+	text-align: center;
+	font-weight: bold;
+}
+
+.medium-gallery-bg img{
+	/* height: 170px; */
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.medium-gallery-bg-detail .name{
+	display: block;
+	text-align: center;
+	margin-top: 5px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.medium-gallery-bg-detail .title-album{
+	display: block;
+	text-align: center;
+	font-weight: bold;
+}
+
+.medium-gallery-bg-detail img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.medium-gallery-bg-detail a{
+	    height: 172px;
+    overflow: hidden;
+    display: block;
+}
+
+.medium-gallery-bg-detail-nobottom img{
+	height: auto;
+	width: 100%;
+}
+
+
+.gallery-content{
+	margin-top: 70px;
+	height: 560px;
+}
+
+#galleries{
+	width: 1260px;
+	margin: 0 auto; 
+}
+
+#galleries div{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#galleries .medium-gallery-bg{
+	overflow: hidden;
+}

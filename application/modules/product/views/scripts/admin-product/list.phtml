@@ -1,0 +1,64 @@
+	<div class="row">
+
+									<div class="col-xs-12">
+										<h3 class="header smaller lighter blue">Quản lý Tours</h3>
+									
+<?php
+if($this->products != null) {
+?>
+										<div class="table-responsive">
+											<table id="product_table" class="table table-striped table-bordered table-hover">
+												<thead>
+													<tr>
+														<th class="center">
+															<label>
+																<input type="checkbox" class="ace" />
+																<span class="lbl"></span>
+															</label>
+														</th>
+														
+														<th>Tên sản phẩm</th>
+														<th>Giá</th>
+														<th>Miêu tả</th>
+														<th class="center sorting_disabled">Link</th>
+													</tr>
+												</thead>
+
+												<tbody>
+				<?php echo $this->partialLoop('_product-row.phtml', $this->products); ?>																						
+
+												</tbody>
+											</table>
+										</div>
+	<?php }else{?>
+<p>Bạn chưa có sản phẩm nào!</p>
+<?php }?>									
+										
+									</div>
+								</div>
+	<br/>
+	<a class="btn btn-info btn-sm" href='/<?=ADMIN?>/product/create'>Thêm sản phẩm mới</a>								
+		<script type="text/javascript">
+			jQuery(function($) {
+				var oTable1 = $('#product_table').dataTable( {
+				"aoColumns": [
+			      { "bSortable": false },
+			      null, null,null,
+				  { "bSortable": false }
+				] } );
+				
+				
+				
+				$('table th input:checkbox').on('click' , function(){
+					var that = this;
+					$(this).closest('table').find('tr > td:first-child input:checkbox')
+					.each(function(){
+						this.checked = that.checked;
+						$(this).closest('tr').toggleClass('selected');
+					});
+						
+				});
+			
+			
+			})
+		</script>				

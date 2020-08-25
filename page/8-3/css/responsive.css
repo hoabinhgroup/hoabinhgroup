@@ -1,0 +1,51 @@
+@media screen and (max-device-width: 480px) {
+	body{
+		overflow: hidden;
+		width: 100%;
+	}
+	#muachung{
+		background-size: contain;
+		height: 100px;
+		margin-bottom: 0px;
+	}
+	.google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+      .header-top-bar{
+		             position: fixed;
+					 top: 0;
+					 left: 0;
+					 z-index: 9999;
+
+	            }
+    #open_menu_mobile{
+	        margin-top: 40px;
+			margin-bottom: -20px;
+    }
+    #main-menu-mobile{
+	    margin-top: 10px;
+    }
+}
+
+@media only screen and (min-width : 1624px) {
+	.social a {
+		font-size:38px!important;
+		margin-right:20px!important;
+	}
+	
+	.social {
+		margin-left:-180px!important;
+		width:390px!important;
+		margin-top:0!important;
+	}
+}

@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="author" content="Super User">
+  <?php echo $this->headTitle() ?>
+  <?php echo $this->headMeta() ?>       
+    <?php echo $this->headLink() ?>  
+
+<link type="text/css" rel="stylesheet" id="arrowchat_css" media="all" href="/arrowchat/external.php?type=css" charset="utf-8" />
+<script type="text/javascript" src="/arrowchat/includes/js/jquery.js"></script>
+<script type="text/javascript" src="/arrowchat/includes/js/jquery-ui.js"></script>
+   <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/font-awesome.css" type="text/css">
+   
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/iceshortcodes.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/jquery-ui.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/template_002.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/solidres.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/template_responsive.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/flexslider.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/main.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/template.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/mod_kweather.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/owl/owl.carousel.css" type="text/css">
+  <link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/owl/owl.theme.css" type="text/css">
+
+ 
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery.min.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery-noconflict.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery-migrate.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/noconflict.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/site.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery.cookie.js" type="text/javascript"></script>
+ 
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery.validate.min.js" type="text/javascript"></script>
+
+  <script src="<?=TEMPLATE_URL?>/default/js/caption.js" type="text/javascript"></script>
+<script src="<?=TEMPLATE_URL?>/default/js/bootstrap.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/template.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery.stellar.min.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery.peelback.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/responsiveslides.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery.flexslider-min.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/mootools-core.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/core.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/owl/owl.carousel.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/jquery.livequery.js" type="text/javascript"></script>
+  <script src="/public/js/tagcanvas.min.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/moment.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/livestamp.min.js" type="text/javascript"></script>
+  <script src="<?=TEMPLATE_URL?>/default/js/gen_validatorv4.js" type="text/javascript"></script>
+
+
+  
+
+
+<link id="stylesheet" rel="stylesheet" type="text/css" href="<?=TEMPLATE_URL?>/default/css/style4.css">
+<link id="stylesheet_responsive" rel="stylesheet" type="text/css" href="<?=TEMPLATE_URL?>/default/css/style4_responsive.css">
+
+
+<link rel="stylesheet" type="text/css" href="<?=TEMPLATE_URL?>/default/css/custom.css">
+
+<style type="text/css" media="screen">
+
+/* Custom background Image on footer */
+body {
+	background-color: #ffffff;
+	
+	}
+
+/* IceMegaMenu */
+#mainmenu_wrapper {
+	position:absolute;
+}
+
+#mainmenu_wrapper #mainmenu {
+	box-shadow:0 0 12px rgba(0,0,0,.15);
+	border-top:none;
+	border-bottom:none;
+	margin-bottom:0;
+}
+	
+#content #sidebar { 
+	margin-top:-150px;
+}
+
+#content #sidebar:before {
+	display:block;
+}
+			
+	
+
+</style>
+
+
+<!-- Google Fonts -->
+<link href="<?=TEMPLATE_URL?>/default/css/css.css" rel="stylesheet" type="text/css">
+
+
+<!--[if lte IE 9]>
+	<link rel="stylesheet" type="text/css" href="/it_thelodge3/templates/it_thelodge3/css/ie9.css" />
+<![endif]-->
+
+<!--[if lte IE 8]>
+    <link rel="stylesheet" type="text/css" href="/it_thelodge3/templates/it_thelodge3/css/ie8.css" />
+    <script src="/it_thelodge3/media/jui/js/html5.js"></script>
+    <script src="/it_thelodge3/templates/it_thelodge3/js/respond.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script>  
+if(Function('/*@cc_on return document.documentMode===10@*/')()){
+    document.documentElement.className+=' ie10';
+}
+var b = document.documentElement;
+b.setAttribute('data-useragent', navigator.userAgent);
+b.setAttribute('data-platform', navigator.platform);
+</script>
+<!--<![endif]-->  
+
+<style type="text/css">
+
+/* IE10 hacks. add .ie10 before */
+.ie10 ul#ice-switcher,
+html[data-useragent*='rv:11.0'] ul#ice-switcher {
+	padding-right:20px;}  
+	.ie10 ul#ice-switcher:hover,
+	html[data-useragent*='rv:11.0'] ul#ice-switcher:hover {
+		padding-right:35px}
+
+.ie10 ul#ice-switcher li.active a,
+.ie10 ul#ice-switcher li a:hover{
+	padding-top:0;
+	padding-bottom:0}
+					
+.ie10 ul#ice-switcher li a span,
+html[data-useragent*='rv:11.0'] ul#ice-switcher li a span {
+	padding-left:30px;}
+	
+.ie10 #gotop .scrollup,
+html[data-useragent*='rv:11.0'] #gotop .scrollup {
+	right:40px;}
+
+</style>
+
+
+
+
+   
+</head>
+
+<body class="hasJS"> 
+
+      
+	    
+    
+    <header id="header" class="clearfix">    
+         
+		<div class="container">
+        
+        	<div class="row-fluid">
+	        	
+	        <div id="logo" class="span4" style="text-align: left;">	
+					<a href=""><img class="logo" src="http://www.dulichhoabinh.com/wp-content/themes/touris/images/logo%20%20hbgroup.png" alt="Logo" width="160px"></a> 
+					<div style="border-bottom: 1px dashed #d9d9d9;margin-top:10px;width:43%;"></div>
+					
+					<i style="color:#6091CA">Quality makes reputation  </i>     	
+                </div>	
+	        	
+              <div class="span4">	
+                	
+<div id="weather_k1_id541" class="weather_k1" style="margin-left: -140px">
+
+	<!--<img src="/public/images/sp3.png"  />-->
+
+	
+
+    <div id="owl-demo" class="owl-carousel owl-theme" style="height:117px; overflow:hidden">
+     
+      <div class="item"><img src="/public/images/sp3.png" alt="The Last of us"></div>
+      <div class="item"><img src="http://dulichonline.info/wp-content/uploads/2012/09/Travel_Banner_dulichonline.jpg" alt="GTA V"></div>
+     
+    </div>
+
+
+</div>
+
+
+      	
+                </div>
+                 
+       <style>
+	       #facebook_share_button{
+		       background-image: url("/public/images/20130227-Figure4-ShareThis-ButtonStyles.jpg");
+		        background-position: -84px 183px;
+				display: block;
+				position: absolute;
+				left: 6px;
+			
+	       }
+	        #twitter_share_button{
+		       background-image: url("/public/images/20130227-Figure4-ShareThis-ButtonStyles.jpg");
+		        background-position: -115px 183px;
+				display: block;
+				position: absolute;
+			left: 6px;
+	       }
+	         #google_share_button{
+		       background-image: url("/public/images/20130227-Figure4-ShareThis-ButtonStyles.jpg");
+		        background-position: -208px 183px;
+				display: block;
+				position: absolute;
+			left: 6px;
+	       }
+	        #mail_share_button{
+		       background-image: url("/public/images/20130227-Figure4-ShareThis-ButtonStyles.jpg");
+		        background-position: -238px 183px;
+				display: block;
+				position: absolute;
+			left: 6px;	
+	       }
+	   </style>    
+                                
+                 
+                
+                                <div id="header_right" class="span4">	
+                   
+                    					<div id="header_contact">
+                       <div id="topmenu" style="text-align: right;">
+                        <ul class="nav menu">
+	                        <li id="facebook_share_button"><a target="_blank" href="https://www.facebook.com/Hoabinhtouristgroup">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	                        <li id="twitter_share_button"><a target="_blank" href="https://twitter.com/hoabinhtourist">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	                        <li id="google_share_button"><a href="">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	                        <li id="mail_share_button"><a href="mailto:ops@hoabinhtourist.com">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+&nbsp;</ul>
+   
+                    </div>   		
+
+<div class="custom" style="font-family:'Caviar Dreams Regular';margin: 10px 0px 0px 0px;padding: 5px 0px; font-size: 1.4em; color: red;">
+	<p><span class="icon-phone" style="font-size: 1.3em; line-height: 24px;padding-right: 24px;">&nbsp;</span>Hotline: 098 98 98 198</p>
+	<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;091 33 11 911</p></div>
+    
+					</div>
+                                       
+                         
+                                       
+                                        <div id="language">
+						<div class="mod-languages">
+
+	
+
+</div>
+ 
+                    </div>
+                                             	
+                </div>
+                 			
+            </div>  
+            
+            <div id="mainmenu_wrapper">
+            
+				                <div id="search">
+                
+                    <a href="#searchModal" class="search_icon" data-toggle="modal" title="Search our website"><span class="icon-search"></span><span style="display:none">Search our website</span></a>
+                     
+                    <!-- Modal -->
+                    <div id="searchModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Search our website</h3>
+                      </div>
+                      <div class="modal-body">
+                       
+                        <div class="search">
+	<form action="/search/entire" method="post" class="form-inline">
+		<label for="mod-search-searchword" class="element-invisible">Search...</label> <input name="searchword" id="mod-search-searchword" maxlength="35" class="inputbox search-query" size="20" value="Search..." onblur="if (this.value=='') this.value='Search...';" onfocus="if (this.value=='Search...') this.value='';" type="text"> <button class="button btn btn-primary icebtn" onclick="this.form.searchword.focus();">Go</button>		<input name="task" value="search" type="hidden">
+		<input name="option" value="com_search" type="hidden">
+		<input name="Itemid" value="813" type="hidden">
+	</form>
+</div>
+
+                       
+                      </div>
+                     
+                    </div>	
+                    
+                </div> 
+                            
+           
+              
+              
+              <div id="mainmenu">
+        <div class="icemegamenu">
+            <div class="ice-megamenu-toggle">
+                <a data-toggle="collapse" data-target=".nav-collapse" href="#mainmenu">Menu</a>
+            </div>
+            
+             <div class="nav-collapse icemegamenu collapse">
+	         	            <?php
+		     
+		             $mdlMenuItem = new Model_MenuItem();
+		             $menu = $mdlMenuItem->getItemsByMenu(2);
+
+		            $recursive = new Louis_System_RecursiveMenu($menu->toArray());
+		          echo $result =  $recursive->buildArrayUl(0);
+
+		          ?>
+             </div>
+             
+        </div>
+             </div>
+            
+            
+            
+             
+             </div>      
+                   
+        </div>               
+                
+	</header>
+          
+            
+	    <div id="iceslideshow">
+        
+
+<style type="text/css">
+#iceslideshow .iceslideshow {
+	height:600px!important;
+	height:600px!important;
+}
+
+@media (max-width: 1480px) {
+	#iceslideshow .iceslideshow {
+		height:520px!important;
+	}
+}
+
+@media (max-width: 1200px) {
+	#iceslideshow .iceslideshow {
+		height:460px!important;
+	}
+}
+
+@media (max-width: 970px) {
+	#iceslideshow .iceslideshow {
+		height:360px!important;
+	}
+}
+
+@media (max-width: 767px) {
+	#iceslideshow .iceslideshow {
+		height:280px!important;
+	}
+}
+
+.popover {
+	display: none !important;
+}
+</style>
+
+<div id="iceslideshow552" class="iceslideshow carousel slide Slide Next carousel-fade mootools-noconflict">
+       
+	<div id="ice_slideshow_preload552" class="">
+		<div class="spinner">
+        </div>
+    </div>
+  
+   
+	<div class="carousel-inner">
+		
+		<?php
+			$db = Zend_Db_Table::getDefaultAdapter();
+			$paramArrays = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+			$uri = Zend_Registry::get('uri');
+			$cats = explode('/', $uri);
+			
+			
+		if(($cats[1] == 'touris') || ($cats[1] == 'hotel')) {
+
+			$idents = $paramArrays['ident'];
+			//echo $idents;
+			$selectbg = 'SELECT p.id, i.full, i.isDefault FROM `product` as p inner join productImage as i on i.productId = p.id WHERE p.ident = "'.$idents.'" and i.isDefault ="Yes"';
+			$resultbg = $db->fetchRow($selectbg);	
+		
+			$countbg = 1;
+		
+		?>
+	
+		   <div class="item <?php echo ($resultbg['isDefault'] == 'Yes')?'active':''; ?>">
+                        
+			<div class="iceslideshow-fill" data-stellar-background-ratio="0.5" style="background-image: url('/public/images/<?php echo ($cats[1] == "touris")?"tours":"hotels"; ?>/<?=$resultbg["id"]?>/<?=$resultbg["full"]?>'); background-position: 50% -25px;">
+                   			
+			</div>
+        
+        </div>
+		
+			<? } 	
+			
+		else{
+			
+		if (!isset($paramArrays['ident2']) && isset($paramArrays['ident'])){
+			$idents = $cats[1].'/'.$paramArrays['ident'];	
+			$identsub = '';
+	
+		}elseif(isset($paramArrays['ident2'])) {
+			$idents = $cats[1].'/'.$paramArrays['ident'].'/'.$paramArrays['ident2'];
+			$identsub = $cats[1].'/'.$paramArrays['ident'];
+				
+		}else {
+			$idents = '';
+		}
+			//echo $cats[1];
+			//echo $idents;
+			
+			$selectbg = 'SELECT p.full, p.isDefault, s.id, s.caption FROM `menu_items` as i inner join menu_item_images as s inner join productImage as p on i.id = s.id_menu_item and s.id_product_image = p.imageId WHERE i.link = "'.$idents.'"';
+			$resultbg = $db->fetchAll($selectbg);
+			
+			if(!$resultbg){
+			$selectbg = 'SELECT p.full, p.isDefault, s.id, s.caption FROM `menu_items` as i inner join menu_item_images as s inner join productImage as p on i.id = s.id_menu_item and s.id_product_image = p.imageId WHERE i.link = "'.$identsub.'"';
+			$resultbg = $db->fetchAll($selectbg);	
+			}
+			
+			if(!$resultbg){
+			$selectbg = 'SELECT p.full, p.isDefault, s.id, s.caption FROM `menu_items` as i inner join menu_item_images as s inner join productImage as p on i.id = s.id_menu_item and s.id_product_image = p.imageId WHERE i.link = ""';
+			$resultbg = $db->fetchAll($selectbg);	
+			}
+	
+		   
+			 $countbg = count($resultbg);
+			foreach($resultbg as $kbg =>$vbg):
+			$resultbgs[] = $vbg['isDefault'];
+		?>
+	
+		        <div class="item <?php echo ($vbg['isDefault'] == 'Yes')?'active':''; ?>">
+                        
+			<div class="iceslideshow-fill" data-stellar-background-ratio="0.5" style="background-image: url('/public/images/backgrounds/<?=$vbg["full"]?>'); background-position: 50% -25px;">
+          
+					
+                <div class="carousel-caption">
+                
+                    <div class="container">
+                          
+                       <div style="padding-right: 92px; margin-left: 395px;" class="mod-description">
+       
+                            <p><?php echo $vbg["caption"]; ?></p>                
+                        </div>
+                                                  
+                     </div>
+                          
+                </div>
+                       			
+			</div>
+        
+        </div>
+		        
+		    <?php endforeach; ?>
+	<?php }  ?>
+                            
+	</div><!-- .carousel-inner -->
+    
+    <?php if ($countbg != 1){ ?>
+     <div class="carousel-indicators-container container">
+        <ol class="carousel-indicators">
+	        <?php 
+		        foreach($resultbgs as $kbs=>$vbs){	        
+		        ?>
+                        <li title="" data-original-title="" rel="popover-slideshow" data-img="" data-target="#iceslideshow552" data-slide-to="<?=$kbs?>" <?php echo ($vbs == 'Yes')?'class="active"':''; ?>></li>
+            <?php } ?>
+                      
+            
+                   </ol>
+		</div>
+		<? } ?>
+		<div class="iceslideshow_arrow">
+          <a class="carousel-control left" href="#iceslideshow552" data-slide="prev">‹</a>
+          <a class="carousel-control right" href="#iceslideshow552" data-slide="next">›</a>
+    </div>
+        
+    	 
+    	   
+</div>
+
+<script type="text/javascript">
+	
+	jQuery(window).load (function () { 
+	  jQuery('#ice_slideshow_preload552').removeClass('ice_preload')
+	});
+	
+	/* initialize bootstrap popopver for slideshow */
+	jQuery("[rel='popover-slideshow']").popover({
+	  html: true,
+	  trigger: 'hover',
+	  placement: 'top',
+	  content: function () {
+		return '<img src="'+jQuery(this).data('img') + '" />';
+	  }
+	});
+	
+	
+		
+	
+</script>
+       
+
+    
+<script type="text/javascript">
+
+if (typeof jQuery != 'undefined') { 
+	(function($) { 
+		$(document).ready(function(){
+			$('.carousel').each(function(index, element) {
+			$(this)[index].slide = null;
+			});
+		});
+	})(jQuery);
+}
+
+jQuery(document).ready(function(){
+
+	jQuery('#iceslideshow552').carousel(
+	
+		{ interval: 3000, pause:"hover" }
+		
+	
+	);
+});
+	  
+</script>
+
+
+    </div>
+        
+    
+     
+    <section id="content">
+	    
+	       	
+    	
+        <div class="container">        
+            
+            <div class="row-fluid">
+            
+                
+                    <?php echo $this->layout()->content; ?>
+                 
+                <div id="sidebar" class="span4 sidebar_left">
+                    <div class="inside">  
+                        
+                        		
+		<div class="sidebar_module sidebar_module_">
+        	
+			     <h3 class="sidebar_module_heading"><span>Your Prefer Place <span class="heading_subtitle">search tour to know your prefer place</span></span></h3>			
+                <div class="sidebar_module_content"><div class="solidres-module solidres-module-">
+<style>
+	#loader{
+		 display: block;
+    left: 50%;
+    margin: 0 auto 10px -50px;
+    position: relative;
+    text-align: center;
+	}
+	
+   
+	</style>
+    <form novalidate="novalidate" id="sr-checkavailability-form" action="/search/" method="GET" class="form-stacked sr-validate">
+        <fieldset>
+	     
+		        <?php
+			   /*     
+			$db = Zend_Db_Table::getDefaultAdapter();
+		$query = "select * from menu_items where menu_id = 2 and parent = 16";
+		$results = $db->fetchAll($query);
+		*/
+		$db = Zend_Db_Table::getDefaultAdapter();
+		$mdlMenu = new Model_MenuItem();
+		
+		$select = $mdlMenu->select();
+
+        $select->where('menu_id = ?', 2);
+        $select->where('parent = ?', 16);
+        $select->order('position asc');
+        $menus = $mdlMenu->fetchAll($select);
+        
+        $select_sub = $mdlMenu->select();
+         $select_sub->where('menu_id = ?', 2);
+        $select_sub->order('position asc');
+        $menus_sub = $mdlMenu->fetchAll($select_sub);
+        
+        $parentVal = 0;
+        
+		$recursive = new Louis_System_Recursive($menus->toArray());
+        $newArr = $recursive->buildArray(16); //country
+        
+      $paramArray = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+   
+      $cat = explode('/', Zend_Registry::get('uri'));
+      $idparent = '';
+      $idparent2 = 0;	
+      if ($cat[1] == 'travel'){
+     if (!isset($paramArray['ident2'])){
+			$ident = $cat[1].'/'.$paramArray['ident'];
+		}else {
+			$ident = $cat[1].'/'.$paramArray['ident'];
+			$ident2 = $cat[1].'/'.$paramArray['ident'].'/'.$paramArray['ident2'];
+			$sel2 = 'select id from menu_items where link = "'.$ident2.'"';
+		 $id2 = $db->fetchRow($sel2);
+			}
+		 
+		$sel = 'select id from menu_items where link = "'.$ident.'"';
+		$id1 = $db->fetchRow($sel);	
+				
+		
+		if($id1){
+		 $idparent = $id1['id'];	
+			 }
+			 
+		if(isset($id2)){
+		 $idparent2 = $id2['id'];	
+			 } 
+			 
+			  }
+			?>
+        
+    		<div id="show_sub_categories">
+		
+		<?php
+			   $attribs = array('style'=>'width:260px');
+        echo $mdlMenu->itemInSelectbox('search_category',$idparent,$newArr,' -- Select Countries --',$attribs);
+        
+        	$recursive_sub = new Louis_System_Recursive($menus_sub->toArray());
+         $newArr_sub = $recursive_sub->buildArray($idparent);
+         echo $mdlMenu->itemInSelectbox('sub_category',$idparent2,$newArr_sub,' -- Select Style Touris --',$attribs);
+         
+               
+			?>
+	
+	       </div>
+
+           <select name="duration" style="width: 260px">
+	           <option value="0">-- Duration --</option>
+	           <option value="1">Full day</option>
+			<?php for($i=1; $i<= 21; $i++){  ?>
+				<option value="<?=$i+1?>.<?=$i?>"><?=$i+1?> days <?=$i?> nights</option>
+				
+			<?php	} ?>
+		</select>
+        
+        	<div class="clearfix"></div>
+      
+            <button class="btn icebtn" type="submit"><i class="icon-search"></i> Check</button>
+            <button class="btn" type="reset">Reset</button>
+				
+
+    	</fieldset>
+
+     </form>
+
+</div></div>
+		
+          </div>
+       
+       
+       <script type="text/javascript">
+  var j = jQuery.noConflict();
+  
+  
+j(document).ready(function() {
+	
+	//$('#loader').hide();
+	
+	j('#search_category').livequery('change', function() {
+		
+		//j(this).nextAll('.styled-select .parent').remove();
+		j(this).nextAll('label').remove();
+		
+		j('#show_sub_categories').append('<img src="<?=TEMPLATE_URL?>/default/images/loader.gif" id="loader" alt="" />');
+		
+		j.post("/default/category/getchild", {
+			parent_id: j(this).val(),
+		}, function(response){
+			
+			setTimeout("finishAjax('sub_category', '"+escape(response)+"')", 400);
+		});
+		
+		return false;
+	});
+});
+
+function finishAjax(id, response){
+  j('#loader').remove();
+
+  j('#'+id).html(unescape(response));
+} 
+
+</script>   
+     
+	
+	<?php
+		//	$paramArray = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+   
+			//$cat = explode('/', Zend_Registry::get('uri'));
+			
+			if(isset($paramArray['ident']) && ($cat[1] != 'touris') && ($cat[1] != 'tag') && ($cat[1] != 'hotel')){
+		?>
+		<br/>
+	<div class="sidebar_module sidebar_module_style1">
+		<h3 class="sidebar_module_heading">
+		<span>Features Menu</span>
+		</h3>
+		<?php
+		
+			$identia= $cat[1].'/'.$paramArray['ident'];
+			
+			//echo $ident;
+			//echo $this->uri;
+			$sel3 = 'select id from menu_items where link = "'.$identia.'"';
+		 $id3 = $db->fetchRow($sel3);
+		
+		
+		$recursi = new Louis_System_Recursive($menus_sub->toArray());
+        $newArrs = $recursi->buildArray($id3['id']);
+		
+		
+			?>
+		<div class="sidebar_module_content">
+			<div class="row-fluid">
+			<div class="span11">
+			<ul class="nav menu">
+				<?php foreach($newArrs as $kmenu=>$vmenu): ?>
+			<li class="item-502 current <?php echo ($this->uri == '/'.$vmenu['link'])?' active':''; ?>"><a href="/<?=$vmenu['link']?>">	<i class="fa fa-check-square-o location-icon"></i><?=$vmenu['name']?></a></li>
+				<?php endforeach; ?>
+			</ul>
+			</div>
+			</div>
+		</div>
+	</div>
+	<? } ?>
+    		<br/>
+    		<?php if(!isset($paramArray['ident'])){ ?>
+		<div class="sidebar_module sidebar_module_">
+        	
+			        <h3 class="sidebar_module_heading"><span>News - Events</span></h3>					
+					<div class="sidebar_module_news">
+						
+					
+					<?php
+						$news = new New_Model_Product();
+						$result = $news->getNewsByCatId(96);
+						
+					
+						?>
+						<?php foreach($result as $key=>$val):  ?>
+					<div class="sidebar_module_news_item">
+						<div class="ava_thumb_overflow">
+						<div class="sidebar_module_news_ava">
+							
+							<!--<a title="<?=$val['name']?>" href="/news/<?=$val['ident']?>.html">-->
+					<img alt="<?=$val['name']?>" src="/public/images/news/<?=$val['id']?>/resize_74x48/<?=$val['full']?>" />
+							<!--</a>-->
+							</div>
+						</div>
+						<div class="sidebar_module_news_title">
+							<a title="<?=$val['name']?>" href="/news/<?=$val['ident']?>.html"><?=$this->string()->cut_string($val['name'],'50','...')?></a>
+							
+							<span class="sidebar_module_news_date">(<?=date('d/m/Y',$val['date'])?>)</span>
+						</div>
+						
+					</div>	
+					<div style="clear:both;">
+						
+					</div>
+					<?php endforeach;  ?>
+					
+					</div>
+          </div>
+          
+            <br/>
+            <?php } ?>
+         <div class="sidebar_module sidebar_module_">
+	         
+	         <h3 class="sidebar_module_heading"><span>Recent Comment</span></h3>	
+	         <div class="sidebar_module_comments">
+		         <?php
+			     //    $dbcache=$this->getInvokeArg('bootstrap')->getResource('cachemanager');
+
+			    /*     
+     $dbcache=$this->getInvokeArg('bootstrap')->getResource('cachemanager')->getCache('dbcache'); 
+			         
+			         $cm = 'cache_comment';
+				         
+			      if(!$dbcache->load($cm)){
+       $listComments = new Model_Comment();
+	   	$listCm = $listComments->listRecentComments();
+            $dbcache->save($listCmd,$cm);  
+        
+           $listCm=$dbcache->load($cm); 
+            
+        }
+         $listCm=$dbcache->load($cm);
+      */
+       $listComments = new Model_Comment();
+	   	$listCm = $listComments->listRecentComments();
+			         
+			         foreach($listCm as $vCm):
+			         $objcm = $this->content()->getUsernameFB($vCm->id_user);
+			        // $objcm->link = '';
+					 //$username = $objcm->username;
+					 /*
+					 if(isset($username)){
+						$username = $objcm->username; 
+					 }else {
+						$username = $objcm->id;
+					 }
+					 */
+			          ?>
+			  <div class="sidebar_module_comments_item">
+						<div class="sidebar_module_comments_ava">
+							<a title="<?php echo $vCm->content;  ?>" href="<?php echo $vCm->url;  ?>">
+<img alt="<?php echo $vCm->content;  ?>" src="https://graph.facebook.com/<?=$vCm->id_user?>/picture?width=50&height=50" />
+							</a>
+						</div>
+						<div class="sidebar_module_comments_title">
+		<a title="<?php echo $vCm->content;  ?>" href="<?php echo $vCm->url;  ?>"><?php echo $this->string()->cut_string($vCm->content,'30','...'); ?></a><br/>
+		<span style="font-size: 0.9em;width: 300px;"><i class="fa fa-comment" style="color: #7DD6F1"></i> <a target="_blank" style="color:red;" href="<?=$objcm->link?>"><? echo $objcm->name; ?></a>&nbsp;
+		<i class="fa fa-clock-o"></i> <span class="sidebar_module_comments_date" > <span data-livestamp="<?php echo $vCm->time;  ?>"></span></span></span>	
+						</div>
+						
+					</div>	
+					       
+			         
+			      <?   endforeach;
+			          ?>
+	         </div>	
+         </div>  
+          <br/>
+          <style>
+	          .red{
+		          color: red;
+	          }
+	        </style>
+	        
+	        
+         <div class="sidebar_module sidebar_module_">
+	         
+	         <h3 class="sidebar_module_heading"><span>Feature Tags</span></h3>		
+         </div>
+	
+    		
+		<div class="sidebar_module sidebar_module_heading-center">
+			
+			<div id="myCanvasContainer">
+<div id="myCanvasContainer">
+ <canvas width="300" height="400" id="myCanvas" style="background: #F5F2F2;">
+  <p>Anything in here will be replaced on browsers that support the canvas element</p>
+  <div id="tags">
+  <ul>
+	  <?php
+	      $tags = new Model_Tag();
+	      $listTags = $tags->listTags();
+	     foreach($listTags as $tag):
+	      ?>  
+   <li><a title="<?php echo $tag->name; ?>" href="/tag/<?php echo $tag->ident; ?>" <?php echo ($tag['view'] >= 100)?'class="red"':''; ?> target="_blank"><?php echo $tag->name; ?></a></li>
+   <?php endforeach; ?>
+  </ul>
+  </div>
+ </canvas>
+</div>
+</div>
+		</div>
+        
+    <script type="text/javascript">
+  window.onload = function() {
+    try {
+     TagCanvas.Start('myCanvas','tags',{
+            textColour: null,
+            textFont: 'Caviar Dreams Regula',
+            outlineColour: 'red',
+            reverse: true,
+            depth: 0.8,
+            maxSpeed: 0.05,
+            wheelZoom: false,
+             textHeight: 23,
+          });
+    } catch(e) {
+      // something went wrong, hide the canvas container
+      document.getElementById('myCanvasContainer').style.display = 'none';
+    }
+  };
+  
+  var j = jQuery.noConflict();
+  j(document).ready(function() {
+   if( !j('#myCanvas').tagcanvas({
+     textColour : '#4E8AB8',
+     textFont: 'Caviar Dreams Regula',
+     outlineThickness : 1,
+     outlineColour : 'red',
+     maxSpeed : 0.03,
+     depth : 0.75,
+      wheelZoom: false,
+      textHeight: 23,
+   })) {
+     // TagCanvas failed to load
+     j('#myCanvasContainer').hide();
+   }
+   // your other jQuery stuff here.
+ });
+ </script>     
+	
+   <script>
+	
+
+    j(document).ready(function() {
+     
+      j("#owl-demo").owlCarousel({
+     
+          navigation : true, // Show next and prev buttons
+          slideSpeed : 300,
+          paginationSpeed : 400,
+          singleItem:true,
+          items : 2,
+      autoPlay :true,
+          // "singleItem:true" is a shortcut for:
+          // items : 1, 
+          // itemsDesktop : false,
+          // itemsDesktopSmall : false,
+          // itemsTablet: false,
+          // itemsMobile : false
+     
+      });
+     
+    });
+
+
+	</script>
+                        
+                    </div>
+                </div>
+                 
+                               
+         	</div>
+		
+        </div>  
+           
+	
+	    
+	    </section><!-- / Content  --> 
+                
+            
+     
+    <div class="ice-separator"></div>
+    <div id="icecarousel">
+    	<div class="container">    	
+        			 
+          <div class="ice-carousel-module">
+                    
+                                   <h2 class="mod-title">Other Services <span class="heading_subtitle"> Other service like car for rent, visa booking...</span></h2>
+                                
+                 <div class="ice-module-content clearfix">
+               		
+<style type="text/css">
+
+#icecarousel196 .slides { width: 1600%;}
+#icecarousel196 .slides > div { width:300px; float:left;}
+
+</style>
+
+<div id="icecarousel196" class="icecarousel flexslider">
+    
+    <div id="ice_icecarousel_preload196" class=""> 
+    	
+	</div>    
+        
+	
+        
+<div style="overflow: hidden; position: relative;" class="flex-viewport"><div style="width: 1600%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);" class="slides">
+        
+		            
+                     
+            <div style="width: 300px; float: left; display: block;">
+                    	
+                    <div class="icecarousel-inner">
+                
+                        <div class="icecarousel-img">
+                            <img src="<?=TEMPLATE_URL?>/default/image/image5.jpg" title="item5" alt="item5" height="180" width="300">	
+               
+                        </div>
+                        
+                                                
+                        <div class="icecarousel-caption">
+                                                    
+                                                        <div class="icecarousel-description">
+
+                                    <p></p>
+<h3><a href="/conference-mice">Conference & MICE</a></h3>
+<p>Run a successful event using our 25 years of experience in organizing high quality services for all sort of businesses.</p>
+<p><a class="btn icebtn" href="/conference-mice">View More</a></p>
+                              </div>
+                                                      
+                                                    
+                          
+                        </div>
+                                                
+                
+                </div>        
+						
+                        
+          </div>
+                     
+            <div style="width: 300px; float: left; display: block;">
+                    	
+                    <div class="icecarousel-inner">
+                
+                        <div class="icecarousel-img">
+                            <img src="<?=TEMPLATE_URL?>/default/image/image6.jpg" title="item6" alt="item6" height="180" width="300">	
+               
+                        </div>
+                        
+                                                
+                        <div class="icecarousel-caption">
+                                                    
+                                                        <div class="icecarousel-description">
+
+                                    <p></p>
+<h3><a href="/flight-booking">Flight Booking</a></h3>
+<p>New luxury automobiles with experienced drivers are at your disposal at the moment you book </p>
+<p><a class="btn icebtn" href="/flight-booking">View More</a></p>
+                              </div>
+                                                      
+                                                    
+                          
+                        </div>
+                                                
+                
+                </div>        
+						
+                        
+          </div>
+                     
+            <div style="width: 300px; float: left; display: block;">
+                    	
+                    <div class="icecarousel-inner">
+                
+                        <div class="icecarousel-img">
+                            <img src="/public/images/car-rental.jpg" title="item7" alt="item7" height="180" width="300">	
+               
+                        </div>
+                        
+                                                
+                        <div class="icecarousel-caption">
+                                                    
+                                                        <div class="icecarousel-description">
+
+                                    <p></p>
+<h3><a href="/car-rental">Car Rental</a></h3>
+<p>A friendly and dedicated staff will create a loving and relaxing experience so that each Guest is given appropriate....</p>
+<p><a class="btn icebtn" href="/car-rental">View More</a></p>
+                              </div>
+                                                      
+                                                    
+                          
+                        </div>
+                                                
+                
+                </div>        
+						
+                        
+          </div>
+                     
+            <div style="width: 300px; float: left; display: block;">
+                    	
+                    <div class="icecarousel-inner">
+                
+                        <div class="icecarousel-img">
+                            <img src="/public/images/visa-passport.jpg" title="item8" alt="item8" height="180" width="300">	
+               
+                        </div>
+                        
+                                                
+                        <div class="icecarousel-caption">
+                                                    
+                                                        <div class="icecarousel-description">
+
+                                    <p></p>
+<h3><a href="/visa">Visa Booking</a></h3>
+<p>There will be a list of different activities waiting for your children. We offer you a satisfying environment, where you..</p>
+<p><a class="btn icebtn" href="/visa">View More</a></p>
+                              </div>
+                                                      
+                                                    
+                          
+                        </div>
+                                                
+                
+                </div>        
+						
+                        
+          </div>
+                             
+                    
+	</div></div><ul class="flex-direction-nav"><li><a class="flex-prev" href="#">Previous</a></li><li><a class="flex-next" href="#">Next</a></li></ul></div>
+
+<script type="text/javascript">
+	jQuery(window).load (function () { 
+	  jQuery('#ice_icecarousel_preload196').removeClass('ice_preload')
+	});
+</script>
+
+    
+
+
+<script type="text/javascript">
+// Can also be used with $(document).ready()
+
+(function($) {
+	$(window).load(function(){
+		$('#icecarousel196').flexslider({
+		selector: ".slides > div", 
+		animation: "slide",
+		direction: "horizontal",
+		itemWidth:300,
+		slideshowSpeed:7000, 
+		animationspeed:6000,  
+		itemMargin:0,
+		minItems:1,
+		maxItems:0, 
+		move: 0,    
+		
+				slideshow: false,
+				
+				directionNav: true,
+				
+				controlNav: false,
+				
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+   })(jQuery);
+
+</script>
+
+          		</div>
+                
+        </div>
+	
+    	</div>   
+    </div>    
+        
+    
+	 
+    <div id="showcase" style="background-image: url('<?=TEMPLATE_URL?>/default/image/showcase.jpg');" data-stellar-background-ratio="0.5">
+    	<div class="container">
+            
+             
+            
+             
+            
+             
+        	<div class="rslides rslides1" id="testimonial-slide">
+                
+
+<div style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out 0s;" id="rslides1_s0" class="custom rslides1_on">
+	<blockquote>Just back to Canada from a wonderful trip in North of Vietnam from 21 Mar - 01 Apr 2015. We appreciate the opportunity to provide feedback on Jewel Tours service which was very professional with very professional guide and we were pleased. .</blockquote>
+<div class="testimonials_author"><img src="<?=TEMPLATE_URL?>/default/image/team3.jpg" alt="">
+<p>John Brown</p>
+</div></div>
+
+
+<div style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out 0s;" id="rslides1_s1" class="custom">
+	<blockquote>Dear Nhan, We are happy to inform that we are receiving very good feedbacks from the participants of the group! They enjoyed their tour and were pleased of your services, and the well, precise...</blockquote>
+<div class="testimonials_author"><img src="<?=TEMPLATE_URL?>/default/image/team1.jpg" alt="">
+<p>Eva Johnson</p>
+</div></div>
+
+
+<div style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out 0s;" id="rslides1_s2" class="custom">
+	<blockquote>Our Vietnam/Cambodia trip was the most exciting and memorable; studded with good memories, of a great friendly people we met in amazing places far beyond our expectation or horizons. To be frank...</blockquote>
+<div class="testimonials_author"><img src="<?=TEMPLATE_URL?>/default/image/team6.jpg" alt="">
+<p>Simon Anderson</p>
+</div></div>
+
+            </div>   
+            
+           <div class="rslides-nav-container"></div>
+
+			<script type="text/javascript">
+            // You can also use "$(window).load(function() {"
+            jQuery(function () {
+				jQuery("#testimonial-slide").responsiveSlides({
+					auto: false,             // Boolean: Animate automatically, true or false
+					speed: 500,             // Integer: Speed of the transition, in milliseconds
+					timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+					pager: false,           // Boolean: Show pager, true or false
+					nav: true,             // Boolean: Show navigation, true or false
+					navContainer: ".rslides-nav-container",       // Selector: Where controls should be appended to, default is after the 'ul'
+					random: false,          // Boolean: Randomize the order of the slides, true or false
+					pause: false,           // Boolean: Pause on hover, true or false
+					pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+					prevText: "",   // String: Text for the "previous" button
+					nextText: "",       // String: Text for the "next" button
+					maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+				});
+            });
+            </script>
+             
+            
+        </div>
+        
+    </div>   
+             
+            
+    
+	    	<footer>
+		
+		<div class="top_full_shadow"></div><!-- end .top_full_shadow -->
+			
+			<div class="container"> 
+			
+			
+				<div class="sixteen columns add-bottom">
+				
+					
+					<div class="ten columns alpha add-bottom" >
+
+						
+					<img alt="Nhân viên công ty Hoabinhgroup" src="/public/images/hoabinhgroup_nhanvien.png" width="560" />
+						
+						
+					
+					</div><!-- end ten -->
+				
+					
+					<div class="six columns omega add-bottom" style="color:#fff">
+						
+						<h3 class="heading"> <span class="bold">HOABINHGROUP</span> </h3>
+						
+	<i class="icon-location" style="font-size: 1.3em"></i> 29 Đoàn Thị Điểm, Đống Đa, Hà Nội, Vietnam<br/>
+
+	 <i class="icon-phone" style="font-size: 1.3em"></i> + 844.37325.976  | + 844.37325.978<br/>
+
+	 <i class="icon-mail" style="font-size: 1.3em"></i> info@hoabinhtourist.com<br/>
+										
+	 <i class="icon-phone" style="font-size: 1.3em"></i> Hotline: Hoàng Lan: (084) 913 311 911 
+	 										<span style="margin-left: 75px; display: block"> Jackie Han: (084) 98 98 98 198</span><br/>									
+					</div><!-- end six -->
+					
+					
+				</div>	<!-- end sixteen -->
+				
+		
+				
+				<div class="sixteen columns add-bottom" id="footer_bottom">
+							
+						<span>&copy; Copyright 2015 <a class="dark_link" href="#">HoaBinhGroup</a>  All rights reserved. </span>
+						<div style="position: absolute; left: -999em;"><a rel="dofollow" href="http://quatang1102.com/" title="quà tặng" target="_blank">quà tặng</a>, <a rel="dofollow" href="http://kientructhegioi.com/" title="thiết kế kiến trúc" target="_blank">thiết kế kiến trúc</a>, <a rel="dofollow" href="http://hoabinhtourist.com/cho-thue-dan-karaoke-t134.html" title="cho thuê âm thanh karaoke" target="_blank">cho thuê âm thanh karaoke</a>, <a rel="dofollow" href="http://shopwatch.vn/sp-tags/g-shock-125" title="đồng hồ g-shock" target="_blank">đồng hồ g-shock</a>, <a rel="dofollow" href="http://shopwatch.vn/sp-tags/edifice-129" title="đồng hồ casio edifice" target="_blank">đồng hồ casio edifice</a>, <a rel="dofollow" href="http://shopwatch.vn/sp-tags/dong-ho-nam-127" title="đồng hồ nam" target="_blank">đồng hồ nam</a></div>
+						
+						<ul class="bottom_links">
+							<li> <a class="dark_link" href="faq.html">FAQ's</a> </li>
+							<li> <a class="dark_link" href="sitemap.html">Sitemap</a> </li>
+							<li> <a class="dark_link" href="contact.html">Contact</a> </li>
+							<li class="top"> <a class="skin_link" href="#scrollTop"> &uarr; Top</a> </li>
+						</ul><!-- end ul .bottom_links -->
+					
+				</div><!-- end sixteen -->	
+					
+								
+				
+			
+			</div><!-- end container -->
+			
+		<div class="bottom_full_shadow"></div>
+			
+	</footer>
+      
+
+	    <div id="gotop" class="">
+        <a href="#" class="scrollup">Go Top</a>
+    </div>
+      
+
+ 
+ 
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery_008.js" type="text/javascript"></script><div style="display: none;" id="iceslide"></div>        
+    <script>
+        jQuery(".iceslide_link").pageslide({ 
+			direction: "right", 
+			modal: true 
+		});
+    </script>
+
+
+<div id="dummy-element" style="display:none"></div><div id="dummy-element" style="display:none"></div>
+    
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+<script type="text/javascript" src="/arrowchat/external.php?type=djs" charset="utf-8"></script>
+<script type="text/javascript" src="/arrowchat/external.php?type=js" charset="utf-8"></script>
+
+<script type='text/javascript'>window._sbzq||function(e){e._sbzq=[];var t=e._sbzq;t.push(["_setAccount",41047]);var n=e.location.protocol=="https:"?"https:":"http:";var r=document.createElement("script");r.type="text/javascript";r.async=true;r.src=n+"//static.subiz.com/public/js/loader.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)}(window);</script>
+</body></html>

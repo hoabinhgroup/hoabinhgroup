@@ -1,0 +1,225 @@
+<style type="text/css">
+	#myTab{
+		height: 34px;
+	}
+	.zend_form p{
+		margin-left: 20px;
+		font-size: 0.9em;
+	
+	}
+	.tab-content{
+		min-height: 400px;
+	}
+	#counter_seo_description{
+		color: red;
+	}
+	#location-element{
+	margin-left: 20px;
+	width: 500px;
+	}
+#location___chosen{
+	width: 500px;
+	
+}
+#cke_description{
+	margin-left: 20px;
+}
+#cke_shortDescription{
+	margin-left: 20px;
+}
+#cke_others{
+	margin-left: 20px;
+}
+.tags{
+	margin-left: 20px;
+	width: 550px;
+}
+.zend_form {
+    background: #fff none repeat scroll 0 0;
+    margin: 5px auto;
+    overflow: auto;
+    padding: 0;
+    width: 860px !important;
+}
+</style>
+
+										<div class="tabbable">
+											<ul class="nav nav-tabs" id="myTab">
+												<li class="active">
+													<a data-toggle="tab" href="#home">
+														<i class="green ace-icon fa fa-home bigger-120"></i>
+														Cập nhật tour
+													</a>
+												</li>
+												<li>
+													<a data-toggle="tab" href="#seo">
+														SEO
+														<span class="badge badge-danger"></span>
+													</a>
+												</li>
+												
+
+												
+											</ul>
+
+											<div class="tab-content">
+												<div id="home" class="tab-pane fade in active">
+															
+													
+										<?php echo $this->form; ?>
+										<?php echo $this->Ckeditor('shortDescription',150,550); ?> 
+										<?php echo $this->Ckeditor('description',250,550); ?> 
+										<?php echo $this->Ckeditor('others',250,550); ?> 
+												</div>
+											
+												<div id="seo" class="tab-pane fade">
+		<div class="col-md-10">
+		<form id="seo-form" method="post" action="/admin/product/seo">		 									
+		<dl class="zend_form">
+			<input id="id" type="hidden" value="<?=$this->id?>" name="id">
+<dt id="seo_title-label">
+	<label class="required" for="title">Title:</label>
+</dt>
+
+<dd id="seo_title-element">
+<input id="seo_title" type="text" size="40" value="<?=$this->title?>" name="seo_title">
+<p>Giới hạn <span id= "counter_seo_title"></span> kí tự</p>
+</dd>
+
+
+<dt id="seo_keyword-label">
+	<label class="required" for="title">Keyword:</label>
+</dt>
+
+<dd id="seo_keyword-element">
+<input id="seo_keyword" type="text" size="74" value="<?=$this->keyword?>" name="seo_keyword">
+</dd>
+
+<dt id="seo_description-label">
+	<label class="required" for="title">Description:</label>
+</dt>
+
+<dd id="seo_description-element">
+<textarea id="seo_description" name="seo_description" rows="5" cols="40"><?=$this->description?></textarea>
+<p>Giới hạn <span id= "counter_seo_description"></span> kí tự</p>
+</dd>
+
+
+<dt id="submit-label"> </dt>
+<dd id="submit-element">
+<input id="submit-seo" class="btn btn-info" type="submit" value="Save" name="submit-seo">
+</dd>
+		</dl>
+		</form>
+		</div>
+												</div>
+
+											
+											</div>
+										</div>
+
+<script>
+ var frm = $('#seo-form');
+    frm.submit(function (ev) {
+	     ev.preventDefault();
+	     console.log(frm.serialize());
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                alert('Cập nhật seo thành công!');
+
+            }
+        });
+
+       
+    });	
+    
+      $('#seo_title').simplyCountable({
+    counter: '#counter_seo_title',
+    countable: 'characters',
+    maxCount: 60,
+    strictMax: true,
+    countDirection: 'down',
+    safeClass: 'safe',
+    overClass: 'over',
+    thousandSeparator: ','
+});
+    
+    $('#seo_description').simplyCountable({
+    counter: '#counter_seo_description',
+    countable: 'characters',
+    maxCount: 156,
+    strictMax: true,
+    countDirection: 'down',
+    safeClass: 'safe',
+    overClass: 'over',
+    thousandSeparator: ','
+});
+</script>
+
+			
+<script type="text/javascript">
+	//var listTags = '';
+			jQuery(function($) {
+				
+				
+				
+				var tag_input = $('#tags');
+				try{
+					tag_input.tag(
+					  {
+						placeholder:tag_input.attr('placeholder'),
+						//enable typeahead by specifying the source array
+					
+						source: <?=$this->resulttags?>
+		
+						
+					  }
+					)
+			
+					//programmatically add a new
+					var $tag_obj = $('#tags').data('tag');
+					//$tag_obj.add('Programmatically Added');
+				}
+				catch(e) {
+					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+					//$('#form-field-tags').autosize({append: "\n"});
+				}
+				
+					$('.chosen-select').chosen({allow_single_deselect:true,search_contains:true,placeholder_text_multiple:'Chọn địa điểm'}); 
+					//resize the chosen on window resize
+			
+					$(window)
+					.off('resize.chosen')
+					.on('resize.chosen', function() {
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					}).trigger('resize.chosen');
+					//resize chosen on sidebar collapse/expand
+					$(document).on('settings.ace.chosen', function(e, event_name, event_val) {
+						if(event_name != 'sidebar_collapsed') return;
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					});
+			
+			
+					$('#chosen-multiple-style .btn').on('click', function(e){
+						var target = $(this).find('input[type=radio]');
+						var which = parseInt(target.val());
+						if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+						 else $('#form-field-select-4').removeClass('tag-input-style');
+					});
+						
+			});
+		</script>
+
+
+ 
+ <a href="/admin/product/photo/id/<?=$this->id?>">Quản lý ảnh bài viết</a>

@@ -1,0 +1,35 @@
+<dt id="parentID-label">
+<label class="required" for="parentID">Chọn danh mục:</label>
+</dt>
+<dd id="parentID-element">
+<?php
+	$mdlMenu = new Model_MenuItem();
+        $parentVal = 0;
+        $a = null;
+        $db = Zend_Db_Table::getDefaultAdapter();
+       $mID = Zend_Controller_Front::getInstance()->getRequest()->getParam('id');
+       //echo $mID;
+       $select = 'select category_id from product_relationships where object_id = "'.$mID.'"';
+       $parentArray = array();
+       $result = $db->fetchAll($select);
+  //Zend_Debug::dump($mID); exit();
+       foreach($result as $key=>$val):
+       		$parentArray[] = $val['category_id'];
+         
+       endforeach;
+  
+       
+        $select = $mdlMenu->select();
+       // $select->where('parent = ?', 0);
+        $select->where('menu_id = ?', 10);
+        $select->where('lang = ?', 'vi');
+        $select->order('position asc');
+        $menus = $mdlMenu->fetchAll($select);
+      
+		$recursive = new Louis_System_Recursive($menus->toArray());
+        $newArr = $recursive->buildArray(0);
+  
+        $attribs = array('size'=>5, 'style'=>'width:250px', 'multiple'=>true);
+        echo $mdlMenu->editItemInSelectbox('parentID[]',$parentArray,$newArr,$attribs);
+       ?>
+</dd>

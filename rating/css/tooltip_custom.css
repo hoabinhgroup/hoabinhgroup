@@ -1,0 +1,43 @@
+.rating-tooltip-custom {
+   margin-top: 0px;
+}
+
+
+.rating-tooltip-custom div {
+  position: absolute;
+  line-height: 20px;
+  visibility: visible;
+  padding: 10px;  
+  white-space: nowrap;
+  
+  color: #FFFFFF;
+  background: #332222;
+  text-align: left;
+  border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 3px 3px rgba(0, 0, 0, 0.1); -moz-box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+ z-index: 99;
+}
+
+
+.rating-tooltip-custom div:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  width: 0; height: 0;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-top: 8px solid #332222;
+}
+
+
+.rating-tooltip-custom div img {
+			border: 0; 
+			float: left;
+}
+
+.custom { padding: 0.5em 2.5em 0.8em 0.8em; }
+	
+
+

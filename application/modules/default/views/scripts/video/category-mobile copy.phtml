@@ -1,0 +1,77 @@
+  <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/Fotolia_73743476_Subscription_Monthly_M.jpg'); background-position: 0px 0px;">
+		 <h1><?php echo $this->menu->name; ?></h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Giới thiệu</a></li>
+  <li class="breadcrumb-item active"><?php echo $this->breadcrum; ?></li>
+</ol>
+	    </div>
+	    <div class="row" id = "news-content">
+	       <div class="review-content">
+		   <div id="bg-tabs-detail">
+			                     <div class="gallery">
+                                    <div class="title-louis-gallery center"> <?php echo $this->menu->name; ?></div>
+									<div class="underline"></div>
+									<div class="des-louis">Hòa Bình Group - đem đến giải pháp trong mọi lĩnh vực</div>
+                                    <!-- Tab panes -->
+                                 
+      
+	          <div class="row">
+		          <div id="galleries">
+			           <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+				            <div class="gallery-content">
+			
+			 <div class="row">
+			<?php 
+				
+				$stt = 0;
+				
+				foreach($this->menus as $key=>$val): $stt++;
+				 $thumb = $this->Image()->get_youtube_thumb($val['shortDescription']);
+				 ?>	
+			<div class="medium-gallery-bg-detail col-md-3" onclick="showvideo(this);" data="<?=$val['pid']?>">  
+			   <a style="cursor: pointer"> <img width="236" class="" class="img-c" src="<?php echo $thumb; ?>" /></a>
+			 <span class="name"><?php echo $val['name']; ?></span>
+			
+			 </div>
+			 <div id="thevideo_<?=$val['pid']?>" style="display:none">									
+<iframe width="340" height="210" src="<?=str_replace('watch?v=', 'embed/', $val['shortDescription'])?>&autoplay=1" frameborder="0" allowfullscreen></iframe>
+	</div>
+			<?php echo ($stt%4==0)?'</div><div class="row">':''; ?>
+			
+			 
+			
+			<?php endforeach; ?>
+
+			
+
+			
+		  
+				            </div>
+					    </div>   		           
+		          </div><!-- #galleries-->
+	          </div>                  
+            
+             
+
+                                
+			</div>	
+		  
+	    </div>		    	
+	    	</div>
+	    </div>
+	<script>
+		   $('#thevideo').click(function(){
+$('iframe').attr("src", $("iframe").attr("src").replace("autoplay=0", "autoplay=1"));
+});
+
+function showvideo(o){
+	var pid = $(o).attr('data');
+	//console.log($(o).attr('data')); return false;
+	$(o).hide();
+	$('#thevideo_' + pid).show();
+	//var iframe = $('#thevideo_' + pid).children('iframe');
+	  $('#thevideo_' + pid).children('iframe').attr("src",  $('#thevideo_' + pid).children('iframe').attr("src").replace("autoplay=0", "autoplay=1"));
+}
+
+	</script>

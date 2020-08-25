@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>FileNAME</title>
+	
+	
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="css/base.css">	
+	<link rel="stylesheet" href="css/layout.css">
+			
+	<!-- Including style for tooltip if necessary -->
+	<link href="css/tooltip.css" rel="stylesheet" type="text/css">
+		
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	
+	<!-- Including jQuery -->
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	
+	<!-- Including rating plugin -->	
+	<script type="text/javascript" src="js/jquery.5stars.min.js"></script>
+	
+	<script type="text/javascript">
+	   
+		$(document).ready(function(){	
+			//START 
+			
+			//init the stars with popup ID
+			$('#popup').rating({
+				//php: 'admin/php/manager.php',	//uncomment this line to switch between "Database-free" and "Normal" modes 
+				onclick: showPopup,				//this function will be executed on user click
+				textdelay:500,
+				textthanks:'%ms / %maxs (from %v votes)',
+				textmain:'rate to see some action',
+				textlocation:'top',
+				round:false,
+				animate:true
+			});			
+						
+		});
+
+		
+		function showPopup(n){		
+			$('#popup').rating('option','enable',false).rating('option','textmain', '%ms / %maxs (from %v votes)');
+			if($('.popup').length>0) return;
+			n=n/20;
+			if(n<3) var txt='Only '+n+' star'+(n!=1?'s':'')+'???<br />...are you serious?<br />thx...';
+			else var txt='Thank you<br /> for your generous<br />'+n+' star'+(n!=1?'s':'');
+			
+			$('body').append('<div class="popup"><div class="txt">'+txt+'</div><a href="javascript:void(0);" id="popupok" class="button">ok</a></div>');
+			
+			$('#popupok').click(function(){
+				$('.popup').remove();
+				$('#popup').rating('option','enable',true).rating('option','textmain', 'rate to see some action');
+			});
+		}
+		
+		
+	</script>	
+
+	
+	
+</head>
+<body>
+
+<h2>Pop-up example</h2>
+<p>Demonstrates how to use onclick function to execute custom function (for example show pop-up window).
+</p></br>
+
+<!-- stars will appear here -->
+<div id="popup" data-title="custom: pop-up message" data-skin="skins/star_bg.png|skins/star_colors.png|skins/star_colors2.png"></div>
+			
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

@@ -260,9 +260,11 @@ class New_AdminNewController extends Louis_Controller_Action
         }
 		
 
-		$seo =  $this->_seo->get_one_where(array('id_object' => $id));		
+		$seo =  $this->_seo->get_one_where(array('id_object' => $id, 'post_style' => 'new'));		
 		if($seo){
-		$this->view->assign($seo->toArray());
+			$this->view->assign($seo->toArray());
+		}else{
+			$this->view->id_object = $id;
 		}
         $this->view->form = $productForm;
         
@@ -490,13 +492,13 @@ echo $success ? $file : 'Unable to save the file.';
 		$this->_helper->viewRenderer->setNoRender(true);
 		$this->_helper->layout->disableLayout();
 		//id=35&seo_title=dgfgfg&seo_keyword=fdgfgfgfgfgf&seo_description=fgfgfgfgfg
-		
+	
 		$id_post = $this->_request->getPost('id');
 		$seo_title = $this->_request->getPost('seo_title');
 		$seo_keyword = $this->_request->getPost('seo_keyword');
 		$seo_description = $this->_request->getPost('seo_description');
 		$content_type = 'new';
-		$id_object=$this->_request->getPost('id_object');
+		//$id_object=$this->_request->getPost('id_object');
 	
 		
 		$result = 0;
@@ -505,7 +507,7 @@ echo $success ? $file : 'Unable to save the file.';
 		
 		$update = 'update seo set title = "'.$seo_title.'",
 											description = "'.$seo_description.'", 
-											keyword = "'.$seo_keyword.'" where id = "'.$id_post.'"';
+											keyword = "'.$seo_keyword.'" where id_object = "'.$id_post.'" and post_style = "new"';
 		$result = $db->query($update);	
 		} catch (Zend_Exception $e) {
        //die('Something went wrong: ' . $e->getMessage());
@@ -516,7 +518,7 @@ echo $success ? $file : 'Unable to save the file.';
 		 $insert = 'insert into seo (id_object, post_style, title, description, keyword) values ("'.$id_post.'", "'.$content_type.'", "'.$seo_title.'", "'.$seo_description.'", "'.$seo_keyword.'")';	
 		$db->query($insert);
 		} 
-		$this->_redirect('admin/new/edit/id/'.$id_object);
+		$this->_redirect('admin/new/edit/id/'.$id_post);
 		//return true;			
 		
 		

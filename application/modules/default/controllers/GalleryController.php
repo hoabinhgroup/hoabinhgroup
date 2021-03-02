@@ -178,8 +178,11 @@ class GalleryController extends Louis_Controller_Action
 		 );
 		 
 		 $this->view->doctype('XHTML1_RDFA');  // controller
-
+	if($this->_lang == 'vi'){
 	$this->view->headTitle('Hình ảnh đội ngũ lãnh đạo');
+	}else{
+	$this->view->headTitle('Leadership team image');	
+	}
 	
     $this->view->headMeta()->setProperty('og:type', 'website'); 
 		 

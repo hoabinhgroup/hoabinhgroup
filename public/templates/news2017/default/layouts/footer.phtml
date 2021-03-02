@@ -1,28 +1,30 @@
-<div id="footer">
+	<div id="footer">
 <div class="panel-box footer">
 	    <div class="row no-gutter">
 	   	 	<div class="border-page-footer col-md-10 col-md-offset-1">
 		  
 		   	 	 <div class="row col-md-12 col-md-offset-0">
 			   	 	 <div class="office-box col-md-4 npl col-first">
-			   	<span class="n2"> <img class="img-defer" data-src="<?=TEMPLATE_URL?>/default/img/icon-01.png"/></span>
+			   	<span class="n2"> <img class="img-defer" data-src="<?= TEMPLATE_URL ?>/default/img/icon-01.png"/></span>
 			   <div class="f11a1">
 <div class="at1"><i class="fa fa-map-marker iconvne" aria-hidden="true"></i>29 Doan Thi Diem str, Dong Da dist.</div>
 <div class="at1"><i class="fa fa-phone iconvne" aria-hidden="true"></i>
 	<a class="click2call" href="tel:02437325976">024.3732.5976</a> - <a class="click2call" href="tel:02437325978">024.3732.5978</a></div>
 <div class="at1"><i class="fa fa-mobile iconvne icon-big" aria-hidden="true"></i><a class="click2call" href="tel:0913311911">+84.913.311.911</a> - info@hoabinhtourist.com</div>
-
+<div class="at1"><i class="fa fa-phone iconvne" aria-hidden="true"></i>
+	Khiếu nại dịch vụ:<a class="click2call" href="tel:0905388666"> 0905.388.666</a></div>
 
 			   </div>
 		   	 	</div>
 			   	 	 <div class="office-box col-md-4">
-		  	<span class="n2"> <img class="img-defer" data-src="<?=TEMPLATE_URL?>/default/img/icon-02.png"/></span>
+		  	<span class="n2"> <img class="img-defer" data-src="<?= TEMPLATE_URL ?>/default/img/icon-02.png"/></span>
 			   <div class="f11a1">
 <div class="at1"><i class="fa fa-map-marker iconvne" aria-hidden="true"></i>217 Tran Phu str, Hai Chau dist.</div>
 <div class="at1"><i class="fa fa-phone iconvne" aria-hidden="true"></i><a class="click2call" href="tel:02363996116">0236.399.6116</a> - <a class="click2call" href="tel:02363996226">0236.399.6226</a> </div>
 <div class="at1">
 <i class="fa fa-mobile iconvne icon-big" aria-hidden="true"></i><a class="click2call" href="tel:0913186829">+84.913.186.829</a> - info@danangevents.com.vn</div>
-
+<div class="at1"><i class="fa fa-phone iconvne" aria-hidden="true"></i>
+	Khiếu nại dịch vụ:<a class="click2call" href="tel:0905388666"> 0905.388.666</a></div>
 
 			   </div>
 			   	 <!--	<a href="#" />
@@ -31,12 +33,13 @@
 		   	 	</div>
 		   	 	
 			   	 	 <div class="office-box col-md-4">
-		<span class="n2"> <img class="img-defer" data-src="<?=TEMPLATE_URL?>/default/img/icon-03.png"/></span>
+		<span class="n2"> <img class="img-defer" data-src="<?= TEMPLATE_URL ?>/default/img/icon-03.png"/></span>
 <div class="f11a1">			
 	<div class="at1"><i class="fa fa-map-marker iconvne" aria-hidden="true"></i>05 Hoa Cau str., Phu Nhuan dist</div>   	 	
 <div class="at1"><i class="fa fa-phone iconvne" aria-hidden="true"></i><a class="click2call" href="tel:02835178383">028.3517.8383</a> - <a class="click2call" href="tel:02835171797">028.3517.1797</a> </div>
 <div class="at1"><i class="fa fa-mobile iconvne icon-big" aria-hidden="true"></i><a class="click2call" href="tel:0905388666">+84.905.388.666</a></div>
-
+<div class="at1"><i class="fa fa-phone iconvne" aria-hidden="true"></i>
+	Khiếu nại dịch vụ:<a class="click2call" href="tel:0905388666"> 0905.388.666</a></div>
 		   	 	</div>
 		   	 	</div>
 		   	 	 </div>
@@ -50,14 +53,42 @@
 
 		   	 	<ul class="list-inline pull-left">
 			   
-    				<li><a title="<?php echo $this->translate('home'); ?>" href="/"><?php echo $this->translate('home'); ?></a></li>
-					<li><a title="<?php echo $this->translate('about'); ?>" href="<?php echo $this->translate('footer_link_1'); ?>"><?php echo $this->translate('about'); ?></a></li>
-					<li><a title="<?php echo $this->translate('activity'); ?>" href="<?php echo $this->translate('footer_link_2'); ?>"><?php echo $this->translate('activity'); ?></a></li>
-					<li><a title="<?php echo $this->translate('news'); ?>" href="<?php echo $this->translate('news_link'); ?>"><?php echo $this->translate('news'); ?></a></li>
-					<li><a title="<?php echo $this->translate('rec'); ?>" href="<?php echo $this->translate('footer_link_3'); ?>"><?php echo $this->translate('rec'); ?></a></li>
-					<li><a title="<?php echo $this->translate('contact'); ?>" href="<?php echo $this->translate('footer_link_4'); ?>"><?php echo $this->translate('contact'); ?></a></li>
-					<li><a title="<?php echo $this->translate('membership'); ?>" href="http://membershipcard.hoabinh-group.com/"><?php echo $this->translate('membership'); ?></a></li>
-					<li><a title="<?php echo $this->translate('gallery'); ?>" href="/gallery"><?php echo $this->translate('gallery'); ?></a></li>					
+    				<li><a title="<?php echo $this->translate(
+          "home"
+        ); ?>" href="/"><?php echo $this->translate("home"); ?></a></li>
+					<li><a title="<?php echo $this->translate(
+       "about"
+     ); ?>" href="<?php echo $this->translate(
+  "footer_link_1"
+); ?>"><?php echo $this->translate("about"); ?></a></li>
+					<li><a title="<?php echo $this->translate(
+       "activity"
+     ); ?>" href="<?php echo $this->translate(
+  "footer_link_2"
+); ?>"><?php echo $this->translate("activity"); ?></a></li>
+					<li><a title="<?php echo $this->translate(
+       "news"
+     ); ?>" href="<?php echo $this->translate(
+  "news_link"
+); ?>"><?php echo $this->translate("news"); ?></a></li>
+					<li><a title="<?php echo $this->translate(
+       "rec"
+     ); ?>" href="<?php echo $this->translate(
+  "footer_link_3"
+); ?>"><?php echo $this->translate("rec"); ?></a></li>
+					<li><a title="<?php echo $this->translate(
+       "contact"
+     ); ?>" href="<?php echo $this->translate(
+  "footer_link_4"
+); ?>"><?php echo $this->translate("contact"); ?></a></li>
+					<li><a title="<?php echo $this->translate(
+       "membership"
+     ); ?>" href="http://membershipcard.hoabinh-group.com/"><?php echo $this->translate(
+  "membership"
+); ?></a></li>
+					<li><a title="<?php echo $this->translate(
+       "gallery"
+     ); ?>" href="/gallery"><?php echo $this->translate("gallery"); ?></a></li>					
 					
 				</ul>
 		   	 		</div>
@@ -68,7 +99,7 @@
 			   	 	<div class="col-md-2 col-sm-12 register">
 				   	 	<div class="row">
 				   	 	<img class="img-defer" data-src="/public/templates/news2017/default/img/email.png">
-				   	 	<span><?php echo $this->translate('newsletter_1','<br/>'); ?></span>
+				   	 	<span><?php echo $this->translate("newsletter_1", "<br/>"); ?></span>
 				   	 
 				   	 	</div></div>
 				   	 	<div class="">
@@ -76,14 +107,18 @@
 				   	 	
 				   	 	<div class="register-info col-md-5 npl npr">
 				   	 	<span>
-				   	 <?php echo $this->translate('newsletter_2','<br/>'); ?>	
+				   	 <?php echo $this->translate("newsletter_2", "<br/>"); ?>	
 				   	 					 </span>
 				   	 	</div>
 				   	 	<div style="margin-top: 5px;" class="form-newsletter col-md-6 col-xs-12">
 					<form action="http://send.hoabinhtourist.com/lists/5d658412ad20f/embedded-form-subscribe-captcha" method="POST" class="">   	 	
 					   	 	<div class="form-group">
-				<input type="text" class="form-control" id="EMAIL" name="EMAIL" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" placeholder="<?php echo $this->translate('input_email'); ?>">
-				<input type="submit" class="btn" value="<?php echo $this->translate('register'); ?>">
+				<input type="text" class="form-control" id="EMAIL" name="EMAIL" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" placeholder="<?php echo $this->translate(
+      "input_email"
+    ); ?>">
+				<input type="submit" class="btn" value="<?php echo $this->translate(
+      "register"
+    ); ?>">
 
 					   	 	</div>
 					</form>   	 	
@@ -118,8 +153,9 @@
 </div>
 </div>
 <?php
-	//$identity = Zend_Auth::getInstance()->getIdentity();
-	// if (isset($identity) && ($identity->id == 3)) { ?>
+//$identity = Zend_Auth::getInstance()->getIdentity();
+// if (isset($identity) && ($identity->id == 3)) {
+?>
 	<!--<div class="social-mxh"><div class="social-mxh-text">CONTACT NOW</div>-->
 <!--<div class="boxcontact2">
 	<style>
@@ -226,16 +262,19 @@
 	</a> 
 </div>
 </div>
-<?php //} ?>
+<?php
+//}
+?>
 <div id="back-to-top" class="back-to-top" data-toggle="tooltip" data-placement="right" title="Trở lên đầu trang"><span class="glyphicon glyphicon-circle-arrow-up text-primary"></span></div>
 
 <div class="col-md-12 col-sm-12 copyright">
 	    	 <div class="col-md-10 col-md-offset-1" style ="height: 70px; overflow: hidden;">
 			   	 <div class="col-md-5 cl">
-				   	<?php $statTracker = new Model_StatTracker();
-					      $visits = $statTracker->getVisits(); 
-					      $visits = $visits[0]['ip'];	
-					   	 ?>
+				   	<?php
+        $statTracker = new Model_StatTracker();
+        $visits = $statTracker->getVisits();
+        $visits = $visits[0]["ip"];
+        ?>
 				   	 Khách ghé thăm hôm nay: <?php echo $visits; ?> <br/>
 				   	 Copyright 2015 Hòa Bình Group - All Right Reserved
 				   	 <a href="//www.dmca.com/Protection/Status.aspx?ID=2f1cb399-de48-4e61-a93a-69cbad2d15d1" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120l.png?ID=2f1cb399-de48-4e61-a93a-69cbad2d15d1"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
@@ -262,7 +301,7 @@
 <script src="/public/js/vendor-hbg.min.js?v=1.1"></script>
 <script src="/public/js/custom.function.min.js?v=1.1"></script>
    
-    <?php echo $this->headScript() ?>
+    <?php echo $this->headScript(); ?>
     <?php echo $this->InlineScript(); ?>
   
 	<script>
@@ -270,6 +309,7 @@
 	</script>
 	
 	
-
+<!-- 	<script src="http://hoabinhtourist.com/public/noel/noel.js?v=<?php echo time(); ?>"></script> -->
+<!-- <script src="http://hoabinhtourist.com/public/js/happy-new-year_v2.js?v=<?php echo time(); ?>"></script> -->
   </body>
 </html>

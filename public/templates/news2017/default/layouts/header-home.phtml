@@ -6,17 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
       <meta name="google-site-verification" content="qi8U2LlUcwIWQcOj4Yt3FukaTa8Uh8iLjBwsJNN_Jps" /> 
-    <?php echo $this->headTitle() ?>
-  <?php echo $this->headMeta() ?>  
+    <?php echo $this->headTitle(); ?>
+  <?php echo $this->headMeta(); ?>  
   <link rel="shortcut icon" href="/public/images/favicon-1.ico"> 
-   
+   <link rel="canonical" href="<?php echo "http://" .
+     $_SERVER["HTTP_HOST"] .
+     $_SERVER["REQUEST_URI"]; ?>" />
   <meta name="robots" content="INDEX,FOLLOW" />
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?v=1.1" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="<?=TEMPLATE_URL?>/default/css/style.min.css?v=1.1" rel="stylesheet">
-      <?php echo $this->headLink() ?>
+    <link href="<?= TEMPLATE_URL ?>/default/css/style.min.css?v=1.1" rel="stylesheet">
+      <?php echo $this->headLink(); ?>
 
-    <link href="<?=TEMPLATE_URL?>/default/css/font-awesome.min.css?v=1.1" rel="stylesheet">
+    <link href="<?= TEMPLATE_URL ?>/default/css/font-awesome.min.css?v=1.1" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css?v=1.1" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,400i,500,500i,700,700i,900&amp;subset=vietnamese" rel="stylesheet">
@@ -27,9 +29,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js?v=1.1"></script>
 <!-- <script type="text/javascript" src="http://hoabinhtourist.com/public/js/happy-new-year.js"></script> -->
 
-<?php  $data = getApiUrl("http://hoabinhtourist.com/default/api/getchat");
-	if($data->status){
-      if($data->data->type == 'facebook'){ ?>
+<?php
+$data = getApiUrl("http://hoabinhtourist.com/default/api/getchat");
+if ($data->status) {
+  if ($data->data->type == "facebook") { ?>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -44,7 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-	<?php  }else{ ?>
+	<?php } else { ?>
 
   	<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -58,17 +61,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMHJ4CL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<?php }} ?>
+<?php }
+}
+?>
 
-  <?php 
-	function isMobile() {
-    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-}	
-	?>
-	<?php if(isMobile()): ?>
+  <?php function isMobile()
+  {
+    return preg_match(
+      "/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i",
+      $_SERVER["HTTP_USER_AGENT"]
+    );
+  } ?>
+	<?php if (isMobile()): ?>
 	
 	<?php else: ?>
-  <!--<script src="http://hoabinh-group.com/public/js/jquery.happy_new_year_v2.js"></script>-->
+  <!-- <script src="http://hoabinh-group.com/public/js/jquery.happy_new_year_v2.js"></script> -->
     <?php endif; ?>     
 	<style>
 		/* Note: Design for a width of 320px */
@@ -102,7 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {
             "@context": "http://schema.org",
             "@type": "Event organization",
-            "name": "HoaBinh events",
+            "name": "HoaBinh Group",
             "description": "The best Event organization all over the Vietnam!",
             "address": {
                 "@type": "PostalAddress",
@@ -177,9 +184,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	  <div class="snow"></div>-->
 	  	 
 	
-  <?php  $lang = Zend_Registry::get('Zend_Locale');
-  		// echo $locale;
-  			  ?>		  
+  <?php $lang = Zend_Registry::get("Zend_Locale");
+// echo $locale;
+?>		  
 	<div id="header">
 		
 		<div id="header-top" class="header-home hidden-xs" data-spy="affix" data-offset-top="197">
@@ -188,7 +195,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="container">
 		<div class="row">
 		<div class="col-md-10">
-			<?php  echo $this->render('/'.$lang. '/menu.phtml'); ?>
+			<?php echo $this->render("/" . $lang . "/menu.phtml"); ?>
 		
 		</div>
 		<div class="col-md-2">
@@ -196,8 +203,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <span class="pull-right">
                       
                        
-                        <a href="/translate/filter/change/vi"> <img class="img-defer" alt="VN" height="24" data-src= '<?=TEMPLATE_URL?>/default/img/Vietnam_flat.png'/>	</a>
-                        <a href="/translate/filter/change/en"><img class="img-defer" alt="EN" height="24" data-src= '<?=TEMPLATE_URL?>/default/img/United-Kingdom_flat.png'/></a>
+                        <a href="/translate/filter/change/vi"> <img class="img-defer" alt="VN" height="24" data-src= '<?= TEMPLATE_URL ?>/default/img/Vietnam_flat.png'/>	</a>
+                        <a href="/translate/filter/change/en"><img class="img-defer" alt="EN" height="24" data-src= '<?= TEMPLATE_URL ?>/default/img/United-Kingdom_flat.png'/></a>
                         </span>
                        	
                     </div>
@@ -215,10 +222,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		    <nav class="navbar">
 			    	<div class="hotline">					
                         <span class="pull-right">
-                        <img class="" alt="hotline Hòa Bình Group" height="24" src= '<?=TEMPLATE_URL?>/default/img/icon hotline.png'/> 
+                        <img class="" alt="hotline Hòa Bình Group" height="24" src= '<?= TEMPLATE_URL ?>/default/img/icon hotline.png'/> 
                         <b><a class="click2call" href="tel:0913311911">+84.913.311.911</a></b>
-                        <a href="/translate/filter/change/vi"> <img alt="VN" height="24" src= '<?=TEMPLATE_URL?>/default/img/Vietnam_flat.png'/>	</a>
-                        <a href="/translate/filter/change/en"><img alt="EN" height="24" src= '<?=TEMPLATE_URL?>/default/img/United-Kingdom_flat.png'/></a>
+                        <a href="/translate/filter/change/vi"> <img alt="VN" height="24" src= '<?= TEMPLATE_URL ?>/default/img/Vietnam_flat.png'/>	</a>
+                        <a href="/translate/filter/change/en"><img alt="EN" height="24" src= '<?= TEMPLATE_URL ?>/default/img/United-Kingdom_flat.png'/></a>
                         </span>
                        	
                     </div>
@@ -244,11 +251,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	    
 	     <div class="logo visible-xs-block">
 		  
-	       <?php if($lang == 'vi'){ ?>
+	       <?php if ($lang == "vi") { ?>
 	        <a title="Home" href="/">
 	       <img width="220" src="/public/images/logo-01.png" />
 	       </a>
-	       	<?php }else{ ?>
+	       	<?php } else { ?>
 	       	  <a title="Home" href="/en">
 	       	 <img width="220" src="/public/images/logo en-01.png" />
 	       	  </a>
@@ -258,7 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    </div>
 	    
       <div id="top_menu_louis">
-     <?php  echo $this->render('/'.$lang. '/menu.phtml'); ?>
+     <?php echo $this->render("/" . $lang . "/menu.phtml"); ?>
       </div>
     </div><!-- /.navbar-collapse -->
   
@@ -274,59 +281,77 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		   
     <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
     <!-- Carousel indicators -->
-    <?php $menuitem = new Model_MenuItem();
-	    $image = new Model_ProductImage();
-	   $menu = $menuitem->get_one_where(array(
-		    'menu_id' => 12,
-		    'id' => 341,
-		    'lang' => 'vi',
-	    ));	    
-		$id_menu = $menu->id;
-		$images = $image->get_details(array(
-			'productId' => $id_menu
-		));
-		$countImages = count($images);
-	     ?>
+    <?php
+    $menuitem = new Model_MenuItem();
+    $image = new Model_ProductImage();
+    $menu = $menuitem->get_one_where([
+      "menu_id" => 12,
+      "id" => 341,
+      "lang" => "vi",
+    ]);
+    $id_menu = $menu->id;
+    $images = $image->get_details([
+      "productId" => $id_menu,
+    ]);
+    $countImages = count($images);
+    ?>
     <ol class="carousel-indicators">
-	    		<?php for($order = 0; $order < $countImages; $order++){ ?>
-	    		 <li data-target="#myCarousel" data-slide-to="<?php echo $order;?>"  <?php echo ($order == 0)?' class="active"':''; ?>></li>
+	    		<?php for ($order = 0; $order < $countImages; $order++) { ?>
+	    		 <li data-target="#myCarousel" data-slide-to="<?php echo $order; ?>"  <?php echo $order ==
+0
+  ? ' class="active"'
+  : ""; ?>></li>
 	    		<?php } ?>
 
        
          
             </ol>   
     <!-- Carousel items -->
-    <?php if($lang == 'vi'): ?>
+    <?php if ($lang == "vi"): ?>
     <div class="carousel-inner">
-	    	<?php 
-		    	$stt = 0;
-		    	foreach($images as $keyImages=>$valImages): $stt++; ?>
-		    	 <div class="item <?php echo ($valImages['isDefault'] == 'Yes')?' active':''; ?>">
-       <a href="<?php echo $valImages['url']; ?>"> <img class="img-responsive" src="/public/images/backgrounds/<?php echo $valImages['full']; ?>" alt="<?php echo $valImages['full']; ?>"></a>
+	    	<?php
+      $stt = 0;
+      foreach ($images as $keyImages => $valImages):
+        $stt++; ?>
+		    	 <div class="item <?php echo $valImages["isDefault"] == "Yes"
+          ? " active"
+          : ""; ?>">
+       <a href="<?php echo $valImages[
+         "url"
+       ]; ?>"> <img class="img-responsive" src="/public/images/backgrounds/<?php echo $valImages[
+  "full"
+]; ?>" alt="<?php echo $valImages["full"]; ?>"></a>
 		    	 </div>
-             <?php endforeach; ?> 
+             <?php
+      endforeach;
+      ?> 
         
                         
     </div>
     <?php else: ?>
-  <?php  $menu = $menuitem->get_one_where(array(
-		    'menu_id' => 12,
-		    'id' => 342,
-		    'lang' => 'en',
-	    ));	    
-		$id_menu = $menu->id;
-		$images = $image->get_details(array(
-			'productId' => $id_menu
-		));
-		$countImages = count($images);
-	     ?>
+  <?php
+  $menu = $menuitem->get_one_where([
+    "menu_id" => 12,
+    "id" => 342,
+    "lang" => "en",
+  ]);
+  $id_menu = $menu->id;
+  $images = $image->get_details([
+    "productId" => $id_menu,
+  ]);
+  $countImages = count($images);
+  ?>
      <div class="carousel-inner">
 	    
-	          <?php 
-		       
-		    	foreach($images as $keyImages=>$valImages): ?>
-	            <div class="item <?php echo ($valImages['isDefault'] == 'Yes')?' active':''; ?>">
-       <a href="<?php echo $valImages['url']; ?>"> <img class="img-responsive" src="/public/images/backgrounds/<?php echo $valImages['full']; ?>" alt="<?php echo $valImages['full']; ?>"></a>
+	          <?php foreach ($images as $keyImages => $valImages): ?>
+	            <div class="item <?php echo $valImages["isDefault"] == "Yes"
+               ? " active"
+               : ""; ?>">
+       <a href="<?php echo $valImages[
+         "url"
+       ]; ?>"> <img class="img-responsive" src="/public/images/backgrounds/<?php echo $valImages[
+  "full"
+]; ?>" alt="<?php echo $valImages["full"]; ?>"></a>
             	 </div>
              <?php endforeach; ?>     
               
@@ -334,7 +359,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <?php endif; ?>
 
     <!-- Carousel nav -->
-   <a class="left carousel-control slider-header" href="http://hoabinh-group.com/#myCarousel" data-slide="prev"> <img class="img-defer" data-src="<?=TEMPLATE_URL?>/default/img/btn-l.png" /> </a> <a class="right carousel-control slider-header" href="http://hoabinh-group.com/#myCarousel" data-slide="next"><img class="img-defer" data-src="<?=TEMPLATE_URL?>/default/img/btn-r.png" />  </a> 
+   <a class="left carousel-control slider-header" href="http://hoabinh-group.com/#myCarousel" data-slide="prev"> <img class="img-defer" data-src="<?= TEMPLATE_URL ?>/default/img/btn-l.png" /> </a> <a class="right carousel-control slider-header" href="http://hoabinh-group.com/#myCarousel" data-slide="next"><img class="img-defer" data-src="<?= TEMPLATE_URL ?>/default/img/btn-r.png" />  </a> 
 </div>
 		    
 	    

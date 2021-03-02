@@ -10,7 +10,7 @@
     <?php echo $this->headTitle() ?>
   <?php echo $this->headMeta() ?>       
    <link rel="shortcut icon" href="/public/images/favicon-1.ico">
-  
+  <link rel="canonical" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" />
    <meta name="robots" content="INDEX,FOLLOW" />
     <!-- Bootstrap -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -73,7 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {
             "@context": "http://schema.org",
             "@type": "Event organization",
-            "name": "HoaBinh events",
+            "name": "HoaBinh Group",
             "description": "The best Event organization all over the Vietnam!",
             "address": {
                 "@type": "PostalAddress",

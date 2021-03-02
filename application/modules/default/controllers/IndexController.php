@@ -23,6 +23,14 @@ class IndexController extends Louis_Controller_Action{
   $this->view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8');
  $this->view->headMeta()->appendName("keywords","Hoabinhgroup, Công ty tổ chức sự kiện, Sự kiện truyền thông Việt Nam, tổ chức hội nghị, tổ chức hội thảo, du lịch MICE, du lich MICE, to chuc hoi thao, tour du lich"); 
   $this->view->headMeta()->offsetSetName("2","description","HoaBinh Group (Convention – Events – Travel) đã khẳng định uy tín của mình là tập đoàn hàng đầu trong lĩnh vực tổ chức Hội nghị, sự kiện và du lịch tại Việt Nam.");
+ $this->view->doctype('XHTML1_RDFA'); 
+
+   $this->view->headMeta()->setProperty('og:title', 'Công ty tổ chức hội nghị, tổ chức Sự kiện chuyên nghiệp, Nhà tổ chức tour du lịch uy tín'); 
+   $this->view->headMeta()->setProperty('og:description', 'HoaBinh Group (Convention – Events – Travel) đã khẳng định uy tín của mình là tập đoàn hàng đầu trong lĩnh vực tổ chức Hội nghị, sự kiện và du lịch tại Việt Nam.'); 
+   $this->view->headMeta()->setProperty('og:image', 'http://hoabinh-group.com/public/images/backgrounds/5.jpg');
+    $this->view->headMeta()->setProperty('og:type', 'website');
+
+
   
   }else{
 	 $this->view->headTitle("Conferences Events and Travel Management Company");

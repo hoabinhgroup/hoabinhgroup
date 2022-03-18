@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Hoa Binh Group</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/skins/yellow.css">
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/style.css">
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/skeleton.css"> 
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/responsive.css"> 
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/prettyPhoto.css">
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/fontello.css">
+	<link rel='stylesheet' id='flexslider-css'  href='http://wle-mekong.cgiar.org/wp-content/themes/merlin/framework/css/flexslider.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='rs-plugin-settings-css'  href='http://wle-mekong.cgiar.org/wp-content/plugins/revslider/rs-plugin/css/settings.css?rev=4.6.0&#038;ver=3.9.6' type='text/css' media='all' />
+
+	<!-- Oregano font -->
+	<link href='http://fonts.googleapis.com/css?family=Oregano:400,400italic' rel='stylesheet' type='text/css'>
+	
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery.min.js"></script>
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="<?=TEMPLATE_URL?>/default/images/favicon.ico">
+	<link rel="apple-touch-icon" href="<?=TEMPLATE_URL?>/default/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="<?=TEMPLATE_URL?>/default/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="<?=TEMPLATE_URL?>/default/images/apple-touch-icon-114x114.png">
+	
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/dist/photoswipe.css"> 
+<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/dist/style.css"> 
+
+<!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+     In the folder of skin CSS file there are also:
+     - .png and .svg icons sprite, 
+     - preloader.gif (for browsers that do not support CSS animations) -->
+<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/dist/default-skin/default-skin.css"> 
+<!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+ <div id="wrapoverall">
+	
+		
+	<header>
+		
+			<div class="container" style="height: 130px;">
+				
+				<div class="eight columns">
+				
+				<a href="/"> <img style="margin-top: 6px;" class="logo" src="/images/logo-hoabinhgroup.png" alt="logo" height="110"/> </a>
+				
+				</div><!-- end eight -->
+				
+				<div class="eight columns">
+				
+					<ul class="contact_list">
+						
+						
+						<li>Hotline: 091 33 11 911
+						<?php
+	$linkVN = '/translate/filter/change/vi';
+	$linkEN = '/translate/filter/change/en';
+	?>
+</li><br/><span style="margin-left: 118px;">
+<a href="<?php echo $linkVN; ?>"><img src="/public/images/77279-200.png" width="30" /></a>
+<a href="<?php echo $linkEN; ?>"><img src="/public/images/67245-200.png" width="30"/></a>
+</span>
+					</ul>
+					
+				
+				
+				</div><!-- end eight -->
+				<style>
+				#menu_second{
+					 display: inline-block;
+    font-size: 0.9em;
+    left: 50%;
+    margin: 0 0 0 -247px;
+    position: absolute;
+    top: 100px;
+    width: 760px;
+				}
+				#menu_second li{
+					display: inline-block;
+					text-transform: uppercase;
+					margin-right: 10px;
+					border-right: 1px solid #04245D;
+					padding-right: 10px;
+				}
+				#menu_second li:last-child{
+					border: none;
+					}
+				#menu_second li a{
+					color: #04245D;
+					
+				}
+			</style>
+				<ul id="menu_second">
+		<li><a target="_blank" href="http://hoabinhtourist.com">Hoabinhtouris</a></li>	<li><a target="_blank" href="http://www.dulichhoabinh.com">dulichhoabinh</a></li> <li><a target="_blank" href="http://globalmicetravel.com">globalmicetravel</a></li> <li><a target="_blank" href="http://www.hoinghihoithao.com">hoinghihoithao</a></li> <li><a href="#">solution</a> </li><li><a target="_blank" href="http://vietnamconference.com.vn">vietnamconference</a></li>
+			</ul>
+			</div><!-- end container -->
+			
+			
+			
+			<div class="topnav_holder">
+			
+				<div class="container">
+				
+					<div class="thirteen columns">
+					
+						<nav id="mainNavigation">
+						<?php echo $this->MenuWidget(); ?>
+						</nav>
+						
+					</div><!-- end thirteen -->
+					
+					
+					<div class="three columns">
+						
+							<input type="submit" class="standard_button top_search_button" name="search" value="" title="Search"/>
+							<input type="text" class="top_search_textbox" name="search" value="Search..." onblur="if(this.value=='') this.value='Search...'" onfocus="if(this.value=='Search...') this.value=''"/>
+						
+					</div><!-- end three -->
+				
+				</div><!-- end container -->
+			
+			</div><!-- end .topnav_holder -->
+			
+		  <div class="header_shadow"></div>		
+		
+	</header>
+		
+		
+		
+		
+	<section id="main_content">
+		
+	
+			
+			
+			
+		<div class="container">
+
+			<?php echo $this->layout()->content; ?>	
+			
+							
+		</div><!-- end container -->
+		
+	</section><!-- end #main_content -->
+		
+		
+		
+		
+	<footer>
+		
+		<div class="top_full_shadow"></div><!-- end .top_full_shadow -->
+			
+			<div class="container"> 
+			
+			
+				<div class="sixteen columns add-bottom">
+				
+					
+					<div class="eleven columns alpha add-bottom" style="color:#fff">
+
+						<h3 class="heading"> <span class="bold">HOABINHGROUP</span> </h3>
+						
+	Address: 29 Doan Thi Diem Street, Quoc Tu Giam Ward, Dong Da Dist, Hanoi City<br/>
+
+Tel: (84 - 4) 37325 976 Fax: (84 - 4) 37325 978<br/>
+
+Email: info@hoabinhtourist.com - Hoàng Lan: (084) 913 311 911 - Jackie Han: (084) 98 98 98 198<br/>
+<!-- Histats.com  START  (standard)-->
+<script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
+<a href="http://www.histats.com" target="_blank" title="php hit counter" ><script  type="text/javascript" >
+try {Histats.start(1,3282102,4,107,170,20,"00010000");
+Histats.track_hits();} catch(err){};
+</script></a>
+<noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?3282102&101" alt="php hit counter" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+
+						
+						
+					
+					</div><!-- end ten -->
+					<style>
+				#newsletter_form{
+					padding: 6px;
+					width: 200px;
+				}	
+				.newsletter_button{
+					width: 50px;
+					height: 26px;
+					background: #FED148;
+					border: 0px;
+					border-radius: 3px;
+				}	
+				</style>	
+					
+					<div class="five columns omega add-bottom">
+					
+						<h3 class="heading"> <span class="bold">Newsletter Subscribe</span> </h3>
+						
+						
+						<input type="text" placeholder="Your Email" id="newsletter_form" />
+						<input type="submit" value="Gửi" class="newsletter_button"/>
+											
+					</div><!-- end six -->
+					
+					
+				</div>	<!-- end sixteen -->
+				
+		
+				
+				<div class="sixteen columns add-bottom" id="footer_bottom">
+							
+						<span>&copy; Copyright 2015 <a class="dark_link" href="#">HoaBinhGroup</a>  </span>
+						
+						<ul class="bottom_links">
+							<li><img width="80" height="40" src="/public/images/pata_small.jpg"/></li>
+							<li> <img width="80" height="40" src="/public/images/japan-circle.jpg"/></li>
+							<li><img width="80" height="40" src="http://hoabinhtourist.com/images/hanoi_vnesco_travel.png"/></li>
+							<li><img width="80" height="40" src="http://hoabinhtourist.com/images/vcci.png"/></li>
+							<li style="background: #fff;height: 40px"><img width="80" height="40" src="http://hoabinhtourist.com/images/VISTA2015.png"/></li>
+							<li><img width="80" height="40" src="http://hoabinhtourist.com/images/paypal.png"/></li>
+							<?php if ($lang == 'vi'){ ?>
+							<li> <a class="dark_link" href="/ve-chung-toi">About</a> </li>
+						     <?php }else { ?>
+						     <li> <a class="dark_link" href="/about">About</a> </li>
+						     <? } ?>
+							<li> <a class="dark_link" href="/contact">Contact</a> </li>
+							<li class="top"> <a class="skin_link" href="#"> &uarr; Top</a> </li>
+						</ul><!-- end ul .bottom_links -->
+					
+				</div><!-- end sixteen -->	
+					
+								
+				
+			
+			</div><!-- end container -->
+			
+		<div class="bottom_full_shadow"></div>
+			
+	</footer>
+		
+	
+ </div><!-- end #wrapoverall -->	
+	
+
+	<!-- JS
+  ================================================== -->
+
+
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery-ui-1.10.3.custom.min.js"></script>
+
+	<script src="<?=TEMPLATE_URL?>/default/js/superfish.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery.tipsy.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery.tweet.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery.flickrush.pack.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery.prettyPhoto.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery.bxSlider.min.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery.fractionslider.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/custom.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery-scrolltofixed-min.js"></script>
+
+<!-- Core JS file -->
+<script src="<?=TEMPLATE_URL?>/default/dist/photoswipe.min.js"></script> 
+
+<!-- UI JS file -->
+<script src="<?=TEMPLATE_URL?>/default/dist/photoswipe-ui-default.min.js"></script> 
+<script src="<?=TEMPLATE_URL?>/default/dist/custom.js"></script> 
+	
+	
+	
+	<script>
+	
+	$(function(){
+		$(".sf-menu li").hover( function(){
+			//if($(this).attr("id")=="news-company") {
+			//	$('#news-company').children('a').css('color','#04245D');
+				$(this).children('a').css('color','#04245D');
+			//}
+		}, function(){
+			
+			if($(this).children('a').attr("class")!="current") {
+			$(this).children('a').css('color','#fff');
+			}
+			
+			$(".sf-menu li").children('ul').children('li').hover(function(){
+				$(this).children('a').css('color','#04245D');
+			}, function(){
+				//$(".sf-menu li").children('a').css('color','#04245D');
+				//$(this).children('a').css('color','#fff');
+				if ($(".sf-menu li").children('a').attr('class') == 'current'){
+				$(".current").css('color','#04245D');
+				}
+			});
+		//$('#news-company').css('background','#FED148');
+		//$(".sf-menu li").children('ul').children('li').children('a').css('color','#fff');	
+		} )
+	
+		/*$('.sf-menu li').each(function(){
+    if($(this).hasClass('sfHover')) {
+       //$('#news-company').hide();
+       alert("a")
+    } 
+		});*/
+});
+
+		//if($('#news-company').hasClass('sfHover')){
+			
+		//}
+	</script>		
+			
+	
+	
+  
+ 
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

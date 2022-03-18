@@ -8,7 +8,7 @@ class AdminMenuitemController extends Louis_Controller_Action
     {
         /* Initialize action controller here */
          parent::init();
-         $this->view->headScript()->appendFile('http://code.jquery.com/jquery-1.9.1.js');
+         $this->view->headScript()->appendFile('https://code.jquery.com/jquery-1.9.1.js');
          $this->_model_menu_items = new Model_MenuItem();
          $this->_productImage_model = new Model_ProductImage();
     }

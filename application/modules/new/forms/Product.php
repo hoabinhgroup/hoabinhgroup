@@ -134,8 +134,7 @@ $multi->setRegisterInArrayValidator(false)->setRequired(true);
     $submit = $this->addElement('submit', 
         							'submit',
         					array('label' => 'Lưu',
-        							'attribs' => array('class' => 'btn btn-info', 
-        							'onClick' => 'form.submit();this.disabled=true')
+        							'attribs' => array('class' => 'btn btn-info')
         											
         								));
         								

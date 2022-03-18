@@ -2,13 +2,14 @@
 <label class="required" for="parentID">Chọn thời gian đăng:</label>
 </dt>
 <?php
+    date_default_timezone_set('Asia/Bangkok');
 	$date = date('d/m/Y',time());
 	$options = $this->element->getDecorator('ViewScript')->getOptions();
 	if(!empty($options)){
-		$optionString = $options['List'];	
+		$optionString = $options['List'];
 		$date = date('d/m/Y', $optionString);
-	}   
-	
+	}
+
 	?>
 <dd id="parentID-element">
 	<div class="row">

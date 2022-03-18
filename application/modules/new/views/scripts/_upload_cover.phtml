@@ -1,33 +1,33 @@
-<?php 
-			
+<?php
+
 	$img = '';
 	$pid = '';
 	$options = $this->element->getDecorator('ViewScript')->getOptions();
 	$optionString = '';
 	if(!empty($options)){
 		if($options['List'] != ''){
-		$optionString = '<img src= "'.$options['List'].'?v='.time().'" />';	
+		$optionString = '<img src= "'.$options['List'].'?v='.time().'" />';
 		}else{
-		$optionString ='';	
+		$optionString ='';
 		}
-		$pid = $options['pid']; 
-	}   
-	
+		$pid = $options['pid'];
+	}
+
 	 ?>
 <dt id="cover-label">
 <label class="required" for="cover">Up ảnh bìa:</label>
-</dt>	
-<dd id="cover-element">	
+</dt>
+<dd id="cover-element">
 	 <div class="slim" data-label="Thả ảnh bìa vào đây" style="width:200px;" data-will-remove="imageWillBeRemoved" <?php echo ($pid != '')?' data-did-remove="imageRemoved"':''; ?>>
-        <input id="myCropper" type="file" name="slim[]"  <?php echo ($optionString == null)?' required':''; ?> />
+        <input id="myCropper" type="file" name="slim[]"  <?php echo ($optionString == null)?'':''; ?> />
         <?php echo $optionString; ?>
     </div>
-</dd>  
+</dd>
 <br/>
    <?php if($pid != null){ ?>
 <script type="text/javascript">
 	var pid = '<?php echo $pid; ?>';
-</script>   
+</script>
    <?php } ?>
 <script type="text/javascript">
 function imageWillBeRemoved(data, remove) {
@@ -38,8 +38,8 @@ function imageWillBeRemoved(data, remove) {
 
 function imageRemoved(data)
 {
-	
-	 	
+
+
   dataString = 'name=' + data.input.name + '&pid=' + pid;
 	$.ajax({
             type: "POST",
@@ -48,13 +48,13 @@ function imageRemoved(data)
             dataType: 'json',
             success: function(data){
               console.log(data);
-			
+
 			  $('.slim').removeAttr('data-did-remove');
             }
         });
-		
+
 	 return false;
-  
+
 
 }
 </script>

@@ -62,7 +62,7 @@ a.left.carousel-control img{
 							<?php
 								$loop = 0;
 					 foreach($this->result as $key=>$value): $loop++; ?>
-							<li class="item list-group-item louis-list-category"> <a class="item_<?php echo $loop; ?>" <?php echo (($loop == 1)?" class='active'":""); ?> data="<?php echo strip_tags($value['description']); ?>" style="cursor: pointer" onClick="viewTemplate(this);" > <?php echo str_replace(array('Bản tin Hoabinh Group số',"Bản tin Hòa Bình Group số"," - 2019"," - 2017"," - 2018"),"",$value['name']); ?> </a><?php echo ($loop == 1)?'<img style="height: 25px !important; width: auto !important;position: absolute;top: -5px;right: 0px;" src="/public/img/new2.gif">':''; ?> </li>
+							<li class="item list-group-item louis-list-category"> <a rel="nofollow" class="item_<?php echo $loop; ?>" <?php echo (($loop == 1)?" class='active'":""); ?> data="<?php echo strip_tags($value['description']); ?>" style="cursor: pointer" onClick="viewTemplate(this);" > <?php echo str_replace(array('Bản tin Hoabinh Group số',"Bản tin Hòa Bình Group số"," - 2019"," - 2017"," - 2018"),"",$value['name']); ?> </a><?php echo ($loop == 1)?'<img style="height: 25px !important; width: auto !important;position: absolute;top: -5px;right: 0px;" src="/public/img/new2.gif">':''; ?> </li>
 							
 							<?php endforeach; ?>
 						</ul>

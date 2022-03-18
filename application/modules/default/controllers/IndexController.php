@@ -15,7 +15,7 @@ class IndexController extends Louis_Controller_Action{
       //  $this->view->headTitle("QHOnline - Zend Layout");
         
 	// thong tin co ban trong zend view
-	$url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$url =  "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   $baseurl=$this->_request->getbaseurl();
   $this->view->doctype();
   if($this->_lang == 'vi'){
@@ -27,7 +27,7 @@ class IndexController extends Louis_Controller_Action{
 
    $this->view->headMeta()->setProperty('og:title', 'Công ty tổ chức hội nghị, tổ chức Sự kiện chuyên nghiệp, Nhà tổ chức tour du lịch uy tín'); 
    $this->view->headMeta()->setProperty('og:description', 'HoaBinh Group (Convention – Events – Travel) đã khẳng định uy tín của mình là tập đoàn hàng đầu trong lĩnh vực tổ chức Hội nghị, sự kiện và du lịch tại Việt Nam.'); 
-   $this->view->headMeta()->setProperty('og:image', 'http://hoabinh-group.com/public/images/backgrounds/5.jpg');
+   $this->view->headMeta()->setProperty('og:image', 'https://hoabinh-group.com/public/images/backgrounds/2a56a86925d2d68c8fc3.jpg');
     $this->view->headMeta()->setProperty('og:type', 'website');
 
 
@@ -51,7 +51,7 @@ class IndexController extends Louis_Controller_Action{
     { 
 	   // require_once(APPLICATION_PATH . '/../libraries/Mobile_Detect.php');
 	  
-	    $this->view->headScript()->appendFile(TEMPLATE_URL.'/default/js/custom-home.js?v=1.1');
+	    $this->view->headScript()->appendFile(TEMPLATE_URL.'/default/js/custom-home.js?v=1.2');
 	    
 	    $this->view->headLink()->appendStylesheet('/public/popup/css/slick-modal-min.css?v=1.1');
 	     $this->view->headLink()->appendStylesheet('https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css?v=1.1');

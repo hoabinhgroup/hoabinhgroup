@@ -498,7 +498,7 @@ ol{
 <h2 class="text"><?php echo $this->name ?></h2>
 </div>
 <div class="more_des">
- <?php echo nl2br(strip_tags($this->description)); ?>
+ <?php echo nl2br(strip_tags($this->description, '<a><br>')); ?>
 </div>
 
 <div id="button_info" style="float: left;margin: 6px 0px;"><a class="button-review" href="/lien-he">Liên hệ</a></div>

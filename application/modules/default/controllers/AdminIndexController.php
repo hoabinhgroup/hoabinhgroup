@@ -4,7 +4,7 @@ class AdminIndexController extends Louis_Controller_Action
    
 		public function init(){
 			parent::init();
-			$this->view->headScript()->appendFile('http://code.jquery.com/jquery-1.9.1.js');
+			$this->view->headScript()->appendFile('https://code.jquery.com/jquery-1.9.1.js');
 		 $this->view->headTitle("Louis Intelli Cms"); // chay layout toan cuc, set them application.ini
       //  $this->view->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8');
   

@@ -11,6 +11,16 @@
     margin-top: 0;
     font-size: 3.6em;
 	}
+	.readmore_img{
+		position: absolute;
+    bottom: 39px;
+    width: auto;
+    height: 70px;
+    margin: 0 auto;
+    display: block;
+    left: 50%;
+    margin-left: -123px;
+	}
 </style>
  
    <div class="bg-header-page" style="background-image: url('<?=TEMPLATE_URL?>/default/img/v-mezhdunarodnyiy-fond-selskohozyaystvennogo-razvitiya-vstupaet-rossiya.jpg'); background-position: 0px -101px;background-attachment: fixed;">
@@ -159,35 +169,54 @@
 			    <div class="row">
 			      <div class="col-sm-12 col-md-12">
 			     <div class="panel panel-default">
-    <div class="panel-heading"><?php echo $this->translate('care_article'); ?></div>
-    <div class="panel-body">
-	    <?php if(count($this->beInterested) > 0){ ?>
-	    <ul class="list-group">
-		    <?php foreach($this->beInterested as $key=>$val): ?>
-  <li class="list-group-item louis-list-item">
-      <a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $val['ident']; ?>.html"><img alt="<?=$val['name']?>" class="img-responsive" src="/public/images/news/<?php echo $val['id']; ?>/<?php echo $val['full']; ?>" /></a>
-      <p><a href="/<?php echo $this->translate('news_link'); ?>/<?php echo $val['ident']; ?>.html"> <?php echo $val['name']; ?> </a>
-      		<?php if($this->lang == 'en'){ ?>
-      	 <span class="time"><?php echo date('m',$val['date']); ?> / <?php echo date('d',$val['date']); ?>/ <?php echo date('Y',$val['date']); ?>
-      	 - <span style="color: #d3d3d3"><?php echo $val['votes']; ?> likes</span>
-      	 </span>	      <?php }else{ ?>
-	      <span class="time"><?php echo date('d',$val['date']); ?> tháng <?php echo date('m',$val['date']); ?>, <?php echo date('Y',$val['date']); ?> - <span style="color: #d3d3d3"><?php echo $val['votes']; ?> lượt thích</span>
-	         
-	       </span> 
-	      
-	      <?php } ?>
-      </p>
-      <div style="clear:both"></div>
-  </li>
-  <?php endforeach; ?>
+<!--     <div class="panel-heading"><?php //echo $this->translate('care_article'); ?></div> -->
+    <div class="panel-body" style="padding: 0px;">
+	     <div id="rightSidebar" class="carousel slide" data-autoplay="true" data-interval="3000" data-ride="carousel">
+    <!-- Carousel indicators -->
+    <?php
+  
+    $image = new Model_ProductImage();
+   
+    $images = $image->get_details([
+      "productId" => 407,
+    ]);
+  
+    $countImages = count($images);
+    ?>
+    <ol class="carousel-indicators">
+	    		<?php for ($order = 0; $order < $countImages; $order++) { ?>
+	 <li data-target="#rightSidebar" data-slide-to="<?php echo $order; ?>"  <?php echo $order == 0 ? ' class="active"'
+  : ""; ?>></li>
+	    		<?php } ?>
 
-  		</ul>
-  		<?php } ?>
+	</ol>
+	 <div class="carousel-inner">
+	    	<?php
+      $stt = 0;
+      foreach ($images as $keyImages => $valImages):
+        $stt++; ?>
+		<div class="item <?php echo $valImages["isDefault"] == "Yes"? " active": ""; ?>">
+    
+	 <img class="img-responsive" src="/public/images/backgrounds/<?php echo $valImages["full"]; ?>" alt="<?php echo $valImages["full"]; ?>">
+	  
+		</div>
+             <?php
+      endforeach;
+      ?>
+
+
+    </div>
+	 
+	 
+	   </div>
+<a href="https://hoabinh-group.com/tin-tuc/cuoi-nam-ron-rang---ngap-tran-uu-dai.html"><img class="readmore_img" src="/public/ezgif-7-4d8ccf030296.gif"/></a>
+
+ 	   </div>
     </div>
    <!-- <div class="panel-footer">Panel Footer</div>-->
 				</div>
 			      </div>
-			     </div>
+			    
 			     <div class="row">
 			       <div class="col-sm-12 col-md-12">
 			     <div id="category-news" class="panel panel-default">
@@ -210,10 +239,10 @@
 			      </div>
 			     </div>
 			     <?php echo $this->VideoWidget(); ?>
-			     <div class="row">
+			      <div class="row">
 			       <div class="col-sm-12 col-md-12">
 			     <div id="category-tags" class="panel panel-default">
-    <!--<div class="panel-heading"><?php echo $this->translate('keywords'); ?></div>-->
+   <!-- <div class="panel-heading"><?php echo $this->translate('keywords'); ?></div>-->
     <div class="panel-body">
 	    <ul class="list-group">
 	    	<a target="_blank" href="http://hoabinhevents.com"><img width="100%" src="/public/images/7533626739771635315.gif" /></a>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<?php $this->doctype('XHTML1_RDFA'); ?>
+<html lang="vi-VN"> 
+<head>
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<?php echo $this->headTitle() ?>
+  	<?php echo $this->headMeta() ?>       
+    <?php echo $this->headLink() ?>
+     <?php 	$url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";	  
+	     ?>
+	   <link rel="alternate" href="<?=$url?>" hreflang="vi-vn" /> 
+     <meta property="fb:app_id" content="217059805306268" />
+  <meta property="fb:admins" content="100004152873247"/>
+     <meta name="alexaVerifyID" content="WJA4Imu0yWoHW96xSLxMixeeUa8"/> 
+     <meta name="robots" content="INDEX,FOLLOW" />
+     
+     <link rel="author" href="https://plus.google.com/112292143371117883814">
+	<!-- Mobile Specific Metas
+		
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="/public/images/favicon-1.ico">
+	<!-- CSS
+  ================================================== -->
+<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/skins/yellow.css">
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/style.css">
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/custom.css">
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/skeleton.css"> 
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/responsive.css"> 
+<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/css/fontello.css">
+	<link rel="stylesheet" href="<?=TEMPLATE_URL?>/default/owl/owl.carousel.css" type="text/css">
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery.min.js"></script>
+	
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<?php include_once("analyticstracking.php") ?>
+	<?php include_once("facebook_appid.php") ?>
+	<?php
+	 $ns = new Zend_Session_Namespace('language');
+	   $lang = $ns->lang;
+	   if (empty($ns->lang)){
+			 $lang = 'vi';
+			 }	
+		
+		?>
+	<!-- Primary Page Layout
+	================================================== -->
+
+ <div id="wrapoverall">
+	
+		
+	<header>
+		
+			<div class="container" style="height:130px;">
+				
+				<div class="eight columns">
+				
+					<a href="/"> <img style="margin-top: 6px;" class="logo" src="/images/logo-hoabinhgroup.png" alt="logo" height="110"/> </a>
+				
+				</div><!-- end eight -->
+				
+				<div class="eight columns">
+					<ul class="contact_list">
+						
+						
+						<li><span style="position: relative;left: 7px;">Hotline: 091 33 11 911</span>
+						<?php
+	$linkVN = '/translate/filter/change/vi';
+	$linkEN = '/translate/filter/change/en';
+	?>
+</li><br/>
+<span style="margin-left: 118px;">
+<a target="_blank" id="facebook_share_button" href="https://www.facebook.com/events.hoabinhgroup">&nbsp;</a>
+   <a target="_blank" id="twitter_share_button" href="https://twitter.com/hoabinhtourist">&nbsp;</a>
+	                       <a id="google_share_button" href="">&nbsp;</a>
+
+</span>
+					</ul>
+					
+					
+				
+				</div><!-- end eight -->
+						
+			<ul id="menu_second">
+				<li><a title="Hoabinhtourist & Convention" target="_blank" href="http://hoabinhtourist.com/">Hoabinhtourist</a></li>
+			<li><a title="WEBSITE DUlICHHOABINH" target="_blank" href="http://www.dulichhoabinh.com">dulichhoabinh</a></li> <li><a title="WEBSITE GLOBALMICETRAVEL" target="_blank" href="http://globalmicetravel.com">globalmicetravel</a></li> <li><a title="WEBSITE Hội nghị hội thảo" target="_blank" href="http://www.hoinghihoithao.com">hoinghihoithao</a></li> <li><a title="Trang web Event Solutions" href="http://eventsolutions.vn">eventsolutions</a> </li><li><a title="Trang web Vietnamconference" target="_blank" href="http://vietnamconference.com.vn">vietnamconference</a></li>
+			</ul>
+			</div><!-- end container -->
+			
+			<div class="topnav_holder">
+			
+				<div class="container">
+				
+					<div class="thirteen columns">
+					
+						<nav id="mainNavigation">
+						<?php echo $this->MenuWidget(); ?>
+						</nav>
+					
+						
+				<span class="language_flag">
+<a href="<?php echo $linkVN; ?>"><img src="/public/images/Vietnam_flat.png" height="34"/></a>
+<a href="<?php echo $linkEN; ?>"><img src="/public/images/United-Kingdom_flat.png" width="34"/></a>
+	</span>
+
+					</div><!-- end thirteen -->
+					
+					
+					<div class="three columns">
+						
+							
+						
+					</div><!-- end three -->
+				
+				</div><!-- end container -->
+			
+			</div><!-- end .topnav_holder -->
+			
+		  <div class="header_shadow"></div>		
+		
+	</header>
+		
+
+	<section id="main_content">
+			
+			
+			<div class="top_title_holder add-bottom">
+				
+				<div class="top_title_border"></div>
+				<div class="bottom_title_border"></div>
+				
+				<div class="container">
+					
+					<div class="nine columns">
+						
+						<h3>Lỗi 404</h3>	
+						<p>Trang không tìm thấy !</p>
+					
+					</div><!-- end nine -->
+					
+					<div class="seven columns">
+					
+						<ul>
+							<li><a href="/">Trang chủ</a></li>
+							<li>&#187;</li>
+							<li><a href="#">Trang</a></li>
+							<li>&#187;</li>
+							<li>Lỗi 404</li>
+						</ul>
+					
+					</div><!-- end seven -->
+				
+				</div><!-- end container -->
+			
+			</div><!-- end .top_title_holder -->
+			
+			
+		<div class="container">
+		
+			<div class="sixteen columns add-bottom">
+				
+				
+				<div class="one-third column alpha add-top add-bottom">
+				
+					<div class="holder_404">
+					
+						<div class="num_holder">
+						
+							<p class="number">404</p>
+							<p class="explanation">Page Not Found !</p>
+						</div><!-- end .num_holder -->
+						
+					
+					</div><!-- end .holder_404 -->
+				
+				</div><!-- end .one-third -->
+				
+				
+				
+				<div class="one-third column add-top add-bottom">
+					
+						<div class="widget_title">
+								
+								<h2> <span class="bold">Recommended Links:</span> </h2>
+								
+								<div class="title_sep_container">
+									<div class="title_sep"></div>
+								</div><!-- end .title_sep_container -->
+								
+						</div><!-- end .title -->
+					
+						<ul class="cart_list small_list">
+							
+							<li> <a href="index.html">Home</a> </li>
+							<li> <a href="sitemap.html">Sitemap</a> </li>
+							<li> <a href="contact.html">Contact</a> </li>
+							<li> <a href="blog-large-post.html">Blog</a> </li>
+						
+						</ul><!-- end ul.cart_list -->
+					
+				
+				</div><!-- end .one-third -->
+				
+				
+				
+				
+				
+			</div><!-- end sixteen -->			
+							
+		</div><!-- end container -->
+		
+	</section><!-- end #main_content -->
+		
+		<footer>
+		
+		<div class="top_full_shadow"></div><!-- end .top_full_shadow -->
+			
+			<div class="container"> 
+			
+			
+				<div class="sixteen columns add-bottom">
+				
+					
+					<div class="ten columns alpha add-bottom" >
+
+						
+				<div id="owl-top-banner" class="owl-carousel owl-theme">	
+				<div class="item">		
+					<img class="nhanvien" alt="Nhân viên công ty Hoabinhgroup" src="/public/images/02hoabinh.jpg" width="560" /></div>
+				<div class="item">
+						<img class="nhanvien" alt="Nhân viên công ty Hoabinhgroup" src="/public/images/04hoabinh.jpg" width="560"/>	
+					</div>
+					<div class="item">
+						<img class="nhanvien" alt="Nhân viên công ty Hoabinhgroup" src="/public/images/03hoabinh.jpg" width="560"/>	
+					</div>
+						<div class="item">
+						<img class="nhanvien" alt="logo hiệp hội du lịch châu Á - Thái Bình Dương PATA" src="/public/images/PATASustainLogo-new1.jpg" width="560"/>	
+					</div>	
+</div>			
+						
+					
+					</div>
+				
+					
+				<div class="six columns omega add-bottom" style="color:#fff">
+						
+						<h3 class="heading"> <span class="bold">HOABINHGROUP</span> </h3>
+						
+	<i class="icon-location" style="font-size: 1.3em"></i> 29 Doan Thi Diem, Dong Da, Ha Noi, Vietnam<br/>
+
+	 <i class="icon-phone" style="font-size: 1.3em"></i> + 844.37325.976  | + 844.37325.978<br/>
+
+	 <i class="icon-mail" style="font-size: 1.3em"></i> info@hoabinh-group.com<br/>
+										
+	 <i class="icon-phone" style="font-size: 1.3em"></i> Hotline: Hoang Lan: (084) 913 311 911 
+	 										<span style="margin-left: 75px; display: block"> Jackie Han: (084) 98 98 98 198</span><br/>	
+	 										<!-- Histats.com  START  (standard)-->
+<script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
+<a href="http://www.histats.com" target="_blank" title="php hit counter" ><script  type="text/javascript" >
+try {Histats.start(1,3282102,4,107,170,20,"00010000");
+Histats.track_hits();} catch(err){};
+</script></a>
+<noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?3282102&101" alt="php hit counter" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+								
+					</div>
+					
+					
+				</div>	
+	
+				<div class="sixteen columns add-bottom" id="footer_bottom">
+							
+						<span>&copy; Copyright 2015 <a class="dark_link" href="#">HoaBinhGroup</a>  </span>
+						<div style="position: absolute; left: -999em;"><a rel="dofollow" href="http://quatang1102.com/" title="quà tặng" target="_blank">quà tặng</a>, <a rel="dofollow" href="http://kientructhegioi.com/" title="thiết kế kiến trúc" target="_blank">thiết kế kiến trúc</a>, <a rel="dofollow" href="http://hoabinhtourist.com/cho-thue-dan-karaoke-t134.html" title="cho thuê âm thanh karaoke" target="_blank">cho thuê âm thanh karaoke</a>,  <a rel="dofollow" href="http://shopwatch.vn/sp-tags/g-shock-125" title="đồng hồ g-shock" target="_blank">đồng hồ g-shock</a>, <a rel="dofollow" href="http://shopwatch.vn/sp-tags/edifice-129" title="đồng hồ casio edifice" target="_blank">đồng hồ casio edifice</a>, <a rel="dofollow" href="http://shopwatch.vn/sp-tags/dong-ho-nam-127" title="đồng hồ nam" target="_blank">đồng hồ nam</a></div>
+						
+						<ul class="bottom_links">
+							<li><img width="80" height="40" src="/public/images/pata_small.jpg"/></li>
+							<li> <img width="80" height="40" src="/public/images/japan-circle.jpg"/></li>
+							<li><img width="80" height="40" src="http://hoabinhtourist.com/images/hanoi_vnesco_travel.png"/></li>
+							<li><img width="80" height="40" src="http://hoabinhtourist.com/images/vcci.png"/></li>
+							<li style="background: #fff;height: 40px"><img width="80" height="40" src="http://hoabinhtourist.com/images/VISTA2015.png"/></li>
+							<li><img width="80" height="40" src="http://hoabinhtourist.com/images/paypal.png"/></li>
+							<?php if ($lang == 'vi'){ ?>
+							<li> <a class="dark_link" href="/ve-chung-toi">About</a> </li>
+						     <?php }else { ?>
+						     <li> <a class="dark_link" href="/about">About</a> </li>
+						     <? } ?>
+							<li> <a class="dark_link" href="/contact">Contact</a> </li>
+							<li class="top"> <a class="skin_link" href="#"> &uarr; Top</a> </li>
+						</ul><!-- end ul .bottom_links -->
+											
+				</div><!-- end sixteen -->	
+			</div><!-- end container -->
+			
+		<div class="bottom_full_shadow"></div>
+			
+	</footer>
+		
+	
+ </div><!-- end #wrapoverall -->	
+	
+		<script src="<?=TEMPLATE_URL?>/default/js/custom3.js"></script>
+	<script src="<?=TEMPLATE_URL?>/default/js/jquery-scrolltofixed-min.js"></script>
+<script src="<?=TEMPLATE_URL?>/default/owl/owl.carousel.min.js"></script>
+
+	<script type="text/javascript">
+	
+	$(function(){
+	//	$('.sf-menu > li').eq(6).hide();
+	 $("#owl-top-banner").owlCarousel({
+	 navigation : false,
+     navigationText: false,
+      autoPlay :true,
+	  stopOnHover :true,
+	  singleItem:true
+  });
+  
+
+
+		});
+
+
+	</script>		
+
+    
+    <script id="dsq-count-scr" src="//hoabinh-group.disqus.com/count.js" async></script>
+    
+  <script type='text/javascript'>window._sbzq||function(e){e._sbzq=[];var t=e._sbzq;t.push(["_setAccount",41047]);var n=e.location.protocol=="https:"?"https:":"http:";var r=document.createElement("script");r.type="text/javascript";r.async=true;r.src=n+"//static.subiz.com/public/js/loader.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)}(window);</script>  
+<!-- End Document
+================================================== -->
+</body>
+</html>

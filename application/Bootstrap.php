@@ -1,11 +1,11 @@
 <?php
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
-	
+
 	protected function _initSession(){
 		Zend_Session::start();
 	}
-	
-	
+
+
 	protected function _initLocale()
 	{
 		$ns = new Zend_Session_Namespace('language');
@@ -15,8 +15,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
 			 }
 		$locale = new Zend_Locale($lang);
 		Zend_Registry::set('Zend_Locale', $locale);
+
 	}
-	
+
 	protected function _initTranslate() {
     // Get Locale
     $locale = Zend_Registry::get('Zend_Locale');
@@ -28,18 +29,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
                         'locale' => $locale)
     );
 
-  
+
 
     Zend_Form::setDefaultTranslator($translate);
 
     // Save it for later
     Zend_Registry::set('Zend_Translate', $translate);
 }
-	
+
 	 protected function _initZFDebug() {
         $identity = Zend_Auth::getInstance()->getIdentity();
-        
+
         if (isset($identity) && ($identity->id == 3)) {
+/*
             $dbResource = $this->getPluginResource('db');
             $dbAdapter = $dbResource->getDbAdapter();
 
@@ -61,20 +63,23 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
                 )
             );
             $debug = new ZFDebug_Controller_Plugin_Debug($options);
+*/
 
+/*
             $this->bootstrap('frontController');
             $frontController = $this->getResource('frontController');
             $frontController->registerPlugin($debug);
+*/
         }
     }
-	
+
 	protected function _initSearch(){
 	Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
 Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive ()
 );
 		}
-		
+
 	 protected function _initCachemanager(){
         $cacheManager=new Zend_Cache_Manager;
         $dbcache=array(
@@ -95,50 +100,50 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         $cacheManager->setCacheTemplate('dbcache',$dbcache);
         return $cacheManager;
     }
-    
-    
+
+
     protected function _initPreloading()
 	{
 		$this->bootstrap('frontController');
 		$front = Zend_Controller_Front::getInstance();
 	   $cd = $front->getControllerDirectory();
 	   $modules = array_keys($cd);
-	
-	   foreach($modules as $module):	   	  
-     $FUNC_DIR = APPLICATION_PATH . DS . "modules" . DS . $module . DS . 'helpers' . DS;  
+
+	   foreach($modules as $module):
+     $FUNC_DIR = APPLICATION_PATH . DS . "modules" . DS . $module . DS . 'helpers' . DS;
 	 $scan = glob("$FUNC_DIR*");
         foreach ($scan as $path) {
             if (preg_match('/\_helper.php$/', $path)) {
                 require_once $path;
             }
-           
+
         }
 
     	endforeach;
 	}
-	
+
 	 protected function _initRoutes()
     {
     	$front_controller = Zend_Controller_Front::getInstance();
         $router = $front_controller->getRouter();
-        
+
       //  echo getIpClient();
-    	       
+
            $this->bootstrap('frontController');
             $frontController = $this->getResource('frontController');
        $front = Zend_Controller_Front::getInstance();
 	   $cd = $front->getControllerDirectory();
 	   $moduleNames = array_keys($cd);
          //echo __METHOD__;
-         
+
          $params = explode('/',$_SERVER["REQUEST_URI"]);
           if ($params[1] == 'admin'){
         // if (($params[1] == 'admin') && (getIpClient() == '118.70.186.15')){
 		 if (isset($params[2])){
-   
+
 
 	       	if(in_array($params[2], $moduleNames)){
-	   		
+
           $route = new Zend_Controller_Router_Route(
             'admin/'.$params[2].'/:action/*',
             array(
@@ -148,11 +153,11 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
             )
         );
 
-        $router->addRoute('admin', $route);   
-	       
-        
+        $router->addRoute('admin', $route);
+
+
         }else{
-	        
+
          $route = new Zend_Controller_Router_Route(
             'admin/'.$params[2].'/:action/*',
             array(
@@ -163,8 +168,8 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         );
 
         $router->addRoute('admindefault', $route);
-               
-        
+
+
 }
         }elseif(!isset($params[2])){
 	         $route = new Zend_Controller_Router_Route(
@@ -178,9 +183,9 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
 
         $router->addRoute('adminindex', $route);
         }
-        
+
         }elseif(($params[1] == 'tin-tuc') && (!isset($params[2]) || (int) $params[2]) ){
-	        
+
 	         $route = new Zend_Controller_Router_Route(
             'tin-tuc/:page',
             array(
@@ -189,16 +194,16 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'module'        => 'new',
                 'page'        => 1,
                 'lang'        => 'vi',
-                
+
             )
         );
 
         $router->addRoute('danh-sach-tin-tuc', $route);
-        
-           
-        
+
+
+
         }elseif(($params[1] == 'news') && (!isset($params[2]) || (int) $params[2])){
-	        
+
 	          $route = new Zend_Controller_Router_Route(
             'news/:page/',
             array(
@@ -207,15 +212,15 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'module'        => 'new',
                 'page'        =>  1,
                 'lang'        => 'en',
-                
+
             )
         );
 
         $router->addRoute('news', $route);
         }
-        
+
         elseif(isset($params[2] )){
-	        
+
 	         if($params[2] == 'tin-noi-bo'){
 	       $route = new Zend_Controller_Router_Route(
             'tin-tuc/tin-noi-bo',
@@ -224,12 +229,12 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'controller'    => 'index',
                 'module'        => 'new',
                 'lang'        => 'vi'
-                
+
             )
         );
 
         $router->addRoute('tin-noi-bo', $route);
-        
+
         	}else{
 	        	 $route = new Zend_Controller_Router_Route(
             'tin-tuc/:ident/:page',
@@ -239,7 +244,7 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'module'        => 'new',
                 'page'        => 1,
                 'lang'        => 'vi',
-                
+
             ),
             array(
                 'ident' => '[a-zA-Z-_0-9]+'
@@ -247,8 +252,8 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         );
 
         $router->addRoute('tin-tuc-category', $route);
-        
-        
+
+
          $route = new Zend_Controller_Router_Route(
             'linh-vuc/:ident',
             array(
@@ -257,7 +262,7 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'module'        => 'new',
                 'folder'        => 'linh-vuc',
                 'lang'        => 'vi',
-                
+
             ),
             array(
                 'ident' => '[a-zA-Z-_0-9]+'
@@ -265,8 +270,8 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         );
 
         $router->addRoute('linh-vuc-category', $route);
-        
-        
+
+
          $route = new Zend_Controller_Router_Route(
             'field/:ident',
             array(
@@ -275,7 +280,7 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'module'        => 'new',
                 'folder'        => 'field',
                 'lang'        => 'en',
-                
+
             ),
             array(
                 'ident' => '[a-zA-Z-_0-9]+'
@@ -283,10 +288,10 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         );
 
         $router->addRoute('field-category', $route);
-        
+
         	}
-      
-	        
+
+
 	        if($params[2] == 'internal'){
 	         $route = new Zend_Controller_Router_Route(
             'news/internal',
@@ -295,15 +300,15 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'controller'    => 'index',
                 'module'        => 'new',
                 'lang'        => 'en'
-       
+
             )
         );
 
         $router->addRoute('news-internal', $route);
-        
+
         }else{
-	       
-	                       
+
+
          $route = new Zend_Controller_Router_Route(
             'news/:ident/:page/',
             array(
@@ -312,19 +317,19 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'module'        => 'new',
                 'page'        => '1',
                 'lang'        => 'en',
-                
+
             ),
             array(
                 'ident' => '[a-zA-Z-_0-9]+'
             )
         );
 
-        $router->addRoute('news-category', $route); 
-	        
-	        
-	        
-	        
-	        
+        $router->addRoute('news-category', $route);
+
+
+
+
+
 	         $route = new Zend_Controller_Router_Route(
             'pages/:ident',
             array(
@@ -332,7 +337,7 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'controller'    => 'pages',
                 'module'        => 'default',
 
-                
+
             ),
             array(
                 'ident' => '[a-zA-Z-_0-9]+'
@@ -341,21 +346,21 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
 
         $router->addRoute('pagesmmm', $route);
         }
-	        
+
 	        }else {
-	        
+
 	           $route = new Zend_Controller_Router_Route(
             '/:ident',
             array(
                 'action'        => 'index',
                 'controller'    => 'single',
                 'module'        => 'new',
-                
+
             )
         );
 
         $router->addRoute('single', $route);
-        
+
         $route = new Zend_Controller_Router_Route(
             'authorize',
             array(
@@ -366,7 +371,7 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         );
 
         $router->addRoute('authorize', $route);
-        
+
         $route = new Zend_Controller_Router_Route(
             'lien-he',
             array(
@@ -379,7 +384,7 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         );
 
         $router->addRoute('lien-he', $route);
-        
+
          $route = new Zend_Controller_Router_Route(
             'contact',
             array(
@@ -392,7 +397,7 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         );
 
         $router->addRoute('contact', $route);
-           
+
 		 $route = new Zend_Controller_Router_Route_Static(
             'ban-tin',
             array(
@@ -400,32 +405,32 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'controller'    => 'index',
                 'module'        => 'new',
                 'lang'        => 'vi'
-                
+
             )
         );
 
         $router->addRoute('ban-tin', $route);
-     
-        
+
+
         }
-        
-        
+
+
        /*  $route = new Zend_Controller_Router_Route_Static(
             'tin-tuc',
             array(
                 'action'        => 'error',
                 'controller'    => 'error',
                 'module'        => 'error',
-                
+
             )
         );
 
         $router->addRoute('tin-tuc-index', $route);
      */
-        
-       
-        
-       
+
+
+
+
     //   if(($params[1] == 'tuyen-dung') && (is_numeric($params[2] = true))){
         $route = new Zend_Controller_Router_Route(
             'tuyen-dung/:page',
@@ -436,12 +441,12 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'lang'        => 'vi',
                 'content_type'        => 'Tuyển dụng',
                 'page'        => 1,
-                
+
             )
         );
 
         $router->addRoute('tuyen-dung', $route);
-        
+
           $route = new Zend_Controller_Router_Route(
             'recruitment/:page',
             array(
@@ -451,15 +456,15 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'lang'        => 'en',
                 'content_type'        => 'Recruitment',
                 'page'        => 1,
-                
+
             )
         );
 
         $router->addRoute('recruitment', $route);
-        
-       
-        
-        
+
+
+
+
            $route = new Zend_Controller_Router_Route_Regex(
         'tuyen-dung/([a-zA-Z-_0-9]+)\.html',
         array(
@@ -472,8 +477,8 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         ),
         '/%s.html'
 		);
-    	$router->addRoute('chi-tiet-tuyen-dung', $route);	
-        
+    	$router->addRoute('chi-tiet-tuyen-dung', $route);
+
 
          $route = new Zend_Controller_Router_Route(
             'gallery',
@@ -481,44 +486,44 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'action'        => 'index',
                 'controller'    => 'gallery',
                 'module'        => 'default',
-                
+
             )
         );
 
         $router->addRoute('gallery', $route);
-        
-        
+
+
          $route = new Zend_Controller_Router_Route(
             'gallery/:ident',
             array(
                 'action'        => 'category',
                 'controller'    => 'gallery',
                 'module'        => 'default',
-                
+
             ),
             array(
                 'ident' => '[a-zA-Z-_0-9]+'
             )
         );
          $router->addRoute('gallery-ident', $route);
-         
-         
-      
-         
-         
+
+
+
+
+
          $route = new Zend_Controller_Router_Route(
             'doi-ngu-lanh-dao',
             array(
                 'action'        => 'leader',
                 'controller'    => 'gallery',
                 'module'        => 'default',
-                
+
             )
         );
 
         $router->addRoute('doi-ngu-lanh-dao', $route);
-        
-        
+
+
           $route = new Zend_Controller_Router_Route_Static(
             'en',
             array(
@@ -526,54 +531,54 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'controller'    => 'index',
                 'module'        => 'default',
                 'lang'        => 'en',
-                
+
             )
         );
 
         $router->addRoute('Trang-tieng-anh', $route);
-        
+
           $route = new Zend_Controller_Router_Route(
             'leadership-team',
             array(
                 'action'        => 'leader',
                 'controller'    => 'gallery',
                 'module'        => 'default',
-                
+
             )
         );
 
         $router->addRoute('leadership-team', $route);
-                  
-          
+
+
       /*   $route = new Zend_Controller_Router_Route(
             'testimonial',
             array(
                 'action'        => 'index',
                 'controller'    => 'testimonial',
                 'module'        => 'default',
-                
+
             )
         );
 
         $router->addRoute('testimonial', $route);
-        
+
            $route = new Zend_Controller_Router_Route(
             'testimonial/:ident',
             array(
                 'action'        => 'detail',
                 'controller'    => 'testimonial',
                 'module'        => 'default',
-                
+
             )
         );
 
         $router->addRoute('testimonial-ident', $route);
-         
+
          */
-    
-          
-        
-        
+
+
+
+
          $route = new Zend_Controller_Router_Route(
             'tag/:ident/:page/*',
             array(
@@ -581,18 +586,18 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
                 'controller'    => 'tag',
                 'module'        => 'default',
                 'page'        => '1',
-                
+
             ),
             array(
                 'ident' => '[a-zA-Z-_0-9]+'
             )
         );
-         
+
           $router->addRoute('tag', $route);
-       
-       
-    	
-       
+
+
+
+
          $route = new Zend_Controller_Router_Route_Regex(
         '([a-zA-Z-_0-9]+)\.html',
         array(
@@ -607,9 +612,9 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         '/%s.html'
 		);
     	$router->addRoute('product-news', $route);
-    	
-    	
-    	    
+
+
+
     	     $route = new Zend_Controller_Router_Route_Regex(
         'tin-tuc/([a-zA-Z-_0-9]+)\.html',
         array(
@@ -623,9 +628,9 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         ),
         '/%s.html'
 		);
-    	$router->addRoute('chi-tiet-tin', $route);	
-    	
-    	
+    	$router->addRoute('chi-tiet-tin', $route);
+
+
     	     $route = new Zend_Controller_Router_Route_Regex(
         'news/([a-zA-Z-_0-9]+)\.html',
         array(
@@ -639,14 +644,14 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
         ),
         '/%s.html'
 		);
-    	$router->addRoute('product-news', $route);	
-    	
-    	
+    	$router->addRoute('product-news', $route);
+
+
     	 $route = new Zend_Controller_Router_Route_Regex(
         'gallery/([a-zA-Z-_0-9]+)\.html',
         array(
 	          'action'     => 'view',
-            'controller' => 'gallery',     
+            'controller' => 'gallery',
              'module'        => 'default',
         ),
         array(
@@ -656,14 +661,14 @@ Zend_Search_Lucene_Analysis_Analyzer::setDefault(
 		);
     	$router->addRoute('gallery-detail', $route);
 
-    
+
 	}
-	
-	
+
+
 	public function _initAutoload(){
 		Zend_Controller_Action_HelperBroker::addPath(
 APPLICATION_PATH .'/helpers');
-	
+
         $front = Zend_Controller_Front::getInstance();
         $front->registerPlugin(new Louis_Plugin_Permission());
        // $front->registerPlugin(new Louis_Plugin_Sanitize());
@@ -672,11 +677,11 @@ APPLICATION_PATH .'/helpers');
                                 'controller' => 'error',
                                 'action'     => 'error'
         )));
-       
-        
+
+
     }
-    
- 
+
+
   protected function _initLayout(){
     $layout = explode('/', $_SERVER['REQUEST_URI']);
 
@@ -687,7 +692,7 @@ APPLICATION_PATH .'/helpers');
     }
     else{
         $layout_dir = 'default';
-       
+
     }
       $options = array(
              'layout'     => 'layout',
@@ -695,8 +700,8 @@ APPLICATION_PATH .'/helpers');
       );
     Zend_Layout::startMvc($options);
 	}
-	
-	
+
+
 
 	public function setConstants($constants)
 	{
@@ -712,13 +717,13 @@ APPLICATION_PATH .'/helpers');
         }
     }
 	}
-	
+
 	protected function _initDatabase(){
         $db = $this->getPluginResource('db')->getDbAdapter();
         Zend_Db_Table::setDefaultAdapter($db); //important
-        Zend_Registry::set('db', $db);    
+        Zend_Registry::set('db', $db);
 	}
-	
+
 	/*
 	protected function _initFrontcontroller()
 	{
@@ -727,7 +732,7 @@ APPLICATION_PATH .'/helpers');
 		return $front;
 	}
 	*/
-	
+
 	/*  protected function _initMenus()
 	 {
     $view = $this->getResource('view');
@@ -736,6 +741,6 @@ APPLICATION_PATH .'/helpers');
 	}
 
 	*/
-	
-  
+
+
 }

@@ -1,5 +1,5 @@
 <?php 
-
+header('Access-Control-Allow-Origin: *');
 /// by Sandy v2
 
 include ("config.php");  	//change settings in config.php file to fit your server settings

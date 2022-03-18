@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html dir="ltr" class="ltr" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<!-- Mobile viewport optimized: h5bp.com/viewport -->
+<meta name="viewport" content="width=device-width">
+<meta charset="UTF-8">
+<title>Louis StyleShop - Blog</title>
+<!-- base href="http://demopavothemes.com/pav_styleshop/d/" -->
+<link href="http://demopavothemes.com/pav_styleshop/d/image/data/cart.png" rel="icon">
+<link href="<?=TEMPLATE_URL?>/default/css/bootstrap.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/stylesheet.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/jquery-ui-1.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/animation.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/font-awesome.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/pavblog.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/pavproducts.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/colorbox.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/style.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/typo.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/pavcarousel.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/style_002.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/pavnewsletter.css" rel="stylesheet">
+<link href="<?=TEMPLATE_URL?>/default/css/pavproductcarousel.css" rel="stylesheet">
+
+		<link href="/<?=SHARE?>/css/bannerscollection_zoominout.css" rel="stylesheet" type="text/css">
+		
+<script type="text/javascript" src="/<?=SHARE?>/js/jquery-1.js"></script>
+<script type="text/javascript" src="/<?=SHARE?>/js/jquery-ui-1.js"></script>
+<script type="text/javascript" src="/<?=SHARE?>/js/jquery_002.js"></script>
+<script type="text/javascript" src="/<?=SHARE?>/js/common.js"></script>
+<script type="text/javascript" src="/<?=SHARE?>/js/common_002.js"></script>
+<script type="text/javascript" src="/<?=SHARE?>/js/bootstrap.js"></script>
+<script type="text/javascript" src="/<?=SHARE?>/js/jquery_004.js"></script>
+<script type="text/javascript" src="/<?=SHARE?>/js/jquery.js"></script>
+<script type="text/javascript" src="/<?=SHARE?>/js/jquery_003.js"></script>
+
+
+<script src="/<?=SHARE?>/js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="/<?=SHARE?>/js/bannerscollection_zoominout.js" type="text/javascript"></script>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,400italic,700,600,300italic,600italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/<?=SHARE?>/assets/css/ace-fonts.css" />
+
+<!--[if lt IE 9]>
+<script src="catalog/view/javascript/html5.js"></script>
+<script src="catalog/view/javascript/respond.min.js"></script>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/pav_styleshop/stylesheet/ie8.css" />
+<![endif]-->
+
+</head>
+<body id="offcanvas-container" class="offcanvas-container layout-fullwidth fs14 page-pavblog-blogs ">
+	<section id="page" class="offcanvas-pusher" role="main">
+		<header id="header">
+			<div id="topbar">
+				<div class="container">	
+					<div class="show-desktop">
+						<div class="quick-top-link">
+							<!-- Single button -->
+							<div class="language btn-top pull-left">
+								<div class="language-wrapper pull-right">	
+	<div class="btn-group">
+		<button type="button" class="form-control" data-toggle="dropdown">
+						<span>			
+				<img src="Latest%20Blogs_files/gb.png" alt="English" title="English">
+				English				
+			</span>		
+						<span class="fa fa-sort-asc"></span>
+		</button>
+		<div class="dropdown-menu dropdown">
+<form action="http://demopavothemes.com/pav_styleshop/d/index.php?route=module/language" method="post" enctype="multipart/form-data">
+				<div class="box-language">
+    						<a class="list-item" onclick="$('input[name=\'language_code\']').attr('value', 'en'); $(this).parent().parent().submit();">
+							<img src="Latest%20Blogs_files/gb.png" alt="English" title="English" onclick="$('input[name=\'language_code\']').attr('value', 'en'); $(this).parent().parent().submit();" class="item-symbol">
+							<span class="item-name">English</span>							
+						</a>				
+    						<a class="list-item" onclick="$('input[name=\'language_code\']').attr('value', 'ar'); $(this).parent().parent().submit();">
+							<img src="Latest%20Blogs_files/ar.png" alt="Arabic" title="Arabic" onclick="$('input[name=\'language_code\']').attr('value', 'ar'); $(this).parent().parent().submit();" class="item-symbol">
+							<span class="item-name">Arabic</span>							
+						</a>				
+        <input name="language_code" value="" type="hidden">
+    <input name="redirect" value="http://demopavothemes.com/pav_styleshop/d/index.php?route=pavblog/blogs" type="hidden">
+  </div>
+</form>
+		</div>
+	</div>
+ </div> 
+							</div>
+							<div class="currency btn-top pull-left">
+									<div class="currency-wrapper pull-right"> 
+				<div class="btn-group">
+			<button type="button" class="form-control" data-toggle="dropdown">
+				<span>			
+																																					US Dollar	
+									</span>			
+				<span class="fa fa-sort-asc"></span>
+			</button>
+			<div class="dropdown-menu dropdown">
+				<form action="http://demopavothemes.com/pav_styleshop/d/index.php?route=module/currency" method="post" enctype="multipart/form-data">
+					<div class="box-currency">						
+																													<a title="Euro" onclick="$('input[name=\'currency_code\']').attr('value', 'EUR'); $(this).parent().parent().submit();" class="list-item">
+									<span class="item-symbol">€</span>
+									<span class="item-name">Euro</span>
+								</a>
+																																													<a title="Pound Sterling" onclick="$('input[name=\'currency_code\']').attr('value', 'GBP'); $(this).parent().parent().submit();" class="list-item">
+									<span class="item-symbol">£</span>
+									<span class="item-name">Pound Sterling</span>
+								</a>
+																																													<a title="US Dollar" class="list-item">									
+									<span class="item-symbol">$</span>
+									<span class="item-name">US Dollar</span>	
+								</a>
+																												<input name="currency_code" value="" type="hidden">
+						<input name="redirect" value="http://demopavothemes.com/pav_styleshop/d/index.php?route=pavblog/blogs" type="hidden">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+							</div>	
+							<div class="quick-access btn-group btn-top pull-left">
+								<button type="button" class="form-control" data-toggle="dropdown">
+									<span class="quick-icon">
+										My Account										<span class="fa fa-sort-asc"></span>
+									</span>	
+								</button>													
+									<div class="dropdown-menu">
+										<ul class="links">
+											<li class="first"><a class="wishlist" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/wishlist"><span class="fa fa-heart"></span>Wish List (0)</a></li>
+											<li><a class="account" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/account"><span class="fa fa-user"></span>My Account</a></li>
+											<li><a class="shoppingcart" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=checkout/cart"><span class="fa fa-shopping-cart"></span>Shopping Cart</a></li>
+											<li class="last"><a class="last checkout" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=checkout/checkout"><span class="fa fa-file"></span>Checkout</a></li> 					
+										</ul>
+									</div>					
+							</div>
+							<div class="welcome pull-right hidden-sm hidden-xs">
+																Welcome visitor you can <a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/login">login</a> or <a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/register">create an account</a>.								 
+							</div>	
+
+
+						</div>
+					</div>	
+
+					
+
+				<div class="show-mobile hidden-lg hidden-md">
+				
+					<div class="btn-top quick-user pull-left">
+						<div class="form-control quickaccess-toggle">
+							<i class="fa fa-user"></i>
+						</div>
+						<div class="inner-toggle dropdown-menu">
+							<div class="login links">
+																Welcome visitor you can <a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/login">login</a> or <a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/register">create an account</a>.															</div>
+						</div>
+					</div>
+					<div class="quick-cart btn-top pull-left">
+						<div class="quickaccess-toggle form-control">
+							<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=checkout/cart"><i class="fa fa-shopping-cart"></i></a>	
+						</div>
+					</div>
+				
+				
+				
+				</div>
+
+
+				</div>
+			</div>
+
+			<div id="header-main">
+				<div class="row">
+					<div class="container">
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 logo">
+											<div id="logo-theme"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=common/home"><span>StyleShop</span></a></div>
+												
+						</div>
+
+						<div class="hidden-xs hidden-sm inner pull-left">
+							<div class="support">			
+																<div class="box-services"><span class="pull-left"><i class="fa fa-truck">&nbsp;</i></span>
+<div class="media-body">
+<h3>free shipping</h3>
+<small>all order over $150</small></div>
+</div>
+
+<div class="box-services"><span class="pull-left"><i class="fa fa-refresh">&nbsp;</i></span>
+
+<div class="media-body">
+<h3>Return &amp; Exchange</h3>
+<small>in 3 working days</small></div>
+</div>
+
+<div class="box-services"><span class="pull-left"><i class="fa fa-phone">&nbsp;</i></span>
+
+<div class="media-body">
+<h3>04 123 456 789</h3>
+<small>Sed ullamcorper mattis</small></div>
+</div>
+															</div>	
+					</div>					
+
+					<div class="pull-right shopping-cart hidden-xs hidden-sm">
+						<div class="cart-top">
+							<div id="cart" class="clearfix">
+	<div class="heading media">		
+		<div class="cart-inner media-body">
+			<span class="icon-cart"></span>
+			<h4>Shopping Cart</h4>
+			<a><span id="cart-total">0 item(s) - $0.00</span></a>
+		</div>
+	</div>
+	
+	<div class="content">
+				<div class="empty">Your shopping cart is empty!</div>
+			</div>  
+</div>						</div>
+					</div>
+					<div id="search">					
+						<div class="input-group">
+							<input name="search" placeholder="Search" class="input-search form-control" type="text">
+							<span class="input-group-btn">							
+								<button class="button-search" type="button"><em class="fa fa-search"></em></button>
+							</span>
+						</div>						
+					</div>		
+					</div>
+				</div>
+			</div>	
+	
+
+		
+		<div class="custom-menu">
+		<div id="pav-mainnav">			
+			<div class="container">
+			
+								<div class="pav-megamenu">
+	<div class="navbar navbar-default">
+		<div id="mainmenutop" class="megamenu" role="navigation">
+			<div class="navbar-header">
+				<a class="navbar-toggle hidden-lg hidden-md" href="javascript:;" data-target=".navbar-collapse" data-toggle="collapse">
+		        	<span class="fa fa-bars"></span>		        
+		     	</a>
+				<div class="collapse navbar-collapse navbar-ex1-collapse hidden-sm hidden-xs">
+					<ul class="nav navbar-nav megamenu">
+						<?php $this->Menu(); //Main menu ?>
+						</ul>				
+						
+			</div>
+			</div>
+		</div>
+	</div>
+</div>				
+								</div>					
+			</div>
+			</div>
+
+	</header>
+
+<!--/**
+* sys-notification
+*/-->
+
+<section id="sys-notification">
+	<div class="container">
+				<div id="notification"></div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="columns">
+	<div id="breadcrumb"><ol class="breadcrumb container">
+		<li class="first last"><a class="last" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=common/home"><span>Home</span></a></li>
+	</ol></div><div class="container">
+<div class="row">
+			<?php echo $this->LatestBlog(); ?>	
+	 
+	<section class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+		<div id="content">
+			  
+			<?php echo $this->layout()->content; ?>	
+					</div>
+	</section>
+
+		
+</div></div>	
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="pav-mass-bottom">
+	<div class="container">
+					<div class="row">	
+			<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"><div id="pavcarousel10" class="box carousel slide pavcarousel  clearfix hidden-sm hidden-xs">
+	<div class="box-heading col-lg-2 col-md-2">
+		<span>Top Brand</span>	
+	</div>
+
+	<div class="carousel-inner col-lg-10 col-md-10">
+		
+				<div class="item active no-margin">
+									<div class="row">
+				
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner7-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+										
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner8-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+										
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner9-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+										
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner10-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+							</div>
+												<div class="row">
+				
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner2-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+										
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner3-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+										
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner4-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+										
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner5-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+							</div>
+								</div>
+				<div class="item  no-margin">
+									<div class="row">
+				
+				<div class="col-lg-2-2">
+					<div class="item-inner">
+												<a href="#"><img src="Latest%20Blogs_files/partner1-300x102.jpg" alt="logo" class="img-responsive"></a>
+											</div>
+				</div>
+
+							</div>
+								</div>
+			
+	</div>
+
+		
+	<div class="carousel-controls">
+		<a class="carousel-control left" href="#pavcarousel10" data-slide="prev">
+			<em class="fa fa-angle-left"></em>
+		</a>
+		<a class="carousel-control right" href="#pavcarousel10" data-slide="next">
+			<em class="fa fa-angle-right"></em>
+		</a>
+	</div>		
+	
+</div>
+<script type="text/javascript"><!--
+$('#pavcarousel10').carousel({interval:false});
+--></script>
+</div>
+			</div>	
+			</div>	
+</section>
+
+
+
+
+<footer id="footer">
+		<div class="footer-top">			
+		<div class="container">
+			<div class="custom">
+									<div class="row">	
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><div class="box pav-custom  ">
+		<div class="box-heading"><span>About Us</span></div>
+		<div class="box-content">
+		<div class="">
+			<p>Sed ornare cras donec litora integer curabit ur orci at nullam 
+aliquam libero nam himen aeos amet massa amet ut ipsum viverra mauris 
+rhoncus neque aenean rhoncus grav ida orci facilisis quis dui 
+consectetur.</p>
+
+<p>Nisi porttitor inceptos consectetur donec orci, dui ipsum leo class gravida, felis primis viverra placerat.</p>
+		</div>
+	</div>
+</div></div>
+						
+										
+					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><div class="box pav-custom  ">
+		<div class="box-heading"><span>INFORMATION</span></div>
+		<div class="box-content">
+		<div class="">
+			<ul class="list">
+	<li class="first"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=information/information&amp;information_id=4">About Us</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=information/information&amp;information_id=6">Contact Us</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=information/information&amp;information_id=3">Terms &amp; Conditions</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=information/information&amp;information_id=5">Privacy Policy</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/return/insert">Orders and Returns</a></li>
+	<li class="last"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=information/sitemap">Site Map</a></li>
+</ul>
+		</div>
+	</div>
+</div></div>
+						
+										
+					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><div class="box pav-custom  ">
+		<div class="box-heading"><span>Why buy from us</span></div>
+		<div class="box-content">
+		<div class="">
+			<ul class="list">
+	<li class="first"><a href="#">Product Recall</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/voucher">Gift Vouchers</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/return/insert">Returns and Exchanges</a></li>
+	<li><a href="#">Shipping Options</a></li>
+	<li><a href="#">Help &amp; FAQs</a></li>
+	<li class="last"><a href="#">Hard to Find Parts</a></li>
+</ul>
+		</div>
+	</div>
+</div></div>
+						
+										
+					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><div class="box pav-custom  ">
+		<div class="box-heading"><span>MY ACCOUNT</span></div>
+		<div class="box-content">
+		<div class="">
+			<ul class="list">
+	<li class="first"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/account">Sign In</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/order">View Cart</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/wishlist">My Wishlist</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/newsletter">Check out</a></li>
+	<li><a href="#">Track My Order</a></li>
+	<li class="last"><a href="#">Help</a></li>
+</ul>
+		</div>
+	</div>
+</div></div>
+						
+										
+					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><div class="box pav-custom  ">
+		<div class="box-heading"><span>Userful links</span></div>
+		<div class="box-content">
+		<div class="">
+			<ul class="list">
+	<li class="first"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/login">Pricing Policy</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/login">Shipping Policy</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/login">Payment Methods</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=information/information&amp;information_id=6">Site Information</a></li>
+	<li><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/login">Your Satisfaction</a></li>
+	<li class="last"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=account/login">Porttitor inceptos</a></li>
+</ul>
+		</div>
+	</div>
+</div></div>
+					</div>	
+							</div>
+		</div>		
+	</div>
+			<div class="footer-center">
+		<div class="container">
+						<div class="row">	
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class="box pav-custom  ">
+		<div class="box-heading"><span>Contact Us </span></div>
+		<div class="box-content">
+		<div class="">
+			<ul class="social">
+	<li class="first"><a href="#"><span class="fa fa-map-marker">&nbsp;</span>Head Office: 12345 Street name, California, USA</a></li>
+	<li><a href="#"><span class="fa fa-mobile-phone">&nbsp;</span>Phone: (+084) 0123 456 789</a></li>
+	<li class="last"><a href="#"><span class="fa fa-envelope">&nbsp;</span>Email: pavo_shop@gmail.com</a></li>
+</ul>
+		</div>
+	</div>
+</div></div>
+					
+							
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><div class="box pav-custom  img-ft">
+		<div class="box-content">
+		<div class="">
+			<div class="box banner-ft effect"><a class="overlay" href="#">&nbsp;</a><img alt="banner-footer" class="img-responsive" src="Latest%20Blogs_files/banner-ft.png"></div>
+		</div>
+	</div>
+</div></div>
+					
+							
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><div class=" box newsletter_block" id="newsletter_footer_center0">
+	<div class="box-heading">Newsletter</div>
+	<div class="description"><p>This Photoshop's version  of Lorem Ipsum massa nisl quis neque. </p></div>
+	<div class="block_content">
+			<form id="formNewLestter" method="post" action="http://demopavothemes.com/pav_styleshop/d/index.php?route=module/pavnewsletter/subscribe">
+			<div class="input-group">
+				<input class="form-control inputNew" onblur="javascript:if(this.value=='')this.value='Your email address';" onfocus="javascript:if(this.value=='Your email address')this.value='';" value="Your email address" size="18" name="email" type="text">
+				<span class="input-group-btn">
+				<input name="submitNewsletter" class="btn btn-primary button_mini" value="Sign Up" type="submit">
+				</span>
+				<input value="1" name="action" type="hidden">
+			</div>
+			<div class="valid"></div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+ 
+	$('#formNewLestter').on('submit', function() {
+		var sbt =  '<img src=\"catalog/view/theme/default/image/close.png\" alt=\"\" class=\"close\">';
+		var email = $('.inputNew').val();
+		$(".warning, .success").remove();
+		if(!isValidEmailAddress(email)) {
+			$('.valid').html("<div class=\"warning\">Email is not valid!"+sbt+"</div>");
+			$('.inputNew').focus();
+			return false;
+		}
+		var url = "http://demopavothemes.com/pav_styleshop/d/index.php?route=module/pavnewsletter/subscribe";
+		$.ajax({
+			type: "post",
+			url: url,
+			data: $("#formNewLestter").serialize(),
+			dataType: 'json',
+			success: function(json)
+			{
+				$(".warning, .success").remove();
+				if (json['error']) {
+					$('.valid').html("<div class=\"warning\">"+json['error']+sbt+"</div>");
+				}
+				if (json['success']) {
+					$('.valid').html("<div class=\"success\">"+json['success']+sbt+"</div>");
+				}
+			}
+		});
+		return false;
+	});
+
+
+function isValidEmailAddress(emailAddress) {
+	var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+	return pattern.test(emailAddress);
+}
+</script>
+</div>
+				</div>	
+			
+		</div>
+	</div>
+	
+
+
+	
+
+<!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+<div id="powered">
+	<div class="container">
+		<div id="top"><a style="display: none;" class="scrollup" href="#"><i class="fa fa-angle-up"></i>Top</a></div>
+		<div class="copyright pull-left">
+					Powered By <a href="http://www.opencart.com/">OpenCart</a><br> StyleShop © 2014. 
+				Designed by <a href="http://www.pavothemes.com/" title="pavothemes - opencart themes clubs">PavoThemes</a>
+		</div>	
+					<div class="paypal pull-right">
+				<p><img alt="" src="Latest%20Blogs_files/paypal.png"></p>
+		</div>
+		 	</div>
+</div>
+
+</footer>
+<!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+	
+<script type="text/javascript">
+$(document).ready( function (){
+	$(".paneltool .panelbutton").click( function(){	
+		$(this).parent().toggleClass("active");
+	} );
+} );
+
+</script>
+
+
+ 
+<script type="text/javascript">
+$('#myTab a').click(function (e) {
+	e.preventDefault();
+	$(this).tab('show');
+})
+$('#myTab a:first').tab('show'); 
+ 
+
+var $MAINCONTAINER = $("html");
+
+/**
+ * BACKGROUND-IMAGE SELECTION
+ */
+$(".background-images").each( function(){
+	var $parent = this;
+	var $input  = $(".input-setting", $parent ); 
+	$(".bi-wrapper > div",this).click( function(){
+		 $input.val( $(this).data('val') ); 
+		 $('.bi-wrapper > div', $parent).removeClass('active');
+		 $(this).addClass('active');
+
+		 if( $input.data('selector') ){  
+			$($input.data('selector'), $($MAINCONTAINER) ).css( $input.data('attrs'),'url('+ $(this).data('image') +')' );
+		 }
+	} );
+} ); 
+
+$(".clear-bg").click( function(){
+	var $parent = $(this).parent();
+	var $input  = $(".input-setting", $parent ); 
+	if( $input.val('') ) {
+		if( $parent.hasClass("background-images") ) {
+			$('.bi-wrapper > div',$parent).removeClass('active');	
+			$($input.data('selector'),$("#main-preview iframe").contents()).css( $input.data('attrs'),'none' );
+		}else {
+			$input.attr( 'style','' )	
+		}
+		$($input.data('selector'), $($MAINCONTAINER) ).css( $input.data('attrs'),'inherit' );
+
+	}	
+	$input.val('');
+
+	return false;
+} );
+
+
+
+ $('.accordion-group input.input-setting').each( function(){
+ 	 var input = this;
+ 	 $(input).attr('readonly','readonly');
+ 	 $(input).ColorPicker({
+ 	 	onChange:function (hsb, hex, rgb) {
+ 	 		$(input).css('backgroundColor', '#' + hex);
+ 	 		$(input).val( hex );
+ 	 		if( $(input).data('selector') ){  
+				$( $MAINCONTAINER ).find($(input).data('selector')).css( $(input).data('attrs'),"#"+$(input).val() )
+			}
+ 	 	}
+ 	 });
+	} );
+ $('.accordion-group select.input-setting').change( function(){
+	var input = this; 
+		if( $(input).data('selector') ){  
+		var ex = $(input).data('attrs')=='font-size'?'px':"";
+		$( $MAINCONTAINER ).find($(input).data('selector')).css( $(input).data('attrs'), $(input).val() + ex);
+	}
+ } );
+ 
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("li:first-child").addClass('first');
+		$("li:last-child").addClass('last');	
+		$(".box-product .row:last-child").addClass('last');				
+		$("#image-additional a:last-child").addClass('last');
+		$(".product-items:last-child").addClass('last');
+		$('.product-cols:last-child').addClass('last');	
+		$(".product-cols:first-child").addClass('first');		
+		$(".product-grid div[class^='col-']:last-child").addClass('last');
+		$(".product-grid .row:last-child").addClass('last');
+		$(function(){
+			$('#header .links li').last().addClass('last');
+			$('.breadcrumb a').last().addClass('last');
+			$('.cart tr').eq(0).addClass('first');																									  
+		});								
+	});
+</script>
+</section>
+
+<nav id="menu-offcanvas" class="offcanvas-menu offcanvas-effect-3 hidden-lg hidden-md"><div class="menu-offcanvas-inner"><ul class="megamenu menu-offcanvas-content"><li class="home first">
+					<a href="http://demopavothemes.com/pav_styleshop/d/?route=common/home"><span class="menu-title">Home</span></a></li><li class=" parent dropdown ">
+					<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20" class="dropdown-toggle" data-toggle="dropdown"><span class="menu-title">Kitchen</span><b class="caret"></b></a><div class="dropdown-menu" style="width:1140px"><div class="dropdown-menu-inner"><div class="row"><div class="mega-col col-xs-12 col-sm-12 col-md-3 "> <div class="mega-col-inner"><div class="pavo-widget" id="pavowid-3"><h3 class="menu-title"><span class="menu-title"><em class="fa fa-caret-right"></em>Products Latest</span></h3>
+<div class="widget-product-list">
+	<div class="widget-inner clearfix">
+				<div class="product-block pull-left">
+			<div class="w-product">
+								<div class="image">
+					<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/product&amp;product_id=59"><img src="Latest%20Blogs_files/product_25-150x150.jpg" alt="Citizen Women's EW and Men's EW"></a>				
+				</div>
+								
+				<div class="product-meta">
+					<h3 class="name"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/product&amp;product_id=59">Citizen Women's EW and Men's EW</a></h3>
+										<div class="price">
+										<span class="price-old">$119.50</span> 
+					<span class="price-new">$107.75</span>
+								
+					</div>
+										
+										<div class="rating"><img src="Latest%20Blogs_files/stars-5.png" alt="text_reviews"></div>
+					
+					<div class="action hide">
+						<div class="cart">
+							<input value="Add to Cart" onclick="addToCart('59');" class="product-icon fa fa-shopping-cart shopping-cart " type="button">
+						</div>
+						<div class="wishlist">
+							<a onclick="addToWishList('59');" title="Add to Wish List" class="fa fa-heart product-icon">
+															</a>	
+						</div>
+						<div class="compare">			
+							<a onclick="addToCompare('59');" title="Add to Compare" class="fa fa-refresh product-icon">
+															</a>	
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+			</div>
+</div></div></div></div><div class="mega-col col-xs-12 col-sm-12 col-md-2 "> <div class="mega-col-inner"><div class="pavo-widget" id="pavowid-7">	<h3 class="menu-title"><span class="menu-title"><em class="fa fa-caret-right"></em>Clothing</span></h3>
+	<div class="widget-html">
+	<div class="widget-inner">
+		<ul>
+	<li class="first">
+		<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=28">Dresses</a>
+	</li>
+	<li>		
+		<a href="#">Jeans &amp; Trousers</a>
+	</li>	
+	<li>
+		<a href="#">Blouses &amp; Shirts</a>
+	</li>
+	<li>
+		<a href="#">Tops &amp; T-Shirts</a>
+	</li>
+	<li>
+		<a href="#">Jackets &amp; Coats</a>
+	</li>
+	<li>
+		<a href="#">Skirts</a>
+	</li>
+	<li>
+		<a href="#">Tristique Turpis</a>
+	</li>
+	<li class="last">
+		<a href="#">Phasellus leo</a>
+	</li>
+</ul>	</div>
+</div></div></div></div><div class="mega-col col-xs-12 col-sm-12 col-md-2 "> <div class="mega-col-inner"><div class="pavo-widget" id="pavowid-8">	<h3 class="menu-title"><span class="menu-title"><em class="fa fa-caret-right"></em>Accessories</span></h3>
+	<div class="widget-html">
+	<div class="widget-inner">
+		<ul>
+	<li class="first">
+		<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=28">Formal Shoes</a>
+	</li>
+	<li>		
+		<a href="#">Casual Shoes</a>
+	</li>	
+	<li>
+		<a href="#">Sandals</a>
+	</li>
+	<li>
+		<a href="#">Boots</a>
+	</li>
+	<li>
+		<a href="#">Wide Fit</a>
+	</li>
+	<li>
+		<a href="#">Slippers</a>
+	</li>
+	<li>
+		<a href="#">Phasellus leo</a>
+	</li>
+	<li class="last">
+		<a href="#">Bibendum</a>
+	</li>
+</ul>	</div>
+</div></div></div></div><div class="mega-col col-xs-12 col-sm-12 col-md-2 "> <div class="mega-col-inner"><div class="pavo-widget" id="pavowid-9">	<h3 class="menu-title"><span class="menu-title"><em class="fa fa-caret-right"></em>Malesuada </span></h3>
+	<div class="widget-html">
+	<div class="widget-inner">
+		<ul>
+	<li class="first">
+		<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=28">Phasellus Purus</a>
+	</li>
+	<li>		
+		<a href="#">Bags &amp; Purses</a>
+	</li>	
+	<li>
+		<a href="#">Belts</a>
+	</li>
+	<li>
+		<a href="#">Gloves</a>
+	</li>
+	<li>
+		<a href="#">Jewellery</a>
+	</li>
+	<li>
+		<a href="#">Sunglasses</a>
+	</li>
+	<li>
+		<a href="#">Hair Accessories</a>
+	</li>
+	<li class="last">
+		<a href="#">Tristique Turpis</a>
+	</li>
+</ul>	</div>
+</div></div></div></div><div class="mega-col col-xs-12 col-sm-12 col-md-3 "> <div class="mega-col-inner"><div class="pavo-widget" id="pavowid-10">	<h3 class="menu-title"><span class="menu-title"><em class="fa fa-caret-right"></em>Banner</span></h3>
+	<div class="widget-html">
+	<div class="widget-inner">
+		<img src="Latest%20Blogs_files/menu-banner.jpg" alt="">
+<p style="padding-top:10px;">This Photoshops consequat ipsum sagittis dccumsan consequat ipsum sagittis cusan psum velit.</p>	</div>
+</div></div></div></div></div></div></div></li><li class="pav-parrent parent dropdown ">
+					<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=18" class="dropdown-toggle" data-toggle="dropdown"><span class="menu-title">Bed &amp; Bath</span><b class="caret"></b></a><div class="dropdown-menu" style="width:795px"><div class="dropdown-menu-inner"><div class="row"><div class="mega-col col-xs-12 col-sm-12 col-md-3 "> <div class="mega-col-inner"><div class="pavo-widget" id="pavowid-9">	<h3 class="menu-title"><span class="menu-title"><em class="fa fa-caret-right"></em>Malesuada </span></h3>
+	<div class="widget-html">
+	<div class="widget-inner">
+		<ul>
+	<li class="first">
+		<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=28">Phasellus Purus</a>
+	</li>
+	<li>		
+		<a href="#">Bags &amp; Purses</a>
+	</li>	
+	<li>
+		<a href="#">Belts</a>
+	</li>
+	<li>
+		<a href="#">Gloves</a>
+	</li>
+	<li>
+		<a href="#">Jewellery</a>
+	</li>
+	<li>
+		<a href="#">Sunglasses</a>
+	</li>
+	<li>
+		<a href="#">Hair Accessories</a>
+	</li>
+	<li class="last">
+		<a href="#">Tristique Turpis</a>
+	</li>
+</ul>	</div>
+</div></div></div></div><div class="mega-col col-xs-12 col-sm-12 col-md-9 "> <div class="mega-col-inner"><div class="pavo-widget" id="pavowid-1">	<h3 class="menu-title"><span class="menu-title"><em class="fa fa-caret-right"></em>Video </span></h3>
+	<div class="widget-html">
+	<div class="widget-inner">
+		<iframe src="Latest%20Blogs_files/DfSL-HeIrxA_002.html" allowfullscreen="" width="580" frameborder="0" height="390"></iframe>	</div>
+</div></div></div></div></div></div></div></li><li class="parent dropdown ">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=59"><span class="menu-title">Dropdown</span><b class="caret"></b></a><div class="dropdown-menu level1"><div class="dropdown-menu-inner"><div class="row"><div class="mega-col col-xs-12 col-sm-12 col-md-12" data-type="menu"><div class="mega-col-inner"><ul><li class="first"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20_27"><span class="menu-title">Macs</span></a></li><li class=" "><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=25_30"><span class="menu-title">Printers</span></a></li><li class="parent dropdown-submenu "><a class="dropdown-toggle" data-toggle="dropdown" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=25_31"><span class="menu-title">Scanners</span><b class="caret"></b></a><div class="dropdown-menu level2"><div class="dropdown-menu-inner"><div class="row"><div class="mega-col col-xs-12 col-sm-12 col-md-12" data-type="menu"><div class="mega-col-inner"><ul><li class="first"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=25"><span class="menu-title">Watches</span></a></li><li class="parent dropdown-submenu "><a class="dropdown-toggle" data-toggle="dropdown" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=79"><span class="menu-title">Aliquam</span><b class="caret"></b></a><div class="dropdown-menu level3"><div class="dropdown-menu-inner"><div class="row"><div class="mega-col col-xs-12 col-sm-12 col-md-12" data-type="menu"><div class="mega-col-inner"><ul><li class="first"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20"><span class="menu-title"> Furniture</span></a></li><li class=" "><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=59"><span class="menu-title">Clothing &amp; Accessories</span></a></li><li class="last"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=25"><span class="menu-title">Baby, Kids &amp; Toys</span></a></li></ul></div></div></div></div></div></li><li class=" "><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=74"><span class="menu-title">Claritas</span></a></li><li class="last"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=0"><span class="menu-title">Litterarum</span></a></li></ul></div></div></div></div></div></li><li class="parent dropdown-submenu "><a class="dropdown-toggle" data-toggle="dropdown" href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=20"><span class="menu-title">Desktops</span><b class="caret"></b></a><div class="dropdown-menu level2"><div class="dropdown-menu-inner"><div class="row"><div class="mega-col col-xs-12 col-sm-12 col-md-12" data-type="menu"><div class="mega-col-inner"><ul><li class="first"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=73"><span class="menu-title">Consectetuer</span></a></li><li class="last"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=80"><span class="menu-title">Hendrerit</span></a></li></ul></div></div></div></div></div></li><li class=" "><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=18"><span class="menu-title">Laptops &amp; Notebooks</span></a></li><li class="last"><a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=25"><span class="menu-title">Components</span></a></li></ul></div></div></div></div></div></li><li class="">
+					<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=product/category&amp;path=34"><span class="menu-title">Coffee</span></a></li><li class="">
+					<a href=""><span class="menu-title">School Supplies</span></a></li><li class="">
+					<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=pavblog/blogs"><span class="menu-title">Blogs</span></a></li><li class="last">
+					<a href="http://demopavothemes.com/pav_styleshop/d/index.php?route=information/contact"><span class="menu-title">Contacts us</span></a></li></ul><div class="button-close-menu"><i class="fa fa-times-circle-o"></i></div></div></nav></body></html>
